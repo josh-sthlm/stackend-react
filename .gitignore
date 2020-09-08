@@ -1,0 +1,4 @@
+./shop/*.js
+./shop/*.js.map
+./types
+./node_modules

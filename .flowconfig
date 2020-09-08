@@ -1,0 +1,13 @@
+[libs]
+flow-typed
+
+[ignore]
+.*/node_modules/.*
+<PROJECT_ROOT>/es/.*
+<PROJECT_ROOT>/lib/.*
+
+[include]
+
+[options]
+esproposal.decorators=ignore
+module.ignore_non_literal_requires=true
