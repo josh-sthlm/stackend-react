@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="e42d5d32-7820-4c2a-bcc3-71c9e163bb75" name="Default Changelist" comment="Work on components">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop/AddToBasketButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/shop/AddToBasketButton.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop/Product.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/shop/Product.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop/ProductLink.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/shop/ProductLink.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop/ProductListing.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/shop/ProductListing.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop/ProductListingPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/shop/ProductListingPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop/ProductPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/shop/ProductPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop/ProductTypeListing.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/shop/ProductTypeListing.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop/ShopApp.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/shop/ShopApp.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1fdgBDfCq7WgcGUSsBLpMX8I4HL" />
+  <component name="ProjectViewState">
+    <option name="autoscrollFromSource" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="false" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="prettierjs.PrettierConfiguration.Package" value="$PROJECT_DIR$/node_modules/prettier" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
+  </component>
+  <component name="RunManager" selected="npm.build">
+    <configuration name="build" type="js.build_tools.npm" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="build" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="watch" type="js.build_tools.npm" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="watch" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="npm.build" />
+      <item itemvalue="npm.watch" />
+    </list>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e42d5d32-7820-4c2a-bcc3-71c9e163bb75" name="Default Changelist" comment="" />
+      <created>1596553245958</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1596553245958</updated>
+      <workItem from="1596553247098" duration="303000" />
+      <workItem from="1599548096855" duration="1071000" />
+      <workItem from="1599549179773" duration="3573000" />
+      <workItem from="1599654591739" duration="1477000" />
+      <workItem from="1599721125690" duration="8760000" />
+    </task>
+    <task id="LOCAL−00001" summary="Work on components">
+      <created>1599552722021</created>
+      <option name="number" value="LOCAL−00001" />
+      <option name="presentableId" value="LOCAL−00001" />
+      <updated>1599552722022</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+    <option name="exactExcludedFiles">
+      <list>
+        <option value="$PROJECT_DIR$/shop/ProductTypeListing.js.map" />
+        <option value="$PROJECT_DIR$/shop/ProductListing.js" />
+        <option value="$PROJECT_DIR$/shop/ProductListingPage.js.map" />
+        <option value="$PROJECT_DIR$/shop/ProductPage.js.map" />
+        <option value="$PROJECT_DIR$/shop/AddToBasketButton.js" />
+        <option value="$PROJECT_DIR$/shop/ProductTypeListing.js" />
+        <option value="$PROJECT_DIR$/shop/Product.js" />
+        <option value="$PROJECT_DIR$/shop/ProductListingPage.js" />
+        <option value="$PROJECT_DIR$/shop/ProductLink.js" />
+        <option value="$PROJECT_DIR$/shop/ProductListing.js.map" />
+        <option value="$PROJECT_DIR$/shop/ShopApp.js" />
+        <option value="$PROJECT_DIR$/shop/ProductLink.js.map" />
+        <option value="$PROJECT_DIR$/shop/ProductPage.js" />
+        <option value="$PROJECT_DIR$/shop/ShopApp.js.map" />
+        <option value="$PROJECT_DIR$/shop/AddToBasketButton.js.map" />
+        <option value="$PROJECT_DIR$/shop/Product.js.map" />
+        <option value="$PROJECT_DIR$/shop/Shop.style.js" />
+        <option value="$PROJECT_DIR$/shop/Shop.style.js.map" />
+        <option value="$PROJECT_DIR$/shop/Shop.style.d.ts" />
+        <option value="$PROJECT_DIR$/shop/ProductLink.d.ts" />
+        <option value="$PROJECT_DIR$/shop/ShopApp.d.ts" />
+        <option value="$PROJECT_DIR$/shop/ProductListing.d.ts" />
+        <option value="$PROJECT_DIR$/shop/ProductListingPage.d.ts" />
+        <option value="$PROJECT_DIR$/shop/Product.d.ts" />
+        <option value="$PROJECT_DIR$/shop/AddToBasketButton.d.ts" />
+        <option value="$PROJECT_DIR$/shop/ProductTypeListing.d.ts" />
+        <option value="$PROJECT_DIR$/shop/ProductPage.d.ts" />
+        <option value="$PROJECT_DIR$/shop/Shop.style.d.ts.map" />
+        <option value="$PROJECT_DIR$/shop/AddToBasketButton.d.ts.map" />
+        <option value="$PROJECT_DIR$/shop/ProductListingPage.d.ts.map" />
+        <option value="$PROJECT_DIR$/shop/ProductTypeListing.d.ts.map" />
+        <option value="$PROJECT_DIR$/shop/ProductLink.d.ts.map" />
+        <option value="$PROJECT_DIR$/shop/Product.d.ts.map" />
+        <option value="$PROJECT_DIR$/shop/ProductListing.d.ts.map" />
+        <option value="$PROJECT_DIR$/shop/ShopApp.d.ts.map" />
+        <option value="$PROJECT_DIR$/shop/ProductPage.d.ts.map" />
+      </list>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Work on components" />
+    <option name="LAST_COMMIT_MESSAGE" value="Work on components" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="910" y="468" width="1143" height="1045" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1599550335021">
+      <screen x="0" y="46" width="2928" height="1784" />
+    </state>
+    <state x="910" y="468" width="1143" height="1045" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.46.2928.1784@0.46.2928.1784" timestamp="1599550335021" />
+    <state x="1000" y="475" width="917" height="895" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1599730256445">
+      <screen x="0" y="46" width="2928" height="1784" />
+    </state>
+    <state x="1000" y="475" width="917" height="895" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.46.2928.1784@0.46.2928.1784" timestamp="1599730256445" />
+    <state x="761" y="266" width="1873" height="1471" key="CommitChangelistDialog2" timestamp="1599730495118">
+      <screen x="0" y="46" width="2928" height="1784" />
+    </state>
+    <state x="761" y="266" width="1873" height="1471" key="CommitChangelistDialog2/0.46.2928.1784@0.46.2928.1784" timestamp="1599730495118" />
+    <state width="2891" height="486" key="GridCell.Tab.0.bottom" timestamp="1599730360974">
+      <screen x="0" y="46" width="2928" height="1784" />
+    </state>
+    <state width="2891" height="486" key="GridCell.Tab.0.bottom/0.46.2928.1784@0.46.2928.1784" timestamp="1599730360974" />
+    <state width="2891" height="486" key="GridCell.Tab.0.center" timestamp="1599730360973">
+      <screen x="0" y="46" width="2928" height="1784" />
+    </state>
+    <state width="2891" height="486" key="GridCell.Tab.0.center/0.46.2928.1784@0.46.2928.1784" timestamp="1599730360973" />
+    <state width="2891" height="486" key="GridCell.Tab.0.left" timestamp="1599730360973">
+      <screen x="0" y="46" width="2928" height="1784" />
+    </state>
+    <state width="2891" height="486" key="GridCell.Tab.0.left/0.46.2928.1784@0.46.2928.1784" timestamp="1599730360973" />
+    <state width="2891" height="486" key="GridCell.Tab.0.right" timestamp="1599730360974">
+      <screen x="0" y="46" width="2928" height="1784" />
+    </state>
+    <state width="2891" height="486" key="GridCell.Tab.0.right/0.46.2928.1784@0.46.2928.1784" timestamp="1599730360974" />
+    <state x="594" y="273" width="1739" height="1299" key="SettingsEditor" timestamp="1599550255855">
+      <screen x="0" y="46" width="2928" height="1784" />
+    </state>
+    <state x="594" y="273" width="1739" height="1299" key="SettingsEditor/0.46.2928.1784@0.46.2928.1784" timestamp="1599550255855" />
+    <state x="759" y="450" width="1400" height="946" key="Vcs.Push.Dialog.v2" timestamp="1599552723691">
+      <screen x="0" y="46" width="2928" height="1784" />
+    </state>
+    <state x="759" y="450" width="1400" height="946" key="Vcs.Push.Dialog.v2/0.46.2928.1784@0.46.2928.1784" timestamp="1599552723691" />
+    <state x="1361" y="543" width="662" height="961" key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog" timestamp="1599729884503">
+      <screen x="0" y="46" width="2928" height="1784" />
+    </state>
+    <state x="1361" y="543" width="662" height="961" key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog/0.46.2928.1784@0.46.2928.1784" timestamp="1599729884503" />
+    <state x="955" y="418" width="1017" height="966" key="find.popup" timestamp="1599726684157">
+      <screen x="0" y="46" width="2928" height="1784" />
+    </state>
+    <state x="955" y="418" width="1017" height="966" key="find.popup/0.46.2928.1784@0.46.2928.1784" timestamp="1599726684157" />
+    <state x="873" y="44" width="1177" height="1976" key="search.everywhere.popup" timestamp="1599727791894">
+      <screen x="0" y="46" width="2928" height="1784" />
+    </state>
+    <state x="873" y="44" width="1177" height="1976" key="search.everywhere.popup/0.46.2928.1784@0.46.2928.1784" timestamp="1599727791894" />
+  </component>
+</project>

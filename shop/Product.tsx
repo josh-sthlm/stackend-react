@@ -1,14 +1,17 @@
 
 import React, { Component } from 'react';
 import * as Sc from './Shop.style.js';
-import { getFirstImage, Product as ProductType } from '@stackend/api/shop';
+import { getFirstImage, Product as IProduct } from '@stackend/api/shop';
 import AddToBasketButton from './AddToBasketButton';
 import { ProductImage } from '@stackend/api/shop';
 
 export interface PropsType {
-	product: ProductType
+	product: IProduct
 }
 
+/**
+ * Renders a product
+ */
 export default class Product extends Component<PropsType> {
 	render() {
 		const { product } = this.props;
@@ -22,7 +25,7 @@ export default class Product extends Component<PropsType> {
 
 		return (
 			<Sc.Product>
-				<Sc.ProductImageBrowser>{this.renderImage(image)}</Sc.ProductImageBrowser>
+        <Sc.ProductImageBrowser>{image && this.renderImage(image)}</Sc.ProductImageBrowser>
 
 				<h2>{product.title}</h2>
 				<Sc.Price>[FIXME: Variant price]</Sc.Price>
@@ -38,6 +41,6 @@ export default class Product extends Component<PropsType> {
 	}
 
 	renderImage = (image: ProductImage) => {
-		return <img src={image.transformedSrc} key={image.id} alt={image.altText} />;
+		return <img src={image.transformedSrc} key={image.id} alt={image.altText || ""} />;
 	};
 }

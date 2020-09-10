@@ -5,7 +5,8 @@ import { Link } from 'react-router';
 import * as Sc from './Shop.style';
 
 export type Props = {
-	productTypes: Array<string>
+	productTypes: Array<string>,
+  productTypeUrlPattern: string
 };
 
 export default class ProductTypeListing extends Component<Props> {
@@ -18,22 +19,21 @@ export default class ProductTypeListing extends Component<Props> {
 
 		return (
 			<Sc.ProductTypeListing>
-				{productTypes.map(p => this.renderProductType(p))}
+				{productTypes.map(p =><li key={p}>${this.renderProductType(p)}</li>)}
 			</Sc.ProductTypeListing>
 		);
 	}
 
 	renderProductType(productType: string) {
-		return (
-			<li key={productType}>
-				{productType === '' ? (
-					<Link to="/stackend/test/shop">All</Link>
-				) : (
-					<Link to={'/stackend/test/shop/category/' + encodeURIComponent(productType)}>
+
+	  const link = encodeURI(`${this.props.productTypeUrlPattern}`);
+
+	  if (productType === '') {
+      return <Link to="${link}">All</Link>;
+    }
+
+		return <Link to={link + encodeURIComponent(productType)}>
 						{productType}
-					</Link>
-				)}
-			</li>
-		);
+					</Link>;
 	}
 }

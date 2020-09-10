@@ -49,20 +49,21 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.11.2",
-    "@stackend/api": "latest",
+    "@stackend/api": "1.0.8",
     "es6-promise": "^3.3.1",
     "immutability-helper": "^2.9.1",
     "immutable": "^3.8.2",
     "isomorphic-fetch": "^2.2.1",
     "lodash": "^4.17.20",
     "moment": "^2.22.0",
-    "winston": "^3.3.3",
+    "my-awesome-greeter": "^1.0.2",
+    "react": "^16.13.1",
+    "react-helmet": "^6.0.0",
+    "react-router": "^3.2.6",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
-    "react-helmet": "^6.0.0",
-    "react": "^16.13.1",
-    "react-router": "^3.2.6",
-    "styled-components": "^5.0.1"
+    "styled-components": "^5.2.0",
+    "winston": "^3.3.3"
   },
   "devDependencies": {
     "@babel/cli": "^7.11.6",
@@ -108,7 +109,7 @@
     "testRegex": "(/tests/.*\\.spec\\.[tj]s)$",
     "coverageProvider": "v8"
   },
-  "types": "./types/",
+  "types": "./",
   "publishConfig": {
     "access": "public"
   }

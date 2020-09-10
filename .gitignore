@@ -1,4 +1,7 @@
-./shop/*.js
-./shop/*.js.map
-./types
-./node_modules
+types
+node_modules
+*.js.map
+*.d.ts
+*.d.ts.map
+shop/*.js
+

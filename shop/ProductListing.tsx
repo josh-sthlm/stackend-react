@@ -4,10 +4,11 @@ import { Link } from 'react-router';
 
 import * as Sc from './Shop.style.js';
 import { getFirstImage, Product as ProductType } from '@stackend/api/shop';
-import type { GraphQLList, GraphQLListNode, Product, ProductImage } from '@stackend/api/shop';
+import type { GraphQLList, GraphQLListNode, Product } from '@stackend/api/shop';
 
 export interface Props {
-	products: GraphQLList<Product>
+	products: GraphQLList<Product>,
+  productUrlPattern: string
 }
 
 export default class ProductListing extends Component<Props> {
@@ -30,12 +31,14 @@ export default class ProductListing extends Component<Props> {
 	}
 
 	renderProduct(product: ProductType) {
-		let image: ProductImage = getFirstImage(product);
+		let image = getFirstImage(product);
+
+		const link = encodeURI(`${this.props.productUrlPattern}`);
 
 		return (
 			<li key={product.id}>
-				<Link to={'/stackend/test/shop/product/' + product.handle}>
-					{image && <Sc.ProductListingImage src={image.transformedSrc} alt={image.altText} />}
+				<Link to={link}>
+					{image && (<Sc.ProductListingImage src={image.transformedSrc} alt={image.altText || ""} />)}
 					<Sc.Title>{product.title}</Sc.Title>
 					<Sc.Price>[FIXME: Price]</Sc.Price>
 					{/*<ProductLink product={product}/>*/}

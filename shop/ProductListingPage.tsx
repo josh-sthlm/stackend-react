@@ -4,55 +4,56 @@ import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import ProductListing from './ProductListing';
 import { Thunk } from '@stackend/api/api';
-import { Dispatch } from "redux";
 import { requestProductsAndProductTypes } from '@stackend/api/shop/shopActions';
 import { DEFAULT_PRODUCT_TYPE, ShopState } from '@stackend/api/shop/shopReducer';
 import {
-	ListProductsRequest,
-	Product,
-	ListProductsAndTypesResult
-} from '@stackend/api/shop';
-import { COMMUNITY_PARAMETER } from '@stackend/api/api';
-import { FIXME_HARDCODED_COMMUNITY } from './ShopApp.js';
+  ListProductsRequest,
+  Product,
+  ListProductsAndTypesResult, GraphQLList
+} from "@stackend/api/shop";
+
 
 export interface Props {
+  productUrlPattern: string,
 	requestProductsAndProductTypes: (req: ListProductsRequest) => Thunk<ListProductsAndTypesResult>,
-	products: Array<Product>
+	products: GraphQLList<Product>,
+  productType: string
 }
 
 
-function mapDispatchToProps(dispatch: Dispatch) {
-	return {
-		requestProductsAndProductTypes: (req: any) => dispatch(requestProductsAndProductTypes(req))
-	};
+const mapDispatchToProps = {
+		requestProductsAndProductTypes
 }
 
-function mapStateToProps({ shop }: { shop: ShopState }, ownProps: Props) {
+function mapStateToProps(state: any, ownProps: any) {
+  const shop: ShopState = state;
 	let productType = DEFAULT_PRODUCT_TYPE; // FIXME: support categories
 	let products = shop.productsByType[productType];
 
 	return {
+    productType,
 		products
 	};
 }
 
 class ProductListingPage extends Component<Props> {
+
 	async componentDidMount() {
 		const { products, requestProductsAndProductTypes } = this.props;
 		if (!products) {
-			await requestProductsAndProductTypes({ [COMMUNITY_PARAMETER]: FIXME_HARDCODED_COMMUNITY });
+			await requestProductsAndProductTypes({  });
 		}
 	}
 
 	render() {
-		const { products } = this.props;
+		const { products, productType, productUrlPattern } = this.props;
 
 		return (
 			<Fragment>
 				<Helmet>
-					<title>[FIXME: category] - Products</title>
+					<title>${productType} - Products</title>
 				</Helmet>
-				<ProductListing products={products} />
+				<ProductListing products={products} productUrlPattern={productUrlPattern}/>
 			</Fragment>
 		);
 	}

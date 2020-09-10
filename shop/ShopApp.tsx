@@ -2,7 +2,6 @@
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Dispatch } from 'redux';
 import { Thunk } from '@stackend/api/api';
 import { requestProductsAndProductTypes, requestProduct } from '@stackend/api/shop/shopActions';
 import { DEFAULT_PRODUCT_TYPE, ShopState } from '@stackend/api/shop/shopReducer';
@@ -13,17 +12,18 @@ import {
 	GetProductResult
 } from '@stackend/api/shop';
 import { CommunityState } from '@stackend/api/stackend/communityReducer';
-import ProductTypeListing from './ProductTypeListing.tsx';
+import ProductTypeListing from './ProductTypeListing';
 import * as Sc from './Shop.style.js';
 
 export interface Props {
 	requestProductsAndProductTypes: (req: ListProductsRequest) => Thunk<ListProductsAndTypesResult>;
 	requestProduct: (req: GetProductRequest) => Thunk<GetProductResult>;
 	shop: ShopState;
-	dispatch: Dispatch;
+	dispatch: any;
+	params: any;
 }
 
-function mapDispatchToProps(dispatch: Dispatch) {
+function mapDispatchToProps(dispatch: any, _getState: any) {
 	return {
 		requestProductsAndProductTypes: (req: any) => dispatch(requestProductsAndProductTypes(req)),
 		requestProduct: (req: any) => dispatch(requestProduct(req)),
@@ -32,8 +32,7 @@ function mapDispatchToProps(dispatch: Dispatch) {
 }
 
 function mapStateToProps(
-	{ shop, communities }: { shop: ShopState, communities: CommunityState },
-	ownProps: Props
+	{ shop, communities }: { shop: ShopState, communities: CommunityState }
 ) {
 	return {
 		shop,
@@ -42,7 +41,8 @@ function mapStateToProps(
 }
 
 class ShopApp extends Component<Props> {
-	static async fetchData(dispatch: Dispatch, { params, shop }: Props) {
+
+	static async fetchData(dispatch: any, { params, shop }: Props) {
 		// FIXME: Support categories
 		// FIXME: Support page mode as well as module mode (hash link)
 		let handle = params.handle;
@@ -79,7 +79,7 @@ class ShopApp extends Component<Props> {
 		let prevParams = prevProps.params;
 
 		if (params.handle !== prevParams.handle || params.productType !== prevParams.productType) {
-			ShopApp.fetchData(this.props.dispatch, this.props);
+			ShopApp.fetchData(this.props.dispatch, this.props).then();
 		}
 	}
 
@@ -87,7 +87,7 @@ class ShopApp extends Component<Props> {
 		const { shop } = this.props;
 		return (
 			<Sc.ShopApp>
-				<ProductTypeListing productTypes={shop.productTypes} />
+				<ProductTypeListing productTypes={shop.productTypes} productTypeUrlPattern={"/category/${productType}"}/>
 				{this.props.children}
 			</Sc.ShopApp>
 		);

@@ -4,29 +4,30 @@ import { Product as ProductType } from '@stackend/api/shop';
 import { addToBasket } from '@stackend/api/shop/shopActions';
 import * as Sc from './Shop.style.js';
 import { connect } from 'react-redux';
-import { Dispatch } from 'redux';
 
 export interface Props {
 	product: ProductType | null,
 	addToBasket: (product: ProductType) => any
 }
 
-function mapDispatchToProps(dispatch: Dispatch) {
-	return {
-		addToBasket: (props: any) => dispatch(addToBasket(props))
-	};
+const mapDispatchToProps = {
+		addToBasket
 }
 
-function mapStateToProps(x: any, y: any) {}
+function mapStateToProps(x: any, y: any) {
+  return {}
+}
 
 class AddToBasketButton extends Component<Props> {
 	render() {
 		return <Sc.AddToBasketButton onClick={this.onBuyClicked}>Lägg i korgen</Sc.AddToBasketButton>;
 	}
 
-	onBuyClicked = (e: Event) => {
+	onBuyClicked = () => {
 		const { product, addToBasket } = this.props;
-		addToBasket(product);
+		if (product) {
+      addToBasket(product);
+    }
 	};
 }
 

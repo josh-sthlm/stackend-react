@@ -2,15 +2,13 @@
 import React, { Component, Fragment } from 'react';
 import { Helmet } from 'react-helmet';
 import { connect } from 'react-redux';
-import { Dispatch } from 'redux';
 import { requestProduct } from '@stackend/api/shop/shopActions';
-import { ShopState } from '@stackend/api/shop/shopReducer';
+
 import {
 	Product as ProductType,
 	GetProductRequest,
 	GetProductResult,
 	getFirstImage,
-	ProductImage
 } from '@stackend/api/shop';
 import { Thunk } from '@stackend/api/api';
 import Product from './Product';
@@ -24,13 +22,11 @@ export interface PropsType {
 	product: ProductType
 }
 
-function mapDispatchToProps(dispatch: Dispatch) {
-	return {
-		requestProduct: (props: any) => dispatch(requestProduct(props))
-	};
+const mapDispatchToProps = {
+    requestProduct
 }
 
-function mapStateToProps({ shop }: { shop: ShopState }, ownProps: PropsType) {
+function mapStateToProps({ shop }: any, ownProps: any) {
 	let handle = _.get(ownProps, 'params.handle', '*');
 	let product = shop.products[handle];
 	let productLoaded = typeof shop.products[handle] !== 'undefined';
@@ -67,7 +63,7 @@ class ProductPage extends Component<PropsType> {
 			);
 		}
 
-		let image: ProductImage = getFirstImage(product);
+		const image = getFirstImage(product);
 
 		return (
 			<Fragment>
