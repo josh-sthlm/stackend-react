@@ -1,0 +1,8 @@
+/.idea
+/stackend-react-*.tgz
+.babelrc.js
+.eslintrc.js
+.editorconfig
+.flowconfig
+.prettierrc.json
+tsconfig.json

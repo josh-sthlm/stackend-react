@@ -2,18 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e42d5d32-7820-4c2a-bcc3-71c9e163bb75" name="Default Changelist" comment="Work on components">
+      <change afterPath="$PROJECT_DIR$/.npmignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pagination/Pagination.style.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pagination/Pagination.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/style-common/styled-component-variables.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/throbber/LoadingThrobber.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/throbber/ModalThrobber.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/throbber/Throbber.style.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/throbber/throbber-unbranded.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.flowconfig" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop/AddToBasketButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/shop/AddToBasketButton.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop/Product.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/shop/Product.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop/ProductLink.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/shop/ProductLink.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop/ProductListing.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/shop/ProductListing.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop/ProductListingPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/shop/ProductListingPage.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop/ProductPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/shop/ProductPage.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop/ProductTypeListing.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/shop/ProductTypeListing.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop/ShopApp.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/shop/ShopApp.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,7 +36,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/style-common" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -50,6 +53,9 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/style-common" />
+      <recent name="$PROJECT_DIR$/ui" />
+      <recent name="$PROJECT_DIR$/throbber" />
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
@@ -91,7 +97,8 @@
       <workItem from="1599548096855" duration="1071000" />
       <workItem from="1599549179773" duration="3573000" />
       <workItem from="1599654591739" duration="1477000" />
-      <workItem from="1599721125690" duration="8760000" />
+      <workItem from="1599721125690" duration="14222000" />
+      <workItem from="1599739229787" duration="639000" />
     </task>
     <task id="LOCAL−00001" summary="Work on components">
       <created>1599552722021</created>
@@ -99,7 +106,13 @@
       <option name="presentableId" value="LOCAL−00001" />
       <updated>1599552722022</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL−00002" summary="Work on components">
+      <created>1599730552834</created>
+      <option name="number" value="LOCAL−00002" />
+      <option name="presentableId" value="LOCAL−00002" />
+      <updated>1599730552835</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -142,6 +155,23 @@
         <option value="$PROJECT_DIR$/shop/ProductListing.d.ts.map" />
         <option value="$PROJECT_DIR$/shop/ShopApp.d.ts.map" />
         <option value="$PROJECT_DIR$/shop/ProductPage.d.ts.map" />
+        <option value="$PROJECT_DIR$/throbber/ModalThrobber.js.map" />
+        <option value="$PROJECT_DIR$/throbber/Throbber.style.js" />
+        <option value="$PROJECT_DIR$/throbber/Throbber.style.js.map" />
+        <option value="$PROJECT_DIR$/throbber/Throbber.style.d.ts" />
+        <option value="$PROJECT_DIR$/throbber/LoadingThrobber.js" />
+        <option value="$PROJECT_DIR$/throbber/LoadingThrobber.d.ts" />
+        <option value="$PROJECT_DIR$/throbber/ModalThrobber.d.ts.map" />
+        <option value="$PROJECT_DIR$/throbber/LoadingThrobber.js.map" />
+        <option value="$PROJECT_DIR$/throbber/ModalThrobber.js" />
+        <option value="$PROJECT_DIR$/throbber/ModalThrobber.d.ts" />
+        <option value="$PROJECT_DIR$/throbber/Throbber.style.d.ts.map" />
+        <option value="$PROJECT_DIR$/throbber/LoadingThrobber.d.ts.map" />
+        <option value="$PROJECT_DIR$/style-common/styled-component-variables.d.ts" />
+        <option value="$PROJECT_DIR$/style-common/styled-component-variables.js" />
+        <option value="$PROJECT_DIR$/style-common/styled-component-variables.d.ts.map" />
+        <option value="$PROJECT_DIR$/style-common/styled-component-variables.js.map" />
+        <option value="$PROJECT_DIR$/pagination/Pagination.d.ts.map" />
       </list>
     </option>
   </component>
@@ -154,38 +184,38 @@
       <screen x="0" y="46" width="2928" height="1784" />
     </state>
     <state x="910" y="468" width="1143" height="1045" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.46.2928.1784@0.46.2928.1784" timestamp="1599550335021" />
-    <state x="1000" y="475" width="917" height="895" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1599730256445">
+    <state x="1000" y="475" width="917" height="895" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1599732276769">
       <screen x="0" y="46" width="2928" height="1784" />
     </state>
-    <state x="1000" y="475" width="917" height="895" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.46.2928.1784@0.46.2928.1784" timestamp="1599730256445" />
-    <state x="761" y="266" width="1873" height="1471" key="CommitChangelistDialog2" timestamp="1599730495118">
+    <state x="1000" y="475" width="917" height="895" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.46.2928.1784@0.46.2928.1784" timestamp="1599732276769" />
+    <state x="761" y="266" width="1873" height="1471" key="CommitChangelistDialog2" timestamp="1599738577753">
       <screen x="0" y="46" width="2928" height="1784" />
     </state>
-    <state x="761" y="266" width="1873" height="1471" key="CommitChangelistDialog2/0.46.2928.1784@0.46.2928.1784" timestamp="1599730495118" />
-    <state width="2891" height="486" key="GridCell.Tab.0.bottom" timestamp="1599730360974">
+    <state x="761" y="266" width="1873" height="1471" key="CommitChangelistDialog2/0.46.2928.1784@0.46.2928.1784" timestamp="1599738577753" />
+    <state width="2891" height="486" key="GridCell.Tab.0.bottom" timestamp="1599738696283">
       <screen x="0" y="46" width="2928" height="1784" />
     </state>
-    <state width="2891" height="486" key="GridCell.Tab.0.bottom/0.46.2928.1784@0.46.2928.1784" timestamp="1599730360974" />
-    <state width="2891" height="486" key="GridCell.Tab.0.center" timestamp="1599730360973">
+    <state width="2891" height="486" key="GridCell.Tab.0.bottom/0.46.2928.1784@0.46.2928.1784" timestamp="1599738696283" />
+    <state width="2891" height="486" key="GridCell.Tab.0.center" timestamp="1599738696283">
       <screen x="0" y="46" width="2928" height="1784" />
     </state>
-    <state width="2891" height="486" key="GridCell.Tab.0.center/0.46.2928.1784@0.46.2928.1784" timestamp="1599730360973" />
-    <state width="2891" height="486" key="GridCell.Tab.0.left" timestamp="1599730360973">
+    <state width="2891" height="486" key="GridCell.Tab.0.center/0.46.2928.1784@0.46.2928.1784" timestamp="1599738696283" />
+    <state width="2891" height="486" key="GridCell.Tab.0.left" timestamp="1599738696282">
       <screen x="0" y="46" width="2928" height="1784" />
     </state>
-    <state width="2891" height="486" key="GridCell.Tab.0.left/0.46.2928.1784@0.46.2928.1784" timestamp="1599730360973" />
-    <state width="2891" height="486" key="GridCell.Tab.0.right" timestamp="1599730360974">
+    <state width="2891" height="486" key="GridCell.Tab.0.left/0.46.2928.1784@0.46.2928.1784" timestamp="1599738696282" />
+    <state width="2891" height="486" key="GridCell.Tab.0.right" timestamp="1599738696283">
       <screen x="0" y="46" width="2928" height="1784" />
     </state>
-    <state width="2891" height="486" key="GridCell.Tab.0.right/0.46.2928.1784@0.46.2928.1784" timestamp="1599730360974" />
+    <state width="2891" height="486" key="GridCell.Tab.0.right/0.46.2928.1784@0.46.2928.1784" timestamp="1599738696283" />
     <state x="594" y="273" width="1739" height="1299" key="SettingsEditor" timestamp="1599550255855">
       <screen x="0" y="46" width="2928" height="1784" />
     </state>
     <state x="594" y="273" width="1739" height="1299" key="SettingsEditor/0.46.2928.1784@0.46.2928.1784" timestamp="1599550255855" />
-    <state x="759" y="450" width="1400" height="946" key="Vcs.Push.Dialog.v2" timestamp="1599552723691">
+    <state x="759" y="450" width="1400" height="946" key="Vcs.Push.Dialog.v2" timestamp="1599730555002">
       <screen x="0" y="46" width="2928" height="1784" />
     </state>
-    <state x="759" y="450" width="1400" height="946" key="Vcs.Push.Dialog.v2/0.46.2928.1784@0.46.2928.1784" timestamp="1599552723691" />
+    <state x="759" y="450" width="1400" height="946" key="Vcs.Push.Dialog.v2/0.46.2928.1784@0.46.2928.1784" timestamp="1599730555002" />
     <state x="1361" y="543" width="662" height="961" key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog" timestamp="1599729884503">
       <screen x="0" y="46" width="2928" height="1784" />
     </state>
