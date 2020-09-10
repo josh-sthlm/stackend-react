@@ -1,22 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e42d5d32-7820-4c2a-bcc3-71c9e163bb75" name="Default Changelist" comment="Work on components">
-      <change afterPath="$PROJECT_DIR$/.npmignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pagination/Pagination.style.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pagination/Pagination.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/style-common/styled-component-variables.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/throbber/LoadingThrobber.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/throbber/ModalThrobber.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/throbber/Throbber.style.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/throbber/throbber-unbranded.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.flowconfig" beforeDir="false" />
+    <list default="true" id="e42d5d32-7820-4c2a-bcc3-71c9e163bb75" name="Default Changelist" comment="Added throbber &amp; pagination&#10;Fixed build">
+      <change afterPath="$PROJECT_DIR$/abuse/AbuseLink.style.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/abuse/AbuseLink.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,7 +25,8 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/style-common" />
+    <property name="jsx.switch.disabled" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/abuse" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -53,6 +43,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/abuse" />
       <recent name="$PROJECT_DIR$/style-common" />
       <recent name="$PROJECT_DIR$/ui" />
       <recent name="$PROJECT_DIR$/throbber" />
@@ -98,7 +89,7 @@
       <workItem from="1599549179773" duration="3573000" />
       <workItem from="1599654591739" duration="1477000" />
       <workItem from="1599721125690" duration="14222000" />
-      <workItem from="1599739229787" duration="639000" />
+      <workItem from="1599739229787" duration="3221000" />
     </task>
     <task id="LOCAL−00001" summary="Work on components">
       <created>1599552722021</created>
@@ -112,7 +103,13 @@
       <option name="presentableId" value="LOCAL−00002" />
       <updated>1599730552835</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL−00003" summary="Added throbber &amp; pagination&#10;Fixed build">
+      <created>1599739930820</created>
+      <option name="number" value="LOCAL−00003" />
+      <option name="presentableId" value="LOCAL−00003" />
+      <updated>1599739930820</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -172,12 +169,21 @@
         <option value="$PROJECT_DIR$/style-common/styled-component-variables.d.ts.map" />
         <option value="$PROJECT_DIR$/style-common/styled-component-variables.js.map" />
         <option value="$PROJECT_DIR$/pagination/Pagination.d.ts.map" />
+        <option value="$PROJECT_DIR$/abuse/AbuseLink.style.d.ts.map" />
+        <option value="$PROJECT_DIR$/abuse/AbuseLink.style.js" />
+        <option value="$PROJECT_DIR$/abuse/AbuseLink.js" />
+        <option value="$PROJECT_DIR$/abuse/AbuseLink.style.d.ts" />
+        <option value="$PROJECT_DIR$/abuse/AbuseLink.d.ts" />
+        <option value="$PROJECT_DIR$/abuse/AbuseLink.d.ts.map" />
+        <option value="$PROJECT_DIR$/abuse/AbuseLink.style.js.map" />
+        <option value="$PROJECT_DIR$/abuse/AbuseLink.js.map" />
       </list>
     </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Work on components" />
-    <option name="LAST_COMMIT_MESSAGE" value="Work on components" />
+    <MESSAGE value="Added throbber &amp; pagination&#10;Fixed build" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added throbber &amp; pagination&#10;Fixed build" />
   </component>
   <component name="WindowStateProjectService">
     <state x="910" y="468" width="1143" height="1045" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1599550335021">
@@ -188,34 +194,34 @@
       <screen x="0" y="46" width="2928" height="1784" />
     </state>
     <state x="1000" y="475" width="917" height="895" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.46.2928.1784@0.46.2928.1784" timestamp="1599732276769" />
-    <state x="761" y="266" width="1873" height="1471" key="CommitChangelistDialog2" timestamp="1599738577753">
+    <state x="761" y="266" width="1873" height="1471" key="CommitChangelistDialog2" timestamp="1599742859891">
       <screen x="0" y="46" width="2928" height="1784" />
     </state>
-    <state x="761" y="266" width="1873" height="1471" key="CommitChangelistDialog2/0.46.2928.1784@0.46.2928.1784" timestamp="1599738577753" />
-    <state width="2891" height="486" key="GridCell.Tab.0.bottom" timestamp="1599738696283">
+    <state x="761" y="266" width="1873" height="1471" key="CommitChangelistDialog2/0.46.2928.1784@0.46.2928.1784" timestamp="1599742859891" />
+    <state width="2891" height="659" key="GridCell.Tab.0.bottom" timestamp="1599742843217">
       <screen x="0" y="46" width="2928" height="1784" />
     </state>
-    <state width="2891" height="486" key="GridCell.Tab.0.bottom/0.46.2928.1784@0.46.2928.1784" timestamp="1599738696283" />
-    <state width="2891" height="486" key="GridCell.Tab.0.center" timestamp="1599738696283">
+    <state width="2891" height="659" key="GridCell.Tab.0.bottom/0.46.2928.1784@0.46.2928.1784" timestamp="1599742843217" />
+    <state width="2891" height="659" key="GridCell.Tab.0.center" timestamp="1599742843216">
       <screen x="0" y="46" width="2928" height="1784" />
     </state>
-    <state width="2891" height="486" key="GridCell.Tab.0.center/0.46.2928.1784@0.46.2928.1784" timestamp="1599738696283" />
-    <state width="2891" height="486" key="GridCell.Tab.0.left" timestamp="1599738696282">
+    <state width="2891" height="659" key="GridCell.Tab.0.center/0.46.2928.1784@0.46.2928.1784" timestamp="1599742843216" />
+    <state width="2891" height="659" key="GridCell.Tab.0.left" timestamp="1599742843216">
       <screen x="0" y="46" width="2928" height="1784" />
     </state>
-    <state width="2891" height="486" key="GridCell.Tab.0.left/0.46.2928.1784@0.46.2928.1784" timestamp="1599738696282" />
-    <state width="2891" height="486" key="GridCell.Tab.0.right" timestamp="1599738696283">
+    <state width="2891" height="659" key="GridCell.Tab.0.left/0.46.2928.1784@0.46.2928.1784" timestamp="1599742843216" />
+    <state width="2891" height="659" key="GridCell.Tab.0.right" timestamp="1599742843217">
       <screen x="0" y="46" width="2928" height="1784" />
     </state>
-    <state width="2891" height="486" key="GridCell.Tab.0.right/0.46.2928.1784@0.46.2928.1784" timestamp="1599738696283" />
+    <state width="2891" height="659" key="GridCell.Tab.0.right/0.46.2928.1784@0.46.2928.1784" timestamp="1599742843217" />
     <state x="594" y="273" width="1739" height="1299" key="SettingsEditor" timestamp="1599550255855">
       <screen x="0" y="46" width="2928" height="1784" />
     </state>
     <state x="594" y="273" width="1739" height="1299" key="SettingsEditor/0.46.2928.1784@0.46.2928.1784" timestamp="1599550255855" />
-    <state x="759" y="450" width="1400" height="946" key="Vcs.Push.Dialog.v2" timestamp="1599730555002">
+    <state x="759" y="450" width="1400" height="946" key="Vcs.Push.Dialog.v2" timestamp="1599739932835">
       <screen x="0" y="46" width="2928" height="1784" />
     </state>
-    <state x="759" y="450" width="1400" height="946" key="Vcs.Push.Dialog.v2/0.46.2928.1784@0.46.2928.1784" timestamp="1599730555002" />
+    <state x="759" y="450" width="1400" height="946" key="Vcs.Push.Dialog.v2/0.46.2928.1784@0.46.2928.1784" timestamp="1599739932835" />
     <state x="1361" y="543" width="662" height="961" key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog" timestamp="1599729884503">
       <screen x="0" y="46" width="2928" height="1784" />
     </state>
