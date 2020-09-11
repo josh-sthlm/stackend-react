@@ -54,8 +54,7 @@ class Modal extends Component<Props> {
         onAfterOpen={onAfterOpen}
         ariaHideApp={false}
         /* These class names are required for styled components and to avoid conflicts */
-        portalClassName="stackend stackend-modal StackendModalPortal ReactModalPortal"
-      >
+        portalClassName="stackend stackend-modal StackendModalPortal ReactModalPortal">
         <Sc.ModalContent>{this.props.children}</Sc.ModalContent>
       </ReactModal>
     );

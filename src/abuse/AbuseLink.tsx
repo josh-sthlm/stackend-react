@@ -71,8 +71,7 @@ class AbuseLink extends React.Component<Props> {
           })}
           rel="nofollow"
           className="stackend-abuse-link"
-          onClick={this.handleClick}
-        >
+          onClick={this.handleClick}>
           <i className="material-icons">flag</i>
         </Sc.AbuseLink>
       );
