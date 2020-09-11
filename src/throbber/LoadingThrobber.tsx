@@ -1,19 +1,17 @@
-
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as Sc from './Throbber.style';
 
 function mapStateToProps({ throbber }: any, _getState: any): Props {
-	return {
-		loading: throbber.loading
-	};
+  return {
+    loading: throbber.loading
+  };
 }
 
-const mapDispatchToProps = {
-}
+const mapDispatchToProps = {};
 
 type Props = {
-	loading?: boolean
+  loading?: boolean;
 };
 
 /**
@@ -22,10 +20,10 @@ type Props = {
  * A single instance should be used for the entire application.
  */
 class LoadingThrobber extends Component<Props> {
-	render(): any {
-		const { loading } = this.props;
+  render(): any {
+    const { loading } = this.props;
 
-		return loading ? <Sc.LoadingThrobber /> : null;
-	}
+    return loading ? <Sc.LoadingThrobber /> : null;
+  }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(LoadingThrobber);

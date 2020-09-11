@@ -29,6 +29,9 @@ module.exports = {
     'import/resolver': {
       // use <root>/tsconfig.json
       typescript: {}
+    },
+    react: {
+      "version": "detect"
     }
   },
 
@@ -51,6 +54,7 @@ module.exports = {
     "@typescript-eslint/no-use-before-define": ["off"],
     '@typescript-eslint/no-unused-vars': 'off',
     '@typescript-eslint/no-inferrable-types': 'warn',
+    '@typescript-eslint/explicit-function-return-type': 'warn',
     /*
     '@typescript-eslint/no-unused-vars': [
       'warn',

@@ -1,4 +1,3 @@
-
 import React, { Component } from 'react';
 import _ from 'lodash';
 import { connect } from 'react-redux';
@@ -20,134 +19,127 @@ import { getCommentsStateKey } from '@stackend/api/comments/commentAction';
  * @since 31 mar 2017
  */
 type OwnProps = {
-	entry: any /*BlogEntry | Comment | ForumThreadEntry*/, //Could not get type-checking to work for this
-	module?: any
+  entry: any /*BlogEntry | Comment | ForumThreadEntry*/; //Could not get type-checking to work for this
+  module?: any;
 };
 
 type Props = OwnProps & {
-	isLoggedIn: boolean,
-	numberOfLikes: number,
-	likedByCurrentUser: boolean,
+  isLoggedIn: boolean;
+  numberOfLikes: number;
+  likedByCurrentUser: boolean;
 
-  openModal: any
-	//onSendEventToGA: any => any,
-	setLike: any
+  openModal: any;
+  //onSendEventToGA: any => any,
+  setLike: any;
 };
 
 type OwnState = {
-	numberOfLikes: number,
-	likedByCurrentUser: boolean
+  numberOfLikes: number;
+  likedByCurrentUser: boolean;
 };
 
-function mapStateToProps(
-	{ currentUser, groupBlogEntries, GroupComments }: any,
-	{ entry, module }: any
-) {
-	const key =
-		typeof module !== 'undefined' && typeof entry.referenceGroupId === 'number'
-			? getCommentsStateKey(module, entry.referenceGroupId) //If this is a comment get the groupKey
-			: _.get(entry, 'blogRef.groupRef.permalink'); //If this is a blogEntry get the groupPermalink
-	const blogComments = _.get(groupBlogEntries, `[${key}].json.likesByCurrentUser`);
-	const groupComments = _.get(GroupComments, `[${key}].json.likesByCurrentUser`, {});
-	const likesByCurrentUser = !!blogComments ? blogComments : groupComments;
-	return {
-		isLoggedIn: _.get(currentUser, 'isLoggedIn', false),
-		likedByCurrentUser: _.get(
-			likesByCurrentUser,
-			`[${entry.id}]`,
-			_.get(entry, 'likedByCurrentUser.likedByCurrentUser', false)
-		),
-		numberOfLikes: entry.numberOfLikes
-	};
+function mapStateToProps({ currentUser, groupBlogEntries, GroupComments }: any, { entry, module }: any) {
+  const key =
+    typeof module !== 'undefined' && typeof entry.referenceGroupId === 'number'
+      ? getCommentsStateKey(module, entry.referenceGroupId) //If this is a comment get the groupKey
+      : _.get(entry, 'blogRef.groupRef.permalink'); //If this is a blogEntry get the groupPermalink
+  const blogComments = _.get(groupBlogEntries, `[${key}].json.likesByCurrentUser`);
+  const groupComments = _.get(GroupComments, `[${key}].json.likesByCurrentUser`, {});
+  const likesByCurrentUser = !!blogComments ? blogComments : groupComments;
+  return {
+    isLoggedIn: _.get(currentUser, 'isLoggedIn', false),
+    likedByCurrentUser: _.get(
+      likesByCurrentUser,
+      `[${entry.id}]`,
+      _.get(entry, 'likedByCurrentUser.likedByCurrentUser', false)
+    ),
+    numberOfLikes: entry.numberOfLikes
+  };
 }
 
 const mapDispatchToProps = {
   openModal,
   //sendEventToGA
   setLike
-}
-
+};
 
 export class Like extends Component<Props, OwnState> {
-	state = {
-		numberOfLikes: 0,
-		likedByCurrentUser: false
-	};
+  state = {
+    numberOfLikes: 0,
+    likedByCurrentUser: false
+  };
 
-	constructor(props: Props) {
-		super(props);
-		this.state = {
-			numberOfLikes: props.numberOfLikes,
-			likedByCurrentUser: !!props.likedByCurrentUser
-		};
-	}
+  constructor(props: Props) {
+    super(props);
+    this.state = {
+      numberOfLikes: props.numberOfLikes,
+      likedByCurrentUser: !!props.likedByCurrentUser
+    };
+  }
 
-	componentDidUpdate(prevProps: Props, prevState: OwnState) {
-		const { likedByCurrentUser, numberOfLikes } = this.props;
-		//FIXME: uggly fix to keep state in sync
-		// FIXME: Update original redux object with the number of likes? Needs a flat redux structure..
-		if (
-			likedByCurrentUser !== prevProps.likedByCurrentUser &&
-			likedByCurrentUser !== this.state.likedByCurrentUser
-		) {
-			this.setState({ likedByCurrentUser });
-		}
-		if (numberOfLikes !== prevProps.numberOfLikes && numberOfLikes !== this.state.numberOfLikes) {
-			this.setState({ numberOfLikes });
-		}
-	}
+  componentDidUpdate(prevProps: Props, prevState: OwnState) {
+    const { likedByCurrentUser, numberOfLikes } = this.props;
+    //FIXME: uggly fix to keep state in sync
+    // FIXME: Update original redux object with the number of likes? Needs a flat redux structure..
+    if (likedByCurrentUser !== prevProps.likedByCurrentUser && likedByCurrentUser !== this.state.likedByCurrentUser) {
+      this.setState({ likedByCurrentUser });
+    }
+    if (numberOfLikes !== prevProps.numberOfLikes && numberOfLikes !== this.state.numberOfLikes) {
+      this.setState({ numberOfLikes });
+    }
+  }
 
-	/**
-	 * Like/unlike
-	 * @param e
-	 */
-	handleClick = (e: any) =>
-		(async () => {
-			e.preventDefault();
-			const { isLoggedIn, openModal, entry, /*onSendEventToGA,*/ setLike } = this.props;
-			const { obfuscatedReference } = entry;
-			if (!isLoggedIn) {
+  /**
+   * Like/unlike
+   * @param e
+   */
+  handleClick = (e: any) =>
+    (async () => {
+      e.preventDefault();
+      const { isLoggedIn, openModal, entry, /*onSendEventToGA,*/ setLike } = this.props;
+      const { obfuscatedReference } = entry;
+      if (!isLoggedIn) {
         openModal({ modalName: 'loginModal' });
-				return;
-			}
+        return;
+      }
 
-			let like = !this.state.likedByCurrentUser;
+      let like = !this.state.likedByCurrentUser;
 
-			//GA tracking Google Analytics
+      //GA tracking Google Analytics
 
-			let reference;
-			//BlogEntry & BlogEntry-Comment:
-			switch (entry.__type) {
-				case blogApi.BLOG_ENTRY_CLASS:
-					reference = entry;
-					break;
-				case commentApi.COMMENT_CLASS:
-					if (!!entry.referenceRef) {
-						//this is a like on a comment on a referenceable. //ex: blogEntry
-						reference = entry.referenceRef;
-						break;
-					} else {
-						//this is a like on a comment on a non-referenceable. //ex: stackend-comment thread
-						reference = entry;
-						break;
-					}
-			}
+      let reference;
+      //BlogEntry & BlogEntry-Comment:
+      switch (entry.__type) {
+        case blogApi.BLOG_ENTRY_CLASS:
+          reference = entry;
+          break;
+        case commentApi.COMMENT_CLASS:
+          if (!!entry.referenceRef) {
+            //this is a like on a comment on a referenceable. //ex: blogEntry
+            reference = entry.referenceRef;
+            break;
+          } else {
+            //this is a like on a comment on a non-referenceable. //ex: stackend-comment thread
+            reference = entry;
+            break;
+          }
+      }
 
-			//is this working??
-			this.setState({ likedByCurrentUser: like });
+      //is this working??
+      this.setState({ likedByCurrentUser: like });
 
-			let r = await setLike({obfuscatedReference, like});
-			// FIXME: Update original redux object with the number of likes?
-			this.setState({ numberOfLikes: r.numberOfLikes });
+      let r = await setLike({ obfuscatedReference, like });
+      // FIXME: Update original redux object with the number of likes?
+      this.setState({ numberOfLikes: r.numberOfLikes });
 
-			if (!reference) {
-				console.error("Couldn't track like click, didn't find reference");
+      if (!reference) {
+        console.error("Couldn't track like click, didn't find reference");
 
-				//FIXME: create backup tracking when no blogEntry is available.
-				return false;
-			}
+        //FIXME: create backup tracking when no blogEntry is available.
+        return false;
+      }
 
-			/* FIXME: Re add ga
+      /* FIXME: Re add ga
 			const objectType = `${entry.__type.substring(entry.__type.lastIndexOf('.') + 1)}`;
 			let eventCategory = '',
 				eventLabel = '';
@@ -189,17 +181,17 @@ export class Like extends Component<Props, OwnState> {
 				});
 			}
 			 */
-		})();
+    })();
 
-	render() {
-		const { numberOfLikes, likedByCurrentUser } = this.state;
+  render() {
+    const { numberOfLikes, likedByCurrentUser } = this.state;
 
-		return (
-			<Sc.LikeButton liked={likedByCurrentUser} onClick={this.handleClick}>
-				<ScQuantity>{numberOfLikes}</ScQuantity>
-				<i className="material-icons">{likedByCurrentUser ? 'favorite' : 'favorite_border'}</i>
-			</Sc.LikeButton>
-		);
-	}
+    return (
+      <Sc.LikeButton liked={likedByCurrentUser} onClick={this.handleClick}>
+        <ScQuantity>{numberOfLikes}</ScQuantity>
+        <i className="material-icons">{likedByCurrentUser ? 'favorite' : 'favorite_border'}</i>
+      </Sc.LikeButton>
+    );
+  }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Like);

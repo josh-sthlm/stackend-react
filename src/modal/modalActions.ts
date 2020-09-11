@@ -1,18 +1,16 @@
-
 import * as modalReducer from './modalReducer';
-
 
 /**
  * Open a modal
  * @param modalName
  * @param modalProps
  */
-export function openModal({ modalName, modalProps }: { modalName: string, modalProps?: any }) {
-	return {
-		type: modalReducer.OPEN_MODAL,
-		modalName,
-		modalProps
-	};
+export function openModal({ modalName, modalProps }: { modalName: string; modalProps?: any }) {
+  return {
+    type: modalReducer.OPEN_MODAL,
+    modalName,
+    modalProps
+  };
 }
 
 /**
@@ -20,10 +18,10 @@ export function openModal({ modalName, modalProps }: { modalName: string, modalP
  * @param modalName
  */
 export function closeModal({ modalName }: { modalName: string }) {
-	return {
-		type: modalReducer.CLOSE_MODAL,
-		modalName
-	};
+  return {
+    type: modalReducer.CLOSE_MODAL,
+    modalName
+  };
 }
 
 /**
@@ -36,5 +34,5 @@ export function isModalOpen(state: modalReducer.ModalState, modalName: string): 
     return false;
   }
 
-	return (state.modalName === modalName);
+  return state.modalName === modalName;
 }

@@ -1,4 +1,3 @@
-
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 
@@ -7,44 +6,42 @@ import { getFirstImage, Product as ProductType } from '@stackend/api/shop';
 import type { GraphQLList, GraphQLListNode, Product } from '@stackend/api/shop';
 
 export interface Props {
-	products: GraphQLList<Product>,
-  productUrlPattern: string
+  products: GraphQLList<Product>;
+  productUrlPattern: string;
 }
 
 export default class ProductListing extends Component<Props> {
-	render() {
-		const { products } = this.props;
+  render() {
+    const { products } = this.props;
 
-		if (!products) {
-			return null;
-		}
+    if (!products) {
+      return null;
+    }
 
-		return (
-			<Sc.ProductListing>
-				<Sc.Products>
-					{products.edges.map((n: GraphQLListNode<Product>) => this.renderProduct(n.node))}
-				</Sc.Products>
+    return (
+      <Sc.ProductListing>
+        <Sc.Products>{products.edges.map((n: GraphQLListNode<Product>) => this.renderProduct(n.node))}</Sc.Products>
 
-				{/* Room for pagination */}
-			</Sc.ProductListing>
-		);
-	}
+        {/* Room for pagination */}
+      </Sc.ProductListing>
+    );
+  }
 
-	renderProduct(product: ProductType) {
-		let image = getFirstImage(product);
+  renderProduct(product: ProductType) {
+    let image = getFirstImage(product);
 
-		const link = encodeURI(`${this.props.productUrlPattern}`);
+    const link = encodeURI(`${this.props.productUrlPattern}`);
 
-		return (
-			<li key={product.id}>
-				<Link to={link}>
-					{image && (<Sc.ProductListingImage src={image.transformedSrc} alt={image.altText || ""} />)}
-					<Sc.Title>{product.title}</Sc.Title>
-					<Sc.Price>[FIXME: Price]</Sc.Price>
-					{/*<ProductLink product={product}/>*/}
-					<Sc.ShopNow>SHOPPA NU</Sc.ShopNow>
-				</Link>
-			</li>
-		);
-	}
+    return (
+      <li key={product.id}>
+        <Link to={link}>
+          {image && <Sc.ProductListingImage src={image.transformedSrc} alt={image.altText || ''} />}
+          <Sc.Title>{product.title}</Sc.Title>
+          <Sc.Price>[FIXME: Price]</Sc.Price>
+          {/*<ProductLink product={product}/>*/}
+          <Sc.ShopNow>SHOPPA NU</Sc.ShopNow>
+        </Link>
+      </li>
+    );
+  }
 }

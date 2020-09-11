@@ -1,21 +1,19 @@
-
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as Sc from './Throbber.style';
 
 function mapStateToProps({ throbber }: any, _x: any): OwnProps {
-	return {
-		visible: throbber.visible
-	};
+  return {
+    visible: throbber.visible
+  };
 }
 
-const mapDispatchToProps = {
-}
+const mapDispatchToProps = {};
 
 type Props = {};
 
 type OwnProps = Props & {
-	visible?: boolean
+  visible?: boolean;
 };
 
 /**
@@ -23,14 +21,14 @@ type OwnProps = Props & {
  * A single instance should be used for the entire application.
  */
 class ModalThrobber extends Component<OwnProps> {
-	render() {
-		const { visible } = this.props;
+  render() {
+    const { visible } = this.props;
 
-		return visible ? (
-			<Sc.ModalThrobberOverlay>
-				<Sc.ModalThrobber />
-			</Sc.ModalThrobberOverlay>
-		) : null;
-	}
+    return visible ? (
+      <Sc.ModalThrobberOverlay>
+        <Sc.ModalThrobber />
+      </Sc.ModalThrobberOverlay>
+    ) : null;
+  }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(ModalThrobber);

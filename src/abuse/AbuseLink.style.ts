@@ -1,15 +1,12 @@
-
 import styled from 'styled-components';
 import { Link } from 'react-router';
 
-
-
 export const AbuseLink = styled(Link)`
   align-self: center;
-	position: absolute;
-	right: 0;
-	cursor: pointer;
-	${props => !!props.theme.AbuseLink && props.theme.AbuseLink(props)};
+  position: absolute;
+  right: 0;
+  cursor: pointer;
+  ${props => !!props.theme.AbuseLink && props.theme.AbuseLink(props)};
 `;
 
 /* Orig
