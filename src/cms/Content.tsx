@@ -1,4 +1,3 @@
-
 import React, { Component, useRef, MouseEvent } from 'react';
 import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
@@ -8,103 +7,103 @@ import * as Sc from './Content.style';
 import { isRunningServerSide } from '@stackend/api/api';
 
 type Props = {
-	content: CmsContent | null;
-	className?: string
+  content: CmsContent | null;
+  className?: string;
 };
 
 type OwnState = {};
 
 type OwnProps = Props & {
-	editInPlace: boolean,
-	openEditor: (content: CmsContent, contentElement: any) => any
+  editInPlace: boolean;
+  openEditor: (content: CmsContent, contentElement: any) => any;
 };
 
 function mapStateToProps({ cmsEditInPlace }: any, ownProps: any): any {
-	let c = ownProps.content;
-	return {
-		//id: ownProps.id,
-		content: c,
-		editInPlace: cmsEditInPlace.enabled
-	};
+  let c = ownProps.content;
+  return {
+    //id: ownProps.id,
+    content: c,
+    editInPlace: cmsEditInPlace.enabled
+  };
 }
 
 const mapDispatchToProps = {
-		//openEditor
-}
+  //openEditor
+};
 
 class Content extends Component<OwnProps, OwnState> {
-	constructor(props: OwnProps) {
-		super(props);
-		this.state = {};
-	}
+  constructor(props: OwnProps) {
+    super(props);
+    this.state = {};
+  }
 
   contentRef = useRef(null);
 
-	async componentDidMount() {
-		this.updateContent();
-	}
+  async componentDidMount() {
+    this.updateContent();
+  }
 
-	componentDidUpdate(prevProps: OwnProps, prevState: OwnProps) {
-		const { content } = this.props;
+  componentDidUpdate(prevProps: OwnProps, prevState: OwnProps) {
+    const { content } = this.props;
 
-		if (content && content.id !== (prevProps.content ? prevProps.content.id : 0)) {
-			this.updateContent();
-		}
-	}
+    if (content && content.id !== (prevProps.content ? prevProps.content.id : 0)) {
+      this.updateContent();
+    }
+  }
 
-	updateContent() {
-		const { content } = this.props;
+  updateContent() {
+    const { content } = this.props;
 
-		if (!content || !content.body) {
-			return;
-		}
+    if (!content || !content.body) {
+      return;
+    }
 
-		if (isRunningServerSide()) {
-			console.warn('updateContent run serverside');
-			return;
-		}
+    if (isRunningServerSide()) {
+      console.warn('updateContent run serverside');
+      return;
+    }
 
-		if (content && this.contentRef.current) {
-			let parent = ReactDOM.findDOMNode(this.contentRef.current as any);
-			if (parent) {
-				addContentToDom(parent as Element, content);
-			}
-		}
-	}
+    if (content && this.contentRef.current) {
+      let parent = ReactDOM.findDOMNode(this.contentRef.current as any);
+      if (parent) {
+        addContentToDom(parent as Element, content);
+      }
+    }
+  }
 
-	onContentClicked = (e: MouseEvent) => {
-		let { content, openEditor } = this.props;
-		if (content) {
+  onContentClicked = (e: MouseEvent) => {
+    let { content, openEditor } = this.props;
+    if (content) {
       openEditor(content, e.target);
     }
-	};
+  };
 
-	render() {
-		const { editInPlace, content, className } = this.props;
-		if (!content) {
-			return null;
-		}
+  render() {
+    const { editInPlace, content, className } = this.props;
+    if (!content) {
+      return null;
+    }
 
-		if (editInPlace) {
-			return (
-				<Sc.Content
-					id={'stackend-cms-' + content.id}
-					className={('stackend-cms-editable ' + className) as any}
-					onClick={this.onContentClicked}
-					editable={true}
-					ref={this.contentRef}
-				/>
-			);
-		} else {
-			return (
-				<Sc.Content
-					editable={false}
-					id={'stackend-cms-' + content.id}
-					ref={this.contentRef}
-					className={className as any}
-				/>
-			);
-		}
-	}
+    if (editInPlace) {
+      return (
+        <Sc.Content
+          id={'stackend-cms-' + content.id}
+          className={('stackend-cms-editable ' + className) as any}
+          onClick={this.onContentClicked}
+          editable={true}
+          ref={this.contentRef}
+        />
+      );
+    } else {
+      return (
+        <Sc.Content
+          editable={false}
+          id={'stackend-cms-' + content.id}
+          ref={this.contentRef}
+          className={className as any}
+        />
+      );
+    }
+  }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Content);

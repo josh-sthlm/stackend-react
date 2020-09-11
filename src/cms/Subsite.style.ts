@@ -1,4 +1,3 @@
-
 import { media } from '../style-common/media';
 
 /* Can not use sc, since this is not within the .stackend selector */
