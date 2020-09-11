@@ -4,8 +4,11 @@ node_modules
 *.d.ts
 *.d.ts.map
 abuse/*.js
-style-common/*.js
-shop/*.js
-throbber/*.js
+like/*.js
+modal/*.js
 pagination/*.js
+reducers/*.js
+shop/*.js
+style-common/*.js
+throbber/*.js
 stackend-react-*.tgz
