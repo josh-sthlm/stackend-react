@@ -1,21 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e42d5d32-7820-4c2a-bcc3-71c9e163bb75" name="Default Changelist" comment="Added abuse">
-      <change afterPath="$PROJECT_DIR$/like/Like.style.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/like/Like.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modal/Modal.style.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modal/Modal.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modal/modalActions.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modal/modalReducer.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/reducers/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/style-common/Quantity.style.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/style-common/StackendBaseStyle.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/style-common/Switch.ts" afterDir="false" />
+    <list default="true" id="e42d5d32-7820-4c2a-bcc3-71c9e163bb75" name="Default Changelist" comment="Added like and modal">
+      <change afterPath="$PROJECT_DIR$/src/modal/ReactModal.d.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/stackend-react.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/stackend-react.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/abuse/AbuseLink.style.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/abuse/AbuseLink.style.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/abuse/AbuseLink.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/abuse/AbuseLink.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/like/Like.style.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/like/Like.style.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/like/Like.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/like/Like.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modal/Modal.style.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modal/Modal.style.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modal/Modal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/modal/Modal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modal/modalActions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modal/modalActions.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modal/modalReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modal/modalReducer.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pagination/Pagination.style.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/pagination/Pagination.style.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pagination/Pagination.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pagination/Pagination.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reducers/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop/AddToBasketButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/shop/AddToBasketButton.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop/Product.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/shop/Product.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop/ProductLink.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/shop/ProductLink.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop/ProductListing.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/shop/ProductListing.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop/ProductListingPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/shop/ProductListingPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop/ProductPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/shop/ProductPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop/ProductTypeListing.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/shop/ProductTypeListing.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop/Shop.style.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/shop/Shop.style.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop/ShopApp.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/shop/ShopApp.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/style-common/Quantity.style.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/style-common/Quantity.style.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/style-common/StackendBaseStyle.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/style-common/StackendBaseStyle.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/style-common/Switch.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/style-common/Switch.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/style-common/styled-component-variables.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/style-common/styled-component-variables.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/throbber/LoadingThrobber.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/throbber/LoadingThrobber.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/throbber/ModalThrobber.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/throbber/ModalThrobber.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/throbber/Throbber.style.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/throbber/Throbber.style.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/throbber/throbber-unbranded.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/throbber/throbber-unbranded.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,6 +72,9 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/style-common" />
       <recent name="$PROJECT_DIR$/modal" />
@@ -100,7 +123,7 @@
       <workItem from="1599654591739" duration="1477000" />
       <workItem from="1599721125690" duration="14222000" />
       <workItem from="1599739229787" duration="3314000" />
-      <workItem from="1599806135108" duration="2152000" />
+      <workItem from="1599806135108" duration="3326000" />
     </task>
     <task id="LOCAL−00001" summary="Work on components">
       <created>1599552722021</created>
@@ -126,7 +149,13 @@
       <option name="presentableId" value="LOCAL−00004" />
       <updated>1599742952039</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL−00005" summary="Added like and modal">
+      <created>1599808351525</created>
+      <option name="number" value="LOCAL−00005" />
+      <option name="presentableId" value="LOCAL−00005" />
+      <updated>1599808351525</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -241,7 +270,8 @@
     <MESSAGE value="Work on components" />
     <MESSAGE value="Added throbber &amp; pagination&#10;Fixed build" />
     <MESSAGE value="Added abuse" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added abuse" />
+    <MESSAGE value="Added like and modal" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added like and modal" />
   </component>
   <component name="WindowStateProjectService">
     <state x="910" y="468" width="1143" height="1045" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1599550335021">
@@ -252,34 +282,34 @@
       <screen x="0" y="46" width="2928" height="1784" />
     </state>
     <state x="1000" y="475" width="917" height="895" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.46.2928.1784@0.46.2928.1784" timestamp="1599732276769" />
-    <state x="761" y="266" width="1873" height="1471" key="CommitChangelistDialog2" timestamp="1599808216062">
+    <state x="761" y="266" width="1873" height="1471" key="CommitChangelistDialog2" timestamp="1599809411056">
       <screen x="0" y="46" width="2928" height="1784" />
     </state>
-    <state x="761" y="266" width="1873" height="1471" key="CommitChangelistDialog2/0.46.2928.1784@0.46.2928.1784" timestamp="1599808216062" />
-    <state width="2891" height="659" key="GridCell.Tab.0.bottom" timestamp="1599808133390">
+    <state x="761" y="266" width="1873" height="1471" key="CommitChangelistDialog2/0.46.2928.1784@0.46.2928.1784" timestamp="1599809411056" />
+    <state width="2891" height="659" key="GridCell.Tab.0.bottom" timestamp="1599809114182">
       <screen x="0" y="46" width="2928" height="1784" />
     </state>
-    <state width="2891" height="659" key="GridCell.Tab.0.bottom/0.46.2928.1784@0.46.2928.1784" timestamp="1599808133390" />
-    <state width="2891" height="659" key="GridCell.Tab.0.center" timestamp="1599808133390">
+    <state width="2891" height="659" key="GridCell.Tab.0.bottom/0.46.2928.1784@0.46.2928.1784" timestamp="1599809114182" />
+    <state width="2891" height="659" key="GridCell.Tab.0.center" timestamp="1599809114181">
       <screen x="0" y="46" width="2928" height="1784" />
     </state>
-    <state width="2891" height="659" key="GridCell.Tab.0.center/0.46.2928.1784@0.46.2928.1784" timestamp="1599808133390" />
-    <state width="2891" height="659" key="GridCell.Tab.0.left" timestamp="1599808133389">
+    <state width="2891" height="659" key="GridCell.Tab.0.center/0.46.2928.1784@0.46.2928.1784" timestamp="1599809114181" />
+    <state width="2891" height="659" key="GridCell.Tab.0.left" timestamp="1599809114181">
       <screen x="0" y="46" width="2928" height="1784" />
     </state>
-    <state width="2891" height="659" key="GridCell.Tab.0.left/0.46.2928.1784@0.46.2928.1784" timestamp="1599808133389" />
-    <state width="2891" height="659" key="GridCell.Tab.0.right" timestamp="1599808133390">
+    <state width="2891" height="659" key="GridCell.Tab.0.left/0.46.2928.1784@0.46.2928.1784" timestamp="1599809114181" />
+    <state width="2891" height="659" key="GridCell.Tab.0.right" timestamp="1599809114182">
       <screen x="0" y="46" width="2928" height="1784" />
     </state>
-    <state width="2891" height="659" key="GridCell.Tab.0.right/0.46.2928.1784@0.46.2928.1784" timestamp="1599808133390" />
+    <state width="2891" height="659" key="GridCell.Tab.0.right/0.46.2928.1784@0.46.2928.1784" timestamp="1599809114182" />
     <state x="594" y="273" width="1739" height="1299" key="SettingsEditor" timestamp="1599550255855">
       <screen x="0" y="46" width="2928" height="1784" />
     </state>
     <state x="594" y="273" width="1739" height="1299" key="SettingsEditor/0.46.2928.1784@0.46.2928.1784" timestamp="1599550255855" />
-    <state x="759" y="450" width="1400" height="946" key="Vcs.Push.Dialog.v2" timestamp="1599742953735">
+    <state x="759" y="450" width="1400" height="946" key="Vcs.Push.Dialog.v2" timestamp="1599808353832">
       <screen x="0" y="46" width="2928" height="1784" />
     </state>
-    <state x="759" y="450" width="1400" height="946" key="Vcs.Push.Dialog.v2/0.46.2928.1784@0.46.2928.1784" timestamp="1599742953735" />
+    <state x="759" y="450" width="1400" height="946" key="Vcs.Push.Dialog.v2/0.46.2928.1784@0.46.2928.1784" timestamp="1599808353832" />
     <state x="1361" y="543" width="662" height="961" key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog" timestamp="1599729884503">
       <screen x="0" y="46" width="2928" height="1784" />
     </state>
