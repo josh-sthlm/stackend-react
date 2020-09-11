@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import * as sc from '../style-common/styled-component-variables';
+import * as sc from '../style-common/styled-variables.style';
 
 export const PaginationFull = styled.div.attrs({
 	className: 'stackend-pagination stackend-pagination-full'

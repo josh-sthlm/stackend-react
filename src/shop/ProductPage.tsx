@@ -26,7 +26,7 @@ const mapDispatchToProps = {
     requestProduct
 }
 
-function mapStateToProps({ shop }: any, ownProps: any) {
+function mapStateToProps({ shop }: any, ownProps: any): any {
 	let handle = _.get(ownProps, 'params.handle', '*');
 	let product = shop.products[handle];
 	let productLoaded = typeof shop.products[handle] !== 'undefined';

@@ -9,13 +9,17 @@ module.exports = {
     "eslint:recommended",
     "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/recommended",
-    "prettier"
+    "prettier",
+    "plugin:react/recommended"
   ],
 
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaVersion: 2020, // Allows for the parsing of modern ECMAScript features
-    sourceType: "module" // Allows for the use of imports
+    sourceType: "module", // Allows for the use of imports
+    "ecmaFeatures": {
+      "jsx": true
+    }
   },
 
   settings: {
@@ -46,6 +50,7 @@ module.exports = {
     "no-use-before-define": "off",
     "@typescript-eslint/no-use-before-define": ["off"],
     '@typescript-eslint/no-unused-vars': 'off',
+    '@typescript-eslint/no-inferrable-types': 'warn',
     /*
     '@typescript-eslint/no-unused-vars': [
       'warn',

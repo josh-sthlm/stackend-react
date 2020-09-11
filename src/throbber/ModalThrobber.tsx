@@ -3,14 +3,13 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as Sc from './Throbber.style';
 
-function mapStateToProps({ throbber }: any, _x: any) {
+function mapStateToProps({ throbber }: any, _x: any): OwnProps {
 	return {
 		visible: throbber.visible
 	};
 }
 
-function mapDispatchToProps() {
-	return {};
+const mapDispatchToProps = {
 }
 
 type Props = {};

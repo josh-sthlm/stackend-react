@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import * as sc from '../style-common/styled-component-variables';
+import * as sc from '../style-common/styled-variables.style';
 import QuantityStyle from '../style-common/Quantity.style';
 
 export const LikeButton = styled.button.attrs({
