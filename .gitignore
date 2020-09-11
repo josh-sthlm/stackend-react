@@ -1,6 +1,7 @@
 /types
 /node_modules
 /abuse
+/cms
 /like
 /modal
 /pagination
@@ -8,4 +9,5 @@
 /shop
 /style-common
 /throbber
+/util
 /stackend-react-*.tgz
