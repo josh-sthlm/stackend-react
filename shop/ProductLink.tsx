@@ -3,7 +3,13 @@ import { Link } from 'react-router';
 
 import { Product } from '@stackend/api/shop';
 
-export default function ProductLink({ product, productUrlPattern }: { product: Product; productUrlPattern: string }) {
+export default function ProductLink({
+  product,
+  productUrlPattern
+}: {
+  product: Product;
+  productUrlPattern: string;
+}): JSX.Element | null {
   if (!product) {
     return null;
   }

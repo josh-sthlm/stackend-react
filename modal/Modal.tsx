@@ -31,7 +31,7 @@ export type Props = {
 };
 
 class Modal extends Component<Props> {
-  render() {
+  render(): JSX.Element | null {
     const {
       isOpen,
       className = '',

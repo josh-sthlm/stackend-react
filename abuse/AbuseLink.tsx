@@ -36,7 +36,7 @@ class AbuseLink extends React.Component<Props> {
     const { report, object } = this.props;
 
     // FIXME: Use something nicer than confirm()
-    let abuseText = prompt(
+    const abuseText = prompt(
       this.intl.formatMessage({
         id: 'AbuseLink.prompt',
         defaultMessage: 'Report abuse.\nPlease describe why this content should be removed?'
@@ -51,10 +51,10 @@ class AbuseLink extends React.Component<Props> {
     }
   };
 
-  render() {
+  render(): JSX.Element | null {
     const { currentUser, object } = this.props;
 
-    let o = object as any;
+    const o = object as any;
 
     // Only authorized users are allowed to report objects they did not create them self
     if (

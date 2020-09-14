@@ -11,7 +11,7 @@ export interface Props {
 }
 
 export default class ProductListing extends Component<Props> {
-  render() {
+  render(): JSX.Element | null {
     const { products } = this.props;
 
     if (!products) {
@@ -27,7 +27,7 @@ export default class ProductListing extends Component<Props> {
     );
   }
 
-  renderProduct(product: ProductType) {
+  renderProduct(product: ProductType): JSX.Element | null {
     let image = getFirstImage(product);
 
     const link = encodeURI(`${this.props.productUrlPattern}`);

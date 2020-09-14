@@ -20,8 +20,8 @@ const mapDispatchToProps = {
 
 function mapStateToProps(state: any, ownProps: any) {
   const shop: ShopState = state;
-  let productType = DEFAULT_PRODUCT_TYPE; // FIXME: support categories
-  let products = shop.productsByType[productType];
+  const productType = DEFAULT_PRODUCT_TYPE; // FIXME: support categories
+  const products = shop.productsByType[productType];
 
   return {
     productType,
@@ -37,7 +37,7 @@ class ProductListingPage extends Component<Props> {
     }
   }
 
-  render() {
+  render(): JSX.Element | null {
     const { products, productType, productUrlPattern } = this.props;
 
     return (

@@ -28,7 +28,7 @@ const mapDispatchToProps = {};
  * Render a page
  */
 class Page extends Component<Props> {
-  render() {
+  render(): JSX.Element | null {
     const { page, titleSuffix, helmet } = this.props;
     if (!page) {
       return null;
@@ -77,7 +77,7 @@ class Page extends Component<Props> {
     return c;
   }
 
-  renderPageContent = (pc: PageContent, i: number) => {
+  renderPageContent = (pc: PageContent, i: number): JSX.Element | null => {
     const { page /*referenceUrlId, parentHashLink*/ } = this.props;
     let obj = pc.referenceRef;
     let key = 'pc-' + (page as Cms.Page).id + '-' + i;

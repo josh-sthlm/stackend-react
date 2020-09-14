@@ -73,7 +73,7 @@ class ShopApp extends Component<Props> {
     }
   }
 
-  render() {
+  render(): JSX.Element | null {
     const { shop } = this.props;
     return (
       <Sc.ShopApp>

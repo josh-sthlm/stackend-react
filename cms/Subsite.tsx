@@ -150,7 +150,7 @@ class Subsite extends Component<Props, State> {
     }
   }
 
-  render() {
+  render(): JSX.Element | null {
     const { subSite, helmet, menuVisibility, content } = this.props;
     const { page, selectedPath, loading } = this.state;
 

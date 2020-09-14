@@ -12,7 +12,7 @@ export interface PropsType {
  * Renders a product
  */
 export default class Product extends Component<PropsType> {
-  render() {
+  render(): JSX.Element | null {
     const { product } = this.props;
 
     if (!product) {
@@ -39,7 +39,7 @@ export default class Product extends Component<PropsType> {
     );
   }
 
-  renderImage = (image: ProductImage) => {
+  renderImage = (image: ProductImage): JSX.Element => {
     return <img src={image.transformedSrc} key={image.id} alt={image.altText || ''} />;
   };
 }

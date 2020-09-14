@@ -1,6 +1,6 @@
-export const EVENT_STACKEND_INITIALIZED: string = "stackend-initialized'";
-export const EVENT_MODULES_ADDED: string = 'stackend-modules-added';
-export const EVENT_NAVIGATE_TO_PAGE: string = 'stackend-navigate-to-page';
+export const EVENT_STACKEND_INITIALIZED = "stackend-initialized'";
+export const EVENT_MODULES_ADDED = 'stackend-modules-added';
+export const EVENT_NAVIGATE_TO_PAGE = 'stackend-navigate-to-page';
 
 /**
  * Defines methods available as window.stackend to the browser.
@@ -59,7 +59,7 @@ export async function loadScripts(
           resolve(s);
           return;
         }
-        let script = document.createElement('script');
+        const script = document.createElement('script');
         script.setAttribute('type', 'text/javascript');
         script.setAttribute('src', s);
         script.addEventListener('load', () => {

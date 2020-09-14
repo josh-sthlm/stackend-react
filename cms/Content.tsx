@@ -1,7 +1,7 @@
 import React, { Component, useRef, MouseEvent } from 'react';
 import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
-//import { openEditor } from './edit-in-place/cmsEditorActions.ts';
+import { openEditor } from './edit-in-place/cmsEditorActions';
 import { Content as CmsContent, addContentToDom } from '@stackend/api/cms';
 import * as Sc from './Content.style';
 import { isRunningServerSide } from '@stackend/api/api';
@@ -10,8 +10,6 @@ type Props = {
   content: CmsContent | null;
   className?: string;
 };
-
-type OwnState = {};
 
 type OwnProps = Props & {
   editInPlace: boolean;
@@ -28,13 +26,12 @@ function mapStateToProps({ cmsEditInPlace }: any, ownProps: any): any {
 }
 
 const mapDispatchToProps = {
-  //openEditor
+  openEditor
 };
 
-class Content extends Component<OwnProps, OwnState> {
+class Content extends Component<OwnProps> {
   constructor(props: OwnProps) {
     super(props);
-    this.state = {};
   }
 
   contentRef = useRef(null);
@@ -78,7 +75,7 @@ class Content extends Component<OwnProps, OwnState> {
     }
   };
 
-  render() {
+  render(): JSX.Element | null {
     const { editInPlace, content, className } = this.props;
     if (!content) {
       return null;

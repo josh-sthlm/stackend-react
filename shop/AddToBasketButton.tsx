@@ -18,11 +18,11 @@ function mapStateToProps(x: any, y: any) {
 }
 
 class AddToBasketButton extends Component<Props> {
-  render() {
+  render(): JSX.Element | null {
     return <Sc.AddToBasketButton onClick={this.onBuyClicked}>Lägg i korgen</Sc.AddToBasketButton>;
   }
 
-  onBuyClicked = () => {
+  onBuyClicked = (): void => {
     const { product, addToBasket } = this.props;
     if (product) {
       addToBasket(product);

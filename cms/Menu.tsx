@@ -76,7 +76,7 @@ export default class Menu extends Component<Props, State> {
     });
   };
 
-  render() {
+  render(): JSX.Element | null {
     const { subSite, menuVisibility, selectedPath } = this.props;
     const { open } = this.state;
     if (!subSite || subSite.children.length === 0 || menuVisibility === MenuVisibility.OFF) {
@@ -139,7 +139,7 @@ export default class Menu extends Component<Props, State> {
     }
   };
 
-  renderItem = (item: SubSiteNode, i: number, selectedPathPermalink: string) => {
+  renderItem = (item: SubSiteNode, i: number, selectedPathPermalink: string): JSX.Element | null => {
     const { subSite } = this.props;
     let hasSubmenu = item.children.length !== 0;
     let link = null;

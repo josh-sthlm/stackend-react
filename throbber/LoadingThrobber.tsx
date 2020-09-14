@@ -20,7 +20,7 @@ type Props = {
  * A single instance should be used for the entire application.
  */
 class LoadingThrobber extends Component<Props> {
-  render(): any {
+  render(): JSX.Element | null {
     const { loading } = this.props;
 
     return loading ? <Sc.LoadingThrobber /> : null;

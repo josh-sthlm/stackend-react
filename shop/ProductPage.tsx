@@ -21,9 +21,9 @@ const mapDispatchToProps = {
 };
 
 function mapStateToProps({ shop }: any, ownProps: any): any {
-  let handle = _.get(ownProps, 'params.handle', '*');
-  let product = shop.products[handle];
-  let productLoaded = typeof shop.products[handle] !== 'undefined';
+  const handle = _.get(ownProps, 'params.handle', '*');
+  const product = shop.products[handle];
+  const productLoaded = typeof shop.products[handle] !== 'undefined';
   return {
     handle,
     product,
@@ -32,14 +32,14 @@ function mapStateToProps({ shop }: any, ownProps: any): any {
 }
 
 class ProductPage extends Component<PropsType> {
-  async componentDidMount() {
+  async componentDidMount(): Promise<any> {
     const { product, requestProduct, handle } = this.props;
     if (!product) {
       await requestProduct({ handle });
     }
   }
 
-  render() {
+  render(): JSX.Element | null {
     const { product, productLoaded } = this.props;
 
     if (!productLoaded) {

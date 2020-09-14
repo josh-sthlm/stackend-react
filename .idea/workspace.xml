@@ -6,7 +6,25 @@
   <component name="ChangeListManager">
     <list default="true" id="e42d5d32-7820-4c2a-bcc3-71c9e163bb75" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/abuse/AbuseLink.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/abuse/AbuseLink.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cms/Content.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/cms/Content.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cms/Menu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/cms/Menu.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cms/Page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/cms/Page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cms/Subsite.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/cms/Subsite.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modal/Modal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modal/Modal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pagination/Pagination.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pagination/Pagination.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reducers/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/reducers/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop/AddToBasketButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/shop/AddToBasketButton.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop/Product.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/shop/Product.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop/ProductLink.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/shop/ProductLink.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop/ProductListing.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/shop/ProductListing.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop/ProductListingPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/shop/ProductListingPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop/ProductPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/shop/ProductPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop/ProductTypeListing.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/shop/ProductTypeListing.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop/ShopApp.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/shop/ShopApp.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/throbber/LoadingThrobber.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/throbber/LoadingThrobber.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/throbber/ModalThrobber.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/throbber/ModalThrobber.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/ClientSideApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/util/ClientSideApi.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,7 +45,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="jsx.switch.disabled" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/style-common/fonts" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/cms" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -45,11 +63,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/cms" />
       <recent name="$PROJECT_DIR$/src/style-common/fonts" />
       <recent name="$PROJECT_DIR$/src/style-common" />
       <recent name="$PROJECT_DIR$/src/util" />
       <recent name="$PROJECT_DIR$/src/cms" />
-      <recent name="$PROJECT_DIR$/src" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/util" />
@@ -59,7 +77,7 @@
       <recent name="$PROJECT_DIR$/reducers" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.build">
+  <component name="RunManager" selected="npm.format">
     <configuration name="All Tests" type="JavaScriptTestRunnerJest" nameIsGenerated="true">
       <node-interpreter value="project" />
       <node-options value="" />
@@ -143,7 +161,7 @@
       <workItem from="1599721125690" duration="14222000" />
       <workItem from="1599739229787" duration="3314000" />
       <workItem from="1599806135108" duration="16410000" />
-      <workItem from="1600065265495" duration="4850000" />
+      <workItem from="1600065265495" duration="7320000" />
     </task>
     <task id="LOCAL−00001" summary="Work on components">
       <created>1599552722021</created>
@@ -229,165 +247,173 @@
       <option name="presentableId" value="LOCAL−00014" />
       <updated>1600070571407</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL−00015" summary="Docs">
+      <created>1600071221548</created>
+      <option name="number" value="LOCAL−00015" />
+      <option name="presentableId" value="LOCAL−00015" />
+      <updated>1600071221548</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
     <option name="exactExcludedFiles">
       <list>
-        <option value="$PROJECT_DIR$/shop/ProductTypeListing.js.map" />
-        <option value="$PROJECT_DIR$/shop/ProductListing.js" />
-        <option value="$PROJECT_DIR$/shop/ProductListingPage.js.map" />
-        <option value="$PROJECT_DIR$/shop/ProductPage.js.map" />
-        <option value="$PROJECT_DIR$/shop/AddToBasketButton.js" />
-        <option value="$PROJECT_DIR$/shop/ProductTypeListing.js" />
-        <option value="$PROJECT_DIR$/shop/Product.js" />
-        <option value="$PROJECT_DIR$/shop/ProductListingPage.js" />
-        <option value="$PROJECT_DIR$/shop/ProductLink.js" />
-        <option value="$PROJECT_DIR$/shop/ProductListing.js.map" />
-        <option value="$PROJECT_DIR$/shop/ShopApp.js" />
-        <option value="$PROJECT_DIR$/shop/ProductLink.js.map" />
-        <option value="$PROJECT_DIR$/shop/ProductPage.js" />
-        <option value="$PROJECT_DIR$/shop/ShopApp.js.map" />
-        <option value="$PROJECT_DIR$/shop/AddToBasketButton.js.map" />
-        <option value="$PROJECT_DIR$/shop/Product.js.map" />
-        <option value="$PROJECT_DIR$/shop/Shop.style.js" />
-        <option value="$PROJECT_DIR$/shop/Shop.style.js.map" />
-        <option value="$PROJECT_DIR$/shop/Shop.style.d.ts" />
-        <option value="$PROJECT_DIR$/shop/ProductLink.d.ts" />
-        <option value="$PROJECT_DIR$/shop/ShopApp.d.ts" />
-        <option value="$PROJECT_DIR$/shop/ProductListing.d.ts" />
-        <option value="$PROJECT_DIR$/shop/ProductListingPage.d.ts" />
-        <option value="$PROJECT_DIR$/shop/Product.d.ts" />
-        <option value="$PROJECT_DIR$/shop/AddToBasketButton.d.ts" />
-        <option value="$PROJECT_DIR$/shop/ProductTypeListing.d.ts" />
-        <option value="$PROJECT_DIR$/shop/ProductPage.d.ts" />
-        <option value="$PROJECT_DIR$/shop/Shop.style.d.ts.map" />
-        <option value="$PROJECT_DIR$/shop/AddToBasketButton.d.ts.map" />
-        <option value="$PROJECT_DIR$/shop/ProductListingPage.d.ts.map" />
-        <option value="$PROJECT_DIR$/shop/ProductTypeListing.d.ts.map" />
-        <option value="$PROJECT_DIR$/shop/ProductLink.d.ts.map" />
-        <option value="$PROJECT_DIR$/shop/Product.d.ts.map" />
-        <option value="$PROJECT_DIR$/shop/ProductListing.d.ts.map" />
-        <option value="$PROJECT_DIR$/shop/ShopApp.d.ts.map" />
-        <option value="$PROJECT_DIR$/shop/ProductPage.d.ts.map" />
-        <option value="$PROJECT_DIR$/throbber/ModalThrobber.js.map" />
-        <option value="$PROJECT_DIR$/throbber/Throbber.style.js" />
-        <option value="$PROJECT_DIR$/throbber/Throbber.style.js.map" />
-        <option value="$PROJECT_DIR$/throbber/Throbber.style.d.ts" />
-        <option value="$PROJECT_DIR$/throbber/LoadingThrobber.js" />
-        <option value="$PROJECT_DIR$/throbber/LoadingThrobber.d.ts" />
-        <option value="$PROJECT_DIR$/throbber/ModalThrobber.d.ts.map" />
-        <option value="$PROJECT_DIR$/throbber/LoadingThrobber.js.map" />
-        <option value="$PROJECT_DIR$/throbber/ModalThrobber.js" />
-        <option value="$PROJECT_DIR$/throbber/ModalThrobber.d.ts" />
-        <option value="$PROJECT_DIR$/throbber/Throbber.style.d.ts.map" />
-        <option value="$PROJECT_DIR$/throbber/LoadingThrobber.d.ts.map" />
-        <option value="$PROJECT_DIR$/style-common/styled-component-variables.d.ts" />
-        <option value="$PROJECT_DIR$/style-common/styled-component-variables.js" />
-        <option value="$PROJECT_DIR$/style-common/styled-component-variables.d.ts.map" />
-        <option value="$PROJECT_DIR$/style-common/styled-component-variables.js.map" />
-        <option value="$PROJECT_DIR$/pagination/Pagination.d.ts.map" />
-        <option value="$PROJECT_DIR$/abuse/AbuseLink.style.d.ts.map" />
-        <option value="$PROJECT_DIR$/abuse/AbuseLink.style.js" />
-        <option value="$PROJECT_DIR$/abuse/AbuseLink.js" />
-        <option value="$PROJECT_DIR$/abuse/AbuseLink.style.d.ts" />
-        <option value="$PROJECT_DIR$/abuse/AbuseLink.d.ts" />
-        <option value="$PROJECT_DIR$/abuse/AbuseLink.d.ts.map" />
-        <option value="$PROJECT_DIR$/abuse/AbuseLink.style.js.map" />
-        <option value="$PROJECT_DIR$/abuse/AbuseLink.js.map" />
-        <option value="$PROJECT_DIR$/like/Like.d.ts.map" />
-        <option value="$PROJECT_DIR$/like/Like.style.d.ts.map" />
-        <option value="$PROJECT_DIR$/like/Like.style.js.map" />
-        <option value="$PROJECT_DIR$/like/Like.d.ts" />
-        <option value="$PROJECT_DIR$/like/Like.style.d.ts" />
-        <option value="$PROJECT_DIR$/like/Like.js" />
-        <option value="$PROJECT_DIR$/like/Like.js.map" />
-        <option value="$PROJECT_DIR$/like/Like.style.js" />
-        <option value="$PROJECT_DIR$/modal/Modal.js" />
-        <option value="$PROJECT_DIR$/modal/Modal.style.js.map" />
-        <option value="$PROJECT_DIR$/modal/Modal.d.ts" />
-        <option value="$PROJECT_DIR$/modal/Modal.d.ts.map" />
-        <option value="$PROJECT_DIR$/modal/modalActions.d.ts.map" />
-        <option value="$PROJECT_DIR$/modal/modalReducer.js" />
-        <option value="$PROJECT_DIR$/modal/modalReducer.d.ts" />
-        <option value="$PROJECT_DIR$/modal/Modal.style.d.ts.map" />
-        <option value="$PROJECT_DIR$/modal/modalReducer.d.ts.map" />
-        <option value="$PROJECT_DIR$/modal/modalActions.js" />
-        <option value="$PROJECT_DIR$/modal/modalReducer.js.map" />
-        <option value="$PROJECT_DIR$/modal/modalActions.js.map" />
-        <option value="$PROJECT_DIR$/modal/modalActions.d.ts" />
-        <option value="$PROJECT_DIR$/modal/Modal.js.map" />
-        <option value="$PROJECT_DIR$/modal/Modal.style.d.ts" />
-        <option value="$PROJECT_DIR$/modal/Modal.style.js" />
-        <option value="$PROJECT_DIR$/reducers/index.js.map" />
-        <option value="$PROJECT_DIR$/reducers/index.d.ts" />
-        <option value="$PROJECT_DIR$/reducers/index.d.ts.map" />
-        <option value="$PROJECT_DIR$/reducers/index.js" />
-        <option value="$PROJECT_DIR$/style-common/Quantity.style.d.ts.map" />
-        <option value="$PROJECT_DIR$/style-common/StackendBaseStyle.js" />
-        <option value="$PROJECT_DIR$/style-common/Quantity.style.d.ts" />
-        <option value="$PROJECT_DIR$/style-common/Quantity.style.js" />
-        <option value="$PROJECT_DIR$/style-common/StackendBaseStyle.d.ts" />
         <option value="$PROJECT_DIR$/style-common/Switch.js.map" />
-        <option value="$PROJECT_DIR$/style-common/Switch.d.ts.map" />
         <option value="$PROJECT_DIR$/style-common/Switch.d.ts" />
+        <option value="$PROJECT_DIR$/style-common/Switch.js" />
+        <option value="$PROJECT_DIR$/style-common/StackendBaseStyle.d.ts" />
+        <option value="$PROJECT_DIR$/style-common/StackendBaseStyle.js.map" />
         <option value="$PROJECT_DIR$/style-common/Quantity.style.js.map" />
         <option value="$PROJECT_DIR$/style-common/StackendBaseStyle.d.ts.map" />
-        <option value="$PROJECT_DIR$/style-common/StackendBaseStyle.js.map" />
-        <option value="$PROJECT_DIR$/style-common/Switch.js" />
-        <option value="$PROJECT_DIR$/cms/Content.style.js.map" />
-        <option value="$PROJECT_DIR$/cms/Content.style.d.ts.map" />
-        <option value="$PROJECT_DIR$/cms/Content.style.js" />
-        <option value="$PROJECT_DIR$/cms/Content.style.d.ts" />
-        <option value="$PROJECT_DIR$/cms/Content.js.map" />
-        <option value="$PROJECT_DIR$/cms/Content.d.ts.map" />
-        <option value="$PROJECT_DIR$/cms/Content.js" />
-        <option value="$PROJECT_DIR$/cms/Content.d.ts" />
-        <option value="$PROJECT_DIR$/cms/Menu.style.js.map" />
-        <option value="$PROJECT_DIR$/cms/Menu.style.d.ts.map" />
-        <option value="$PROJECT_DIR$/cms/Menu.style.js" />
-        <option value="$PROJECT_DIR$/cms/Menu.style.d.ts" />
-        <option value="$PROJECT_DIR$/cms/Menu.js.map" />
-        <option value="$PROJECT_DIR$/cms/Menu.d.ts.map" />
-        <option value="$PROJECT_DIR$/cms/Menu.js" />
-        <option value="$PROJECT_DIR$/cms/Menu.d.ts" />
-        <option value="$PROJECT_DIR$/cms/Page.js.map" />
-        <option value="$PROJECT_DIR$/cms/Page.d.ts.map" />
-        <option value="$PROJECT_DIR$/cms/Page.js" />
-        <option value="$PROJECT_DIR$/cms/Page.d.ts" />
-        <option value="$PROJECT_DIR$/cms/PageContext.js.map" />
-        <option value="$PROJECT_DIR$/cms/PageContext.d.ts.map" />
-        <option value="$PROJECT_DIR$/cms/PageContext.js" />
-        <option value="$PROJECT_DIR$/cms/PageContext.d.ts" />
-        <option value="$PROJECT_DIR$/cms/Subsite.style.js.map" />
-        <option value="$PROJECT_DIR$/cms/Subsite.style.d.ts.map" />
-        <option value="$PROJECT_DIR$/cms/Subsite.style.js" />
-        <option value="$PROJECT_DIR$/cms/Subsite.style.d.ts" />
-        <option value="$PROJECT_DIR$/cms/Subsite.js.map" />
-        <option value="$PROJECT_DIR$/cms/Subsite.d.ts.map" />
-        <option value="$PROJECT_DIR$/cms/Subsite.js" />
-        <option value="$PROJECT_DIR$/cms/Subsite.d.ts" />
-        <option value="$PROJECT_DIR$/pagination/Pagination.style.js.map" />
-        <option value="$PROJECT_DIR$/pagination/Pagination.style.d.ts.map" />
-        <option value="$PROJECT_DIR$/pagination/Pagination.style.js" />
-        <option value="$PROJECT_DIR$/pagination/Pagination.style.d.ts" />
-        <option value="$PROJECT_DIR$/pagination/Pagination.js.map" />
-        <option value="$PROJECT_DIR$/pagination/Pagination.js" />
-        <option value="$PROJECT_DIR$/pagination/Pagination.d.ts" />
-        <option value="$PROJECT_DIR$/style-common/media.js.map" />
-        <option value="$PROJECT_DIR$/style-common/media.d.ts.map" />
-        <option value="$PROJECT_DIR$/style-common/media.js" />
-        <option value="$PROJECT_DIR$/style-common/media.d.ts" />
-        <option value="$PROJECT_DIR$/style-common/styled-variables.style.js.map" />
+        <option value="$PROJECT_DIR$/style-common/StackendBaseStyle.js" />
+        <option value="$PROJECT_DIR$/throbber/LoadingThrobber.d.ts.map" />
+        <option value="$PROJECT_DIR$/style-common/Quantity.style.js" />
+        <option value="$PROJECT_DIR$/style-common/Switch.d.ts.map" />
+        <option value="$PROJECT_DIR$/style-common/Quantity.style.d.ts" />
+        <option value="$PROJECT_DIR$/throbber/LoadingThrobber.js.map" />
+        <option value="$PROJECT_DIR$/throbber/Throbber.style.d.ts" />
+        <option value="$PROJECT_DIR$/throbber/ModalThrobber.d.ts" />
+        <option value="$PROJECT_DIR$/throbber/LoadingThrobber.js" />
+        <option value="$PROJECT_DIR$/throbber/ModalThrobber.js.map" />
+        <option value="$PROJECT_DIR$/throbber/Throbber.style.js.map" />
+        <option value="$PROJECT_DIR$/throbber/Throbber.style.js" />
+        <option value="$PROJECT_DIR$/throbber/ModalThrobber.d.ts.map" />
+        <option value="$PROJECT_DIR$/throbber/LoadingThrobber.d.ts" />
+        <option value="$PROJECT_DIR$/throbber/ModalThrobber.js" />
+        <option value="$PROJECT_DIR$/throbber/Throbber.style.d.ts.map" />
         <option value="$PROJECT_DIR$/style-common/styled-variables.style.d.ts.map" />
         <option value="$PROJECT_DIR$/style-common/styled-variables.style.js" />
         <option value="$PROJECT_DIR$/style-common/styled-variables.style.d.ts" />
+        <option value="$PROJECT_DIR$/style-common/styled-variables.style.js.map" />
+        <option value="$PROJECT_DIR$/util/ClientSideApi.d.ts" />
         <option value="$PROJECT_DIR$/util/ClientSideApi.js.map" />
         <option value="$PROJECT_DIR$/util/ClientSideApi.d.ts.map" />
         <option value="$PROJECT_DIR$/util/ClientSideApi.js" />
-        <option value="$PROJECT_DIR$/util/ClientSideApi.d.ts" />
+        <option value="$PROJECT_DIR$/cms/Subsite.style.js" />
+        <option value="$PROJECT_DIR$/cms/Menu.style.js.map" />
+        <option value="$PROJECT_DIR$/cms/Page.js" />
+        <option value="$PROJECT_DIR$/cms/Page.js.map" />
+        <option value="$PROJECT_DIR$/cms/Content.js" />
+        <option value="$PROJECT_DIR$/cms/Content.style.d.ts.map" />
+        <option value="$PROJECT_DIR$/cms/Subsite.d.ts" />
+        <option value="$PROJECT_DIR$/cms/Content.style.js.map" />
+        <option value="$PROJECT_DIR$/cms/Subsite.style.js.map" />
+        <option value="$PROJECT_DIR$/cms/Subsite.js" />
+        <option value="$PROJECT_DIR$/cms/Content.style.d.ts" />
+        <option value="$PROJECT_DIR$/cms/Menu.d.ts" />
+        <option value="$PROJECT_DIR$/cms/Menu.js" />
+        <option value="$PROJECT_DIR$/cms/PageContext.d.ts" />
+        <option value="$PROJECT_DIR$/cms/Subsite.style.d.ts.map" />
+        <option value="$PROJECT_DIR$/cms/Subsite.style.d.ts" />
+        <option value="$PROJECT_DIR$/cms/Page.d.ts.map" />
+        <option value="$PROJECT_DIR$/cms/Content.d.ts.map" />
+        <option value="$PROJECT_DIR$/cms/PageContext.js" />
+        <option value="$PROJECT_DIR$/cms/Content.d.ts" />
+        <option value="$PROJECT_DIR$/cms/Page.d.ts" />
+        <option value="$PROJECT_DIR$/cms/Menu.style.js" />
+        <option value="$PROJECT_DIR$/cms/Menu.d.ts.map" />
+        <option value="$PROJECT_DIR$/cms/Menu.style.d.ts.map" />
+        <option value="$PROJECT_DIR$/cms/Subsite.js.map" />
+        <option value="$PROJECT_DIR$/cms/Content.js.map" />
+        <option value="$PROJECT_DIR$/cms/Menu.style.d.ts" />
+        <option value="$PROJECT_DIR$/cms/PageContext.d.ts.map" />
+        <option value="$PROJECT_DIR$/shop/ProductPage.d.ts.map" />
+        <option value="$PROJECT_DIR$/cms/PageContext.js.map" />
+        <option value="$PROJECT_DIR$/cms/Subsite.d.ts.map" />
+        <option value="$PROJECT_DIR$/cms/Content.style.js" />
+        <option value="$PROJECT_DIR$/cms/Menu.js.map" />
+        <option value="$PROJECT_DIR$/shop/Product.d.ts" />
+        <option value="$PROJECT_DIR$/style-common/media.d.ts.map" />
+        <option value="$PROJECT_DIR$/shop/AddToBasketButton.d.ts" />
+        <option value="$PROJECT_DIR$/style-common/media.d.ts" />
+        <option value="$PROJECT_DIR$/shop/AddToBasketButton.js" />
+        <option value="$PROJECT_DIR$/shop/ProductListing.js" />
+        <option value="$PROJECT_DIR$/shop/ProductTypeListing.js" />
+        <option value="$PROJECT_DIR$/shop/ProductLink.js.map" />
+        <option value="$PROJECT_DIR$/shop/ProductListingPage.js.map" />
+        <option value="$PROJECT_DIR$/style-common/media.js.map" />
+        <option value="$PROJECT_DIR$/shop/ProductLink.d.ts.map" />
+        <option value="$PROJECT_DIR$/style-common/media.js" />
+        <option value="$PROJECT_DIR$/shop/ShopApp.d.ts.map" />
+        <option value="$PROJECT_DIR$/shop/Product.js" />
+        <option value="$PROJECT_DIR$/shop/Product.d.ts.map" />
+        <option value="$PROJECT_DIR$/shop/ProductPage.js" />
+        <option value="$PROJECT_DIR$/shop/AddToBasketButton.js.map" />
+        <option value="$PROJECT_DIR$/shop/ProductPage.d.ts" />
+        <option value="$PROJECT_DIR$/shop/Product.js.map" />
+        <option value="$PROJECT_DIR$/shop/ProductListing.d.ts.map" />
+        <option value="$PROJECT_DIR$/shop/ShopApp.d.ts" />
+        <option value="$PROJECT_DIR$/shop/Shop.style.d.ts.map" />
+        <option value="$PROJECT_DIR$/shop/ProductTypeListing.d.ts" />
+        <option value="$PROJECT_DIR$/shop/Shop.style.js" />
+        <option value="$PROJECT_DIR$/shop/ShopApp.js" />
+        <option value="$PROJECT_DIR$/shop/Shop.style.js.map" />
+        <option value="$PROJECT_DIR$/shop/ProductLink.js" />
+        <option value="$PROJECT_DIR$/shop/ProductTypeListing.js.map" />
+        <option value="$PROJECT_DIR$/shop/AddToBasketButton.d.ts.map" />
+        <option value="$PROJECT_DIR$/shop/ShopApp.js.map" />
+        <option value="$PROJECT_DIR$/shop/ProductListingPage.d.ts.map" />
+        <option value="$PROJECT_DIR$/shop/ProductTypeListing.d.ts.map" />
+        <option value="$PROJECT_DIR$/shop/ProductPage.js.map" />
+        <option value="$PROJECT_DIR$/shop/ProductListingPage.js" />
+        <option value="$PROJECT_DIR$/shop/ProductListingPage.d.ts" />
+        <option value="$PROJECT_DIR$/shop/ProductLink.d.ts" />
+        <option value="$PROJECT_DIR$/abuse/AbuseLink.style.d.ts" />
+        <option value="$PROJECT_DIR$/shop/ProductListing.js.map" />
+        <option value="$PROJECT_DIR$/shop/Shop.style.d.ts" />
+        <option value="$PROJECT_DIR$/shop/ProductListing.d.ts" />
+        <option value="$PROJECT_DIR$/abuse/AbuseLink.js" />
+        <option value="$PROJECT_DIR$/abuse/AbuseLink.d.ts.map" />
+        <option value="$PROJECT_DIR$/abuse/AbuseLink.d.ts" />
+        <option value="$PROJECT_DIR$/abuse/AbuseLink.style.js" />
+        <option value="$PROJECT_DIR$/like/Like.style.d.ts.map" />
+        <option value="$PROJECT_DIR$/abuse/AbuseLink.style.d.ts.map" />
+        <option value="$PROJECT_DIR$/abuse/AbuseLink.style.js.map" />
+        <option value="$PROJECT_DIR$/abuse/AbuseLink.js.map" />
+        <option value="$PROJECT_DIR$/like/Like.js" />
+        <option value="$PROJECT_DIR$/like/Like.d.ts.map" />
+        <option value="$PROJECT_DIR$/like/Like.js.map" />
+        <option value="$PROJECT_DIR$/like/Like.style.d.ts" />
+        <option value="$PROJECT_DIR$/reducers/index.js.map" />
+        <option value="$PROJECT_DIR$/like/Like.style.js" />
+        <option value="$PROJECT_DIR$/like/Like.d.ts" />
+        <option value="$PROJECT_DIR$/like/Like.style.js.map" />
+        <option value="$PROJECT_DIR$/modal/modalActions.d.ts" />
+        <option value="$PROJECT_DIR$/reducers/index.js" />
+        <option value="$PROJECT_DIR$/reducers/index.d.ts.map" />
+        <option value="$PROJECT_DIR$/reducers/index.d.ts" />
+        <option value="$PROJECT_DIR$/modal/Modal.d.ts.map" />
+        <option value="$PROJECT_DIR$/modal/Modal.js" />
+        <option value="$PROJECT_DIR$/modal/Modal.style.d.ts.map" />
+        <option value="$PROJECT_DIR$/modal/modalActions.d.ts.map" />
+        <option value="$PROJECT_DIR$/modal/Modal.style.js.map" />
+        <option value="$PROJECT_DIR$/modal/Modal.style.js" />
+        <option value="$PROJECT_DIR$/modal/modalReducer.d.ts" />
+        <option value="$PROJECT_DIR$/modal/modalReducer.js" />
+        <option value="$PROJECT_DIR$/modal/Modal.style.d.ts" />
+        <option value="$PROJECT_DIR$/modal/Modal.js.map" />
+        <option value="$PROJECT_DIR$/modal/modalReducer.d.ts.map" />
+        <option value="$PROJECT_DIR$/modal/modalReducer.js.map" />
+        <option value="$PROJECT_DIR$/pagination/Pagination.js.map" />
+        <option value="$PROJECT_DIR$/modal/modalActions.js" />
+        <option value="$PROJECT_DIR$/modal/Modal.d.ts" />
+        <option value="$PROJECT_DIR$/modal/modalActions.js.map" />
+        <option value="$PROJECT_DIR$/pagination/Pagination.d.ts.map" />
+        <option value="$PROJECT_DIR$/pagination/Pagination.style.js.map" />
+        <option value="$PROJECT_DIR$/pagination/Pagination.js" />
+        <option value="$PROJECT_DIR$/pagination/Pagination.style.d.ts.map" />
+        <option value="$PROJECT_DIR$/style-common/Quantity.style.d.ts.map" />
+        <option value="$PROJECT_DIR$/pagination/Pagination.style.d.ts" />
+        <option value="$PROJECT_DIR$/pagination/Pagination.d.ts" />
+        <option value="$PROJECT_DIR$/pagination/Pagination.style.js" />
+        <option value="$PROJECT_DIR$/cms/edit-in-place/cmsEditorActions.js" />
+        <option value="$PROJECT_DIR$/cms/edit-in-place/cmsEditorReducer.js" />
+        <option value="$PROJECT_DIR$/cms/edit-in-place/cmsEditorActions.js.map" />
+        <option value="$PROJECT_DIR$/cms/edit-in-place/cmsEditorReducer.js.map" />
+        <option value="$PROJECT_DIR$/cms/edit-in-place/cmsEditorActions.d.ts" />
+        <option value="$PROJECT_DIR$/cms/edit-in-place/cmsEditorReducer.d.ts" />
       </list>
     </option>
   </component>
@@ -402,7 +428,8 @@
     <MESSAGE value="Moved source to fix resource linking" />
     <MESSAGE value="Build fixes" />
     <MESSAGE value="IDE setup" />
-    <option name="LAST_COMMIT_MESSAGE" value="IDE setup" />
+    <MESSAGE value="Docs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Docs" />
   </component>
   <component name="WindowStateProjectService">
     <state x="910" y="468" width="1201" height="1162" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1599826510004">
@@ -417,34 +444,34 @@
       <screen x="0" y="46" width="2928" height="1784" />
     </state>
     <state x="1000" y="475" width="917" height="895" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.46.2928.1784@0.46.2928.1784" timestamp="1599732276769" />
-    <state x="9" y="46" width="2916" height="1776" key="CommitChangelistDialog2" timestamp="1600070571285">
+    <state x="9" y="46" width="2916" height="1776" key="CommitChangelistDialog2" timestamp="1600071221447">
       <screen x="0" y="46" width="2928" height="1784" />
     </state>
-    <state x="9" y="46" width="2916" height="1776" key="CommitChangelistDialog2/0.46.2928.1784@0.46.2928.1784" timestamp="1600070571285" />
-    <state width="2891" height="740" key="GridCell.Tab.0.bottom" timestamp="1600070538063">
+    <state x="9" y="46" width="2916" height="1776" key="CommitChangelistDialog2/0.46.2928.1784@0.46.2928.1784" timestamp="1600071221447" />
+    <state width="2891" height="531" key="GridCell.Tab.0.bottom" timestamp="1600075721295">
       <screen x="0" y="46" width="2928" height="1784" />
     </state>
-    <state width="2891" height="740" key="GridCell.Tab.0.bottom/0.46.2928.1784@0.46.2928.1784" timestamp="1600070538063" />
-    <state width="2891" height="740" key="GridCell.Tab.0.center" timestamp="1600070538063">
+    <state width="2891" height="531" key="GridCell.Tab.0.bottom/0.46.2928.1784@0.46.2928.1784" timestamp="1600075721295" />
+    <state width="2891" height="531" key="GridCell.Tab.0.center" timestamp="1600075721294">
       <screen x="0" y="46" width="2928" height="1784" />
     </state>
-    <state width="2891" height="740" key="GridCell.Tab.0.center/0.46.2928.1784@0.46.2928.1784" timestamp="1600070538063" />
-    <state width="2891" height="740" key="GridCell.Tab.0.left" timestamp="1600070538063">
+    <state width="2891" height="531" key="GridCell.Tab.0.center/0.46.2928.1784@0.46.2928.1784" timestamp="1600075721294" />
+    <state width="2891" height="531" key="GridCell.Tab.0.left" timestamp="1600075721294">
       <screen x="0" y="46" width="2928" height="1784" />
     </state>
-    <state width="2891" height="740" key="GridCell.Tab.0.left/0.46.2928.1784@0.46.2928.1784" timestamp="1600070538063" />
-    <state width="2891" height="740" key="GridCell.Tab.0.right" timestamp="1600070538063">
+    <state width="2891" height="531" key="GridCell.Tab.0.left/0.46.2928.1784@0.46.2928.1784" timestamp="1600075721294" />
+    <state width="2891" height="531" key="GridCell.Tab.0.right" timestamp="1600075721294">
       <screen x="0" y="46" width="2928" height="1784" />
     </state>
-    <state width="2891" height="740" key="GridCell.Tab.0.right/0.46.2928.1784@0.46.2928.1784" timestamp="1600070538063" />
+    <state width="2891" height="531" key="GridCell.Tab.0.right/0.46.2928.1784@0.46.2928.1784" timestamp="1600075721294" />
     <state x="594" y="273" width="1739" height="1299" key="SettingsEditor" timestamp="1600070508587">
       <screen x="0" y="46" width="2928" height="1784" />
     </state>
     <state x="594" y="273" width="1739" height="1299" key="SettingsEditor/0.46.2928.1784@0.46.2928.1784" timestamp="1600070508587" />
-    <state x="759" y="450" width="1400" height="946" key="Vcs.Push.Dialog.v2" timestamp="1600070573024">
+    <state x="759" y="450" width="1400" height="946" key="Vcs.Push.Dialog.v2" timestamp="1600071222977">
       <screen x="0" y="46" width="2928" height="1784" />
     </state>
-    <state x="759" y="450" width="1400" height="946" key="Vcs.Push.Dialog.v2/0.46.2928.1784@0.46.2928.1784" timestamp="1600070573024" />
+    <state x="759" y="450" width="1400" height="946" key="Vcs.Push.Dialog.v2/0.46.2928.1784@0.46.2928.1784" timestamp="1600071222977" />
     <state x="1361" y="543" width="662" height="961" key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog" timestamp="1599729884503">
       <screen x="0" y="46" width="2928" height="1784" />
     </state>
@@ -453,9 +480,9 @@
       <screen x="0" y="46" width="2928" height="1784" />
     </state>
     <state x="955" y="418" width="1017" height="966" key="find.popup/0.46.2928.1784@0.46.2928.1784" timestamp="1599812759236" />
-    <state x="873" y="44" width="1177" height="1976" key="search.everywhere.popup" timestamp="1599817365956">
+    <state x="873" y="44" width="1177" height="1976" key="search.everywhere.popup" timestamp="1600074804553">
       <screen x="0" y="46" width="2928" height="1784" />
     </state>
-    <state x="873" y="44" width="1177" height="1976" key="search.everywhere.popup/0.46.2928.1784@0.46.2928.1784" timestamp="1599817365956" />
+    <state x="873" y="44" width="1177" height="1976" key="search.everywhere.popup/0.46.2928.1784@0.46.2928.1784" timestamp="1600074804553" />
   </component>
 </project>

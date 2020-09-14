@@ -196,7 +196,7 @@ export default class Pagination extends React.Component<Props, State> {
     }
   };
 
-  renderCompact() {
+  renderCompact(): JSX.Element | null {
     const p = this.state.page;
     const { collection, layout } = this.props;
 
@@ -231,7 +231,7 @@ export default class Pagination extends React.Component<Props, State> {
     );
   }
 
-  renderFull() {
+  renderFull(): JSX.Element | null {
     return (
       <Sc.PaginationFull className="stackend-pagination stackend-pagination-full">
         <button className="stackend-first icon" onClick={this.onFirstClicked} aria-label="First">
@@ -251,7 +251,7 @@ export default class Pagination extends React.Component<Props, State> {
     );
   }
 
-  renderNumbered() {
+  renderNumbered(): JSX.Element | null {
     const { collection } = this.props;
     return (
       <Sc.PaginationWrapper>
@@ -305,7 +305,7 @@ export default class Pagination extends React.Component<Props, State> {
     );
   }
 
-  renderLazy() {
+  renderLazy(): JSX.Element | null {
     return <div />;
     /*
 		return (
@@ -316,7 +316,7 @@ export default class Pagination extends React.Component<Props, State> {
 		*/
   }
 
-  render() {
+  render(): JSX.Element | null {
     const { collection, layout } = this.props;
     if (!collection || collection.firstPage === collection.lastPage) {
       return null;

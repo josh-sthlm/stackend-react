@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as Sc from './Throbber.style';
 
-function mapStateToProps({ throbber }: any, _x: any): OwnProps {
+function mapStateToProps({ throbber }: any, _x: any): Props {
   return {
     visible: throbber.visible
   };
@@ -10,9 +10,7 @@ function mapStateToProps({ throbber }: any, _x: any): OwnProps {
 
 const mapDispatchToProps = {};
 
-type Props = {};
-
-type OwnProps = Props & {
+type Props = {
   visible?: boolean;
 };
 
@@ -20,8 +18,8 @@ type OwnProps = Props & {
  * A global throbber that occupies the entire screen when visible.
  * A single instance should be used for the entire application.
  */
-class ModalThrobber extends Component<OwnProps> {
-  render() {
+class ModalThrobber extends Component<Props> {
+  render(): JSX.Element | null {
     const { visible } = this.props;
 
     return visible ? (

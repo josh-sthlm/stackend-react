@@ -9,7 +9,7 @@ export type Props = {
 };
 
 export default class ProductTypeListing extends Component<Props> {
-  render() {
+  render(): JSX.Element | null {
     const { productTypes } = this.props;
 
     if (!productTypes) {
@@ -25,7 +25,7 @@ export default class ProductTypeListing extends Component<Props> {
     );
   }
 
-  renderProductType(productType: string) {
+  renderProductType(productType: string): JSX.Element | null {
     const link = encodeURI(`${this.props.productTypeUrlPattern}`);
 
     if (productType === '') {
