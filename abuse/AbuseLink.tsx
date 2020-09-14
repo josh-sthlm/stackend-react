@@ -50,7 +50,7 @@ class AbuseLink extends React.Component<Props> {
   };
 
   render(): JSX.Element | null {
-    const { currentUser, object } = this.props;
+    const { currentUser, object, intl } = this.props;
 
     const o = object as any;
 
@@ -63,7 +63,7 @@ class AbuseLink extends React.Component<Props> {
       return (
         <Sc.AbuseLink
           to="javascript:{}"
-          title={this.intl.formatMessage({
+          title={intl.formatMessage({
             id: 'AbuseLink.report-abuse',
             defaultMessage: 'Report abuse'
           })}
