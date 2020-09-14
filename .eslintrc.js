@@ -3,12 +3,13 @@ module.exports = {
   root: true,
 
   //extends: 'react-app',
-  plugins: ['@typescript-eslint', 'prettier'],
+  plugins: ['@typescript-eslint', 'prettier', 'react-hooks'],
 
   "extends": [
     "eslint:recommended",
     "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/recommended",
+    "plugin:react-hooks/recommended",
     "prettier",
     "plugin:react/recommended"
   ],

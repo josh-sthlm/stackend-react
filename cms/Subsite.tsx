@@ -1,4 +1,4 @@
-import React, { Component, useRef } from 'react';
+import React, { Component, createRef, useRef } from 'react';
 import ReactDOM from 'react-dom';
 import {
   Page as CmsPage,
@@ -77,8 +77,8 @@ const mapDispatchToProps = {
  * Render a subsite
  */
 class Subsite extends Component<Props, State> {
-  pageRef = useRef(null);
-  contentRef = useRef(null);
+  pageRef = createRef();
+  contentRef = createRef();
 
   constructor(props: Props) {
     super(props);
@@ -114,10 +114,9 @@ class Subsite extends Component<Props, State> {
       return;
     }
 
-    let hash = request.location.hash;
-
-    let anchor = parseAnchor(hash);
-    let siteAnchor = getAnchorPart(anchor, AnchorType.SITE);
+    const hash = request.location.hash;
+    const anchor = parseAnchor(hash);
+    const siteAnchor = getAnchorPart(anchor, AnchorType.SITE);
     if (siteAnchor) {
       let subSitePermalink = getTreePermalink(siteAnchor.sitePermalink || null);
       let pl = '/' + siteAnchor.permalink;
@@ -125,7 +124,7 @@ class Subsite extends Component<Props, State> {
         let n = getNodePath(subSite, pl);
         if (n) {
           //let href = getSubSitePageHashPermalink({ treePath: n });
-          let href = hash;
+          const href = hash;
           this.doNavigate(href, n[n.length - 1], n, false).then();
         }
       }
@@ -160,13 +159,13 @@ class Subsite extends Component<Props, State> {
 
     let title = '';
     let metaDescription = '';
-    let useHelmet = typeof helmet === 'boolean' ? helmet : true;
+    const useHelmet = typeof helmet === 'boolean' ? helmet : true;
     if (useHelmet && page) {
       title = page.name || '';
       metaDescription = page.metaDescription || '';
     }
 
-    let c = Menu.getMenuVisibilityClass(menuVisibility);
+    const c = Menu.getMenuVisibilityClass(menuVisibility);
 
     {
       /*
@@ -219,14 +218,14 @@ class Subsite extends Component<Props, State> {
   /**
    * Handles navigation from the menu
    */
-  onNavigate = (e: Event, node: SubSiteNode, path: Array<SubSiteNode> | null) => {
+  onNavigate = (e: Event, node: SubSiteNode, path: Array<SubSiteNode> | null): void => {
     if (e.target && path) {
       let href = (e.target as HTMLAnchorElement).href;
-      this.doNavigate(href, node, path, false);
+      this.doNavigate(href, node, path, false).then();
     }
   };
 
-  async doNavigate(href: string, node: SubSiteNode, path: Array<SubSiteNode>, scrollIntoView: boolean) {
+  async doNavigate(href: string, node: SubSiteNode, path: Array<SubSiteNode>, scrollIntoView: boolean): Promise<void> {
     // FIXME: Handle links
     if (!node.ref) {
       return;
@@ -281,7 +280,7 @@ class Subsite extends Component<Props, State> {
     );
   }
 
-  setupLinkHandlers = (ref: any, scrollOnClick: boolean) => {
+  setupLinkHandlers = (ref: any, scrollOnClick: boolean): void => {
     if (!ref || !ref.current) {
       return;
     }
@@ -302,7 +301,7 @@ class Subsite extends Component<Props, State> {
     // FIXME: The old handlers needs to be removed
   };
 
-  onContentLinkClicked = (e: Event, scrollOnClick: boolean) => {
+  onContentLinkClicked = (e: Event, scrollOnClick: boolean): void => {
     const { subSite } = this.props;
 
     if (!e.currentTarget || !subSite) {

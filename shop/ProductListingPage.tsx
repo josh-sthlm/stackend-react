@@ -30,7 +30,7 @@ function mapStateToProps(state: any, ownProps: any) {
 }
 
 class ProductListingPage extends Component<Props> {
-  async componentDidMount() {
+  async componentDidMount(): Promise<any> {
     const { products, requestProductsAndProductTypes } = this.props;
     if (!products) {
       await requestProductsAndProductTypes({});

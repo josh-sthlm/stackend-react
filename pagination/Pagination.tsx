@@ -3,7 +3,7 @@ import React, { MouseEvent } from 'react';
 import { appendQueryString } from '@stackend/api/api/LoadJson';
 import type { PaginatedCollection } from '@stackend/api/api/PaginatedCollection';
 import * as Sc from './Pagination.style.js';
-import { useIntl } from 'react-intl';
+import { injectIntl, WrappedComponentProps } from 'react-intl';
 
 export type Props = {
   /**
@@ -34,7 +34,7 @@ export type Props = {
    * Selector to the scrolled element
    */
   scrollTarget?: string;
-};
+} & WrappedComponentProps;
 
 type State = {
   page: number;
@@ -49,10 +49,8 @@ type State = {
  * @since 13 feb 2017
  *
  */
-export default class Pagination extends React.Component<Props, State> {
+class Pagination extends React.Component<Props, State> {
   static ATTR = 'xcap-auto-pagination';
-
-  intl = useIntl();
 
   state = {
     page: 1,
@@ -198,7 +196,7 @@ export default class Pagination extends React.Component<Props, State> {
 
   renderCompact(): JSX.Element | null {
     const p = this.state.page;
-    const { collection, layout } = this.props;
+    const { collection, layout, intl } = this.props;
 
     if ((layout === 'next-page' || layout === 'compact') && p === collection.lastPage) {
       return null;
@@ -221,7 +219,7 @@ export default class Pagination extends React.Component<Props, State> {
     return (
       <Sc.PaginationCompact className="stackend-pagination stackend-pagination-compact">
         <Sc.PaginationMoreButton onClick={onClick} className={className}>
-          {this.intl.formatMessage({
+          {intl.formatMessage({
             id: 'Pagination.load-more',
             defaultMessage: 'Load more'
           })}
@@ -333,3 +331,5 @@ export default class Pagination extends React.Component<Props, State> {
     }
   }
 }
+
+export default injectIntl(Pagination as any);

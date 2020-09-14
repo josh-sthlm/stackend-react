@@ -39,7 +39,7 @@ export default function (
     originalDisplay: null
   },
   action: CmsEditorActions
-) {
+): Partial<CmsEditorState> {
   switch (action.type) {
     case CMS_TOGGLE_EDIT_IN_PLACE:
       return Object.assign({}, state, {

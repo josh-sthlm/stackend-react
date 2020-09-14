@@ -20,7 +20,7 @@ export default class Product extends Component<PropsType> {
     }
 
     // FIXME: Should show variant images
-    let image = getFirstImage(product);
+    const image = getFirstImage(product);
 
     return (
       <Sc.Product>

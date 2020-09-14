@@ -1,4 +1,4 @@
-import React, { Component, useRef, MouseEvent } from 'react';
+import React, { Component, createRef, MouseEvent } from 'react';
 import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 import { openEditor } from './edit-in-place/cmsEditorActions';
@@ -34,7 +34,7 @@ class Content extends Component<OwnProps> {
     super(props);
   }
 
-  contentRef = useRef(null);
+  contentRef = createRef();
 
   async componentDidMount() {
     this.updateContent();

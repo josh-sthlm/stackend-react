@@ -1,7 +1,7 @@
 import React, { MouseEvent } from 'react';
 import { connect } from 'react-redux';
 import { report } from '@stackend/api/abuse';
-import { useIntl } from 'react-intl';
+import { injectIntl, WrappedComponentProps } from 'react-intl';
 import * as Sc from './AbuseLink.style';
 import _ from 'lodash';
 import { CurrentUserType } from '@stackend/api/login/loginReducer';
@@ -21,7 +21,7 @@ export type Props = {
   currentUser: CurrentUserType;
   object: XcapObject;
   report?: typeof report;
-};
+} & WrappedComponentProps;
 
 /**
  * A link that allows reporting abuse
@@ -29,15 +29,13 @@ export type Props = {
  * @since 3 apr 2017
  */
 class AbuseLink extends React.Component<Props> {
-  intl = useIntl();
-
   handleClick = (e: MouseEvent) => {
     e.preventDefault();
-    const { report, object } = this.props;
+    const { report, object, intl } = this.props;
 
     // FIXME: Use something nicer than confirm()
     const abuseText = prompt(
-      this.intl.formatMessage({
+      intl.formatMessage({
         id: 'AbuseLink.prompt',
         defaultMessage: 'Report abuse.\nPlease describe why this content should be removed?'
       })
@@ -80,4 +78,4 @@ class AbuseLink extends React.Component<Props> {
     return null;
   }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(AbuseLink);
+export default connect(mapStateToProps, mapDispatchToProps)(injectIntl(AbuseLink));

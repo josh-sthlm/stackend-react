@@ -45,7 +45,7 @@ function mapStateToProps({ currentUser, groupBlogEntries, GroupComments }: any, 
       : _.get(entry, 'blogRef.groupRef.permalink'); //If this is a blogEntry get the groupPermalink
   const blogComments = _.get(groupBlogEntries, `[${key}].json.likesByCurrentUser`);
   const groupComments = _.get(GroupComments, `[${key}].json.likesByCurrentUser`, {});
-  const likesByCurrentUser = !!blogComments ? blogComments : groupComments;
+  const likesByCurrentUser = blogComments ? blogComments : groupComments;
   return {
     isLoggedIn: _.get(currentUser, 'isLoggedIn', false),
     likedByCurrentUser: _.get(
@@ -73,7 +73,7 @@ export class Like extends Component<Props, OwnState> {
     super(props);
     this.state = {
       numberOfLikes: props.numberOfLikes,
-      likedByCurrentUser: !!props.likedByCurrentUser
+      likedByCurrentUser: props?.likedByCurrentUser
     };
   }
 
@@ -114,7 +114,7 @@ export class Like extends Component<Props, OwnState> {
           reference = entry;
           break;
         case commentApi.COMMENT_CLASS:
-          if (!!entry.referenceRef) {
+          if (entry?.referenceRef) {
             //this is a like on a comment on a referenceable. //ex: blogEntry
             reference = entry.referenceRef;
             break;
@@ -183,7 +183,7 @@ export class Like extends Component<Props, OwnState> {
 			 */
     })();
 
-  render() {
+  render(): JSX.Element | null {
     const { numberOfLikes, likedByCurrentUser } = this.state;
 
     return (

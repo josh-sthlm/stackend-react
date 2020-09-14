@@ -28,7 +28,7 @@ export default class ProductListing extends Component<Props> {
   }
 
   renderProduct(product: ProductType): JSX.Element | null {
-    let image = getFirstImage(product);
+    const image = getFirstImage(product);
 
     const link = encodeURI(`${this.props.productUrlPattern}`);
 

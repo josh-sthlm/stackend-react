@@ -5,26 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e42d5d32-7820-4c2a-bcc3-71c9e163bb75" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.eslintrc.js" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintrc.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/abuse/AbuseLink.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/abuse/AbuseLink.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cms/Content.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/cms/Content.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cms/Menu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/cms/Menu.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cms/Page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/cms/Page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cms/Subsite.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/cms/Subsite.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modal/Modal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modal/Modal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cms/edit-in-place/cmsEditorReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/cms/edit-in-place/cmsEditorReducer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/like/Like.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/like/Like.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pagination/Pagination.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pagination/Pagination.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reducers/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/reducers/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop/AddToBasketButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/shop/AddToBasketButton.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/shop/Product.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/shop/Product.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop/ProductLink.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/shop/ProductLink.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/shop/ProductListing.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/shop/ProductListing.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/shop/ProductListingPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/shop/ProductListingPage.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop/ProductPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/shop/ProductPage.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop/ProductTypeListing.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/shop/ProductTypeListing.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop/ShopApp.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/shop/ShopApp.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/throbber/LoadingThrobber.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/throbber/LoadingThrobber.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/throbber/ModalThrobber.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/throbber/ModalThrobber.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/util/ClientSideApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/util/ClientSideApi.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -161,7 +154,7 @@
       <workItem from="1599721125690" duration="14222000" />
       <workItem from="1599739229787" duration="3314000" />
       <workItem from="1599806135108" duration="16410000" />
-      <workItem from="1600065265495" duration="7320000" />
+      <workItem from="1600065265495" duration="9850000" />
     </task>
     <task id="LOCAL−00001" summary="Work on components">
       <created>1599552722021</created>
@@ -253,7 +246,19 @@
       <option name="presentableId" value="LOCAL−00015" />
       <updated>1600071221548</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL−00016" summary="Fixes">
+      <created>1600075961111</created>
+      <option name="number" value="LOCAL−00016" />
+      <option name="presentableId" value="LOCAL−00016" />
+      <updated>1600075961111</updated>
+    </task>
+    <task id="LOCAL−00017" summary="Fixes">
+      <created>1600075995387</created>
+      <option name="number" value="LOCAL−00017" />
+      <option name="presentableId" value="LOCAL−00017" />
+      <updated>1600075995387</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -423,13 +428,13 @@
     <MESSAGE value="Added abuse" />
     <MESSAGE value="Added like and modal" />
     <MESSAGE value="Restructured" />
-    <MESSAGE value="Fixes" />
     <MESSAGE value="Formatted" />
     <MESSAGE value="Moved source to fix resource linking" />
     <MESSAGE value="Build fixes" />
     <MESSAGE value="IDE setup" />
     <MESSAGE value="Docs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Docs" />
+    <MESSAGE value="Fixes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixes" />
   </component>
   <component name="WindowStateProjectService">
     <state x="910" y="468" width="1201" height="1162" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1599826510004">
@@ -444,34 +449,34 @@
       <screen x="0" y="46" width="2928" height="1784" />
     </state>
     <state x="1000" y="475" width="917" height="895" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.46.2928.1784@0.46.2928.1784" timestamp="1599732276769" />
-    <state x="9" y="46" width="2916" height="1776" key="CommitChangelistDialog2" timestamp="1600071221447">
+    <state x="9" y="46" width="2916" height="1776" key="CommitChangelistDialog2" timestamp="1600075995246">
       <screen x="0" y="46" width="2928" height="1784" />
     </state>
-    <state x="9" y="46" width="2916" height="1776" key="CommitChangelistDialog2/0.46.2928.1784@0.46.2928.1784" timestamp="1600071221447" />
-    <state width="2891" height="531" key="GridCell.Tab.0.bottom" timestamp="1600075721295">
+    <state x="9" y="46" width="2916" height="1776" key="CommitChangelistDialog2/0.46.2928.1784@0.46.2928.1784" timestamp="1600075995246" />
+    <state width="2891" height="531" key="GridCell.Tab.0.bottom" timestamp="1600078223050">
       <screen x="0" y="46" width="2928" height="1784" />
     </state>
-    <state width="2891" height="531" key="GridCell.Tab.0.bottom/0.46.2928.1784@0.46.2928.1784" timestamp="1600075721295" />
-    <state width="2891" height="531" key="GridCell.Tab.0.center" timestamp="1600075721294">
+    <state width="2891" height="531" key="GridCell.Tab.0.bottom/0.46.2928.1784@0.46.2928.1784" timestamp="1600078223050" />
+    <state width="2891" height="531" key="GridCell.Tab.0.center" timestamp="1600078223049">
       <screen x="0" y="46" width="2928" height="1784" />
     </state>
-    <state width="2891" height="531" key="GridCell.Tab.0.center/0.46.2928.1784@0.46.2928.1784" timestamp="1600075721294" />
-    <state width="2891" height="531" key="GridCell.Tab.0.left" timestamp="1600075721294">
+    <state width="2891" height="531" key="GridCell.Tab.0.center/0.46.2928.1784@0.46.2928.1784" timestamp="1600078223049" />
+    <state width="2891" height="531" key="GridCell.Tab.0.left" timestamp="1600078223048">
       <screen x="0" y="46" width="2928" height="1784" />
     </state>
-    <state width="2891" height="531" key="GridCell.Tab.0.left/0.46.2928.1784@0.46.2928.1784" timestamp="1600075721294" />
-    <state width="2891" height="531" key="GridCell.Tab.0.right" timestamp="1600075721294">
+    <state width="2891" height="531" key="GridCell.Tab.0.left/0.46.2928.1784@0.46.2928.1784" timestamp="1600078223048" />
+    <state width="2891" height="531" key="GridCell.Tab.0.right" timestamp="1600078223049">
       <screen x="0" y="46" width="2928" height="1784" />
     </state>
-    <state width="2891" height="531" key="GridCell.Tab.0.right/0.46.2928.1784@0.46.2928.1784" timestamp="1600075721294" />
+    <state width="2891" height="531" key="GridCell.Tab.0.right/0.46.2928.1784@0.46.2928.1784" timestamp="1600078223049" />
     <state x="594" y="273" width="1739" height="1299" key="SettingsEditor" timestamp="1600070508587">
       <screen x="0" y="46" width="2928" height="1784" />
     </state>
     <state x="594" y="273" width="1739" height="1299" key="SettingsEditor/0.46.2928.1784@0.46.2928.1784" timestamp="1600070508587" />
-    <state x="759" y="450" width="1400" height="946" key="Vcs.Push.Dialog.v2" timestamp="1600071222977">
+    <state x="759" y="450" width="1400" height="946" key="Vcs.Push.Dialog.v2" timestamp="1600075998637">
       <screen x="0" y="46" width="2928" height="1784" />
     </state>
-    <state x="759" y="450" width="1400" height="946" key="Vcs.Push.Dialog.v2/0.46.2928.1784@0.46.2928.1784" timestamp="1600071222977" />
+    <state x="759" y="450" width="1400" height="946" key="Vcs.Push.Dialog.v2/0.46.2928.1784@0.46.2928.1784" timestamp="1600075998637" />
     <state x="1361" y="543" width="662" height="961" key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog" timestamp="1599729884503">
       <screen x="0" y="46" width="2928" height="1784" />
     </state>
@@ -480,9 +485,9 @@
       <screen x="0" y="46" width="2928" height="1784" />
     </state>
     <state x="955" y="418" width="1017" height="966" key="find.popup/0.46.2928.1784@0.46.2928.1784" timestamp="1599812759236" />
-    <state x="873" y="44" width="1177" height="1976" key="search.everywhere.popup" timestamp="1600074804553">
+    <state x="873" y="44" width="1177" height="1976" key="search.everywhere.popup" timestamp="1600077974963">
       <screen x="0" y="46" width="2928" height="1784" />
     </state>
-    <state x="873" y="44" width="1177" height="1976" key="search.everywhere.popup/0.46.2928.1784@0.46.2928.1784" timestamp="1600074804553" />
+    <state x="873" y="44" width="1177" height="1976" key="search.everywhere.popup/0.46.2928.1784@0.46.2928.1784" timestamp="1600077974963" />
   </component>
 </project>
