@@ -5,9 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e42d5d32-7820-4c2a-bcc3-71c9e163bb75" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.prettierignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/stackend-react.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/stackend-react.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,7 +38,7 @@
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="prettierjs.PrettierConfiguration.Package" value="$PROJECT_DIR$/node_modules/prettier" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="web-ide.project.structure" />
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -59,7 +58,7 @@
       <recent name="$PROJECT_DIR$/reducers" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.lint">
+  <component name="RunManager" selected="npm.build">
     <configuration name="All Tests" type="JavaScriptTestRunnerJest" nameIsGenerated="true">
       <node-interpreter value="project" />
       <node-options value="" />
@@ -143,7 +142,7 @@
       <workItem from="1599721125690" duration="14222000" />
       <workItem from="1599739229787" duration="3314000" />
       <workItem from="1599806135108" duration="16410000" />
-      <workItem from="1600065265495" duration="3808000" />
+      <workItem from="1600065265495" duration="4150000" />
     </task>
     <task id="LOCAL−00001" summary="Work on components">
       <created>1599552722021</created>
@@ -217,7 +216,13 @@
       <option name="presentableId" value="LOCAL−00012" />
       <updated>1600069894073</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL−00013" summary="Build fixes">
+      <created>1600070221450</created>
+      <option name="number" value="LOCAL−00013" />
+      <option name="presentableId" value="LOCAL−00013" />
+      <updated>1600070221450</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -388,7 +393,8 @@
     <MESSAGE value="Fixes" />
     <MESSAGE value="Formatted" />
     <MESSAGE value="Moved source to fix resource linking" />
-    <option name="LAST_COMMIT_MESSAGE" value="Moved source to fix resource linking" />
+    <MESSAGE value="Build fixes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Build fixes" />
   </component>
   <component name="WindowStateProjectService">
     <state x="910" y="468" width="1201" height="1162" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1599826510004">
@@ -403,34 +409,34 @@
       <screen x="0" y="46" width="2928" height="1784" />
     </state>
     <state x="1000" y="475" width="917" height="895" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.46.2928.1784@0.46.2928.1784" timestamp="1599732276769" />
-    <state x="9" y="46" width="2916" height="1776" key="CommitChangelistDialog2" timestamp="1600069893815">
+    <state x="9" y="46" width="2916" height="1776" key="CommitChangelistDialog2" timestamp="1600070221318">
       <screen x="0" y="46" width="2928" height="1784" />
     </state>
-    <state x="9" y="46" width="2916" height="1776" key="CommitChangelistDialog2/0.46.2928.1784@0.46.2928.1784" timestamp="1600069893815" />
-    <state width="2891" height="307" key="GridCell.Tab.0.bottom" timestamp="1600070135883">
+    <state x="9" y="46" width="2916" height="1776" key="CommitChangelistDialog2/0.46.2928.1784@0.46.2928.1784" timestamp="1600070221318" />
+    <state width="2891" height="740" key="GridCell.Tab.0.bottom" timestamp="1600070169997">
       <screen x="0" y="46" width="2928" height="1784" />
     </state>
-    <state width="2891" height="307" key="GridCell.Tab.0.bottom/0.46.2928.1784@0.46.2928.1784" timestamp="1600070135883" />
-    <state width="2891" height="307" key="GridCell.Tab.0.center" timestamp="1600070135883">
+    <state width="2891" height="740" key="GridCell.Tab.0.bottom/0.46.2928.1784@0.46.2928.1784" timestamp="1600070169997" />
+    <state width="2891" height="740" key="GridCell.Tab.0.center" timestamp="1600070169996">
       <screen x="0" y="46" width="2928" height="1784" />
     </state>
-    <state width="2891" height="307" key="GridCell.Tab.0.center/0.46.2928.1784@0.46.2928.1784" timestamp="1600070135883" />
-    <state width="2891" height="307" key="GridCell.Tab.0.left" timestamp="1600070135882">
+    <state width="2891" height="740" key="GridCell.Tab.0.center/0.46.2928.1784@0.46.2928.1784" timestamp="1600070169996" />
+    <state width="2891" height="740" key="GridCell.Tab.0.left" timestamp="1600070169996">
       <screen x="0" y="46" width="2928" height="1784" />
     </state>
-    <state width="2891" height="307" key="GridCell.Tab.0.left/0.46.2928.1784@0.46.2928.1784" timestamp="1600070135882" />
-    <state width="2891" height="307" key="GridCell.Tab.0.right" timestamp="1600070135883">
+    <state width="2891" height="740" key="GridCell.Tab.0.left/0.46.2928.1784@0.46.2928.1784" timestamp="1600070169996" />
+    <state width="2891" height="740" key="GridCell.Tab.0.right" timestamp="1600070169996">
       <screen x="0" y="46" width="2928" height="1784" />
     </state>
-    <state width="2891" height="307" key="GridCell.Tab.0.right/0.46.2928.1784@0.46.2928.1784" timestamp="1600070135883" />
-    <state x="594" y="273" width="1739" height="1299" key="SettingsEditor" timestamp="1599550255855">
+    <state width="2891" height="740" key="GridCell.Tab.0.right/0.46.2928.1784@0.46.2928.1784" timestamp="1600070169996" />
+    <state x="594" y="273" width="1739" height="1299" key="SettingsEditor" timestamp="1600070508587">
       <screen x="0" y="46" width="2928" height="1784" />
     </state>
-    <state x="594" y="273" width="1739" height="1299" key="SettingsEditor/0.46.2928.1784@0.46.2928.1784" timestamp="1599550255855" />
-    <state x="759" y="450" width="1400" height="946" key="Vcs.Push.Dialog.v2" timestamp="1600069899691">
+    <state x="594" y="273" width="1739" height="1299" key="SettingsEditor/0.46.2928.1784@0.46.2928.1784" timestamp="1600070508587" />
+    <state x="759" y="450" width="1400" height="946" key="Vcs.Push.Dialog.v2" timestamp="1600070223429">
       <screen x="0" y="46" width="2928" height="1784" />
     </state>
-    <state x="759" y="450" width="1400" height="946" key="Vcs.Push.Dialog.v2/0.46.2928.1784@0.46.2928.1784" timestamp="1600069899691" />
+    <state x="759" y="450" width="1400" height="946" key="Vcs.Push.Dialog.v2/0.46.2928.1784@0.46.2928.1784" timestamp="1600070223429" />
     <state x="1361" y="543" width="662" height="961" key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog" timestamp="1599729884503">
       <screen x="0" y="46" width="2928" height="1784" />
     </state>
