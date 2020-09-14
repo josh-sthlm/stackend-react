@@ -3,18 +3,8 @@
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/.tmp" />
-      <excludeFolder url="file://$MODULE_DIR$/abuse" />
-      <excludeFolder url="file://$MODULE_DIR$/cms" />
-      <excludeFolder url="file://$MODULE_DIR$/like" />
-      <excludeFolder url="file://$MODULE_DIR$/modal" />
-      <excludeFolder url="file://$MODULE_DIR$/pagination" />
-      <excludeFolder url="file://$MODULE_DIR$/reducers" />
-      <excludeFolder url="file://$MODULE_DIR$/shop" />
-      <excludeFolder url="file://$MODULE_DIR$/style-common" />
       <excludeFolder url="file://$MODULE_DIR$/temp" />
-      <excludeFolder url="file://$MODULE_DIR$/throbber" />
       <excludeFolder url="file://$MODULE_DIR$/tmp" />
-      <excludeFolder url="file://$MODULE_DIR$/util" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
