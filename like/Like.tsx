@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import get from 'lodash-es/get';
+import get from 'lodash/get';
 import { connect } from 'react-redux';
 import { openModal } from '../modal/modalActions';
 import { setLike } from '@stackend/api/like';

@@ -1,4 +1,4 @@
-import get from 'lodash-es/get';
+import get from 'lodash/get';
 export const BigDesktop = '@media screen and (min-width: 1300px)';
 export const Tablet = '@media screen and (min-width: 767px) and (max-width: 991px)';
 export const TabletAndMobile = '@media screen and (max-width: 991px)';

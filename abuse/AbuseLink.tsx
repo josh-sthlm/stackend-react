@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { report } from '@stackend/api/abuse';
 import { injectIntl, WrappedComponentProps } from 'react-intl';
 import * as Sc from './AbuseLink.style';
-import get from 'lodash-es/get';
+import get from 'lodash/get';
 import { CurrentUserType } from '@stackend/api/login/loginReducer';
 import { XcapObject } from '@stackend/api/api';
 

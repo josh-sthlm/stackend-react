@@ -1,7 +1,7 @@
 import type { Dispatch } from 'redux';
 import { CMS_TOGGLE_EDIT_IN_PLACE, CMS_OPEN_EDITOR, CMS_CLOSE_EDITOR } from './cmsEditorReducer';
 import { Content, RICH_CONTENT_CSS_CLASS } from '@stackend/api/cms';
-import get from 'lodash-es/get';
+import get from 'lodash/get';
 import { Thunk } from '@stackend/api/api';
 /*
 import {

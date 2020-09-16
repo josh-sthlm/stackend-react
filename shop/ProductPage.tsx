@@ -7,7 +7,7 @@ import { Product as ProductType, GetProductRequest, GetProductResult, getFirstIm
 import { Thunk } from '@stackend/api/api';
 import Product from './Product';
 import { ProductMissingError } from './Shop.style.js';
-import get from 'lodash-es/get';
+import get from 'lodash/get';
 
 export interface PropsType {
   handle: string;
