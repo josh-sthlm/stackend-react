@@ -48,7 +48,7 @@ type State = {
 };
 
 function mapStateToProps({ pages, cmsContent, request }: any, { subSite }: any): any {
-  let defaultPageId = subSite ? getDefaultPageId(subSite) : null;
+  const defaultPageId = subSite ? getDefaultPageId(subSite) : null;
 
   let page = null;
   if (defaultPageId) {
@@ -92,7 +92,7 @@ class Subsite extends Component<Props, State> {
   static getDerivedStateFromProps(props: Props, state: State) {
     /* Sets up initial page and selection */
     if (!state.page && props.subSite && props.page) {
-      let selectedPath = getTreePathMatch(
+      const selectedPath = getTreePathMatch(
         props.subSite,
         (n: SubSiteNode) => n.referenceId === (props.page ? props.page.id : 0)
       );
@@ -118,10 +118,10 @@ class Subsite extends Component<Props, State> {
     const anchor = parseAnchor(hash);
     const siteAnchor = getAnchorPart(anchor, AnchorType.SITE);
     if (siteAnchor) {
-      let subSitePermalink = getTreePermalink(siteAnchor.sitePermalink || null);
-      let pl = '/' + siteAnchor.permalink;
+      const subSitePermalink = getTreePermalink(siteAnchor.sitePermalink || null);
+      const pl = '/' + siteAnchor.permalink;
       if (subSitePermalink === subSite.permalink) {
-        let n = getNodePath(subSite, pl);
+        const n = getNodePath(subSite, pl);
         if (n) {
           //let href = getSubSitePageHashPermalink({ treePath: n });
           const href = hash;
@@ -132,9 +132,9 @@ class Subsite extends Component<Props, State> {
       this.setupLinkHandlers(this.pageRef, true);
       const { page } = this.state;
       if (page) {
-        let n = findNode(subSite, n => n.referenceId === page.id);
-        let treePath = getTreePath(subSite, n as Node);
-        let permalink = getSubSitePageHashPermalink({ treePath, permalink: null });
+        const n = findNode(subSite, n => n.referenceId === page.id);
+        const treePath = getTreePath(subSite, n as Node);
+        const permalink = getSubSitePageHashPermalink({ treePath, permalink: null });
 
         dispatchCustomEvent(document, EVENT_NAVIGATE_TO_PAGE, false, false, {
           previousPage: null,
@@ -220,7 +220,7 @@ class Subsite extends Component<Props, State> {
    */
   onNavigate = (e: Event, node: SubSiteNode, path: Array<SubSiteNode> | null): void => {
     if (e.target && path) {
-      let href = (e.target as HTMLAnchorElement).href;
+      const href = (e.target as HTMLAnchorElement).href;
       this.doNavigate(href, node, path, false).then();
     }
   };
@@ -239,14 +239,14 @@ class Subsite extends Component<Props, State> {
     const previousPage = this.state.page;
     let page = pages.byId[node.referenceId];
 
-    let i = href.indexOf('#');
+    const i = href.indexOf('#');
     if (i !== -1) {
       href = href.substring(i);
       href = request.location.pathname + href;
     }
 
     if (shouldFetchPage(page, Date.now())) {
-      let r: GetPagesResult = await requestPage(node.referenceId);
+      const r: GetPagesResult = await requestPage(node.referenceId);
       if (!r.error) {
         // @ts-ignore
         page = r.pages[node.referenceId];
@@ -255,7 +255,7 @@ class Subsite extends Component<Props, State> {
 
     browserHistory.push(href);
     if (scrollIntoView && this.pageRef.current) {
-      let parent = ReactDOM.findDOMNode(this.pageRef.current as any);
+      const parent = ReactDOM.findDOMNode(this.pageRef.current as any);
       if (parent) {
         console.log('Stackend: scrolling to', parent);
         (parent as Element).scrollIntoView();
@@ -285,14 +285,14 @@ class Subsite extends Component<Props, State> {
       return;
     }
 
-    let parent = ReactDOM.findDOMNode(ref.current);
+    const parent = ReactDOM.findDOMNode(ref.current);
     if (!parent) {
       return;
     }
-    let links = (parent as Element).querySelectorAll('a[href]');
+    const links = (parent as Element).querySelectorAll('a[href]');
     for (let i = 0; i < links.length; i++) {
-      let l = links[i];
-      let href = l.getAttribute('href');
+      const l = links[i];
+      const href = l.getAttribute('href');
       if (href && href.startsWith(SITE_HASH_PREFIX)) {
         l.addEventListener('click', (e: Event) => this.onContentLinkClicked(e, scrollOnClick));
       }
@@ -308,18 +308,18 @@ class Subsite extends Component<Props, State> {
       return;
     }
 
-    let link = (e.currentTarget as Element).getAttribute('href');
-    let pl = getSubSiteNodePermalink(link);
+    const link = (e.currentTarget as Element).getAttribute('href');
+    const pl = getSubSiteNodePermalink(link);
     if (!pl) {
       return;
     }
 
-    let n = getNodePath(subSite, pl);
+    const n = getNodePath(subSite, pl);
     if (!n) {
       return;
     }
 
-    let href = getSubSitePageHashPermalink({ treePath: n, permalink: null });
+    const href = getSubSitePageHashPermalink({ treePath: n, permalink: null });
     if (!href) {
       return;
     }

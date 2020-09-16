@@ -64,7 +64,7 @@ class Pagination extends React.Component<Props, State> {
 
   scrollSource: any = null;
   scrollTarget: any = null;
-  thresholdPixels: number = 500;
+  thresholdPixels = 500;
   scrollTimer: number | null = null;
 
   static getDerivedStateFromProps(props: Props, state: State) {
@@ -94,7 +94,7 @@ class Pagination extends React.Component<Props, State> {
     }
 
     if (e.nodeType === 9) {
-      let doc = e.documentElement;
+      const doc = e.documentElement;
       return Math.max(e.body.scrollHeight, doc.scrollHeight, e.body.offsetHeight, doc.offsetHeight, doc.clientHeight);
     }
 
@@ -172,14 +172,14 @@ class Pagination extends React.Component<Props, State> {
     const { collection } = this.props;
 
     if (this.scrollTimer === null && collection && this.state.page < collection.lastPage) {
-      let h = this.getHeight(this.scrollTarget);
+      const h = this.getHeight(this.scrollTarget);
       let s = 0;
       if (typeof this.scrollTarget.scrollTop !== 'undefined') {
         s = this.scrollTarget.scrollTop;
       } else {
         s = this.scrollTarget.defaultView.scrollY;
       }
-      let left = h - s;
+      const left = h - s;
 
       //console.log('leftToScroll=', left, 't=', this.thresholdPixels, 's=', s, 'h=', h);
       if (left < this.thresholdPixels) {

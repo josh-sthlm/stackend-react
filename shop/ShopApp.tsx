@@ -65,8 +65,8 @@ class ShopApp extends Component<Props> {
   }
 
   componentDidUpdate(prevProps: Props, prevState: any, prevContext: any) {
-    let params = this.props.params;
-    let prevParams = prevProps.params;
+    const params = this.props.params;
+    const prevParams = prevProps.params;
 
     if (params.handle !== prevParams.handle || params.productType !== prevParams.productType) {
       ShopApp.fetchData(this.props.dispatch, this.props).then();

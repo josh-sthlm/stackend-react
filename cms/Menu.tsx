@@ -83,10 +83,10 @@ export default class Menu extends Component<Props, State> {
       return null;
     }
 
-    let selectedPathPermalink = getPermalink(selectedPath);
-    let c = Menu.getMenuVisibilityClass(menuVisibility);
+    const selectedPathPermalink = getPermalink(selectedPath);
+    const c = Menu.getMenuVisibilityClass(menuVisibility);
 
-    let klass: string = c + (open ? ' stackend-menu-active' : ' stackend-menu-inactive');
+    const klass: string = c + (open ? ' stackend-menu-active' : ' stackend-menu-inactive');
 
     return (
       <Sc.Menu
@@ -114,13 +114,13 @@ export default class Menu extends Component<Props, State> {
     e.stopPropagation();
 
     const { subSite, menuVisibility } = this.props;
-    let path = getTreePath(subSite, item);
+    const path = getTreePath(subSite, item);
 
     // Special case for mobile where hover is not supported: open the menu
     if (path && menuVisibility === MenuVisibility.HORIZONTAL) {
       if (item.children.length !== 0 /*&& matchMedia("(hover:none)").matches*/) {
         const { openPermalink } = this.state;
-        let pl = getPermalink(path);
+        const pl = getPermalink(path);
         if (openPermalink !== pl) {
           this.setState({
             openPermalink: pl
@@ -141,12 +141,12 @@ export default class Menu extends Component<Props, State> {
 
   renderItem = (item: SubSiteNode, i: number, selectedPathPermalink: string): JSX.Element | null => {
     const { subSite } = this.props;
-    let hasSubmenu = item.children.length !== 0;
+    const hasSubmenu = item.children.length !== 0;
     let link = null;
 
-    let treePath = getTreePath(subSite, item);
-    let permalink = treePath ? getPermalink(treePath) : '';
-    let klass: string = 'stackend-menu-path' + permalink.replace(/\//g, '-');
+    const treePath = getTreePath(subSite, item);
+    const permalink = treePath ? getPermalink(treePath) : '';
+    const klass: string = 'stackend-menu-path' + permalink.replace(/\//g, '-');
 
     if (item.ref !== null) {
       link = getSubSitePageHashPermalink({ permalink, treePath: null });
@@ -154,8 +154,8 @@ export default class Menu extends Component<Props, State> {
       link = item.data.link;
     }
 
-    let isSelected = selectedPathPermalink.startsWith(permalink);
-    let isMenuOpen = hasSubmenu && this.state.openPermalink === permalink;
+    const isSelected = selectedPathPermalink.startsWith(permalink);
+    const isMenuOpen = hasSubmenu && this.state.openPermalink === permalink;
 
     return (
       <Sc.MenuItem

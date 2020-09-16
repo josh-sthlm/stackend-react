@@ -17,7 +17,7 @@ type OwnProps = Props & {
 };
 
 function mapStateToProps({ cmsEditInPlace }: any, ownProps: any): any {
-  let c = ownProps.content;
+  const c = ownProps.content;
   return {
     //id: ownProps.id,
     content: c,
@@ -63,7 +63,7 @@ class Content extends Component<OwnProps> {
     }
 
     if (content && this.contentRef.current) {
-      let parent = ReactDOM.findDOMNode(this.contentRef.current as any);
+      const parent = ReactDOM.findDOMNode(this.contentRef.current as any);
       if (parent) {
         addContentToDom(parent as Element, content);
       }
@@ -71,7 +71,7 @@ class Content extends Component<OwnProps> {
   }
 
   onContentClicked = (e: MouseEvent) => {
-    let { content, openEditor } = this.props;
+    const { content, openEditor } = this.props;
     if (content) {
       openEditor(content, e.target);
     }

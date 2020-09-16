@@ -41,6 +41,7 @@
     "watch": "tsc --watch",
     "test": "jest",
     "lint": "eslint --ext ts --ext tsx --ignore-pattern \"*.style.ts\" --ignore-pattern \"*.d.ts\" .",
+    "lint:fix": "eslint --fix --ext ts --ext tsx --ignore-pattern \"*.style.ts\" --ignore-pattern \"*.d.ts\" .",
     "clean": "rimraf {abuse,cms,like,pagination,reducers,shop,style-common,throbber,util}/*.{js,js.map,d.ts,d.ts.map} modal/?odal*.{js,js.map,d.ts,d.ts.map}",
     "format:check": "prettier --list-different \"**/*.{ts,tsx}\" \"**/*.md\"",
     "format": "prettier --config .prettierrc.json \"**/*.{ts,tsx}\" \"**/*.md\" --write",

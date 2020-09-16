@@ -20,7 +20,7 @@ import { Thunk } from '@stackend/api/api';
  * Cms content tagged with this class may be edited in place
  * @type {string}
  */
-const EDITABLE_CSS_CLASS: string = 'stackend-edit';
+const EDITABLE_CSS_CLASS = 'stackend-edit';
 
 // Can't keep these objects in redux state. Using a globals. Should be fine for client side
 let _editor: any | null = null;
@@ -97,14 +97,14 @@ export function openEditor(content: Content, contentElement: any): Thunk<void> {
     }
 
     // Find the closest stackend-editable element
-    let e: Element | null = findEnclosingElementByClassName(contentElement, EDITABLE_CSS_CLASS, EDITABLE_CSS_CLASS);
+    const e: Element | null = findEnclosingElementByClassName(contentElement, EDITABLE_CSS_CLASS, EDITABLE_CSS_CLASS);
     if (e === null) {
       console.warn('Could not find parent ' + EDITABLE_CSS_CLASS + ' of ', contentElement);
       return;
     }
 
     // Find the closest stackend-rich-content element
-    let x = findEnclosingElementByClassName(e, RICH_CONTENT_CSS_CLASS);
+    const x = findEnclosingElementByClassName(e, RICH_CONTENT_CSS_CLASS);
     if (x === null) {
       console.error('Could not find parent ' + RICH_CONTENT_CSS_CLASS + ' of ', e, contentElement);
       return;
@@ -113,7 +113,7 @@ export function openEditor(content: Content, contentElement: any): Thunk<void> {
     // HACK to get styling correct: add .stackend to RICH_CONTENT_CSS_CLASS
     x.classList.add('stackend');
 
-    let { communities, cmsEditInPlace /*config, request, */ } = getState();
+    const { communities, cmsEditInPlace /*config, request, */ } = getState();
     if (cmsEditInPlace.editorOpen) {
       if (!dispatch(closeEditor())) {
         return;
@@ -127,11 +127,11 @@ export function openEditor(content: Content, contentElement: any): Thunk<void> {
     let language = _.get(communities, 'community.locale', 'en');
     language = language.replace(/_.*/, ''); // Remove country
 
-    let id = ('#' + Math.random()).replace(/.\./, 'stackend-cms-editor-');
+    const id = ('#' + Math.random()).replace(/.\./, 'stackend-cms-editor-');
 
-    let originalDisplay = _editableDomElement.style.display;
-    let originalContent = _editableDomElement.outerHTML;
-    let originalId = _editableDomElement.getAttribute('id');
+    const originalDisplay = _editableDomElement.style.display;
+    const originalContent = _editableDomElement.outerHTML;
+    const originalId = _editableDomElement.getAttribute('id');
     _editableDomElement.setAttribute('id', id);
 
     /* FIXME: Readd this
@@ -234,8 +234,8 @@ function save(): Thunk<void> {
 
 export function closeEditor(): Thunk<boolean> {
   return (dispatch: Dispatch, getState: any) => {
-    let { cmsEditInPlace } = getState();
-    let { originalId, originalDisplay, originalContent } = cmsEditInPlace;
+    const { cmsEditInPlace } = getState();
+    const { originalId, originalDisplay, originalContent } = cmsEditInPlace;
 
     if (_editor) {
       if (_editor.isDirty() && !confirm('Changes not saved. Close anyway?')) {

@@ -5,10 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e42d5d32-7820-4c2a-bcc3-71c9e163bb75" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.eslintrc.js" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintrc.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop/ShopApp.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/shop/ShopApp.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -147,7 +144,7 @@
       <workItem from="1599806135108" duration="16410000" />
       <workItem from="1600065265495" duration="10970000" />
       <workItem from="1600085779003" duration="1878000" />
-      <workItem from="1600240205252" duration="2049000" />
+      <workItem from="1600240205252" duration="2132000" />
     </task>
     <task id="LOCAL−00001" summary="Work on components">
       <created>1599552722021</created>
@@ -269,7 +266,13 @@
       <option name="presentableId" value="LOCAL−00020" />
       <updated>1600241936290</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL−00021" summary="Fixes">
+      <created>1600242295988</created>
+      <option name="number" value="LOCAL−00021" />
+      <option name="presentableId" value="LOCAL−00021" />
+      <updated>1600242295988</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -444,10 +447,10 @@
     <MESSAGE value="Build fixes" />
     <MESSAGE value="IDE setup" />
     <MESSAGE value="Docs" />
-    <MESSAGE value="Fixes" />
     <MESSAGE value="injectIntl fixes" />
     <MESSAGE value="Documentation" />
-    <option name="LAST_COMMIT_MESSAGE" value="Documentation" />
+    <MESSAGE value="Fixes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixes" />
   </component>
   <component name="WindowStateProjectService">
     <state x="910" y="468" width="1201" height="1162" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1599826510004">
@@ -462,10 +465,10 @@
       <screen x="0" y="46" width="2928" height="1784" />
     </state>
     <state x="1000" y="475" width="917" height="895" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.46.2928.1784@0.46.2928.1784" timestamp="1599732276769" />
-    <state x="9" y="46" width="2916" height="1776" key="CommitChangelistDialog2" timestamp="1600241936170">
+    <state x="9" y="46" width="2916" height="1776" key="CommitChangelistDialog2" timestamp="1600242295830">
       <screen x="0" y="46" width="2928" height="1784" />
     </state>
-    <state x="9" y="46" width="2916" height="1776" key="CommitChangelistDialog2/0.46.2928.1784@0.46.2928.1784" timestamp="1600241936170" />
+    <state x="9" y="46" width="2916" height="1776" key="CommitChangelistDialog2/0.46.2928.1784@0.46.2928.1784" timestamp="1600242295830" />
     <state width="2891" height="531" key="GridCell.Tab.0.bottom" timestamp="1600093508232">
       <screen x="0" y="46" width="2928" height="1784" />
     </state>

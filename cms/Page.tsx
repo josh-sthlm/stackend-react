@@ -39,9 +39,9 @@ class Page extends Component<Props> {
       title += titleSuffix;
     }
 
-    let metaDescription = page.metaDescription;
+    const metaDescription = page.metaDescription;
 
-    let useHelmet = typeof helmet === 'undefined' || helmet;
+    const useHelmet = typeof helmet === 'undefined' || helmet;
 
     return (
       <div className="stackend-page" id={'stackend-page-' + page.id}>
@@ -60,11 +60,11 @@ class Page extends Component<Props> {
   }
 
   getPageContentClass(pc: PageContent): string {
-    let type = 'stackend-page-content-' + pc.type.replace('stackend-', '');
+    const type = 'stackend-page-content-' + pc.type.replace('stackend-', '');
 
     let c = 'stackend-page-content ' + type;
 
-    let r = pc.reference;
+    const r = pc.reference;
     if (r) {
       c += ' ' + type + r.substring(r.lastIndexOf('-'));
     }
@@ -79,14 +79,14 @@ class Page extends Component<Props> {
 
   renderPageContent = (pc: PageContent, i: number): JSX.Element | null => {
     const { page /*referenceUrlId, parentHashLink*/ } = this.props;
-    let obj = pc.referenceRef;
-    let key = 'pc-' + (page as Cms.Page).id + '-' + i;
+    const obj = pc.referenceRef;
+    const key = 'pc-' + (page as Cms.Page).id + '-' + i;
 
     if (!pc.visible) {
       return null;
     }
 
-    let className = this.getPageContentClass(pc);
+    const className = this.getPageContentClass(pc);
 
     if (!obj) {
       console.error('stackend: Content ' + pc.reference + ' missing for Page ' + (page as Cms.Page).id);

@@ -103,7 +103,7 @@ export class Like extends Component<Props, OwnState> {
         return;
       }
 
-      let like = !this.state.likedByCurrentUser;
+      const like = !this.state.likedByCurrentUser;
 
       //GA tracking Google Analytics
 
@@ -128,7 +128,7 @@ export class Like extends Component<Props, OwnState> {
       //is this working??
       this.setState({ likedByCurrentUser: like });
 
-      let r = await setLike({ obfuscatedReference, like });
+      const r = await setLike({ obfuscatedReference, like });
       // FIXME: Update original redux object with the number of likes?
       this.setState({ numberOfLikes: r.numberOfLikes });
 
