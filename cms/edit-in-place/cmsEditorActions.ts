@@ -1,6 +1,8 @@
 import type { Dispatch } from 'redux';
 import { CMS_TOGGLE_EDIT_IN_PLACE, CMS_OPEN_EDITOR, CMS_CLOSE_EDITOR } from './cmsEditorReducer';
 import { Content, RICH_CONTENT_CSS_CLASS } from '@stackend/api/cms';
+import get from 'lodash-es/get';
+import { Thunk } from '@stackend/api/api';
 /*
 import {
   Content,
@@ -10,11 +12,9 @@ import {
   editContent
 } from '@stackend/api/cms'; */
 //import TinyMCEEditorAdapter from '../../editor/TinyMCEEditorAdapter.js';
-import _ from 'lodash';
 //import EditorAdapter from '../../editor/EditorAdapter.js';
 //import { setContent } from '@stackend/api/cms/cmsActions';
 //import { getJsonErrorText, Thunk } from '@stackend/api/api';
-import { Thunk } from '@stackend/api/api';
 
 /**
  * Cms content tagged with this class may be edited in place
@@ -122,9 +122,9 @@ export function openEditor(content: Content, contentElement: any): Thunk<void> {
 
     _contentDomElement = x;
     _editableDomElement = e;
-    //let communityPermalink = _.get(communities, 'community.permalink');
+    //let communityPermalink = get(communities, 'community.permalink');
 
-    let language = _.get(communities, 'community.locale', 'en');
+    let language = get(communities, 'community.locale', 'en');
     language = language.replace(/_.*/, ''); // Remove country
 
     const id = ('#' + Math.random()).replace(/.\./, 'stackend-cms-editor-');

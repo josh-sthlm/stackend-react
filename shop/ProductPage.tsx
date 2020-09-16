@@ -7,7 +7,7 @@ import { Product as ProductType, GetProductRequest, GetProductResult, getFirstIm
 import { Thunk } from '@stackend/api/api';
 import Product from './Product';
 import { ProductMissingError } from './Shop.style.js';
-import _ from 'lodash';
+import get from 'lodash-es/get';
 
 export interface PropsType {
   handle: string;
@@ -21,7 +21,7 @@ const mapDispatchToProps = {
 };
 
 function mapStateToProps({ shop }: any, ownProps: any): any {
-  const handle = _.get(ownProps, 'params.handle', '*');
+  const handle = get(ownProps, 'params.handle', '*');
   const product = shop.products[handle];
   const productLoaded = typeof shop.products[handle] !== 'undefined';
   return {

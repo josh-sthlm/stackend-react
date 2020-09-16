@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { report } from '@stackend/api/abuse';
 import { injectIntl, WrappedComponentProps } from 'react-intl';
 import * as Sc from './AbuseLink.style';
-import _ from 'lodash';
+import get from 'lodash-es/get';
 import { CurrentUserType } from '@stackend/api/login/loginReducer';
 import { XcapObject } from '@stackend/api/api';
 
@@ -58,7 +58,7 @@ class AbuseLink extends React.Component<Props> {
     if (
       currentUser.isLoggedIn &&
       typeof o.obfuscatedReference !== 'undefined' &&
-      (typeof o.creatorUserId === 'undefined' || o.creatorUserId !== _.get(currentUser, 'user.id'))
+      (typeof o.creatorUserId === 'undefined' || o.creatorUserId !== get(currentUser, 'user.id'))
     ) {
       return (
         <Sc.AbuseLink

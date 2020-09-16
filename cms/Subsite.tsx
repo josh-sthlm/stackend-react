@@ -9,7 +9,6 @@ import {
   SubSiteNode,
   GetPagesResult
 } from '@stackend/api/cms';
-import _ from 'lodash';
 import { Helmet } from 'react-helmet';
 import Menu from './Menu';
 import Page from './Page';

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import _ from 'lodash';
+import get from 'lodash-es/get';
 import { connect } from 'react-redux';
 import { openModal } from '../modal/modalActions';
 import { setLike } from '@stackend/api/like';
@@ -42,16 +42,16 @@ function mapStateToProps({ currentUser, groupBlogEntries, GroupComments }: any, 
   const key =
     typeof module !== 'undefined' && typeof entry.referenceGroupId === 'number'
       ? getCommentsStateKey(module, entry.referenceGroupId) //If this is a comment get the groupKey
-      : _.get(entry, 'blogRef.groupRef.permalink'); //If this is a blogEntry get the groupPermalink
-  const blogComments = _.get(groupBlogEntries, `[${key}].json.likesByCurrentUser`);
-  const groupComments = _.get(GroupComments, `[${key}].json.likesByCurrentUser`, {});
+      : get(entry, 'blogRef.groupRef.permalink'); //If this is a blogEntry get the groupPermalink
+  const blogComments = get(groupBlogEntries, `[${key}].json.likesByCurrentUser`);
+  const groupComments = get(GroupComments, `[${key}].json.likesByCurrentUser`, {});
   const likesByCurrentUser = blogComments ? blogComments : groupComments;
   return {
-    isLoggedIn: _.get(currentUser, 'isLoggedIn', false),
-    likedByCurrentUser: _.get(
+    isLoggedIn: get(currentUser, 'isLoggedIn', false),
+    likedByCurrentUser: get(
       likesByCurrentUser,
       `[${entry.id}]`,
-      _.get(entry, 'likedByCurrentUser.likedByCurrentUser', false)
+      get(entry, 'likedByCurrentUser.likedByCurrentUser', false)
     ),
     numberOfLikes: entry.numberOfLikes
   };
