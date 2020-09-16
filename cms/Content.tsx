@@ -30,11 +30,13 @@ const mapDispatchToProps = {
 };
 
 class Content extends Component<OwnProps> {
-  constructor(props: OwnProps) {
-    super(props);
-  }
 
   contentRef = createRef();
+
+  constructor(props: OwnProps) {
+    super(props);
+
+  }
 
   async componentDidMount() {
     this.updateContent();
@@ -88,7 +90,7 @@ class Content extends Component<OwnProps> {
           className={('stackend-cms-editable ' + className) as any}
           onClick={this.onContentClicked}
           editable={true}
-          ref={this.contentRef}
+          ref={this.contentRef as any}
         />
       );
     } else {
@@ -96,7 +98,7 @@ class Content extends Component<OwnProps> {
         <Sc.Content
           editable={false}
           id={'stackend-cms-' + content.id}
-          ref={this.contentRef}
+          ref={this.contentRef as any}
           className={className as any}
         />
       );

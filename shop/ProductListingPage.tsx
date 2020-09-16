@@ -19,7 +19,7 @@ const mapDispatchToProps = {
 };
 
 function mapStateToProps(state: any, ownProps: any) {
-  const shop: ShopState = state;
+  const shop: ShopState = state.shop;
   const productType = DEFAULT_PRODUCT_TYPE; // FIXME: support categories
   const products = shop.productsByType[productType];
 

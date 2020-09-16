@@ -4,8 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e42d5d32-7820-4c2a-bcc3-71c9e163bb75" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/abuse/AbuseLink.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/abuse/AbuseLink.tsx" afterDir="false" />
+    <list default="true" id="e42d5d32-7820-4c2a-bcc3-71c9e163bb75" name="Default Changelist" comment="injectIntl fixes">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cms/Content.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/cms/Content.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cms/Subsite.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/cms/Subsite.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop/ProductListingPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/shop/ProductListingPage.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,7 +63,7 @@
       <recent name="$PROJECT_DIR$/reducers" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.format">
+  <component name="RunManager" selected="npm.watch">
     <configuration name="All Tests" type="JavaScriptTestRunnerJest" nameIsGenerated="true">
       <node-interpreter value="project" />
       <node-options value="" />
@@ -142,7 +147,9 @@
       <workItem from="1599721125690" duration="14222000" />
       <workItem from="1599739229787" duration="3314000" />
       <workItem from="1599806135108" duration="16410000" />
-      <workItem from="1600065265495" duration="9926000" />
+      <workItem from="1600065265495" duration="10970000" />
+      <workItem from="1600085779003" duration="1878000" />
+      <workItem from="1600240205252" duration="1707000" />
     </task>
     <task id="LOCAL−00001" summary="Work on components">
       <created>1599552722021</created>
@@ -252,7 +259,13 @@
       <option name="presentableId" value="LOCAL−00018" />
       <updated>1600078472177</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL−00019" summary="injectIntl fixes">
+      <created>1600078501010</created>
+      <option name="number" value="LOCAL−00019" />
+      <option name="presentableId" value="LOCAL−00019" />
+      <updated>1600078501010</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -444,45 +457,45 @@
       <screen x="0" y="46" width="2928" height="1784" />
     </state>
     <state x="1000" y="475" width="917" height="895" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.46.2928.1784@0.46.2928.1784" timestamp="1599732276769" />
-    <state x="9" y="46" width="2916" height="1776" key="CommitChangelistDialog2" timestamp="1600078471999">
+    <state x="9" y="46" width="2916" height="1776" key="CommitChangelistDialog2" timestamp="1600086063931">
       <screen x="0" y="46" width="2928" height="1784" />
     </state>
-    <state x="9" y="46" width="2916" height="1776" key="CommitChangelistDialog2/0.46.2928.1784@0.46.2928.1784" timestamp="1600078471999" />
-    <state width="2891" height="531" key="GridCell.Tab.0.bottom" timestamp="1600078449382">
+    <state x="9" y="46" width="2916" height="1776" key="CommitChangelistDialog2/0.46.2928.1784@0.46.2928.1784" timestamp="1600086063931" />
+    <state width="2891" height="531" key="GridCell.Tab.0.bottom" timestamp="1600093508232">
       <screen x="0" y="46" width="2928" height="1784" />
     </state>
-    <state width="2891" height="531" key="GridCell.Tab.0.bottom/0.46.2928.1784@0.46.2928.1784" timestamp="1600078449382" />
-    <state width="2891" height="531" key="GridCell.Tab.0.center" timestamp="1600078449381">
+    <state width="2891" height="531" key="GridCell.Tab.0.bottom/0.46.2928.1784@0.46.2928.1784" timestamp="1600093508232" />
+    <state width="2891" height="531" key="GridCell.Tab.0.center" timestamp="1600093508231">
       <screen x="0" y="46" width="2928" height="1784" />
     </state>
-    <state width="2891" height="531" key="GridCell.Tab.0.center/0.46.2928.1784@0.46.2928.1784" timestamp="1600078449381" />
-    <state width="2891" height="531" key="GridCell.Tab.0.left" timestamp="1600078449381">
+    <state width="2891" height="531" key="GridCell.Tab.0.center/0.46.2928.1784@0.46.2928.1784" timestamp="1600093508231" />
+    <state width="2891" height="531" key="GridCell.Tab.0.left" timestamp="1600093508231">
       <screen x="0" y="46" width="2928" height="1784" />
     </state>
-    <state width="2891" height="531" key="GridCell.Tab.0.left/0.46.2928.1784@0.46.2928.1784" timestamp="1600078449381" />
-    <state width="2891" height="531" key="GridCell.Tab.0.right" timestamp="1600078449382">
+    <state width="2891" height="531" key="GridCell.Tab.0.left/0.46.2928.1784@0.46.2928.1784" timestamp="1600093508231" />
+    <state width="2891" height="531" key="GridCell.Tab.0.right" timestamp="1600093508231">
       <screen x="0" y="46" width="2928" height="1784" />
     </state>
-    <state width="2891" height="531" key="GridCell.Tab.0.right/0.46.2928.1784@0.46.2928.1784" timestamp="1600078449382" />
+    <state width="2891" height="531" key="GridCell.Tab.0.right/0.46.2928.1784@0.46.2928.1784" timestamp="1600093508231" />
     <state x="594" y="273" width="1739" height="1299" key="SettingsEditor" timestamp="1600070508587">
       <screen x="0" y="46" width="2928" height="1784" />
     </state>
     <state x="594" y="273" width="1739" height="1299" key="SettingsEditor/0.46.2928.1784@0.46.2928.1784" timestamp="1600070508587" />
-    <state x="759" y="450" width="1400" height="946" key="Vcs.Push.Dialog.v2" timestamp="1600078473838">
+    <state x="759" y="450" width="1400" height="946" key="Vcs.Push.Dialog.v2" timestamp="1600078502555">
       <screen x="0" y="46" width="2928" height="1784" />
     </state>
-    <state x="759" y="450" width="1400" height="946" key="Vcs.Push.Dialog.v2/0.46.2928.1784@0.46.2928.1784" timestamp="1600078473838" />
+    <state x="759" y="450" width="1400" height="946" key="Vcs.Push.Dialog.v2/0.46.2928.1784@0.46.2928.1784" timestamp="1600078502555" />
     <state x="1361" y="543" width="662" height="961" key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog" timestamp="1599729884503">
       <screen x="0" y="46" width="2928" height="1784" />
     </state>
     <state x="1361" y="543" width="662" height="961" key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog/0.46.2928.1784@0.46.2928.1784" timestamp="1599729884503" />
-    <state x="955" y="418" width="1017" height="966" key="find.popup" timestamp="1600078424259">
+    <state x="955" y="418" width="1017" height="966" key="find.popup" timestamp="1600078708964">
       <screen x="0" y="46" width="2928" height="1784" />
     </state>
-    <state x="955" y="418" width="1017" height="966" key="find.popup/0.46.2928.1784@0.46.2928.1784" timestamp="1600078424259" />
-    <state x="873" y="44" width="1177" height="1976" key="search.everywhere.popup" timestamp="1600077974963">
+    <state x="955" y="418" width="1017" height="966" key="find.popup/0.46.2928.1784@0.46.2928.1784" timestamp="1600078708964" />
+    <state x="873" y="44" width="1177" height="1976" key="search.everywhere.popup" timestamp="1600241289599">
       <screen x="0" y="46" width="2928" height="1784" />
     </state>
-    <state x="873" y="44" width="1177" height="1976" key="search.everywhere.popup/0.46.2928.1784@0.46.2928.1784" timestamp="1600077974963" />
+    <state x="873" y="44" width="1177" height="1976" key="search.everywhere.popup/0.46.2928.1784@0.46.2928.1784" timestamp="1600241289599" />
   </component>
 </project>

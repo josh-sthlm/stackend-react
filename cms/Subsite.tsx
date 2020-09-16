@@ -1,4 +1,4 @@
-import React, { Component, createRef, useRef } from 'react';
+import React, { Component, createRef } from 'react';
 import ReactDOM from 'react-dom';
 import {
   Page as CmsPage,
@@ -189,7 +189,7 @@ class Subsite extends Component<Props, State> {
           </Helmet>
         )}
 
-        {content && <Content content={content} ref={this.contentRef} />}
+        {content && <Content content={content} ref={this.contentRef as any} />}
 
         <div className="stackend-site-wrapper">
           <div className="stackend stackend-menu-container">
