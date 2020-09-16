@@ -8,10 +8,8 @@ To use Stackend you need to create a Stackend account, and a Stack (your cloud b
 
 This library contains React components for Stackend modules.
 
-*NOTE*: Right now this library is under development and not ready for general use. 
+_NOTE_: Right now this library is under development and not ready for general use.
 The API may change at any time. Use on your own risk.
-
-
 
 ## Installation
 
@@ -28,7 +26,7 @@ npm install --save @stackend/api @stackend/react
 
 ## Setup
 
-You will need to set up a Redux store and initialize the API with the community you will use: 
+You will need to set up a Redux store and initialize the API with the community you will use:
 
 ```javascript
 import { createStore, combineReducers, applyMiddleware } from 'redux';
@@ -42,7 +40,7 @@ import { getCurrentCommunity } from '@stackend/api';
 const reducers = {
   ...STANDARD_REDUCERS,
   ...REDUCERS
-}
+};
 
 const store = createStore(combineReducers(reducers), {}, compose(applyMiddleware(thunk)));
 
@@ -68,8 +66,8 @@ import { connect } from 'react-redux';
 const MY_CMS_ID = 123;
 
 type Props = {
-  content: CmsContent
-}
+  content: CmsContent;
+};
 
 const mapDispatchToProps = {
   fetchContent
@@ -79,26 +77,26 @@ function mapStateToProps(state: any) {
   const cms: CmsState = state.cmsContent;
   return {
     content: cms[MY_CMS_ID]
-  }
+  };
 }
 
 class MyApp extends Component<Props> {
-  
-  componentDidMount() {    
-    this.props.fetchContent({ id : MY_CMS_ID });  
+  componentDidMount() {
+    this.props.fetchContent({ id: MY_CMS_ID });
   }
 
   render() {
     const { content } = this.props;
-    return <div>
+    return (
+      <div>
+        {/* Stackend throbbers used to indicate when the app is loading / saving */}
+        <LoadingThrobber />
+        <ModalThrobber />
 
-      {/* Stackend throbbers used to indicate when the app is loading / saving */}
-      <LoadingThrobber/>
-      <ModalThrobber/>
-
-      {/* A stackend component displaying some cms content */}
-      <Content content={content}/>
-    </div>
+        {/* A stackend component displaying some cms content */}
+        <Content content={content} />
+      </div>
+    );
   }
 }
 

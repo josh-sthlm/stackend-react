@@ -30,12 +30,10 @@ const mapDispatchToProps = {
 };
 
 class Content extends Component<OwnProps> {
-
   contentRef = createRef();
 
   constructor(props: OwnProps) {
     super(props);
-
   }
 
   async componentDidMount() {
