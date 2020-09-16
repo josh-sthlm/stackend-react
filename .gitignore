@@ -1,6 +1,7 @@
 /types
 /node_modules
 /stackend-react-*.tgz
+.idea/workspace.xml
 
 **/*.js
 **/*.d.ts
