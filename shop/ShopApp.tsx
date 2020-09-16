@@ -42,7 +42,7 @@ class ShopApp extends Component<Props> {
   static async fetchData(dispatch: any, { params, shop }: Props) {
     // FIXME: Support categories
     // FIXME: Support page mode as well as module mode (hash link)
-    let handle = params.handle;
+    const handle = params.handle;
 
     console.log('fetchData, handle=', params.handle, ', type=', params.productType, ', shop=', shop);
 
@@ -53,7 +53,7 @@ class ShopApp extends Component<Props> {
       }
     } else {
       /* Category listing */
-      let productType = params.productType || DEFAULT_PRODUCT_TYPE;
+      const productType = params.productType || DEFAULT_PRODUCT_TYPE;
       if (!shop || !shop.productsByType[productType]) {
         return dispatch(requestProductsAndProductTypes({}));
       }

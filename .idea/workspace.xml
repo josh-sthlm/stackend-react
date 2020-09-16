@@ -4,13 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e42d5d32-7820-4c2a-bcc3-71c9e163bb75" name="Default Changelist" comment="injectIntl fixes">
+    <list default="true" id="e42d5d32-7820-4c2a-bcc3-71c9e163bb75" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.eslintrc.js" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintrc.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cms/Content.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/cms/Content.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cms/Subsite.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/cms/Subsite.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop/ProductListingPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/shop/ProductListingPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop/ShopApp.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/shop/ShopApp.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -149,7 +147,7 @@
       <workItem from="1599806135108" duration="16410000" />
       <workItem from="1600065265495" duration="10970000" />
       <workItem from="1600085779003" duration="1878000" />
-      <workItem from="1600240205252" duration="1707000" />
+      <workItem from="1600240205252" duration="2049000" />
     </task>
     <task id="LOCAL−00001" summary="Work on components">
       <created>1599552722021</created>
@@ -265,7 +263,13 @@
       <option name="presentableId" value="LOCAL−00019" />
       <updated>1600078501010</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL−00020" summary="Documentation">
+      <created>1600241936290</created>
+      <option name="number" value="LOCAL−00020" />
+      <option name="presentableId" value="LOCAL−00020" />
+      <updated>1600241936290</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -442,7 +446,8 @@
     <MESSAGE value="Docs" />
     <MESSAGE value="Fixes" />
     <MESSAGE value="injectIntl fixes" />
-    <option name="LAST_COMMIT_MESSAGE" value="injectIntl fixes" />
+    <MESSAGE value="Documentation" />
+    <option name="LAST_COMMIT_MESSAGE" value="Documentation" />
   </component>
   <component name="WindowStateProjectService">
     <state x="910" y="468" width="1201" height="1162" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1599826510004">
@@ -457,10 +462,10 @@
       <screen x="0" y="46" width="2928" height="1784" />
     </state>
     <state x="1000" y="475" width="917" height="895" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.46.2928.1784@0.46.2928.1784" timestamp="1599732276769" />
-    <state x="9" y="46" width="2916" height="1776" key="CommitChangelistDialog2" timestamp="1600086063931">
+    <state x="9" y="46" width="2916" height="1776" key="CommitChangelistDialog2" timestamp="1600241936170">
       <screen x="0" y="46" width="2928" height="1784" />
     </state>
-    <state x="9" y="46" width="2916" height="1776" key="CommitChangelistDialog2/0.46.2928.1784@0.46.2928.1784" timestamp="1600086063931" />
+    <state x="9" y="46" width="2916" height="1776" key="CommitChangelistDialog2/0.46.2928.1784@0.46.2928.1784" timestamp="1600241936170" />
     <state width="2891" height="531" key="GridCell.Tab.0.bottom" timestamp="1600093508232">
       <screen x="0" y="46" width="2928" height="1784" />
     </state>
@@ -481,10 +486,10 @@
       <screen x="0" y="46" width="2928" height="1784" />
     </state>
     <state x="594" y="273" width="1739" height="1299" key="SettingsEditor/0.46.2928.1784@0.46.2928.1784" timestamp="1600070508587" />
-    <state x="759" y="450" width="1400" height="946" key="Vcs.Push.Dialog.v2" timestamp="1600078502555">
+    <state x="759" y="450" width="1400" height="946" key="Vcs.Push.Dialog.v2" timestamp="1600241938246">
       <screen x="0" y="46" width="2928" height="1784" />
     </state>
-    <state x="759" y="450" width="1400" height="946" key="Vcs.Push.Dialog.v2/0.46.2928.1784@0.46.2928.1784" timestamp="1600078502555" />
+    <state x="759" y="450" width="1400" height="946" key="Vcs.Push.Dialog.v2/0.46.2928.1784@0.46.2928.1784" timestamp="1600241938246" />
     <state x="1361" y="543" width="662" height="961" key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog" timestamp="1599729884503">
       <screen x="0" y="46" width="2928" height="1784" />
     </state>
@@ -493,9 +498,9 @@
       <screen x="0" y="46" width="2928" height="1784" />
     </state>
     <state x="955" y="418" width="1017" height="966" key="find.popup/0.46.2928.1784@0.46.2928.1784" timestamp="1600078708964" />
-    <state x="873" y="44" width="1177" height="1976" key="search.everywhere.popup" timestamp="1600241289599">
+    <state x="873" y="44" width="1177" height="1976" key="search.everywhere.popup" timestamp="1600242238018">
       <screen x="0" y="46" width="2928" height="1784" />
     </state>
-    <state x="873" y="44" width="1177" height="1976" key="search.everywhere.popup/0.46.2928.1784@0.46.2928.1784" timestamp="1600241289599" />
+    <state x="873" y="44" width="1177" height="1976" key="search.everywhere.popup/0.46.2928.1784@0.46.2928.1784" timestamp="1600242238018" />
   </component>
 </project>

@@ -47,7 +47,6 @@ module.exports = {
     '@typescript-eslint/no-unused-expressions': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
     '@typescript-eslint/type-annotation-spacing': 'warn',
-    '@typescript-eslint/explicit-function-return-type': 'error',
     //'@typescript-eslint/camelcase': 'warn',
     "@typescript-eslint/no-var-requires": 'warn',
     // note you must disable the base rule as it can report incorrect errors
@@ -56,6 +55,7 @@ module.exports = {
     '@typescript-eslint/no-unused-vars': 'off',
     '@typescript-eslint/no-inferrable-types': 'warn',
     '@typescript-eslint/explicit-function-return-type': 'warn',
+    'react/no-find-dom-node': 'warn',
     /*
     '@typescript-eslint/no-unused-vars': [
       'warn',
