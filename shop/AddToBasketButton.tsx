@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 
 export interface Props {
   product: ProductType | null;
-  addToBasket: (product: ProductType) => any;
+  addToBasket: (handle: string) => void;
 }
 
 const mapDispatchToProps = {
@@ -25,7 +25,7 @@ class AddToBasketButton extends Component<Props> {
   onBuyClicked = (): void => {
     const { product, addToBasket } = this.props;
     if (product) {
-      addToBasket(product);
+      addToBasket(product.handle);
     }
   };
 }

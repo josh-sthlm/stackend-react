@@ -1,9 +1,7 @@
-//@flow
-
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Thunk } from '@stackend/api/api';
-import { requestProductsAndProductTypes, requestProduct } from '@stackend/api/shop/shopActions';
+import { requestProductsAndProductTypes, requestProduct, getProductListKey } from '@stackend/api/shop/shopActions';
 import { DEFAULT_PRODUCT_TYPE, ShopState } from '@stackend/api/shop/shopReducer';
 import {
   ListProductsRequest,
@@ -54,7 +52,9 @@ class ShopApp extends Component<Props> {
     } else {
       /* Category listing */
       const productType = params.productType || DEFAULT_PRODUCT_TYPE;
-      if (!shop || !shop.productsByType[productType]) {
+      const req: ListProductsRequest = { productTypes: [productType] };
+      const key = getProductListKey(req);
+      if (!shop || !shop.productListings[key]) {
         return dispatch(requestProductsAndProductTypes({}));
       }
     }

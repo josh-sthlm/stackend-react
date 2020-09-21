@@ -3,14 +3,14 @@ import { Link } from 'react-router';
 
 import * as Sc from './Shop.style.js';
 import { getFirstImage, Product as ProductType } from '@stackend/api/shop';
-import type { GraphQLList, GraphQLListNode, Product } from '@stackend/api/shop';
+import type { Product } from '@stackend/api/shop';
 import { templateReplaceUrl } from '@stackend/api/api';
 
 export interface Props {
   /**
    * List of products
    */
-  products: GraphQLList<Product>;
+  products: Array<Product>;
 
   /**
    * Pattern used to create links to products.
@@ -41,7 +41,7 @@ export default class ProductListing extends Component<Props> {
 
     return (
       <Sc.ProductListing>
-        <Sc.Products>{products.edges.map((n: GraphQLListNode<Product>) => this.renderProduct(n.node))}</Sc.Products>
+        <Sc.Products>{products.map(p => this.renderProduct(p))}</Sc.Products>
 
         {/* Room for pagination */}
       </Sc.ProductListing>

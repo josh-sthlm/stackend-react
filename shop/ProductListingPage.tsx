@@ -3,15 +3,16 @@ import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import ProductListing from './ProductListing';
 import { Thunk } from '@stackend/api/api';
-import { requestProductsAndProductTypes } from '@stackend/api/shop/shopActions';
+import { getProductListing, requestProductsAndProductTypes } from '@stackend/api/shop/shopActions';
 import { DEFAULT_PRODUCT_TYPE, ShopState } from '@stackend/api/shop/shopReducer';
-import { ListProductsRequest, Product, ListProductsAndTypesResult, GraphQLList } from '@stackend/api/shop';
+import { ListProductsRequest, Product, ListProductsAndTypesResult } from '@stackend/api/shop';
 
 export interface Props {
   productUrlPattern: string;
-  requestProductsAndProductTypes: (req: ListProductsRequest) => Thunk<ListProductsAndTypesResult>;
-  products: GraphQLList<Product>;
   productType: string;
+
+  requestProductsAndProductTypes: (req: ListProductsRequest) => Thunk<ListProductsAndTypesResult>;
+  products: Array<Product>;
 }
 
 const mapDispatchToProps = {
@@ -20,11 +21,9 @@ const mapDispatchToProps = {
 
 function mapStateToProps(state: any, ownProps: any) {
   const shop: ShopState = state.shop;
-  const productType = DEFAULT_PRODUCT_TYPE; // FIXME: support categories
-  const products = shop.productsByType[productType];
+  const products = getProductListing(shop, { productTypes: [ownProps.productType || DEFAULT_PRODUCT_TYPE] });
 
   return {
-    productType,
     products
   };
 }
