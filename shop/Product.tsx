@@ -40,6 +40,6 @@ export default class Product extends Component<PropsType> {
   }
 
   renderImage = (image: ProductImage): JSX.Element => {
-    return <img src={image.transformedSrc} key={image.id} alt={image.altText || ''} />;
+    return <img src={image.transformedSrc} alt={image.altText || ''} />;
   };
 }

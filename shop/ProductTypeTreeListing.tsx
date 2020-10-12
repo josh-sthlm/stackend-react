@@ -5,7 +5,8 @@ import { connect } from 'react-redux';
 import * as Sc from './Shop.style';
 import { templateReplaceUrl } from '@stackend/api/api';
 
-import { ProductTypeTree, ProductTypeTreeNode, ShopState } from '@stackend/api/shop/shopReducer';
+import { ProductTypeTree, ShopState } from '@stackend/api/shop/shopReducer';
+import { ProductTypeTreeNode } from '@stackend/api/shop/shopActions';
 
 export type Props = {
   /**
