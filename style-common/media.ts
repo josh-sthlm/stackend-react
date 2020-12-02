@@ -11,3 +11,5 @@ export const media = {
   wideScreen2560: '@media only screen and (min-width: 2500px)',
   smallerThanEvenLargerScreen: '@media only screen and (max-width: 1399px)'
 };
+
+export default media;

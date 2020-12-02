@@ -1,72 +1,89 @@
+//@flow
 import React, { Component } from 'react';
-import { Link } from 'react-router';
 
-import * as Sc from './Shop.style.js';
-import { getFirstImage, Product as ProductType } from '@stackend/api/shop';
-import type { Product } from '@stackend/api/shop';
-import { templateReplaceUrl } from '@stackend/api/api';
+import * as Sc from './ProductListing.style';
+import { SlimProduct } from '@stackend/api/shop';
+
+import ProductListingItem from './ProductListingItem';
+import { ProductListingItem as ScProductListingItem } from './ProductListingItem.style';
 
 export interface Props {
   /**
    * List of products
    */
-  products: Array<Product>;
+  products: Array<SlimProduct> | null;
 
   /**
-   * Pattern used to create links to products.
-   * Use the @stackend/api/api/templateReplaceUrl pattern. For example:
-   *
-   * /product/{{handle}}
-   *
-   * Available values: id, handle, title
+   * Function invoked to create links to products
+   * @param product
    */
-  productUrlPattern: string;
+  createProductLink: (product: SlimProduct) => string;
 
   /**
-   * Should pagination be visible?
+   * Show this number of placeholders while loading
    */
-  showPagination?: boolean;
+  placeholders?: number;
+
+  /**
+   * Optional method to render a product
+   */
+  renderProduct?: ({ product, link }: { product: SlimProduct; link: string }) => JSX.Element;
 }
 
 /**
  * Render a list of products
  */
 export default class ProductListing extends Component<Props> {
+  static defaultProps = {
+    placeholders: 10
+  };
+
   render(): JSX.Element | null {
     const { products } = this.props;
 
     if (!products) {
+      return this.renderPlaceholder();
+    }
+
+    if (products.length === 0) {
       return null;
     }
 
     return (
       <Sc.ProductListing>
-        <Sc.Products>{products.map(p => this.renderProduct(p))}</Sc.Products>
-
-        {/* Room for pagination */}
+        <Sc.Products>{products.map(this.renderProduct)}</Sc.Products>
       </Sc.ProductListing>
     );
   }
 
-  renderProduct(product: ProductType): JSX.Element | null {
-    const image = getFirstImage(product);
+  renderProduct = (product: SlimProduct) => {
+    const link = this.props.createProductLink(product);
+    let r = this.props.renderProduct ? this.props.renderProduct : this.defaultRenderProduct;
+    return <li key={product.id}>{r({ product, link })}</li>;
+  };
 
-    const link = templateReplaceUrl(this.props.productUrlPattern, {
-      id: product.id,
-      handle: product.handle,
-      title: product.title
-    });
+  defaultRenderProduct = ({ product, link }: { product: SlimProduct; link: string }) => {
+    return <ProductListingItem product={product} link={link} />;
+  };
+
+  renderPlaceholder = () => {
+    let c = [];
+    const { placeholders } = this.props;
+    if (!placeholders) {
+      return null;
+    }
+    for (let i = 0; i < placeholders; i++) {
+      c.push(
+        <li key={i}>
+          <ScProductListingItem />
+        </li>
+      );
+    }
 
     return (
-      <li key={product.id}>
-        <Link to={link as string}>
-          {image && <Sc.ProductListingImage src={image.transformedSrc} alt={image.altText || ''} />}
-          <Sc.Title>{product.title}</Sc.Title>
-          <Sc.Price>[FIXME: Price]</Sc.Price>
-          {/*<ProductLink product={product}/>*/}
-          <Sc.ShopNow>SHOPPA NU</Sc.ShopNow>
-        </Link>
-      </li>
+      <Sc.ProductListing className="stackend-product-listing-placeholder">
+        <Sc.Products>{c}</Sc.Products>
+      </Sc.ProductListing>
     );
-  }
+  };
 }

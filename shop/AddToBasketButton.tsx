@@ -1,41 +1,65 @@
+//@flow
 import React, { Component, MouseEvent } from 'react';
-import { Basket, Product as ProductType } from '@stackend/api/shop';
-import { getBasket, storeBasket } from '@stackend/api/shop/shopActions';
-import * as Sc from './Shop.style.js';
+import { Product as ProductType, ProductVariant } from '@stackend/api/shop';
+import { checkoutAdd } from '@stackend/api/shop/shopActions';
+import * as Sc from './AddToBasketButton.style';
 import { connect } from 'react-redux';
+import { FormattedMessage, injectIntl } from 'react-intl';
 
 export interface Props {
   product: ProductType | null;
-  onClick: (e: MouseEvent, p: ProductType) => void;
-  getBasket: () => Basket;
-  storeBasket: (basket: Basket) => void;
+  variant: ProductVariant | null;
+  onClick: (e: MouseEvent, product: ProductType, variant: ProductVariant) => void;
+}
+
+interface State {
+  saving: boolean;
 }
 
 const mapDispatchToProps = {
-  getBasket,
-  storeBasket
+  checkoutAdd
 };
 
 function mapStateToProps(x: any, y: any) {
   return {};
 }
 
-class AddToBasketButton extends Component<Props> {
+class AddToBasketButton extends Component<Props, State> {
+  state = {
+    saving: false
+  };
+
   render(): JSX.Element | null {
-    return <Sc.AddToBasketButton onClick={this.onBuyClicked}>Lägg i korgen</Sc.AddToBasketButton>;
+    const { variant, product } = this.props;
+
+    if (!product) {
+      return null;
+    }
+
+    const { saving } = this.state;
+
+    return (
+      <Sc.AddToBasketButton
+        onClick={this.onBuyClicked}
+        disabled={saving || !variant || !product.availableForSale || !variant.availableForSale}>
+        <FormattedMessage id="shop.add_to_basket" defaultMessage="Add to basket" />
+      </Sc.AddToBasketButton>
+    );
   }
 
   onBuyClicked = (e: MouseEvent): void => {
-    const { product, getBasket, storeBasket, onClick } = this.props;
-    if (product) {
-      const basket = getBasket();
-      basket.add(product.handle);
-      storeBasket(basket);
-      if (onClick) {
-        onClick(e, product);
-      }
+    const { product, onClick, variant } = this.props;
+    if (product && variant) {
+      (async () => {
+        this.setState({ saving: true });
+        this.props.checkoutAdd(product, variant);
+        if (onClick) {
+          onClick(e, product, variant);
+        }
+        this.setState({ saving: false });
+      })();
     }
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(AddToBasketButton);
+export default injectIntl(connect(mapStateToProps, mapDispatchToProps)(AddToBasketButton));

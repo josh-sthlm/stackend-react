@@ -2,7 +2,7 @@ import get from 'lodash/get';
 import React, { MouseEvent } from 'react';
 import { appendQueryString } from '@stackend/api/api/LoadJson';
 import type { PaginatedCollection } from '@stackend/api/api/PaginatedCollection';
-import * as Sc from './Pagination.style.js';
+import * as Sc from './Pagination.style';
 import { injectIntl, WrappedComponentProps } from 'react-intl';
 
 export type Props = {

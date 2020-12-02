@@ -1,6 +1,6 @@
 import React, { Component, Fragment, MouseEvent } from 'react';
 import { SubSite, SubSiteNode, MenuVisibility } from '@stackend/api/cms';
-import * as Sc from './Menu.style.js';
+import * as Sc from './Menu.style';
 import { getPermalink, getTreePath, Node } from '@stackend/api/api/tree';
 import { getSubSitePageHashPermalink } from '@stackend/api/cms/pageActions';
 

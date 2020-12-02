@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import * as sc from './styled-variables.style.js';
+import * as sc from './styled-variables.style';
 
 export const QuantityStyle = styled.span.attrs({
   className: 'stackend-quantity'
