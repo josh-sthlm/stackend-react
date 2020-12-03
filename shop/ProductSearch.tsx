@@ -1,13 +1,27 @@
 //@flow
-import React, { Component, createRef, RefObject, ChangeEvent } from 'react';
+import React, { Component, createRef, RefObject, ChangeEvent, FormEvent } from 'react';
 import * as Sc from './ProductSearch.style';
 import { getProductListingByKey, getProductListKey } from '@stackend/api/shop/shopActions';
-import { connect } from 'react-redux';
-import { ListProductsRequest, SlimProduct } from '@stackend/api/shop';
+import { connect, ConnectedProps } from 'react-redux';
+import { ListProductsRequest, parseProductSortKey, SlimProduct } from '@stackend/api/shop';
 import ProductTypeSelect from './ProductTypeSelect';
 import SortOptionsSelect from './SortOptionsSelect';
 import ProductListingContainer from './ProductListingContainer';
-import { injectIntl } from 'react-intl';
+import { FormattedMessage, injectIntl } from 'react-intl';
+
+
+function mapStateToProps(state: any, ownProps: any) {
+  return {
+    shop: state.shop
+  };
+}
+
+const mapDispatchToProps = {
+  getProductListKey,
+  getProductListingByKey
+};
+
+const connector = connect(mapStateToProps, mapDispatchToProps);
 
 type State = {
   key: string | null;
@@ -15,7 +29,7 @@ type State = {
   search: ListProductsRequest | null;
 };
 
-type Props = {
+export interface Props extends ConnectedProps<typeof connector> {
   /**
    * Initial search
    */
@@ -35,18 +49,8 @@ type Props = {
    * Invoked when the search is changed
    */
   onListingRequestChanged: (search: ListProductsRequest, productListingKey: string) => void;
-};
-
-function mapStateToProps(state: any, ownProps: any) {
-  return {
-    shop: state.shop
-  };
 }
 
-const mapDispatchToProps = {
-  getProductListKey,
-  getProductListingByKey
-};
 
 class ProductSearch extends Component<Props, State> {
   state: State = {
@@ -98,24 +102,27 @@ class ProductSearch extends Component<Props, State> {
           showPlaceholder={true}
           onListingRequestChanged={this.onListingRequestChanged}
         />
-        {listing && listing.products.length === 0 && <Sc.NoMatches>Inga sökträffar</Sc.NoMatches>}
+        {listing && listing.products.length === 0 && <Sc.NoMatches>
+          <FormattedMessage id="shop.search.no_hits" defaultMessage="No products matching the search"/>
+        </Sc.NoMatches>}
       </Sc.ProductSearch>
     );
   }
 
   renderSearchOptions() {
-    const { productTypes, sort } = this.state.search;
+    const productTypes = this.state.search?.productTypes;
+    const sort = this.state.search?.sort;
 
     let productType = productTypes && productTypes.length !== 0 ? productTypes[0] : '';
 
     return (
       <Sc.SearchOptions>
         <label className="stackend-product-filters-label" htmlFor="stackend-product-filter">
-          Kategori:{' '}
+          <FormattedMessage id="shop.product_type" defaultMessage="Product type"/>:{' '}
         </label>
         <ProductTypeSelect id="stackend-product-filter" onChange={this.onProductTypeChanged} value={productType} />
         <label htmlFor="stackend-product-sort" className="stackend-product-sort-label">
-          Sortera efter:
+          <FormattedMessage id="shop.sort_by" defaultMessage="Sort by"/>:{' '}
         </label>
         <SortOptionsSelect
           size={1}
@@ -149,7 +156,7 @@ class ProductSearch extends Component<Props, State> {
       {
         search: {
           ...this.state.search,
-          sort: e.target.value,
+          sort: parseProductSortKey(e.target.value),
           first: undefined,
           after: undefined,
           last: undefined,
@@ -189,7 +196,7 @@ class ProductSearch extends Component<Props, State> {
     );
   };
 
-  onSearch = (e: Event) => {
+  onSearch = (e: FormEvent) => {
     e.preventDefault();
     e.stopPropagation();
     // FIXME: direct to url
@@ -209,4 +216,4 @@ class ProductSearch extends Component<Props, State> {
   };
 }
 
-export default injectIntl(connect(mapStateToProps, mapDispatchToProps)(ProductSearch));
+export default injectIntl(connector(ProductSearch));

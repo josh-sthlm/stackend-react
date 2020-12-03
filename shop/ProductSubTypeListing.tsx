@@ -1,30 +1,12 @@
 //@flow
 import React, { Component, MouseEvent } from 'react';
 import { Link } from 'react-router';
-import { connect } from 'react-redux';
+import { connect, ConnectedProps } from 'react-redux';
 
 import * as Sc from './ProductSubTypeListing.style';
 
 import { ShopState } from '@stackend/api/shop/shopReducer';
 import { ProductTypeTree, findProductTypeTreeNode, ProductTypeTreeNode } from '@stackend/api/shop/ProductTypeTree';
-
-export type Props = {
-  /**
-   * Function used to create links to product type pages.
-   */
-  createProductTypeListingLink: (productType: string) => string;
-
-  /**
-   * Product type to list children of
-   */
-  productType: string;
-
-  /**
-   * Method invoked when a product type is clicked
-   * @param e
-   */
-  onProductTypeClicked?: (e: MouseEvent, p: ProductTypeTreeNode) => void;
-};
 
 const mapDispatchToProps = {};
 
@@ -39,12 +21,35 @@ function mapStateToProps(state: any, ownProps: any): any {
   };
 }
 
+const connector = connect(mapStateToProps, mapDispatchToProps);
+
+export interface Props extends ConnectedProps<typeof connector> {
+
+  /**
+   * Product type to list children of
+   */
+  productType: string;
+
+  /**
+   * Function used to create links to product type pages.
+   */
+  createProductTypeListingLink: (productType: string) => string;
+
+
+  /**
+   * Method invoked when a product type is clicked
+   * @param e
+   */
+  onProductTypeClicked?: (e: MouseEvent, p: ProductTypeTreeNode) => void;
+}
+
+
 /**
  * Render a flat list of product types
  */
 class ProductSubTypeTreeListing extends Component<Props> {
   render(): JSX.Element | null {
-    const { subNodes } = this.props;
+    const subNodes: ProductTypeTree = this.props.subNodes;
 
     if (!subNodes || subNodes.length === 0) {
       return null;
@@ -77,4 +82,4 @@ class ProductSubTypeTreeListing extends Component<Props> {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProductSubTypeTreeListing);
+export default connector(ProductSubTypeTreeListing);

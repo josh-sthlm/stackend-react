@@ -1,10 +1,11 @@
 //@flow
 import styled from 'styled-components';
 import media from '../style-common/media';
+import classNames from '../style-common/classNames';
 
-export const ProductSearchForm = styled.form.attrs({ className: 'stackend-product-search-form' })``;
+export const ProductSearchForm = styled.form.attrs(props => ({ className: classNames('stackend-product-search-form', props.className) }))``;
 
-export const ProductSearch = styled.div.attrs({ className: 'stackend-product-search' })`
+export const ProductSearch = styled.div.attrs(props => ({ className: classNames('stackend-product-search', props.className) }))`
   ${ProductSearchForm} {
     margin-bottom: 2em;
 
@@ -24,7 +25,7 @@ export const ProductSearch = styled.div.attrs({ className: 'stackend-product-sea
   }
 `;
 
-export const SearchOptions = styled.div.attrs({ className: 'stackend-product-search-options' })`
+export const SearchOptions = styled.div.attrs(props => ({ className: classNames('stackend-product-search-options', props.className) }))`
   display: grid;
   grid-template-columns: min-content min-content auto min-content;
   align-items: center;
@@ -56,7 +57,7 @@ export const SearchOptions = styled.div.attrs({ className: 'stackend-product-sea
   }
 `;
 
-export const ProductTypeMatches = styled.div.attrs({ className: 'stackend-product-type-matches' })`
+export const ProductTypeMatches = styled.div.attrs(props => ({ className: classNames('stackend-product-type-matches', props.className) }))`
   margin: 1em 0;
   .stackend-product-type-match-label {
     font-weight: 400;
@@ -71,4 +72,4 @@ export const ProductTypeMatches = styled.div.attrs({ className: 'stackend-produc
   }
 `;
 
-export const NoMatches = styled.p.attrs({ className: 'stackend-search-no-matches' })``;
+export const NoMatches = styled.p.attrs(props => ({ className: classNames('stackend-search-no-matches', props.className) }))``;

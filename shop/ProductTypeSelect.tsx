@@ -1,6 +1,6 @@
 //@flow
 import React, { ChangeEvent, Component, Fragment } from 'react';
-import { connect } from 'react-redux';
+import { connect, ConnectedProps } from 'react-redux';
 
 import * as Sc from './ProductTypeSelect.style';
 
@@ -8,19 +8,6 @@ import { ShopState } from '@stackend/api/shop/shopReducer';
 import { ProductTypeTreeNode, ProductTypeTree } from '@stackend/api/shop/ProductTypeTree';
 import { injectIntl, FormattedMessage } from 'react-intl';
 
-export type Props = {
-  value: string;
-
-  /**
-   * Method invoked when a product type is clicked
-   * @param e
-   */
-  onChange?: (e: ChangeEvent<HTMLSelectElement>, productType: string) => void;
-
-  productTypeTree?: ProductTypeTree;
-};
-
-const mapDispatchToProps = {};
 
 function mapStateToProps(state: any, p: any): any {
   const shop: ShopState = state.shop;
@@ -28,6 +15,28 @@ function mapStateToProps(state: any, p: any): any {
     productTypeTree: shop.productTypeTree
   };
 }
+const connector = connect(mapStateToProps);
+
+export interface Props extends ConnectedProps<typeof connector> {
+
+  /**
+   * Product types
+   */
+  productTypeTree?: ProductTypeTree;
+
+  /**
+   * Selected product type
+   */
+  value: string;
+
+  /**
+   * Method invoked when a product type is clicked
+   * @param e
+   */
+  onChange?: (e: ChangeEvent<HTMLSelectElement>, productType: string) => void;
+}
+
+
 
 /**
  * Render a list of product types as a carousel
@@ -75,4 +84,4 @@ class ProductTypeSelect extends Component<Props> {
     );
   };
 }
-export default injectIntl(connect(mapStateToProps, mapDispatchToProps)(ProductTypeSelect));
+export default injectIntl(connector(ProductTypeSelect));

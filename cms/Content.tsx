@@ -1,15 +1,11 @@
 import React, { Component, createRef, MouseEvent } from 'react';
 import ReactDOM from 'react-dom';
-import { connect } from 'react-redux';
+import { connect, ConnectedProps } from 'react-redux';
 import { openEditor } from './edit-in-place/cmsEditorActions';
 import { Content as CmsContent, addContentToDom } from '@stackend/api/cms';
 import * as Sc from './Content.style';
 import { isRunningServerSide } from '@stackend/api/api';
 
-type Props = {
-  content: CmsContent | null;
-  className?: string;
-};
 
 type OwnProps = Props & {
   editInPlace: boolean;
@@ -29,6 +25,17 @@ const mapDispatchToProps = {
   openEditor
 };
 
+const connector = connect(mapStateToProps, mapDispatchToProps);
+
+export interface Props extends ConnectedProps<typeof connector> {
+  content: CmsContent | null;
+  className?: string;
+}
+
+
+/**
+ * Render cms content
+ */
 class Content extends Component<OwnProps> {
   contentRef = createRef();
 
@@ -103,4 +110,4 @@ class Content extends Component<OwnProps> {
     }
   }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(Content);
+export default connector(Content);

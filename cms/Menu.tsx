@@ -17,7 +17,7 @@ type State = {
 };
 
 /**
- * Render a subsite menu
+ * Render a sub site menu
  */
 export default class Menu extends Component<Props, State> {
   state = {

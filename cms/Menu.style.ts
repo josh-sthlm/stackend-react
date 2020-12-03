@@ -1,16 +1,17 @@
 import styled from 'styled-components';
 import * as sc from '../style-common/styled-variables.style';
 import { media } from '../style-common/media';
+import classNames from '../style-common/classNames';
 
-export const MenuLink = styled.a.attrs({ className: 'stackend-menu-link' })`
+export const MenuLink = styled.a.attrs(props => ({ className: classNames('stackend-menu-link', props.className) }))`
   white-space: nowrap;
 `;
 
-export const MenuItem = styled.div.attrs({ className: 'stackend-menu-item' })``;
+export const MenuItem = styled.div.attrs(props => ({ className: classNames('stackend-menu-item', props.className) }))``;
 
-export const SubMenuItems = styled.div.attrs({ className: 'stackend-submenu-items' })``;
+export const SubMenuItems = styled.div.attrs(props => ({ className: classNames('stackend-submenu-items', props.className) }))``;
 
-export const Burger = styled.button.attrs({ className: 'stackend-menu-burger' })`
+export const Burger = styled.button.attrs(props => ({ className: classNames('stackend-menu-burger', props.className) }))`
   padding: 0.25em 0;
   width: 100%;
   text-align: left;

@@ -17,9 +17,11 @@ import { ProductImage } from '@stackend/api/shop';
 import { Link } from 'react-router';
 import { Description, Tags, Title } from './Shop.style';
 import Price from './Price';
-import { FormattedMessage, injectIntl } from 'react-intl';
+import { FormattedMessage, injectIntl, WrappedComponentProps } from 'react-intl';
 
-export interface Props {
+
+
+export interface Props extends WrappedComponentProps {
   /**
    * Product
    */

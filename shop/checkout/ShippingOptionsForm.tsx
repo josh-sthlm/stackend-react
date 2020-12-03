@@ -14,7 +14,7 @@ import {
 } from '@stackend/api/shop';
 import { mapGraphQLList } from '@stackend/api/util/graphql';
 import * as Sc from './ShippingOptionsForm.style';
-import { connect } from 'react-redux';
+import { connect, ConnectedProps } from 'react-redux';
 import { ButtonBox, ButtonNext, ButtonPrevious, Quantity, Title } from '../Shop.style';
 import Price from '../Price';
 import { getJsonErrorText } from '@stackend/api/api';
@@ -35,12 +35,14 @@ const mapDispatchToProps = {
   requestOrResetActiveCheckout
 };
 
-export type Props = {
+const connector = connect(mapStateToProps, mapDispatchToProps);
+
+interface Props extends ConnectedProps<typeof connector> {
   imageMaxWidth?: number;
   onCancelClicked: () => void;
   onBackClicked?: () => void;
   onContinueClicked?: (checkoutResult: CheckoutResult) => void;
-};
+}
 
 type State = {
   shippingHandle: string;
@@ -99,7 +101,7 @@ class ShippingOptionsForm extends Component<Props, State> {
 
   render() {
     const { valid, submitted, shippingHandle, loadingCheckout } = this.state;
-    const checkout: Checkout = this.props.checkout;
+    const { checkout } = this.props;
 
     if (loadingCheckout) {
       return (
@@ -141,9 +143,11 @@ class ShippingOptionsForm extends Component<Props, State> {
       amount: checkout.subtotalPriceV2.amount,
       currencyCode: checkout.subtotalPriceV2.currencyCode
     };
+
     const selectedRate: ShippingRate | undefined = checkout.availableShippingRates.shippingRates.find(
-      r => r.handle === shippingHandle
+      (r: ShippingRate) => r.handle === shippingHandle
     );
+
     if (selectedRate) {
       const v = parseFloat(totalPrice.amount) + parseFloat(selectedRate.priceV2.amount);
       totalPrice = toMoneyV2(v, totalPrice.currencyCode);
@@ -223,7 +227,7 @@ class ShippingOptionsForm extends Component<Props, State> {
   onContinueClicked = async (e: MouseEvent) => {
     e.stopPropagation();
     e.preventDefault();
-    const checkout: Checkout = this.props.checkout;
+    const  { checkout } = this.props;
     const { valid, shippingHandle } = this.state;
     if (!checkout || !valid) {
       return;
@@ -255,4 +259,4 @@ class ShippingOptionsForm extends Component<Props, State> {
   };
 }
 
-export default injectIntl(connect(mapStateToProps, mapDispatchToProps)(ShippingOptionsForm));
+export default injectIntl(connector(ShippingOptionsForm));

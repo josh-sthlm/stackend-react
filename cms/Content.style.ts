@@ -1,6 +1,7 @@
 import styled from 'styled-components';
+import classNames from '../style-common/classNames';
 
-export const Content = styled.div.attrs({ className: 'stackend-cms' })<{ editable: boolean; className: string }>`
+export const Content = styled.div.attrs(props => ({ className: classNames('stackend-cms', props.className) }))<{ editable: boolean; className: string }>`
   &.stackend-cms-editable {
     .stackend-edit:hover {
       ${props =>

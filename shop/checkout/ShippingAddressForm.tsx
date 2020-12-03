@@ -12,7 +12,7 @@ import {
 } from '@stackend/api/shop/shopActions';
 import { CheckoutResult, ShippingAddress, getCountry, Checkout, GetCheckoutResult } from '@stackend/api/shop';
 import * as Sc from './ShippingAddressForm.style';
-import { connect } from 'react-redux';
+import { connect, ConnectedProps } from 'react-redux';
 import { ButtonBox, ButtonNext, ButtonPrevious } from '../Shop.style';
 import { Country } from '@shopify/address';
 import { FieldName } from '@shopify/address-consts';
@@ -47,11 +47,13 @@ const mapDispatchToProps = {
   checkoutSetEmail
 };
 
-export type Props = {
+const connector = connect(mapStateToProps, mapDispatchToProps);
+
+interface Props extends ConnectedProps<typeof connector> {
   imageMaxWidth?: number;
   onBackClicked: () => void;
   onContinueClicked: (checkout: Checkout) => void;
-};
+}
 
 type Field = {
   autoComplete: string;
@@ -125,7 +127,7 @@ class ShippingAddressForm extends Component<Props, State> {
 
   async componentDidMount() {
     const { countryCodes, countriesByCode, imageMaxWidth } = this.props;
-    let checkout: Checkout = this.props.checkout;
+    let { checkout } = this.props;
     const community: Community = this.props.community;
 
     // Ensure a valid checkout exists
@@ -198,10 +200,12 @@ class ShippingAddressForm extends Component<Props, State> {
     );
   }
 
-  renderFields = () => {
+  renderFields = (): JSX.Element | null => {
     const { address, email, countryCode } = this.state;
-    const { addressFieldsByCountryCode } = this.props;
-    const checkout: Checkout = this.props.checkout;
+    const { addressFieldsByCountryCode, checkout } = this.props;
+    if (!checkout) {
+      return null;
+    }
     if (!address || !addressFieldsByCountryCode) {
       return (
         <Sc.Fields>
@@ -219,7 +223,6 @@ class ShippingAddressForm extends Component<Props, State> {
       );
     }
 
-    let i = 1;
     return (
       <Sc.Fields>
         <Sc.Field className={this.getFieldClassName(1, 0)}>
@@ -238,7 +241,6 @@ class ShippingAddressForm extends Component<Props, State> {
 
         {checkout.requiresShipping
           ? addressFields.map((g: Array<string>) => {
-              i++;
               if (g.length === 1) {
                 return this.renderField(address, g[0], 1, 0);
               } else {
@@ -315,7 +317,7 @@ class ShippingAddressForm extends Component<Props, State> {
       <Sc.Field key={id} className={className}>
         <label htmlFor={id}>{label}:</label>
         <select id={id} size={1} name="country" value={countryCode} onChange={this.onCountryChanged}>
-          {countryCodes.map((c: countryCode) => {
+          {countryCodes.map((c) => {
             const country = countriesByCode[c];
             return (
               <option key={country.code} value={country.code}>
@@ -365,8 +367,7 @@ class ShippingAddressForm extends Component<Props, State> {
   };
 
   getValidatedState = (s: Partial<State>): State => {
-    const { addressFieldsByCountryCode } = this.props;
-    const checkout: Checkout = this.props;
+    const { addressFieldsByCountryCode, checkout } = this.props;
 
     let x = Object.assign({}, this.state, s);
     x.invalidFields = new Set<string>();
@@ -376,10 +377,10 @@ class ShippingAddressForm extends Component<Props, State> {
       x.invalidFields.add('email');
     }
 
-    if (checkout.requiresShipping) {
+    if (checkout?.requiresShipping) {
       const addressFields = addressFieldsByCountryCode[x.countryCode];
 
-      for (const name of addressFields) {
+      for (const name of Object.keys(addressFields)) {
         const f = FIELDS[name];
         if (f) {
           if (f.required && (x.address as any)[name].length < f.minLength) {
@@ -398,7 +399,7 @@ class ShippingAddressForm extends Component<Props, State> {
     e.preventDefault();
 
     const { valid, email, emailModified, address, locale, countryCode } = this.state;
-    const checkout: Checkout = this.props.checkout;
+    const { checkout } = this.props;
 
     if (!valid || !checkout) {
       return;
@@ -408,7 +409,7 @@ class ShippingAddressForm extends Component<Props, State> {
       submitted: true
     });
 
-    let r: CheckoutResult;
+    let r: CheckoutResult | null = null;
 
     if (emailModified) {
       r = await this.props.checkoutSetEmail({
@@ -436,18 +437,19 @@ class ShippingAddressForm extends Component<Props, State> {
         checkoutId: checkout.id,
         address: addr
       });
+
       if (handleCheckoutError(r)) {
         return;
       }
     }
 
-    if (this.props.onContinueClicked) {
+    if (r && this.props.onContinueClicked) {
       this.props.onContinueClicked(r?.response?.checkout || checkout);
     }
   };
 }
 
-export default injectIntl(connect(mapStateToProps, mapDispatchToProps)(ShippingAddressForm));
+export default injectIntl(connector(ShippingAddressForm));
 
 function noNullFields<T>(p: T): T {
   for (let k of Object.keys(p)) {

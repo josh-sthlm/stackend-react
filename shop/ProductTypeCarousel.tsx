@@ -1,7 +1,7 @@
 //@flow
 import React, { Component } from 'react';
 import { Link } from 'react-router';
-import { connect } from 'react-redux';
+import { connect, ConnectedProps } from 'react-redux';
 
 import * as Sc from './ProductTypeCarousel.style';
 
@@ -10,8 +10,20 @@ import { generateClassName } from '@stackend/api/util';
 import { getProductTypeLabel } from '@stackend/api/shop/shopActions';
 import type { CarouselSettings } from './CarouselCommon';
 import Slider from 'react-slick';
+import { getProductTypeRoots } from '@stackend/api/shop';
 
-export type Props = {
+const mapDispatchToProps = {};
+
+function mapStateToProps(state: any, ownProps: any): any {
+  const shop: ShopState = state.shop;
+  return {
+    productTypes: shop.productTypes
+  };
+}
+
+const connector = connect(mapStateToProps, mapDispatchToProps);
+
+export interface Props extends ConnectedProps<typeof connector> {
   /**
    * Product types
    */
@@ -37,16 +49,9 @@ export type Props = {
    * Carousel settings
    */
   settings?: CarouselSettings;
-};
-
-const mapDispatchToProps = {};
-
-function mapStateToProps(state: any, ownProps: any): any {
-  const shop: ShopState = state.shop;
-  return {
-    productTypes: shop.productTypes
-  };
 }
+
+
 
 export const DEFAULT_SETTINGS: CarouselSettings = {
   dots: false,
@@ -99,7 +104,7 @@ class ProductTypeCarousel extends Component<Props> {
 
     let pt = productTypes;
     if (this.props.topLevelProductTypesOnly) {
-      pt = getRoots(pt);
+      pt = getProductTypeRoots(pt);
     }
 
     const s = Object.assign({}, DEFAULT_SETTINGS, settings || {}, {
@@ -130,22 +135,4 @@ class ProductTypeCarousel extends Component<Props> {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProductTypeCarousel);
-
-function getRoots(productTypes: Array<string>): Array<string> {
-  let x: Set<string> = new Set();
-  productTypes.forEach(p => {
-    if (p === '') {
-      return;
-    }
-    let v: string = p;
-    let i = v.indexOf('/');
-    if (i === -1) {
-      x.add(v);
-    } else {
-      x.add(v.substring(0, i));
-    }
-  });
-
-  return Array.from(x);
-}
+export default connector(ProductTypeCarousel);

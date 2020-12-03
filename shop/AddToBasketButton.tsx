@@ -3,14 +3,9 @@ import React, { Component, MouseEvent } from 'react';
 import { Product as ProductType, ProductVariant } from '@stackend/api/shop';
 import { checkoutAdd } from '@stackend/api/shop/shopActions';
 import * as Sc from './AddToBasketButton.style';
-import { connect } from 'react-redux';
+import { connect, ConnectedProps } from 'react-redux';
 import { FormattedMessage, injectIntl } from 'react-intl';
 
-export interface Props {
-  product: ProductType | null;
-  variant: ProductVariant | null;
-  onClick: (e: MouseEvent, product: ProductType, variant: ProductVariant) => void;
-}
 
 interface State {
   saving: boolean;
@@ -23,6 +18,15 @@ const mapDispatchToProps = {
 function mapStateToProps(x: any, y: any) {
   return {};
 }
+
+const connector = connect(mapStateToProps, mapDispatchToProps);
+
+export interface Props extends ConnectedProps<typeof connector> {
+  product: ProductType | null;
+  variant: ProductVariant | null;
+  onClick: (e: MouseEvent, product: ProductType, variant: ProductVariant) => void;
+}
+
 
 class AddToBasketButton extends Component<Props, State> {
   state = {
@@ -62,4 +66,4 @@ class AddToBasketButton extends Component<Props, State> {
   };
 }
 
-export default injectIntl(connect(mapStateToProps, mapDispatchToProps)(AddToBasketButton));
+export default injectIntl(connector(AddToBasketButton));

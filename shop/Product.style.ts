@@ -4,11 +4,12 @@ import styled from 'styled-components';
 
 import media from '../style-common/media';
 import { Description, Price, Title } from './Shop.style';
+import classNames from '../style-common/classNames';
 
 
-export const ProductDetails = styled.div.attrs({ className: 'stackend-product-details' })``;
+export const ProductDetails = styled.div.attrs(props => ({ className: classNames('stackend-product-details', props.className) }))``;
 
-export const ProductOptions = styled.div.attrs({ className: 'stackend-product-options' })`
+export const ProductOptions = styled.div.attrs(props => ({ className: classNames('stackend-product-options', props.className) }))`
   display: grid;
   grid-template-columns: min-content min-content;
   align-items: center;
@@ -18,9 +19,9 @@ export const ProductOptions = styled.div.attrs({ className: 'stackend-product-op
   }
 `;
 
-export const Actions = styled.div.attrs({ className: 'stackend-product-actions' })``;
+export const Actions = styled.div.attrs(props => ({ className: classNames('stackend-product-actions', props.className) }))``;
 
-export const Product = styled.div.attrs({ className: 'stackend-product' })`
+export const Product = styled.div.attrs(props => ({ className: classNames('stackend-product', props.className) }))`
   text-align: center;
   display: grid;
   grid-template-columns: auto;
@@ -64,13 +65,13 @@ export const Product = styled.div.attrs({ className: 'stackend-product' })`
   }
 `;
 
-export const ProductImageBrowser = styled.div.attrs({ className: 'stackend-product-image-browser' })`
+export const ProductImageBrowser = styled.div.attrs(props => ({ className: classNames('stackend-product-image-browser', props.className) }))`
   display: flex;
   flex-direction: column;
   align-items: center;
 `;
 
-export const ProductImageBrowserThumbnails = styled.ul.attrs({ className: 'stackend-product-image-browser-thumbs' })`
+export const ProductImageBrowserThumbnails = styled.ul.attrs(props => ({ className: classNames('stackend-product-image-browser-thumbs', props.className) }))`
   margin-top: 1em;
   li {
     display: inline-block;

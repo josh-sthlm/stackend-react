@@ -1,5 +1,5 @@
-import React, { MouseEvent } from 'react';
-import { connect } from 'react-redux';
+import React, { MouseEvent, Component } from 'react';
+import { connect, ConnectedProps } from 'react-redux';
 import { report } from '@stackend/api/abuse';
 import { injectIntl, WrappedComponentProps } from 'react-intl';
 import * as Sc from './AbuseLink.style';
@@ -7,7 +7,8 @@ import get from 'lodash/get';
 import { CurrentUserType } from '@stackend/api/login/loginReducer';
 import { XcapObject } from '@stackend/api/api';
 
-function mapStateToProps({ currentUser }: any, _x: any) {
+function mapStateToProps(state: any, _x: any) {
+  let currentUser: CurrentUserType = state;
   return {
     currentUser
   };
@@ -17,18 +18,18 @@ const mapDispatchToProps = {
   report
 };
 
-export type Props = {
-  currentUser: CurrentUserType;
+const connector = connect(mapStateToProps, mapDispatchToProps);
+
+export interface Props extends ConnectedProps<typeof connector>, WrappedComponentProps {
   object: XcapObject;
-  report?: typeof report;
-} & WrappedComponentProps;
+}
 
 /**
  * A link that allows reporting abuse
  *
  * @since 3 apr 2017
  */
-class AbuseLink extends React.Component<Props> {
+class AbuseLink extends Component<Props> {
   handleClick = (e: MouseEvent) => {
     e.preventDefault();
     const { report, object, intl } = this.props;
@@ -78,4 +79,4 @@ class AbuseLink extends React.Component<Props> {
     return null;
   }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(injectIntl(AbuseLink));
+export default injectIntl(connector(AbuseLink));

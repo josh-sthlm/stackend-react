@@ -1,5 +1,6 @@
 //@flow
 import styled from 'styled-components';
+import classNames from '../style-common/classNames';
 
 export const ShopButtonCommon = `
   display: inline-block;
@@ -14,16 +15,16 @@ export const ShopButtonCommon = `
   width: fit-content;
 `;
 
-export const ShopNowButton = styled.span.attrs({ className: 'stackend-shop-now' })`
+export const ShopNowButton = styled.span.attrs(props => ({ className: classNames('stackend-shop-now', props.className) }))`
   ${ShopButtonCommon}
 `;
 
 const productItemMargin = '1em 0;';
 
-export const ProductTitlePart = styled.span.attrs({ className: 'stackend-product-title' })``;
-export const VariantTitlePart = styled.span.attrs({ className: 'stackend-variant-title' })``;
+export const ProductTitlePart = styled.span.attrs(props => ({ className: classNames('stackend-product-title', props.className) }))``;
+export const VariantTitlePart = styled.span.attrs(props => ({ className: classNames('stackend-variant-title', props.className) }))``;
 
-export const Title = styled.h2.attrs({ className: 'stackend-product-name' })`
+export const Title = styled.h2.attrs(props => ({ className: classNames('stackend-product-name', props.className) }))`
   margin: ${productItemMargin};
   letter-spacing: 0.05em;
   text-transform: uppercase;
@@ -40,9 +41,9 @@ export const Title = styled.h2.attrs({ className: 'stackend-product-name' })`
   }
 `;
 
-export const Quantity = styled.span.attrs({ className: 'stackend-shop-quantity' })``;
+export const Quantity = styled.span.attrs(props => ({ className: classNames('stackend-shop-quantity', props.className) }))``;
 
-export const Description = styled.div.attrs({ className: 'stackend-product-description' })`
+export const Description = styled.div.attrs(props => ({ className: classNames('stackend-product-description', props.className) }))`
   *:first-child {
     margin-top: 0;
   }
@@ -52,16 +53,16 @@ export const Description = styled.div.attrs({ className: 'stackend-product-descr
   }
 `;
 
-export const Price = styled.span.attrs({ className: 'stackend-product-price' })`
+export const Price = styled.span.attrs(props => ({ className: classNames('stackend-product-price', props.className) }))`
   margin: ${productItemMargin};
 `;
 
-export const Tags = styled.div.attrs({ className: 'stackend-tags' })`
+export const Tags = styled.div.attrs(props => ({ className: classNames('stackend-tags', props.className) }))`
   margin: ${productItemMargin};
   text-transform: uppercase;
 `;
 
-export const ButtonBox = styled.div.attrs({ className: 'stackend-button-box' })`
+export const ButtonBox = styled.div.attrs(props => ({ className: classNames('stackend-button-box', props.className) }))`
   margin-top: 1em;
   margin-bottom: 1em;
   display: flex;
@@ -73,10 +74,10 @@ export const ButtonBox = styled.div.attrs({ className: 'stackend-button-box' })`
   }
 `;
 
-export const ButtonNext = styled.button.attrs({ className: 'stackend-button-next' })`
+export const ButtonNext = styled.button.attrs(props => ({ className: classNames('stackend-button-next', props.className) }))`
   ${ShopButtonCommon}
 `;
 
-export const ButtonPrevious = styled.button.attrs({ className: 'stackend-button-previous' })`
+export const ButtonPrevious = styled.button.attrs(props => ({ className: classNames('stackend-button-previous', props.className) }))`
   ${ShopButtonCommon}
 `;

@@ -1,11 +1,11 @@
 //@flow
 import React, { Component, Fragment, MouseEvent } from 'react';
-import { connect } from 'react-redux';
+import { connect, ConnectedProps } from 'react-redux';
 import ProductListing, { Props as ProductListingProps } from './ProductListing';
 import { getProductListingByKey, getProductListKey, requestProducts } from '@stackend/api/shop/shopActions';
 import { ShopState, SlimProductListing } from '@stackend/api/shop/shopReducer';
 import { ListProductsRequest, SlimProduct } from '@stackend/api/shop';
-import { ShopPagination } from './ShopPagination';
+import ShopPagination from './ShopPagination';
 
 const mapDispatchToProps = {
   requestProducts,
@@ -20,7 +20,9 @@ function mapStateToProps(state: any, ownProps: any) {
   };
 }
 
-type Props = {
+const connector = connect(mapStateToProps, mapDispatchToProps);
+
+export interface Props extends ConnectedProps<typeof connector> {
   /**
    * Initial listing request
    */
@@ -67,7 +69,7 @@ type Props = {
    * Optional method to render a product
    */
   renderProduct?: ({ product, link }: { product: SlimProduct; link: string }) => JSX.Element;
-};
+}
 
 type State = {
   key: string | null;
@@ -103,12 +105,12 @@ class ProductListingContainer extends Component<Props, State> {
       renderProduct
     } = this.props;
     const { key } = this.state;
-    const listing: SlimProductListing = this.props.getProductListingByKey(key);
+    const listing = this.props.getProductListingByKey(key);
     const shop: ShopState = this.props.shop;
     const placeholders = showPlaceholder ? shop.defaults.pageSize : 0;
 
     const args: ProductListingProps = {
-      products: listing?.products,
+      products: listing?.products || [],
       placeholders,
       createProductLink,
       renderProduct
@@ -160,4 +162,4 @@ class ProductListingContainer extends Component<Props, State> {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProductListingContainer);
+export default connector(ProductListingContainer);

@@ -21,7 +21,7 @@ import {
 } from '@stackend/api/shop';
 import { mapGraphQLList } from '@stackend/api/util/graphql';
 import * as Sc from './Basket.style';
-import { connect } from 'react-redux';
+import { connect, ConnectedProps } from 'react-redux';
 import { Link } from 'react-router';
 import NumberEntry from '../ui/NumberEntry';
 import Price from './Price';
@@ -29,7 +29,7 @@ import { ButtonNext, ProductTitlePart, Title, VariantTitlePart } from './Shop.st
 import SquareProductImage from './SquareProductImage';
 import { FormattedMessage, injectIntl } from 'react-intl';
 
-function mapStateToProps(state: any, ownProps: any) {
+function mapStateToProps(state: any, op: any) {
   const shop: ShopState = state.shop;
   return {
     shop: shop,
@@ -47,7 +47,9 @@ const mapDispatchToProps = {
   checkoutReplaceItems
 };
 
-export type Props = {
+const connector = connect(mapStateToProps, mapDispatchToProps);
+
+export interface Props extends ConnectedProps<typeof connector> {
   /**
    * Function invoked to create links to products
    * @param product
@@ -70,7 +72,7 @@ export type Props = {
    * @param basket
    */
   onCheckoutClicked: (checkout: Checkout) => void;
-};
+}
 
 type State = {
   loading: boolean;
@@ -88,8 +90,7 @@ class Basket extends Component<Props, State> {
   };
 
   async componentDidMount() {
-    const { imageMaxWidth } = this.props;
-    let checkout: Checkout = this.props.checkout;
+    const { imageMaxWidth, checkout} = this.props;
 
     if (!checkout || checkout.completedAt !== null) {
       await this.props.requestOrResetActiveCheckout({ imageMaxWidth });
@@ -98,7 +99,7 @@ class Basket extends Component<Props, State> {
   }
 
   render() {
-    const checkout: Checkout = this.props.checkout;
+    const { checkout } = this.props;
     const { loading } = this.state;
 
     return (
@@ -166,7 +167,7 @@ class Basket extends Component<Props, State> {
   };
 
   onQuantityChanged = (q: number, i: CheckoutLineItem) => {
-    const checkout: Checkout = this.props.checkout;
+    const { checkout } = this.props;
     if (!checkout) {
       return;
     }
@@ -175,7 +176,7 @@ class Basket extends Component<Props, State> {
   };
 
   onRemoveClicked = (i: CheckoutLineItem) => {
-    const checkout: Checkout = this.props.checkout;
+    const { checkout } = this.props;
     if (!checkout) {
       return;
     }
@@ -187,8 +188,8 @@ class Basket extends Component<Props, State> {
   };
 
   onCheckoutClicked = async () => {
-    const checkout: Checkout = this.props.checkout;
-    if (this.props.onCheckoutClicked) {
+    const { checkout } = this.props;
+    if (checkout && this.props.onCheckoutClicked) {
       this.props.onCheckoutClicked(checkout);
     }
   };
@@ -209,4 +210,4 @@ class Basket extends Component<Props, State> {
   };
 }
 
-export default injectIntl(connect(mapStateToProps, mapDispatchToProps)(Basket));
+export default injectIntl(connector(Basket));

@@ -1,6 +1,6 @@
 //@flow
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import { connect, ConnectedProps } from 'react-redux';
 import ProductListing, { Props as ProductListingProps } from './ProductListing';
 import { requestCollection } from '@stackend/api/shop/shopActions';
 import { ShopState } from '@stackend/api/shop/shopReducer';
@@ -12,7 +12,26 @@ export type RenderProps = ProductListingProps & {
   collection: Collection;
 };
 
-export type Props = {
+
+const mapDispatchToProps = {
+  requestCollection
+};
+
+function mapStateToProps(state: any, ownProps: any) {
+  const shop: ShopState = state.shop;
+  const collection = shop.collections[ownProps.handle];
+  let products = mapGraphQLList(collection?.products, p => p);
+
+  return {
+    shop,
+    collection,
+    products
+  };
+}
+
+const connector = connect(mapStateToProps, mapDispatchToProps);
+
+export interface Props extends ConnectedProps<typeof connector> {
   /**
    * Get the collection with this handle
    */
@@ -39,27 +58,12 @@ export type Props = {
    * @param props
    */
   render?: (props: RenderProps) => JSX.Element | null;
-};
+}
 
 type State = {
   fetching: boolean;
 };
 
-const mapDispatchToProps = {
-  requestCollection
-};
-
-function mapStateToProps(state: any, ownProps: any) {
-  const shop: ShopState = state.shop;
-  const collection = shop.collections[ownProps.handle];
-  let products = mapGraphQLList(collection?.products, p => p);
-
-  return {
-    shop,
-    collection,
-    products
-  };
-}
 
 class ProductCollectionListingContainer extends Component<Props, State> {
   state = {
@@ -123,4 +127,4 @@ class ProductCollectionListingContainer extends Component<Props, State> {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProductCollectionListingContainer);
+export default connector(ProductCollectionListingContainer);

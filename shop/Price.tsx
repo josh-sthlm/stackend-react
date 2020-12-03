@@ -2,20 +2,23 @@
 import React, { Component } from 'react';
 import * as Sc from './Shop.style';
 import { MoneyV2 } from '@stackend/api/shop';
-import { connect } from 'react-redux';
+import { connect, ConnectedProps } from 'react-redux';
 import { getCurrencyFormatter } from '@stackend/api/util';
 
-export type Props = {
-  price: MoneyV2;
-};
 
 const mapDispatchToProps = {};
 
-function mapStateToProps(state: any, ownProps: any) {
+function mapStateToProps(state: any) {
   let locale: string = (state?.communities?.community?.locale || 'en-US').replace('_', '-');
   return {
     locale
   };
+}
+
+const connector = connect(mapStateToProps, mapDispatchToProps);
+
+interface Props extends ConnectedProps<typeof connector> {
+  price: MoneyV2 | null;
 }
 
 /**
@@ -34,4 +37,4 @@ class Price extends Component<Props> {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Price);
+export default connector(Price);

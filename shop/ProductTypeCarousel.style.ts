@@ -1,8 +1,9 @@
 //@flow
 import styled from 'styled-components';
 import { StackendCarouselStyle } from './CarouselCommon';
+import classNames from '../style-common/classNames';
 
-export const ProductTypeCarousel = styled.div.attrs({ className: 'stackend-product-types-carousel' })`
+export const ProductTypeCarousel = styled.div.attrs(props => ({ className: classNames('stackend-product-types-carousel', props.className) }))`
   margin: 1em 0;
   ${StackendCarouselStyle}
 

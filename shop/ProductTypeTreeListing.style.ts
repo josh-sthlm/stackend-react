@@ -1,7 +1,8 @@
 //@flow
 import styled from 'styled-components';
+import classNames from '../style-common/classNames';
 
-export const ProductTypeTreeListing = styled.ul.attrs({ className: 'stackend-product-tree-listing' })`
+export const ProductTypeTreeListing = styled.ul.attrs(props => ({ className: classNames('stackend-product-tree-listing', props.className) }))`
 
   li {
     display: none;
@@ -9,7 +10,7 @@ export const ProductTypeTreeListing = styled.ul.attrs({ className: 'stackend-pro
       display: block;
     }
   }
-  
+
   &.stackend-product-tree-root {
     > li {
       display: block;

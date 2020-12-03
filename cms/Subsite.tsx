@@ -12,7 +12,7 @@ import {
 import { Helmet } from 'react-helmet';
 import Menu from './Menu';
 import Page from './Page';
-import { connect } from 'react-redux';
+import { connect, ConnectedProps } from 'react-redux';
 import {
   getSubSiteNodePermalink,
   getSubSitePageHashPermalink,
@@ -27,24 +27,6 @@ import Content from './Content';
 import { Request, AnchorType, getAnchorPart, parseAnchor } from '@stackend/api/request';
 import { dispatchCustomEvent, EVENT_NAVIGATE_TO_PAGE } from '../util/ClientSideApi';
 
-type Props = {
-  subSite?: SubSite | null;
-  menuVisibility?: MenuVisibility;
-  helmet?: boolean;
-  currentPageId: number;
-  requestPage: (pageId: number) => Promise<GetPagesResult>;
-  pages: PagesState;
-  page: CmsPage | null;
-  content: CmsContent | null /* Additional cms content added to the page */;
-  defaultPageId: number;
-  request: Request;
-};
-
-type State = {
-  page: CmsPage | null;
-  selectedPath: Array<SubSiteNode>;
-  loading: boolean;
-};
 
 function mapStateToProps({ pages, cmsContent, request }: any, { subSite }: any): any {
   const defaultPageId = subSite ? getDefaultPageId(subSite) : null;
@@ -72,8 +54,28 @@ const mapDispatchToProps = {
   requestPage
 };
 
+const connector = connect(mapStateToProps, mapDispatchToProps);
+
+export interface Props extends ConnectedProps<typeof connector> {
+  subSite?: SubSite | null;
+  menuVisibility?: MenuVisibility;
+  helmet?: boolean;
+  currentPageId: number;
+  pages: PagesState;
+  page: CmsPage | null;
+  content: CmsContent | null /* Additional cms content added to the page */;
+  defaultPageId: number;
+  request: Request;
+}
+
+type State = {
+  page: CmsPage | null;
+  selectedPath: Array<SubSiteNode>;
+  loading: boolean;
+};
+
 /**
- * Render a subsite
+ * Render a sub site
  */
 class Subsite extends Component<Props, State> {
   pageRef = createRef();
@@ -326,4 +328,4 @@ class Subsite extends Component<Props, State> {
     this.doNavigate(href, n[n.length - 1], n, scrollOnClick).then();
   };
 }
-export default connect(mapStateToProps, mapDispatchToProps)(Subsite as any);
+export default connector(Subsite);

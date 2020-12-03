@@ -1,7 +1,7 @@
 //@flow
 import React, { Component, MouseEvent } from 'react';
 import { Link } from 'react-router';
-import { connect } from 'react-redux';
+import { connect, ConnectedProps } from 'react-redux';
 
 import * as Sc from './ProductTypeTreeListing.style';
 
@@ -9,8 +9,25 @@ import { ShopState } from '@stackend/api/shop/shopReducer';
 import { ProductTypeTree, ProductTypeTreeNode } from '@stackend/api/shop/ProductTypeTree';
 import { generateClassName } from '@stackend/api//util';
 import type { ListProductsRequest } from '@stackend/api/shop';
+import { getParentProductType } from '@stackend/api/shop';
 
-export type Props = {
+
+function mapStateToProps(state: any, ownProps: any): any {
+  const shop: ShopState = state.shop;
+  return {
+    productTypesTree: shop.productTypeTree
+  };
+}
+
+const connector = connect(mapStateToProps);
+
+export interface Props extends ConnectedProps<typeof connector> {
+
+  /**
+   * Product types
+   */
+  productTypesTree?: ProductTypeTree;
+
   /**
    * Function used to create links to product type pages.
    */
@@ -32,8 +49,7 @@ export type Props = {
    */
   onProductTypeClicked?: (e: MouseEvent, p: ProductTypeTreeNode) => void;
 
-  productTypesTree?: ProductTypeTree;
-};
+}
 
 type State = {
   openProductTypes: {
@@ -41,14 +57,7 @@ type State = {
   };
 };
 
-const mapDispatchToProps = {};
 
-function mapStateToProps(state: any, ownProps: any): any {
-  const shop: ShopState = state.shop;
-  return {
-    productTypesTree: shop.productTypeTree
-  };
-}
 
 /**
  * Render a list of product types
@@ -143,13 +152,5 @@ function openTree(openProductTypes: { [productType: string]: boolean }, p: Produ
   }
 }
 
-function getParentProductType(productType: string): string | null {
-  const i = productType.lastIndexOf('/');
-  if (i === -1) {
-    return null;
-  }
 
-  return productType.substring(0, i);
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(ProductTypeTreeListing);
+export default connector(ProductTypeTreeListing);

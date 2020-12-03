@@ -6,15 +6,9 @@ import Content from './Content';
 import { Helmet } from 'react-helmet';
 //import GroupPage from '../group/GroupPage.jsx';
 //import CommentsPage from '../comments/CommentsPage.jsx';
-import { connect } from 'react-redux';
+import { connect, ConnectedProps } from 'react-redux';
 
-type Props = {
-  page: Cms.Page | null;
-  titleSuffix?: string;
-  helmet?: boolean;
-  referenceUrlId: number;
-  parentHashLink?: string;
-};
+
 
 function mapStateToProps({ request }: any): any {
   return {
@@ -22,7 +16,14 @@ function mapStateToProps({ request }: any): any {
   };
 }
 
-const mapDispatchToProps = {};
+const connector = connect(mapStateToProps);
+
+export interface Props extends ConnectedProps<typeof connector> {
+  page: Cms.Page | null;
+  titleSuffix?: string;
+  helmet?: boolean;
+  parentHashLink?: string;
+}
 
 /**
  * Render a page
@@ -157,4 +158,4 @@ class Page extends Component<Props> {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Page);
+export default connector(Page);
