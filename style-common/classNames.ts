@@ -9,7 +9,7 @@ export default function classNames(...className: Array<string|null|undefined>): 
   if (!className) {
     return '';
   }
-  let c: string = '';
+  let c = '';
   for (const n of className) {
     if (n) {
         c = c.length === 0 ? n : c + " " + n;

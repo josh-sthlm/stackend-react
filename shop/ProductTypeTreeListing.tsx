@@ -12,7 +12,7 @@ import type { ListProductsRequest } from '@stackend/api/shop';
 import { getParentProductType } from '@stackend/api/shop';
 
 
-function mapStateToProps(state: any, ownProps: any): any {
+function mapStateToProps(state: any, _ownProps: any): any {
   const shop: ShopState = state.shop;
   return {
     productTypesTree: shop.productTypeTree
@@ -100,7 +100,7 @@ class ProductTypeTreeListing extends Component<Props, State> {
 
     return (
       <li key={p.productType} className={className + (hasChildren ? ' has-children' : '') + (isOpen ? ' open' : '')}>
-        <Link to={link} onClick={e => this.onProductTypeClicked(e, p)}>
+        <Link to={link} onClick={(e): void => this.onProductTypeClicked(e, p)}>
           {p.name}
         </Link>
         {p.children.length !== 0 && (
@@ -110,7 +110,7 @@ class ProductTypeTreeListing extends Component<Props, State> {
     );
   }
 
-  onProductTypeClicked = (e: MouseEvent, p: ProductTypeTreeNode) => {
+  onProductTypeClicked = (e: MouseEvent, p: ProductTypeTreeNode): void => {
     const { onProductTypeClicked, expandable } = this.props;
 
     if (onProductTypeClicked) {
@@ -138,7 +138,7 @@ class ProductTypeTreeListing extends Component<Props, State> {
 
 function closeTree(openProductTypes: { [productType: string]: boolean }, p: ProductTypeTreeNode): void {
   delete openProductTypes[p.productType];
-  for (let c of p.children) {
+  for (const c of p.children) {
     closeTree(openProductTypes, c);
   }
 }

@@ -10,7 +10,7 @@ import ProductListingContainer from './ProductListingContainer';
 import { FormattedMessage, injectIntl } from 'react-intl';
 
 
-function mapStateToProps(state: any, ownProps: any) {
+function mapStateToProps(state: any, _ownProps: any): any {
   return {
     shop: state.shop
   };
@@ -61,7 +61,7 @@ class ProductSearch extends Component<Props, State> {
 
   searchInput: RefObject<HTMLInputElement> = createRef();
 
-  static getDerivedStateFromProps(props: Props, state: State) {
+  static getDerivedStateFromProps(props: Props, state: State): State {
     if (state.search === null && props.listProductsRequest) {
       return Object.assign({}, state, {
         search: props.listProductsRequest,
@@ -72,13 +72,13 @@ class ProductSearch extends Component<Props, State> {
     return state;
   }
 
-  componentDidMount() {
+  componentDidMount(): void {
     if (this.searchInput && this.searchInput.current) {
       this.searchInput.current.focus();
     }
   }
 
-  render() {
+  render(): JSX.Element | null {
     const { key, q, search } = this.state;
     const listing = key ? this.props.getProductListingByKey(key) : null;
 
@@ -109,11 +109,11 @@ class ProductSearch extends Component<Props, State> {
     );
   }
 
-  renderSearchOptions() {
+  renderSearchOptions(): JSX.Element | null {
     const productTypes = this.state.search?.productTypes;
     const sort = this.state.search?.sort;
 
-    let productType = productTypes && productTypes.length !== 0 ? productTypes[0] : '';
+    const productType = productTypes && productTypes.length !== 0 ? productTypes[0] : '';
 
     return (
       <Sc.SearchOptions>
@@ -125,9 +125,7 @@ class ProductSearch extends Component<Props, State> {
           <FormattedMessage id="shop.sort_by" defaultMessage="Sort by"/>:{' '}
         </label>
         <SortOptionsSelect
-          size={1}
           id="stackend-product-sort"
-          className="stackend-product-sort"
           onChange={this.onSortChanged}
           value={sort}
         />
@@ -135,7 +133,7 @@ class ProductSearch extends Component<Props, State> {
     );
   }
 
-  onProductTypeChanged = (e: ChangeEvent<HTMLSelectElement>, productType: string) => {
+  onProductTypeChanged = (e: ChangeEvent<HTMLSelectElement>, productType: string): void => {
     this.setState(
       {
         search: {
@@ -151,7 +149,7 @@ class ProductSearch extends Component<Props, State> {
     );
   };
 
-  onSortChanged = (e: ChangeEvent<HTMLSelectElement>) => {
+  onSortChanged = (e: ChangeEvent<HTMLSelectElement>): void => {
     this.setState(
       {
         search: {
@@ -167,9 +165,9 @@ class ProductSearch extends Component<Props, State> {
     );
   };
 
-  searchTimer: number = 0;
+  searchTimer = 0;
 
-  onSearchChanged = (e: ChangeEvent<HTMLInputElement>) => {
+  onSearchChanged = (e: ChangeEvent<HTMLInputElement>): void => {
     const q = e.target.value;
 
     // Immediately update the input field but delay the actual search
@@ -178,8 +176,8 @@ class ProductSearch extends Component<Props, State> {
     this.searchTimer = setTimeout(this.updateSearchPhrase, 500);
   };
 
-  updateSearchPhrase = () => {
-    let q = this.state.q;
+  updateSearchPhrase = (): void => {
+    const q = this.state.q;
 
     this.setState(
       {
@@ -196,21 +194,21 @@ class ProductSearch extends Component<Props, State> {
     );
   };
 
-  onSearch = (e: FormEvent) => {
+  onSearch = (e: FormEvent): boolean => {
     e.preventDefault();
     e.stopPropagation();
     // FIXME: direct to url
     return false;
   };
 
-  onListingRequestChanged = (newListProductsRequest: ListProductsRequest, key: string) => {
+  onListingRequestChanged = (newListProductsRequest: ListProductsRequest, key: string): void => {
     // Changed due to pagination
     this.setState({ search: newListProductsRequest }, this.updateSearch);
   };
 
-  updateSearch = () => {
+  updateSearch = (): void => {
     const search = this.state.search as ListProductsRequest;
-    let key = this.props.getProductListKey(search);
+    const key = this.props.getProductListKey(search);
     this.setState({ key });
     if (this.props.onListingRequestChanged) this.props.onListingRequestChanged(search, key);
   };

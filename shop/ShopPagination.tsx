@@ -15,23 +15,23 @@ function ShopPagination({
   createPaginationLink: (req: PaginatedGraphQLRequest) => string;
   listing: SlimProductListing | null;
   onClick?: (e: MouseEvent, newListProductsRequest: ListProductsRequest) => void;
-} & WrappedComponentProps) {
+} & WrappedComponentProps): JSX.Element | null {
   if (!listing) {
     return null;
   }
 
-  let prevReq = previousPage(listing.selection, listing.previousCursor || '');
-  let prevLink = createPaginationLink(prevReq);
+  const prevReq = previousPage(listing.selection, listing.previousCursor || '');
+  const prevLink = createPaginationLink(prevReq);
 
-  let nextReq = nextPage(listing.selection, listing.nextCursor || '');
-  let nextLink = createPaginationLink(nextReq);
+  const nextReq = nextPage(listing.selection, listing.nextCursor || '');
+  const nextLink = createPaginationLink(nextReq);
 
   return (
     <Sc.ShopPagination>
       {listing.hasPreviousPage && (
         <Link className="stackend-shop-previous"
           to={prevLink}
-          onClick={e => {
+          onClick={(e): void => {
             if (onClick) {
               onClick(e, prevReq);
             }
@@ -46,7 +46,7 @@ function ShopPagination({
       {listing.hasNextPage && (
         <Link
           to={nextLink}
-          onClick={e => {
+          onClick={(e): void => {
             if (onClick) {
               onClick(e, nextReq);
             }

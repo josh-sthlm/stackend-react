@@ -55,6 +55,7 @@ module.exports = {
     '@typescript-eslint/no-unused-vars': 'off',
     '@typescript-eslint/no-inferrable-types': 'warn',
     '@typescript-eslint/explicit-function-return-type': 'warn',
+    '@typescript-eslint/no-empty-function': 'warn',
     'react/no-find-dom-node': 'warn',
     /*
     '@typescript-eslint/no-unused-vars': [

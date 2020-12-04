@@ -42,15 +42,15 @@ export default class Menu extends Component<Props, State> {
     }
   }
 
-  componentDidMount() {
+  componentDidMount(): void {
     document.body.addEventListener('click', this.onWindowClicked);
   }
 
-  componentWillUnmount() {
+  componentWillUnmount(): void {
     document.body.removeEventListener('click', this.onWindowClicked);
   }
 
-  onWindowClicked = (e: Event) => {
+  onWindowClicked = (e: any): void => {
     // The event bubbles down from window to the burger
     if (this.burgerRef.current === null) {
       return;
@@ -89,9 +89,7 @@ export default class Menu extends Component<Props, State> {
     const klass: string = c + (open ? ' stackend-menu-active' : ' stackend-menu-inactive');
 
     return (
-      <Sc.Menu
-        //@ts-ignore
-        className={klass}>
+      <Sc.Menu className={klass}>
         {menuVisibility === MenuVisibility.HORIZONTAL && (
           <Sc.Burger onClick={this.onMenuToggled}>
             <i className="material-icons">menu</i>
@@ -102,14 +100,14 @@ export default class Menu extends Component<Props, State> {
     );
   }
 
-  onMenuToggled = (e: MouseEvent) => {
+  onMenuToggled = (e: MouseEvent): void => {
     const { open } = this.state;
     this.setState({
       open: !open
     });
   };
 
-  onItemClicked = (e: MouseEvent, item: SubSiteNode) => {
+  onItemClicked = (e: MouseEvent, item: SubSiteNode): void => {
     e.preventDefault();
     e.stopPropagation();
 
@@ -164,11 +162,11 @@ export default class Menu extends Component<Props, State> {
             ' ' +
             (hasSubmenu ? ' stackend-menu-has-submenu' : '') +
             (isMenuOpen ? ' stackend-submenu-open' : '') +
-            (isSelected ? ' stackend-menu-item-selected' : '')) as any
+            (isSelected ? ' stackend-menu-item-selected' : ''))
         }
         key={'i' + item.permalink}>
         {link ? (
-          <Sc.MenuLink href={link} onClick={(e: any) => this.onItemClicked(e, item)}>
+          <Sc.MenuLink href={link} onClick={(e): void => this.onItemClicked(e, item)}>
             {item.name}
           </Sc.MenuLink>
         ) : (

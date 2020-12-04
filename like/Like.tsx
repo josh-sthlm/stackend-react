@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, MouseEvent } from 'react';
 import get from 'lodash/get';
 import { connect } from 'react-redux';
 import { openModal } from '../modal/modalActions';
@@ -38,7 +38,7 @@ type OwnState = {
   likedByCurrentUser: boolean;
 };
 
-function mapStateToProps({ currentUser, groupBlogEntries, GroupComments }: any, { entry, module }: any) {
+function mapStateToProps({ currentUser, groupBlogEntries, GroupComments }: any, { entry, module }: any): any {
   const key =
     typeof module !== 'undefined' && typeof entry.referenceGroupId === 'number'
       ? getCommentsStateKey(module, entry.referenceGroupId) //If this is a comment get the groupKey
@@ -77,9 +77,9 @@ export class Like extends Component<Props, OwnState> {
     };
   }
 
-  componentDidUpdate(prevProps: Props, prevState: OwnState) {
+  componentDidUpdate(prevProps: Props, prevState: OwnState): void {
     const { likedByCurrentUser, numberOfLikes } = this.props;
-    //FIXME: uggly fix to keep state in sync
+    //FIXME: ugly fix to keep state in sync
     // FIXME: Update original redux object with the number of likes? Needs a flat redux structure..
     if (likedByCurrentUser !== prevProps.likedByCurrentUser && likedByCurrentUser !== this.state.likedByCurrentUser) {
       this.setState({ likedByCurrentUser });
@@ -93,8 +93,8 @@ export class Like extends Component<Props, OwnState> {
    * Like/unlike
    * @param e
    */
-  handleClick = (e: any) =>
-    (async () => {
+  handleClick = (e: MouseEvent): void => {
+    (async (): Promise<void> => {
       e.preventDefault();
       const { isLoggedIn, openModal, entry, /*onSendEventToGA,*/ setLike } = this.props;
       const { obfuscatedReference } = entry;
@@ -136,7 +136,6 @@ export class Like extends Component<Props, OwnState> {
         console.error("Couldn't track like click, didn't find reference");
 
         //FIXME: create backup tracking when no blogEntry is available.
-        return false;
       }
 
       /* FIXME: Re add ga
@@ -182,6 +181,7 @@ export class Like extends Component<Props, OwnState> {
 			}
 			 */
     })();
+  }
 
   render(): JSX.Element | null {
     const { numberOfLikes, likedByCurrentUser } = this.state;

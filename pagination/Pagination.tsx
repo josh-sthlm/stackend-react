@@ -67,7 +67,7 @@ class Pagination extends React.Component<Props, State> {
   thresholdPixels = 500;
   scrollTimer: number | null = null;
 
-  static getDerivedStateFromProps(props: Props, state: State) {
+  static getDerivedStateFromProps(props: Props, state: State): any {
     if (!state.pageSet && props.collection) {
       return {
         page: props.collection.page,
@@ -78,7 +78,7 @@ class Pagination extends React.Component<Props, State> {
     return state;
   }
 
-  componentDidMount() {
+  componentDidMount(): void {
     // FIXME: support scrolling in any element like auto-pagination.js
     if (this.props.layout === 'lazy') {
       this.scrollSource = this.props.scrollSource ? document.querySelector(this.props.scrollSource) : window;
@@ -101,13 +101,13 @@ class Pagination extends React.Component<Props, State> {
     return e.height;
   }
 
-  componentWillUnmount() {
+  componentWillUnmount(): void {
     if (this.scrollSource) {
       this.scrollSource.removeEventListener('scroll', this.handleScroll);
     }
   }
 
-  componentDidUpdate(prevProps: Props /*, prevState, prevContext*/) {
+  componentDidUpdate(prevProps: Props /*, prevState, prevContext*/): void {
     const { collection } = this.props;
     if (!!get(collection, 'page') && get(collection, 'page') !== get(prevProps, 'collection.page')) {
       this.setState({ page: collection.page });
@@ -138,21 +138,21 @@ class Pagination extends React.Component<Props, State> {
     }
   };
 
-  onLazyNext = () => {
+  onLazyNext = (): void => {
     const { collection } = this.props;
     if (collection && this.state.page < collection.lastPage) {
       this.goToPage(this.state.page + 1);
     }
   };
 
-  onPreviousClicked = (e: MouseEvent) => {
+  onPreviousClicked = (e: MouseEvent): void => {
     e.preventDefault();
     if (this.props.collection && this.state.page > 1) {
       this.goToPage(this.state.page - 1);
     }
   };
 
-  goToPage(page: number) {
+  goToPage(page: number): void {
     if (!(Number.isInteger(page) && page > 0)) {
       throw 'Page must be a positive integer';
     }
@@ -164,11 +164,11 @@ class Pagination extends React.Component<Props, State> {
     }
   }
 
-  getPageUrl(p: number) {
+  getPageUrl(p: number): string {
     return appendQueryString(this.props.url || '', 'p=' + p);
   }
 
-  handleScroll = (e: Event) => {
+  handleScroll = (e: Event): void => {
     const { collection } = this.props;
 
     if (this.scrollTimer === null && collection && this.state.page < collection.lastPage) {
@@ -262,12 +262,12 @@ class Pagination extends React.Component<Props, State> {
           <Sc.PaginationButtons onClick={this.onFirstClicked}>{collection.firstPage}</Sc.PaginationButtons>
         )}
         {collection.page - 2 > collection.firstPage && (
-          <Sc.PaginationButtons onClick={() => this.goToPage(collection.page - 1)}>
+          <Sc.PaginationButtons onClick={(): void => this.goToPage(collection.page - 1)}>
             {collection.page - 2}
           </Sc.PaginationButtons>
         )}
         {collection.page - 1 > collection.firstPage && (
-          <Sc.PaginationButtons onClick={() => this.goToPage(collection.page - 1)}>
+          <Sc.PaginationButtons onClick={(): void => this.goToPage(collection.page - 1)}>
             {collection.page - 1}
           </Sc.PaginationButtons>
         )}
@@ -275,12 +275,12 @@ class Pagination extends React.Component<Props, State> {
         <Sc.PaginationButtons current>{collection.page}</Sc.PaginationButtons>
 
         {collection.page + 1 < collection.lastPage && (
-          <Sc.PaginationButtons onClick={() => this.goToPage(collection.page + 1)}>
+          <Sc.PaginationButtons onClick={(): void => this.goToPage(collection.page + 1)}>
             {collection.page + 1}
           </Sc.PaginationButtons>
         )}
         {collection.page + 2 < collection.lastPage && (
-          <Sc.PaginationButtons onClick={() => this.goToPage(collection.page + 1)}>
+          <Sc.PaginationButtons onClick={(): void => this.goToPage(collection.page + 1)}>
             {collection.page + 2}
           </Sc.PaginationButtons>
         )}

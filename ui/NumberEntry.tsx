@@ -11,7 +11,7 @@ type Props = {
 };
 
 export default class NumberEntry extends Component<Props> {
-  render() {
+  render(): JSX.Element {
     return (
       <Sc.NumberEntry>
         <button className="stackend-is-icon stackend-decrease" onClick={this.onDecrease}>
@@ -25,7 +25,7 @@ export default class NumberEntry extends Component<Props> {
     );
   }
 
-  onIncrease = () => {
+  onIncrease = (): void => {
     const { onChange, max } = this.props;
     if (onChange) {
       const v = this.props.value + 1;
@@ -35,7 +35,7 @@ export default class NumberEntry extends Component<Props> {
     }
   };
 
-  onDecrease = () => {
+  onDecrease = (): void  => {
     const { onChange, min } = this.props;
 
     if (onChange) {

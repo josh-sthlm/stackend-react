@@ -8,7 +8,7 @@ import { ShopNowButton, Title } from './Shop.style';
 import Price from './Price';
 import { FormattedMessage, injectIntl, WrappedComponentProps } from 'react-intl';
 
-const  ProductListingItem = ({ product, link }: { product: SlimProduct; link: string } & WrappedComponentProps) => {
+const  ProductListingItem = ({ product, link }: { product: SlimProduct; link: string } & WrappedComponentProps): JSX.Element => {
   const image = getFirstImage(product);
   return (
     <Sc.ProductListingItem key={product.id}>

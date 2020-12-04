@@ -17,9 +17,9 @@ export const Burger = styled.button.attrs(props => ({ className: classNames('sta
   text-align: left;
 `;
 
-export const Menu = styled.nav.attrs({
-  className: 'stackend-site-menu'
-})`
+export const Menu = styled.nav.attrs(props => ({
+  className: classNames('stackend-site-menu', props.className)
+}))`
   ${media.tabletScreen} {
     line-height: 2em;
   }

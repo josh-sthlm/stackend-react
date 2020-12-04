@@ -90,7 +90,7 @@ class Subsite extends Component<Props, State> {
     };
   }
 
-  static getDerivedStateFromProps(props: Props, state: State) {
+  static getDerivedStateFromProps(props: Props, state: State): any {
     /* Sets up initial page and selection */
     if (!state.page && props.subSite && props.page) {
       const selectedPath = getTreePathMatch(
@@ -106,7 +106,7 @@ class Subsite extends Component<Props, State> {
     return state;
   }
 
-  componentDidMount() {
+  componentDidMount(): void {
     this.setupLinkHandlers(this.contentRef, false);
 
     // On load, navigate to the page present in hash tag, if any
@@ -174,7 +174,6 @@ class Subsite extends Component<Props, State> {
 			 - Do not apply stackend styling to Page, but to the menu
 			*/
     }
-    // @ts-ignore
     // @ts-ignore
     return (
       <div

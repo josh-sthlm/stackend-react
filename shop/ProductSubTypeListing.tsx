@@ -12,9 +12,9 @@ const mapDispatchToProps = {};
 
 function mapStateToProps(state: any, ownProps: any): any {
   const shop: ShopState = state.shop;
-  let productType = ownProps.productType;
+  const productType = ownProps.productType;
   const n = findProductTypeTreeNode(shop.productTypeTree, productType);
-  let subNodes: ProductTypeTree = n ? n.children : [];
+  const subNodes: ProductTypeTree = n ? n.children : [];
 
   return {
     subNodes
@@ -67,14 +67,14 @@ class ProductSubTypeTreeListing extends Component<Props> {
 
     return (
       <li key={p.productType}>
-        <Link to={link} onClick={(e: MouseEvent) => this.onProductTypeClicked(e, p)}>
+        <Link to={link} onClick={(e: MouseEvent): void => this.onProductTypeClicked(e, p)}>
           {p.name}
         </Link>
       </li>
     );
   }
 
-  onProductTypeClicked = (e: MouseEvent, p: ProductTypeTreeNode) => {
+  onProductTypeClicked = (e: MouseEvent, p: ProductTypeTreeNode): void => {
     const { onProductTypeClicked } = this.props;
     if (onProductTypeClicked) {
       onProductTypeClicked(e, p);

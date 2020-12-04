@@ -7,8 +7,6 @@ export const NumberEntry = styled.span.attrs(props => ({ className: classNames('
   align-items: center;
 
   box-sizing: border-box;
-  color: var(--input-fore-color);
-  margin: calc(var(--universal-margin) / 2);
 
   .value {
     min-width: 2em;

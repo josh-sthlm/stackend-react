@@ -7,8 +7,8 @@ import get from 'lodash/get';
 import { CurrentUserType } from '@stackend/api/login/loginReducer';
 import { XcapObject } from '@stackend/api/api';
 
-function mapStateToProps(state: any, _x: any) {
-  let currentUser: CurrentUserType = state;
+function mapStateToProps(state: any, _x: any): any {
+  const currentUser: CurrentUserType = state;
   return {
     currentUser
   };
@@ -30,7 +30,7 @@ export interface Props extends ConnectedProps<typeof connector>, WrappedComponen
  * @since 3 apr 2017
  */
 class AbuseLink extends Component<Props> {
-  handleClick = (e: MouseEvent) => {
+  handleClick = (e: MouseEvent): void => {
     e.preventDefault();
     const { report, object, intl } = this.props;
 

@@ -89,7 +89,7 @@ export const DEFAULT_SETTINGS: CarouselSettings = {
  */
 class ProductTypeCarousel extends Component<Props> {
   static defaultProps = {
-    onProductTypeClicked: (e: MouseEvent) => {
+    onProductTypeClicked: (e: MouseEvent): void => {
       e.stopPropagation();
       e.preventDefault();
     }

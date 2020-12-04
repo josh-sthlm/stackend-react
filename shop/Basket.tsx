@@ -29,7 +29,7 @@ import { ButtonNext, ProductTitlePart, Title, VariantTitlePart } from './Shop.st
 import SquareProductImage from './SquareProductImage';
 import { FormattedMessage, injectIntl } from 'react-intl';
 
-function mapStateToProps(state: any, op: any) {
+function mapStateToProps(state: any, _op: any): any {
   const shop: ShopState = state.shop;
   return {
     shop: shop,
@@ -89,7 +89,7 @@ class Basket extends Component<Props, State> {
     expectedLength: 4
   };
 
-  async componentDidMount() {
+  async componentDidMount(): Promise<void> {
     const { imageMaxWidth, checkout} = this.props;
 
     if (!checkout || checkout.completedAt !== null) {
@@ -98,7 +98,7 @@ class Basket extends Component<Props, State> {
     this.setState({ loading: false });
   }
 
-  render() {
+  render(): JSX.Element {
     const { checkout } = this.props;
     const { loading } = this.state;
 
@@ -130,7 +130,7 @@ class Basket extends Component<Props, State> {
     );
   }
 
-  renderBasketItem = (i: CheckoutLineItem) => {
+  renderBasketItem = (i: CheckoutLineItem): JSX.Element | null  => {
     const handle = i.variant.product.handle;
     const variantId = i.variant.id;
 
@@ -157,16 +157,16 @@ class Basket extends Component<Props, State> {
             {!hasSingleVariant && <VariantTitlePart>{v.title}</VariantTitlePart>}
           </Title>
         </Link>
-        <NumberEntry value={i.quantity} onChange={value => this.onQuantityChanged(value, i)} max={100} min={1} />
+        <NumberEntry value={i.quantity} onChange={(value): void => this.onQuantityChanged(value, i)} max={100} min={1} />
         <Price price={price} />
-        <button onClick={() => this.onRemoveClicked(i)} className="stackend-remove-product stackend-is-icon">
+        <button onClick={(): void => this.onRemoveClicked(i)} className="stackend-remove-product stackend-is-icon">
           <i className="material-icons">delete</i>
         </button>
       </Sc.BasketItem>
     );
   };
 
-  onQuantityChanged = (q: number, i: CheckoutLineItem) => {
+  onQuantityChanged = (q: number, i: CheckoutLineItem): void => {
     const { checkout } = this.props;
     if (!checkout) {
       return;
@@ -175,26 +175,26 @@ class Basket extends Component<Props, State> {
     this.props.checkoutSetQuantity(i.variant.id, q);
   };
 
-  onRemoveClicked = (i: CheckoutLineItem) => {
+  onRemoveClicked = (i: CheckoutLineItem): void => {
     const { checkout } = this.props;
     if (!checkout) {
       return;
     }
 
-    let pv = getProductAndVariant(this.props.shop, i);
+    const pv = getProductAndVariant(this.props.shop, i);
     if (pv) {
       this.props.checkoutRemove(pv.product, pv.variant, i.quantity);
     }
   };
 
-  onCheckoutClicked = async () => {
+  onCheckoutClicked = async (): Promise<void> => {
     const { checkout } = this.props;
     if (checkout && this.props.onCheckoutClicked) {
       this.props.onCheckoutClicked(checkout);
     }
   };
 
-  renderPlaceholder = () => {
+  renderPlaceholder = (): JSX.Element | null  => {
     const { expectedLength } = this.state;
     const { showPlaceholder } = this.props;
     if (!showPlaceholder) {
@@ -202,7 +202,7 @@ class Basket extends Component<Props, State> {
     }
 
     const n = Math.max(1, expectedLength);
-    let c = [];
+    const c = [];
     for (let i = 0; i < n; i++) {
       c.push(<Sc.BasketItem key={i} className="stackend-basket-item-placeholder" />);
     }

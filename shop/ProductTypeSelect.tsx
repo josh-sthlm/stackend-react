@@ -43,7 +43,7 @@ export interface Props extends ConnectedProps<typeof connector> {
  */
 class ProductTypeSelect extends Component<Props> {
   static defaultProps = {
-    onChange: () => {}
+    onChange: (): void => {}
   };
 
   render(): JSX.Element | null {
@@ -56,7 +56,7 @@ class ProductTypeSelect extends Component<Props> {
     return (
       <Sc.ProductTypeSelect
         {...this.props}
-        onChange={e => {
+        onChange={(e): void => {
           if (onChange) onChange(e, e.target.value);
         }}
         value={value || ''}>

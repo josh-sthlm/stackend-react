@@ -43,11 +43,11 @@ class Content extends Component<OwnProps> {
     super(props);
   }
 
-  async componentDidMount() {
+  async componentDidMount(): Promise<void> {
     this.updateContent();
   }
 
-  componentDidUpdate(prevProps: OwnProps, prevState: OwnProps) {
+  componentDidUpdate(prevProps: OwnProps, prevState: OwnProps): void {
     const { content } = this.props;
 
     if (content && content.id !== (prevProps.content ? prevProps.content.id : 0)) {
@@ -55,7 +55,7 @@ class Content extends Component<OwnProps> {
     }
   }
 
-  updateContent() {
+  updateContent(): void {
     const { content } = this.props;
 
     if (!content || !content.body) {
@@ -75,7 +75,7 @@ class Content extends Component<OwnProps> {
     }
   }
 
-  onContentClicked = (e: MouseEvent) => {
+  onContentClicked = (e: MouseEvent): void => {
     const { content, openEditor } = this.props;
     if (content) {
       openEditor(content, e.target);

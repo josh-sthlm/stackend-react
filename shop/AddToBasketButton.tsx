@@ -15,7 +15,7 @@ const mapDispatchToProps = {
   checkoutAdd
 };
 
-function mapStateToProps(x: any, y: any) {
+function mapStateToProps(x: any, y: any): any {
   return {};
 }
 
@@ -54,7 +54,7 @@ class AddToBasketButton extends Component<Props, State> {
   onBuyClicked = (e: MouseEvent): void => {
     const { product, onClick, variant } = this.props;
     if (product && variant) {
-      (async () => {
+      (async (): Promise<void> => {
         this.setState({ saving: true });
         this.props.checkoutAdd(product, variant);
         if (onClick) {

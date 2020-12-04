@@ -21,7 +21,7 @@ import { getStackendLocale, EMAIL_VALIDATION_REGEXP_RELAXED } from '@stackend/ap
 import { getJsonErrorText } from '@stackend/api/api';
 import { FormattedMessage, injectIntl } from 'react-intl';
 
-function mapStateToProps(state: any, ownProps: any) {
+function mapStateToProps(state: any, ownProps: any): any {
   const shop: ShopState = state.shop;
   const community: Community = state?.communities?.community;
 
@@ -125,14 +125,14 @@ class ShippingAddressForm extends Component<Props, State> {
     submitted: false
   };
 
-  async componentDidMount() {
+  async componentDidMount(): Promise<void> {
     const { countryCodes, countriesByCode, imageMaxWidth } = this.props;
     let { checkout } = this.props;
     const community: Community = this.props.community;
 
     // Ensure a valid checkout exists
     if (!checkout) {
-      let r: GetCheckoutResult = await this.props.requestOrResetActiveCheckout({ imageMaxWidth });
+      const r: GetCheckoutResult = await this.props.requestOrResetActiveCheckout({ imageMaxWidth });
       if (!r.error) {
         checkout = r.checkout;
       }
@@ -146,21 +146,20 @@ class ShippingAddressForm extends Component<Props, State> {
     let countryCode = 'US';
     const locale = getStackendLocale(community?.locale || 'en');
     let countries: Array<Country> | null = null;
-    let country: Country | null = null;
 
     if (!countryCodes) {
       countries = await this.props.requestCountries({ locale });
       countryCode = (locale.split('_')[1] || locale).toUpperCase();
     }
 
-    country = getCountryOfCheckout(checkout, countryCode, countriesByCode, countries);
+    const country = getCountryOfCheckout(checkout, countryCode, countriesByCode, countries);
     if (country) {
       countryCode = country.code;
     }
 
     await this.props.requestAddressFields({ countryCode });
 
-    let newState: Partial<State> = {
+    const newState: Partial<State> = {
       locale,
       countryCode,
       email: checkout.email || '',
@@ -178,7 +177,7 @@ class ShippingAddressForm extends Component<Props, State> {
     this.setState(this.getValidatedState(newState));
   }
 
-  render() {
+  render(): JSX.Element | null {
     const { valid, submitted } = this.state;
 
     return (
@@ -257,12 +256,12 @@ class ShippingAddressForm extends Component<Props, State> {
     return 'group-of-' + groupOf + (isLast ? ' last' : '') + (idx === 0 ? ' first' : '');
   }
 
-  renderField = (address: ShippingAddress, fieldName: string, groupOf: number, idx: number) => {
+  renderField = (address: ShippingAddress, fieldName: string, groupOf: number, idx: number): JSX.Element | null => {
     if (fieldName === FieldName.Country) {
       return this.renderCountries(groupOf, idx);
     }
 
-    let f = FIELDS[fieldName];
+    const f = FIELDS[fieldName];
     if (!f) {
       console.error(fieldName + ' ignored');
       return null;
@@ -285,7 +284,7 @@ class ShippingAddressForm extends Component<Props, State> {
       }
     }
 
-    let id = this.idPrefix + fieldName;
+    const id = this.idPrefix + fieldName;
     return (
       <Sc.Field key={id} className={className}>
         <label htmlFor={id}>{label}:</label>
@@ -303,13 +302,13 @@ class ShippingAddressForm extends Component<Props, State> {
     );
   };
 
-  renderCountries = (groupOf: number, idx: number) => {
+  renderCountries = (groupOf: number, idx: number): JSX.Element | null => {
     const { countryCode } = this.state;
     const { countriesByCode, countryCodes } = this.props;
     if (!countryCodes) {
       return null;
     }
-    let id = this.idPrefix + 'country';
+    const id = this.idPrefix + 'country';
     const className = this.getFieldClassName(groupOf, idx);
     const label = countriesByCode[countryCode].labels['country'];
 
@@ -317,7 +316,7 @@ class ShippingAddressForm extends Component<Props, State> {
       <Sc.Field key={id} className={className}>
         <label htmlFor={id}>{label}:</label>
         <select id={id} size={1} name="country" value={countryCode} onChange={this.onCountryChanged}>
-          {countryCodes.map((c) => {
+          {countryCodes.map((c: string) => {
             const country = countriesByCode[c];
             return (
               <option key={country.code} value={country.code}>
@@ -330,7 +329,7 @@ class ShippingAddressForm extends Component<Props, State> {
     );
   };
 
-  onEmailChanged = (e: ChangeEvent<HTMLInputElement>) => {
+  onEmailChanged = (e: ChangeEvent<HTMLInputElement>): void => {
     this.setState(
       this.getValidatedState({
         email: e.target.value,
@@ -339,12 +338,12 @@ class ShippingAddressForm extends Component<Props, State> {
     );
   };
 
-  onCountryChanged = (e: ChangeEvent<HTMLSelectElement>) => {
+  onCountryChanged = (e: ChangeEvent<HTMLSelectElement>): void => {
     const { address, locale } = this.state;
     const { countriesByCode } = this.props;
-    let countryCode = e.target.value;
+    const countryCode = e.target.value;
 
-    (async () => {
+    (async (): Promise<void> => {
       const country: Country = countriesByCode[countryCode];
       this.setState({
         countryCode,
@@ -355,9 +354,9 @@ class ShippingAddressForm extends Component<Props, State> {
     })();
   };
 
-  onFieldChanged = (e: ChangeEvent<HTMLInputElement>) => {
-    let v = e.target.value;
-    let n = e.target.getAttribute('name') as string;
+  onFieldChanged = (e: ChangeEvent<HTMLInputElement>): void => {
+    const v = e.target.value;
+    const n = e.target.getAttribute('name') as string;
     this.setState(
       this.getValidatedState({
         address: Object.assign({}, this.state.address, { [n]: v }) as any,
@@ -369,7 +368,7 @@ class ShippingAddressForm extends Component<Props, State> {
   getValidatedState = (s: Partial<State>): State => {
     const { addressFieldsByCountryCode, checkout } = this.props;
 
-    let x = Object.assign({}, this.state, s);
+    const x = Object.assign({}, this.state, s);
     x.invalidFields = new Set<string>();
     x.valid = true;
 
@@ -394,7 +393,7 @@ class ShippingAddressForm extends Component<Props, State> {
     return x;
   };
 
-  onContinueClicked = async (e: MouseEvent) => {
+  onContinueClicked = async (e: MouseEvent): Promise<void> => {
     e.stopPropagation();
     e.preventDefault();
 
@@ -416,7 +415,7 @@ class ShippingAddressForm extends Component<Props, State> {
         checkoutId: checkout.id,
         email
       });
-      if (handleCheckoutError(r)) {
+      if (handleCheckoutError(r as CheckoutResult)) {
         return;
       }
     }
@@ -425,7 +424,7 @@ class ShippingAddressForm extends Component<Props, State> {
       // The country name needs to be in english to be accepted
       let addr = address;
       if (locale !== 'en_US') {
-        let country: Country = await this.props.getCountry({ locale: 'en_US', countryCode });
+        const country: Country = await this.props.getCountry({ locale: 'en_US', countryCode });
         if (country) {
           addr = Object.assign({}, address, {
             country: country.name
@@ -438,7 +437,7 @@ class ShippingAddressForm extends Component<Props, State> {
         address: addr
       });
 
-      if (handleCheckoutError(r)) {
+      if (handleCheckoutError(r as CheckoutResult)) {
         return;
       }
     }
@@ -452,7 +451,7 @@ class ShippingAddressForm extends Component<Props, State> {
 export default injectIntl(connector(ShippingAddressForm));
 
 function noNullFields<T>(p: T): T {
-  for (let k of Object.keys(p)) {
+  for (const k of Object.keys(p)) {
     if ((p as any)[k] === null) {
       (p as any)[k] = '';
     }
@@ -462,7 +461,7 @@ function noNullFields<T>(p: T): T {
 }
 
 function handleCheckoutError(r: CheckoutResult): boolean {
-  // FIXME: Improve this
+  // FIXME: Improve error messages
   if (r.error) {
     alert('Checkout failed. Try again later\n' + getJsonErrorText(r));
     return true;
@@ -505,7 +504,7 @@ function getCountryOfCheckout(
   }
 
   if (countries) {
-    let x = countries.find((c: Country) => c.code === cc);
+    const x = countries.find((c: Country) => c.code === cc);
     return x || null;
   }
 

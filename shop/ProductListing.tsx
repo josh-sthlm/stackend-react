@@ -56,18 +56,18 @@ export default class ProductListing extends Component<Props> {
     );
   }
 
-  renderProduct = (product: SlimProduct) => {
+  renderProduct = (product: SlimProduct): JSX.Element | null => {
     const link = this.props.createProductLink(product);
-    let r = this.props.renderProduct ? this.props.renderProduct : this.defaultRenderProduct;
+    const r = this.props.renderProduct ? this.props.renderProduct : this.defaultRenderProduct;
     return <li key={product.id}>{r({ product, link })}</li>;
   };
 
-  defaultRenderProduct = ({ product, link }: { product: SlimProduct; link: string }) => {
+  defaultRenderProduct = ({ product, link }: { product: SlimProduct; link: string }): JSX.Element | null => {
     return <ProductListingItem product={product} link={link} />;
   };
 
-  renderPlaceholder = () => {
-    let c = [];
+  renderPlaceholder = (): JSX.Element | null => {
+    const c = [];
     const { placeholders } = this.props;
     if (!placeholders) {
       return null;

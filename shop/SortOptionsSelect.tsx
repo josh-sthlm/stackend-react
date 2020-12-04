@@ -1,12 +1,11 @@
 //@flow
-import React from 'react';
+import React  from 'react';
 import { ProductSortKeys } from '@stackend/api/shop';
-import { FormattedMessage, injectIntl } from 'react-intl';
+import { FormattedMessage, injectIntl, WrappedComponentProps } from 'react-intl';
 
-function SortOptionsSelect(
-  props: React.DetailedHTMLProps<React.SelectHTMLAttributes<HTMLSelectElement>, HTMLSelectElement>
-): JSX.Element {
-  return (
+
+const SortOptionsSelect: React.FC<React.SelectHTMLAttributes<HTMLSelectElement> & WrappedComponentProps>
+  = (props): JSX.Element => (
     <select {...props} size={1} className="stackend-product-sort">
       <option value={ProductSortKeys.PRICE}>
         <FormattedMessage id="shop.sort.price" defaultMessage="Price" />
@@ -22,6 +21,5 @@ function SortOptionsSelect(
       </option>
     </select>
   );
-}
 
 export default injectIntl(SortOptionsSelect);

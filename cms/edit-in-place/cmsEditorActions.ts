@@ -41,7 +41,7 @@ let _editableDomElement: any = null;
  * @param enabled
  */
 export function setEditInPlaceEnabled(enabled: boolean): Thunk<boolean> {
-  return (dispatch: any /*, getState: any*/) => {
+  return (dispatch: any /*, getState: any*/): boolean => {
     if (!enabled) {
       if (!dispatch(closeEditor())) {
         return false;
@@ -91,7 +91,7 @@ function findEnclosingElementByClassName(
  * @param contentElement HTML elemen that should be edited
  */
 export function openEditor(content: Content, contentElement: any): Thunk<void> {
-  return (dispatch: any, getState: any) => {
+  return (dispatch: any, getState: any): void => {
     if (contentElement == null || content == null) {
       return;
     }
@@ -233,7 +233,7 @@ function save(): Thunk<void> {
 */
 
 export function closeEditor(): Thunk<boolean> {
-  return (dispatch: Dispatch, getState: any) => {
+  return (dispatch: Dispatch, getState: any): boolean => {
     const { cmsEditInPlace } = getState();
     const { originalId, originalDisplay, originalContent } = cmsEditInPlace;
 

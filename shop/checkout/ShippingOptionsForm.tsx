@@ -21,7 +21,7 @@ import { getJsonErrorText } from '@stackend/api/api';
 import { requestOrResetActiveCheckout } from '@stackend/api/shop/shopActions';
 import { FormattedMessage, injectIntl } from 'react-intl';
 
-function mapStateToProps(state: any, ownProps: any) {
+function mapStateToProps(state: any, ownProps: any): any {
   const shop: ShopState = state.shop;
   return {
     checkout: shop.checkout,
@@ -53,7 +53,7 @@ type State = {
 
 class ShippingOptionsForm extends Component<Props, State> {
   static defaultProps = {
-    onContinueClicked: (checkoutResult: CheckoutResult) => {
+    onContinueClicked: (checkoutResult: CheckoutResult): void => {
       window.location = checkoutResult.checkout.webUrl;
     }
   };
@@ -65,13 +65,13 @@ class ShippingOptionsForm extends Component<Props, State> {
     loadingCheckout: true
   };
 
-  async componentDidMount() {
+  async componentDidMount(): Promise<void> {
     let checkout: Checkout | null = this.props.checkout;
     const imageMaxWidth = this.props.imageMaxWidth;
 
     // Ensure a valid checkout exists
     if (!checkout) {
-      let r: GetCheckoutResult = await this.props.requestOrResetActiveCheckout({ imageMaxWidth });
+      const r: GetCheckoutResult = await this.props.requestOrResetActiveCheckout({ imageMaxWidth });
       if (!r.error) {
         checkout = r.checkout;
       }
@@ -99,7 +99,7 @@ class ShippingOptionsForm extends Component<Props, State> {
     }
   }
 
-  render() {
+  render(): JSX.Element | null {
     const { valid, submitted, shippingHandle, loadingCheckout } = this.state;
     const { checkout } = this.props;
 
@@ -199,8 +199,8 @@ class ShippingOptionsForm extends Component<Props, State> {
     );
   }
 
-  renderLineItem = (i: CheckoutLineItem) => {
-    let pv = getProductAndVariant(this.props.shop, i);
+  renderLineItem = (i: CheckoutLineItem): JSX.Element | null => {
+    const pv = getProductAndVariant(this.props.shop, i);
     if (pv == null) {
       return null;
     }
@@ -217,14 +217,14 @@ class ShippingOptionsForm extends Component<Props, State> {
     );
   };
 
-  onShippingChanged = async (e: ChangeEvent<HTMLInputElement>) => {
+  onShippingChanged = (e: ChangeEvent<HTMLInputElement>): void => {
     this.setState({
       shippingHandle: e.target.value,
       valid: true
     });
   };
 
-  onContinueClicked = async (e: MouseEvent) => {
+  onContinueClicked = async (e: MouseEvent): Promise<void> => {
     e.stopPropagation();
     e.preventDefault();
     const  { checkout } = this.props;

@@ -62,7 +62,7 @@ class Product extends Component<Props, State> {
     selectedImage: null
   };
 
-  static getDerivedStateFromProps(props: Props, state: State) {
+  static getDerivedStateFromProps(props: Props, state: State): any {
     if (state.selectedVariant == null && props.initialProductVariantId) {
       const selectedVariant = getProductVariant(props.product, props.initialProductVariantId);
       const selection = getProductSelection(props.product, selectedVariant);
@@ -78,7 +78,7 @@ class Product extends Component<Props, State> {
     return state;
   }
 
-  componentDidMount() {
+  componentDidMount(): void {
     const { product } = this.props;
     let { selectedVariant, selectedImage, selection } = this.state;
 
@@ -113,8 +113,7 @@ class Product extends Component<Props, State> {
       return null;
     }
 
-    let image = selectedImage;
-    let price = selectedVariant ? selectedVariant.priceV2 : null;
+    const image = selectedImage;
 
     return (
       <Sc.Product>
@@ -134,7 +133,7 @@ class Product extends Component<Props, State> {
 
         <Sc.Actions>
           {this.renderOptions(product)}
-          <Price price={price} />
+          <Price price={selectedVariant?.priceV2} />
           <AddToBasketButton product={product} variant={selectedVariant} />
           {product.tags && <Tags>{product.tags.map(this.renderTag)}</Tags>}
         </Sc.Actions>
@@ -153,11 +152,11 @@ class Product extends Component<Props, State> {
     ) : null;
   };
 
-  renderThumbnail = (image: ProductImage) => {
+  renderThumbnail = (image: ProductImage): JSX.Element => {
     const { selectedImage } = this.state;
     return (
       <li key={image.transformedSrc} className={selectedImage === image ? 'selected' : ''}>
-        <button onClick={e => this.onThumbnailClicked(e, image)}>{this.renderImage(image, false)}</button>
+        <button onClick={(e): void => this.onThumbnailClicked(e, image)}>{this.renderImage(image, false)}</button>
       </li>
     );
   };
@@ -181,7 +180,7 @@ class Product extends Component<Props, State> {
 
     const { selection } = this.state;
 
-    let s: ProductSelection = {};
+    const s: ProductSelection = {};
     return (
       <Sc.ProductOptions>
         {product.options.map((o, index) => {
@@ -196,7 +195,7 @@ class Product extends Component<Props, State> {
                 key={o.id}
                 id={o.id}
                 value={value}
-                onChange={e => this.onVariantSelected(o, e.target.value)}>
+                onChange={(e): void => this.onVariantSelected(o, e.target.value)}>
                 {o.values.map(v => {
                   let disabled = false;
                   let variant: ProductVariant | null = null;
@@ -231,7 +230,7 @@ class Product extends Component<Props, State> {
     );
   };
 
-  onVariantSelected = (option: ProductOption, value: string) => {
+  onVariantSelected = (option: ProductOption, value: string): void => {
     const { onVariantSelected, product } = this.props;
 
     const selection = Object.assign({}, this.state.selection, {
@@ -254,10 +253,10 @@ class Product extends Component<Props, State> {
     );
   };
 
-  onThumbnailClicked = (e: MouseEvent, image: ProductImage) => {
+  onThumbnailClicked = (e: MouseEvent, image: ProductImage): void => {
     const { product } = this.props;
     let { selection, selectedVariant } = this.state;
-    let s = findProductVariantByImage(product, image);
+    const s = findProductVariantByImage(product, image);
     if (s) {
       selectedVariant = s;
       selection = getProductSelection(product, selectedVariant);
@@ -283,7 +282,7 @@ export function findProductVariantByImage(product: IProduct, image: ProductImage
     return null;
   }
 
-  let x = product.variants.edges.find(v => {
+  const x = product.variants.edges.find(v => {
     return v.node?.image?.transformedSrc === image.transformedSrc;
   });
 

@@ -13,7 +13,7 @@ const mapDispatchToProps = {
   getProductListingByKey
 };
 
-function mapStateToProps(state: any, ownProps: any) {
+function mapStateToProps(state: any, _ownProps: any): any {
   const shop: ShopState = state.shop;
   return {
     shop
@@ -82,11 +82,11 @@ class ProductListingContainer extends Component<Props, State> {
     fetching: false
   };
 
-  componentDidMount() {
+  componentDidMount(): void {
     this.requestProducts().then();
   }
 
-  async componentDidUpdate(prevProps: Props) {
+  async componentDidUpdate(prevProps: Props): Promise<void> {
     if (!this.state.fetching) {
       const newKey = this.props.getProductListKey(this.props.listProductsRequest);
       if (newKey !== this.state.key) {
@@ -95,7 +95,7 @@ class ProductListingContainer extends Component<Props, State> {
     }
   }
 
-  render() {
+  render(): JSX.Element | null {
     const {
       showPlaceholder,
       createProductLink,
@@ -130,11 +130,11 @@ class ProductListingContainer extends Component<Props, State> {
     );
   }
 
-  defaultRenderListing = (args: ProductListingProps) => {
+  defaultRenderListing = (args: ProductListingProps): JSX.Element | null => {
     return <ProductListing {...args} />;
   };
 
-  onPaginationClicked = (e: MouseEvent, req: ListProductsRequest) => {
+  onPaginationClicked = (e: MouseEvent, req: ListProductsRequest): void => {
     if (this.props.onListingRequestChanged) {
       e.stopPropagation();
       e.preventDefault();
@@ -143,7 +143,7 @@ class ProductListingContainer extends Component<Props, State> {
     }
   };
 
-  requestProducts = async () => {
+  requestProducts = async (): Promise<void> => {
     const { listProductsRequest } = this.props;
     const key = this.props.getProductListKey(listProductsRequest);
     const listing = this.props.getProductListingByKey(key);

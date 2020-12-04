@@ -17,10 +17,10 @@ const mapDispatchToProps = {
   requestCollection
 };
 
-function mapStateToProps(state: any, ownProps: any) {
+function mapStateToProps(state: any, ownProps: any): any {
   const shop: ShopState = state.shop;
   const collection = shop.collections[ownProps.handle];
-  let products = mapGraphQLList(collection?.products, p => p);
+  const products = mapGraphQLList(collection?.products, p => p);
 
   return {
     shop,
@@ -70,17 +70,17 @@ class ProductCollectionListingContainer extends Component<Props, State> {
     fetching: false
   };
 
-  componentDidMount() {
+  componentDidMount(): void {
     this.requestCollection().then();
   }
 
-  async componentDidUpdate(prevProps: Props) {
+  async componentDidUpdate(prevProps: Props): Promise<void> {
     if (this.props.handle !== prevProps.handle) {
       await this.requestCollection();
     }
   }
 
-  render() {
+  render(): JSX.Element | null {
     const { showPlaceholder, createProductLink, shop, products, render, showDescription } = this.props;
     const placeholders = showPlaceholder ? shop.defaults.pageSize : 0;
     const collection: Collection | null = this.props.collection;
@@ -89,8 +89,8 @@ class ProductCollectionListingContainer extends Component<Props, State> {
       return null;
     }
 
-    let r = render || this.defaultRender;
-    let args = {
+    const r = render || this.defaultRender;
+    const args = {
       collection,
       products,
       placeholders,
@@ -110,11 +110,11 @@ class ProductCollectionListingContainer extends Component<Props, State> {
     );
   }
 
-  defaultRender = (args: RenderProps) => {
+  defaultRender = (args: RenderProps): JSX.Element | null => {
     return <ProductListing {...args} />;
   };
 
-  requestCollection = async () => {
+  requestCollection = async (): Promise<void> => {
     const { handle, collection } = this.props;
 
     if (!collection && handle) {

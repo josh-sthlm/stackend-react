@@ -5,7 +5,7 @@ import ReactModal from 'react-modal';
 import { closeModal } from './modalActions';
 import * as Sc from './Modal.style';
 
-function mapStateToProps({ openModals }: any, { modalName }: any) {
+function mapStateToProps({ openModals }: any, { modalName }: any): any {
   return {
     isOpen: openModals.modalName === modalName
   };
