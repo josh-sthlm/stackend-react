@@ -21,7 +21,6 @@ export const ProductSearch = styled.div.attrs(props => ({
       }
 
       button[type='submit'] {
-        background-image: url('${require('../../public/img/search.svg')}');
         background-repeat: no-repeat;
         background-position: center;
       }
