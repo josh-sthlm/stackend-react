@@ -8,7 +8,10 @@ import { ShopNowButton, Title } from './Shop.style';
 import Price from './Price';
 import { FormattedMessage, injectIntl, WrappedComponentProps } from 'react-intl';
 
-const  ProductListingItem = ({ product, link }: { product: SlimProduct; link: string } & WrappedComponentProps): JSX.Element => {
+const ProductListingItem = ({
+  product,
+  link
+}: { product: SlimProduct; link: string } & WrappedComponentProps): JSX.Element => {
   const image = getFirstImage(product);
   return (
     <Sc.ProductListingItem key={product.id}>
@@ -16,10 +19,12 @@ const  ProductListingItem = ({ product, link }: { product: SlimProduct; link: st
         <SquareProductImage image={image} responsive={true} />
         <Title>{product.title}</Title>
         <Price price={product.priceRange.minVariantPrice} />
-        <ShopNowButton><FormattedMessage id="shop.buy_now" defaultMessage="BUY NOW!"/></ShopNowButton>
+        <ShopNowButton>
+          <FormattedMessage id="shop.buy_now" defaultMessage="BUY NOW!" />
+        </ShopNowButton>
       </Link>
     </Sc.ProductListingItem>
   );
-}
+};
 
 export default injectIntl(ProductListingItem);

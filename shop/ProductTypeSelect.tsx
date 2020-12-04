@@ -8,7 +8,6 @@ import { ShopState } from '@stackend/api/shop/shopReducer';
 import { ProductTypeTreeNode, ProductTypeTree } from '@stackend/api/shop/ProductTypeTree';
 import { injectIntl, FormattedMessage } from 'react-intl';
 
-
 function mapStateToProps(state: any, p: any): any {
   const shop: ShopState = state.shop;
   return {
@@ -18,7 +17,6 @@ function mapStateToProps(state: any, p: any): any {
 const connector = connect(mapStateToProps);
 
 export interface Props extends ConnectedProps<typeof connector> {
-
   /**
    * Product types
    */
@@ -35,8 +33,6 @@ export interface Props extends ConnectedProps<typeof connector> {
    */
   onChange?: (e: ChangeEvent<HTMLSelectElement>, productType: string) => void;
 }
-
-
 
 /**
  * Render a list of product types as a carousel

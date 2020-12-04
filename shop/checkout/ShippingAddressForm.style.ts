@@ -4,8 +4,12 @@ import styled from 'styled-components';
 import media from '../../style-common/media';
 import classNames from '../../style-common/classNames';
 
-export const Fields = styled.div.attrs(props => ({ className: classNames('stackend-shop-checkout-shipping-fields', props.className) }))``;
-export const Field = styled.div.attrs(props => ({ className: classNames('stackend-shop-checkout-shipping-field', props.className) }))`
+export const Fields = styled.div.attrs(props => ({
+  className: classNames('stackend-shop-checkout-shipping-fields', props.className)
+}))``;
+export const Field = styled.div.attrs(props => ({
+  className: classNames('stackend-shop-checkout-shipping-field', props.className)
+}))`
   label {
     display: block;
   }
@@ -15,11 +19,15 @@ export const Field = styled.div.attrs(props => ({ className: classNames('stacken
   }
 `;
 
-export const FieldPlaceholder = styled.div.attrs(props => ({ className: classNames('stackend-shop-checkout-shipping-field-placeholder', props.className) }))`
+export const FieldPlaceholder = styled.div.attrs(props => ({
+  className: classNames('stackend-shop-checkout-shipping-field-placeholder', props.className)
+}))`
   min-height: 100vh;
 `;
 
-export const ShippingAddressForm = styled.form.attrs(props => ({ className: classNames('stackend-shop-checkout-shipping-address', props.className) }))`
+export const ShippingAddressForm = styled.form.attrs(props => ({
+  className: classNames('stackend-shop-checkout-shipping-address', props.className)
+}))`
   overflow: hidden;
 
   h1 {

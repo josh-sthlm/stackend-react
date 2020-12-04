@@ -181,7 +181,7 @@ export class Like extends Component<Props, OwnState> {
 			}
 			 */
     })();
-  }
+  };
 
   render(): JSX.Element | null {
     const { numberOfLikes, likedByCurrentUser } = this.state;

@@ -5,7 +5,6 @@ import { MoneyV2 } from '@stackend/api/shop';
 import { connect, ConnectedProps } from 'react-redux';
 import { getCurrencyFormatter } from '@stackend/api/util';
 
-
 function mapStateToProps(state: any): any {
   const locale: string = (state?.communities?.community?.locale || 'en-US').replace('_', '-');
   return {
@@ -23,7 +22,7 @@ export interface Props extends ConnectedProps<typeof connector> {
  * Render a price using the current community's locale
  */
 class Price extends Component<Props> {
-  render(): JSX.Element | null  {
+  render(): JSX.Element | null {
     const { price, locale } = this.props;
     if (!price) {
       return null;

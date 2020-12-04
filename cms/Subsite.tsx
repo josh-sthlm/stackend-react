@@ -27,7 +27,6 @@ import Content from './Content';
 import { Request, AnchorType, getAnchorPart, parseAnchor } from '@stackend/api/request';
 import { dispatchCustomEvent, EVENT_NAVIGATE_TO_PAGE } from '../util/ClientSideApi';
 
-
 function mapStateToProps({ pages, cmsContent, request }: any, { subSite }: any): any {
   const defaultPageId = subSite ? getDefaultPageId(subSite) : null;
 

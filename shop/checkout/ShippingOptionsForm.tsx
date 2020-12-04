@@ -227,7 +227,7 @@ class ShippingOptionsForm extends Component<Props, State> {
   onContinueClicked = async (e: MouseEvent): Promise<void> => {
     e.stopPropagation();
     e.preventDefault();
-    const  { checkout } = this.props;
+    const { checkout } = this.props;
     const { valid, shippingHandle } = this.state;
     if (!checkout || !valid) {
       return;

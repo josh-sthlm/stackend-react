@@ -6,8 +6,9 @@ import media from '../style-common/media';
 import { NumberEntry } from '../ui/NumberEntry.style';
 import classNames from '../style-common/classNames';
 
-
-export const BasketItem = styled.li.attrs(props => ({ className: classNames('stackend-basket-list-item', props.className) }))`
+export const BasketItem = styled.li.attrs(props => ({
+  className: classNames('stackend-basket-list-item', props.className)
+}))`
   &.stackend-basket-item-placeholder {
     height: 10.772em;
     ${media.mobileScreen} {
@@ -16,10 +17,18 @@ export const BasketItem = styled.li.attrs(props => ({ className: classNames('sta
   }
 `;
 
-export const BasketList = styled.ul.attrs(props => ({ className: classNames('stackend-basket-list', props.className) }))``;
-export const BasketTotalPrice = styled.div.attrs(props => ({ className: classNames('stackend-basket-total', props.className) }))``;
-export const BasketEmpty = styled.p.attrs(props => ({ className: classNames('stacked-basket-empty', props.className) }))``;
-export const BasketActions = styled.div.attrs(props => ({ className: classNames('stacked-basket-actions', props.className) }))``;
+export const BasketList = styled.ul.attrs(props => ({
+  className: classNames('stackend-basket-list', props.className)
+}))``;
+export const BasketTotalPrice = styled.div.attrs(props => ({
+  className: classNames('stackend-basket-total', props.className)
+}))``;
+export const BasketEmpty = styled.p.attrs(props => ({
+  className: classNames('stacked-basket-empty', props.className)
+}))``;
+export const BasketActions = styled.div.attrs(props => ({
+  className: classNames('stacked-basket-actions', props.className)
+}))``;
 
 export const Basket = styled.div`
   overflow: hidden;

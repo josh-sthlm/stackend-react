@@ -3,7 +3,9 @@
 import styled from 'styled-components';
 import classNames from '../style-common/classNames';
 
-export const ProductTypeBreadCrumbs = styled.div.attrs(props => ({ className: classNames('stackend-shop-bread-crumbs', props.className) }))`
+export const ProductTypeBreadCrumbs = styled.div.attrs(props => ({
+  className: classNames('stackend-shop-bread-crumbs', props.className)
+}))`
   margin: 1em 0;
 
   span {

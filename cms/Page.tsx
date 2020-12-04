@@ -8,8 +8,6 @@ import { Helmet } from 'react-helmet';
 //import CommentsPage from '../comments/CommentsPage.jsx';
 import { connect, ConnectedProps } from 'react-redux';
 
-
-
 function mapStateToProps({ request }: any): any {
   return {
     referenceUrlId: request.referenceUrlId

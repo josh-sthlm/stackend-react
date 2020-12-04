@@ -35,7 +35,7 @@ export default class NumberEntry extends Component<Props> {
     }
   };
 
-  onDecrease = (): void  => {
+  onDecrease = (): void => {
     const { onChange, min } = this.props;
 
     if (onChange) {

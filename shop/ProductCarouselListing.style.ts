@@ -5,7 +5,9 @@ import { StackendCarouselStyle } from './CarouselCommon';
 import { ProductListingItem } from './ProductListingItem.style';
 import classNames from '../style-common/classNames';
 
-export const ProductCarouselListing = styled.div.attrs(props => ({ className: classNames('stackend-shop-collection', props.className) }))`
+export const ProductCarouselListing = styled.div.attrs(props => ({
+  className: classNames('stackend-shop-collection', props.className)
+}))`
   margin: 1em 0;
   ${StackendCarouselStyle}
 

@@ -9,9 +9,13 @@ export const MenuLink = styled.a.attrs(props => ({ className: classNames('stacke
 
 export const MenuItem = styled.div.attrs(props => ({ className: classNames('stackend-menu-item', props.className) }))``;
 
-export const SubMenuItems = styled.div.attrs(props => ({ className: classNames('stackend-submenu-items', props.className) }))``;
+export const SubMenuItems = styled.div.attrs(props => ({
+  className: classNames('stackend-submenu-items', props.className)
+}))``;
 
-export const Burger = styled.button.attrs(props => ({ className: classNames('stackend-menu-burger', props.className) }))`
+export const Burger = styled.button.attrs(props => ({
+  className: classNames('stackend-menu-burger', props.className)
+}))`
   padding: 0.25em 0;
   width: 100%;
   text-align: left;

@@ -51,8 +51,6 @@ export interface Props extends ConnectedProps<typeof connector> {
   settings?: CarouselSettings;
 }
 
-
-
 export const DEFAULT_SETTINGS: CarouselSettings = {
   dots: false,
   arrows: true,

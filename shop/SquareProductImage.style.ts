@@ -2,7 +2,9 @@
 import styled from 'styled-components';
 import classNames from '../style-common/classNames';
 
-export const SquareProductImage = styled.div.attrs( props => ({className: classNames('stackend-square-product-image', props.className) }))`
+export const SquareProductImage = styled.div.attrs(props => ({
+  className: classNames('stackend-square-product-image', props.className)
+}))`
   overflow: hidden;
   height: 200px;
   width: 200px;

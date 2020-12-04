@@ -158,11 +158,11 @@ export default class Menu extends Component<Props, State> {
     return (
       <Sc.MenuItem
         className={
-          (klass +
-            ' ' +
-            (hasSubmenu ? ' stackend-menu-has-submenu' : '') +
-            (isMenuOpen ? ' stackend-submenu-open' : '') +
-            (isSelected ? ' stackend-menu-item-selected' : ''))
+          klass +
+          ' ' +
+          (hasSubmenu ? ' stackend-menu-has-submenu' : '') +
+          (isMenuOpen ? ' stackend-submenu-open' : '') +
+          (isSelected ? ' stackend-menu-item-selected' : '')
         }
         key={'i' + item.permalink}>
         {link ? (

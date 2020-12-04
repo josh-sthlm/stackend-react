@@ -12,7 +12,6 @@ export type RenderProps = ProductListingProps & {
   collection: Collection;
 };
 
-
 const mapDispatchToProps = {
   requestCollection
 };
@@ -63,7 +62,6 @@ export interface Props extends ConnectedProps<typeof connector> {
 type State = {
   fetching: boolean;
 };
-
 
 class ProductCollectionListingContainer extends Component<Props, State> {
   state = {

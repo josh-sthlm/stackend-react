@@ -4,7 +4,9 @@ import { Price, Title } from './Shop.style';
 import { SquareProductImage } from './SquareProductImage.style';
 import classNames from '../style-common/classNames';
 
-export const ProductListingItem = styled.div.attrs(props => ({ className: classNames('stackend-product-list-item', props.className) }))`
+export const ProductListingItem = styled.div.attrs(props => ({
+  className: classNames('stackend-product-list-item', props.className)
+}))`
   text-align: center;
   background: white;
   display: flex;

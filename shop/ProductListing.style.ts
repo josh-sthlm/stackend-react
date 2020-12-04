@@ -17,7 +17,9 @@ export const Products = styled.ul.attrs(props => ({ className: classNames('stack
   }
 `;
 
-export const ProductListing = styled.div.attrs(props => ({ className: classNames('stackend-product-listing', props.className) }))`
+export const ProductListing = styled.div.attrs(props => ({
+  className: classNames('stackend-product-listing', props.className)
+}))`
   &.stackend-product-listing-placeholder {
     ${ProductListingItem} {
       height: 20em;

@@ -90,7 +90,7 @@ class Basket extends Component<Props, State> {
   };
 
   async componentDidMount(): Promise<void> {
-    const { imageMaxWidth, checkout} = this.props;
+    const { imageMaxWidth, checkout } = this.props;
 
     if (!checkout || checkout.completedAt !== null) {
       await this.props.requestOrResetActiveCheckout({ imageMaxWidth });
@@ -130,7 +130,7 @@ class Basket extends Component<Props, State> {
     );
   }
 
-  renderBasketItem = (i: CheckoutLineItem): JSX.Element | null  => {
+  renderBasketItem = (i: CheckoutLineItem): JSX.Element | null => {
     const handle = i.variant.product.handle;
     const variantId = i.variant.id;
 
@@ -157,7 +157,12 @@ class Basket extends Component<Props, State> {
             {!hasSingleVariant && <VariantTitlePart>{v.title}</VariantTitlePart>}
           </Title>
         </Link>
-        <NumberEntry value={i.quantity} onChange={(value): void => this.onQuantityChanged(value, i)} max={100} min={1} />
+        <NumberEntry
+          value={i.quantity}
+          onChange={(value): void => this.onQuantityChanged(value, i)}
+          max={100}
+          min={1}
+        />
         <Price price={price} />
         <button onClick={(): void => this.onRemoveClicked(i)} className="stackend-remove-product stackend-is-icon">
           <i className="material-icons">delete</i>
@@ -194,7 +199,7 @@ class Basket extends Component<Props, State> {
     }
   };
 
-  renderPlaceholder = (): JSX.Element | null  => {
+  renderPlaceholder = (): JSX.Element | null => {
     const { expectedLength } = this.state;
     const { showPlaceholder } = this.props;
     if (!showPlaceholder) {

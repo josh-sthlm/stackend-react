@@ -6,10 +6,13 @@ import media from '../style-common/media';
 import { Description, Price, Title } from './Shop.style';
 import classNames from '../style-common/classNames';
 
+export const ProductDetails = styled.div.attrs(props => ({
+  className: classNames('stackend-product-details', props.className)
+}))``;
 
-export const ProductDetails = styled.div.attrs(props => ({ className: classNames('stackend-product-details', props.className) }))``;
-
-export const ProductOptions = styled.div.attrs(props => ({ className: classNames('stackend-product-options', props.className) }))`
+export const ProductOptions = styled.div.attrs(props => ({
+  className: classNames('stackend-product-options', props.className)
+}))`
   display: grid;
   grid-template-columns: min-content min-content;
   align-items: center;
@@ -19,7 +22,9 @@ export const ProductOptions = styled.div.attrs(props => ({ className: classNames
   }
 `;
 
-export const Actions = styled.div.attrs(props => ({ className: classNames('stackend-product-actions', props.className) }))``;
+export const Actions = styled.div.attrs(props => ({
+  className: classNames('stackend-product-actions', props.className)
+}))``;
 
 export const Product = styled.div.attrs(props => ({ className: classNames('stackend-product', props.className) }))`
   text-align: center;
@@ -65,13 +70,17 @@ export const Product = styled.div.attrs(props => ({ className: classNames('stack
   }
 `;
 
-export const ProductImageBrowser = styled.div.attrs(props => ({ className: classNames('stackend-product-image-browser', props.className) }))`
+export const ProductImageBrowser = styled.div.attrs(props => ({
+  className: classNames('stackend-product-image-browser', props.className)
+}))`
   display: flex;
   flex-direction: column;
   align-items: center;
 `;
 
-export const ProductImageBrowserThumbnails = styled.ul.attrs(props => ({ className: classNames('stackend-product-image-browser-thumbs', props.className) }))`
+export const ProductImageBrowserThumbnails = styled.ul.attrs(props => ({
+  className: classNames('stackend-product-image-browser-thumbs', props.className)
+}))`
   margin-top: 1em;
   li {
     display: inline-block;

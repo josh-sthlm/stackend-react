@@ -9,7 +9,6 @@ import SortOptionsSelect from './SortOptionsSelect';
 import ProductListingContainer from './ProductListingContainer';
 import { FormattedMessage, injectIntl } from 'react-intl';
 
-
 function mapStateToProps(state: any, _ownProps: any): any {
   return {
     shop: state.shop
@@ -50,7 +49,6 @@ export interface Props extends ConnectedProps<typeof connector> {
    */
   onListingRequestChanged: (search: ListProductsRequest, productListingKey: string) => void;
 }
-
 
 class ProductSearch extends Component<Props, State> {
   state: State = {
@@ -102,9 +100,11 @@ class ProductSearch extends Component<Props, State> {
           showPlaceholder={true}
           onListingRequestChanged={this.onListingRequestChanged}
         />
-        {listing && listing.products.length === 0 && <Sc.NoMatches>
-          <FormattedMessage id="shop.search.no_hits" defaultMessage="No products matching the search"/>
-        </Sc.NoMatches>}
+        {listing && listing.products.length === 0 && (
+          <Sc.NoMatches>
+            <FormattedMessage id="shop.search.no_hits" defaultMessage="No products matching the search" />
+          </Sc.NoMatches>
+        )}
       </Sc.ProductSearch>
     );
   }
@@ -118,17 +118,13 @@ class ProductSearch extends Component<Props, State> {
     return (
       <Sc.SearchOptions>
         <label className="stackend-product-filters-label" htmlFor="stackend-product-filter">
-          <FormattedMessage id="shop.product_type" defaultMessage="Product type"/>:{' '}
+          <FormattedMessage id="shop.product_type" defaultMessage="Product type" />:{' '}
         </label>
         <ProductTypeSelect id="stackend-product-filter" onChange={this.onProductTypeChanged} value={productType} />
         <label htmlFor="stackend-product-sort" className="stackend-product-sort-label">
-          <FormattedMessage id="shop.sort_by" defaultMessage="Sort by"/>:{' '}
+          <FormattedMessage id="shop.sort_by" defaultMessage="Sort by" />:{' '}
         </label>
-        <SortOptionsSelect
-          id="stackend-product-sort"
-          onChange={this.onSortChanged}
-          value={sort}
-        />
+        <SortOptionsSelect id="stackend-product-sort" onChange={this.onSortChanged} value={sort} />
       </Sc.SearchOptions>
     );
   }

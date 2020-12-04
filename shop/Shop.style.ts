@@ -15,14 +15,20 @@ export const ShopButtonCommon = `
   width: fit-content;
 `;
 
-export const ShopNowButton = styled.span.attrs(props => ({ className: classNames('stackend-shop-now', props.className) }))`
+export const ShopNowButton = styled.span.attrs(props => ({
+  className: classNames('stackend-shop-now', props.className)
+}))`
   ${ShopButtonCommon}
 `;
 
 const productItemMargin = '1em 0;';
 
-export const ProductTitlePart = styled.span.attrs(props => ({ className: classNames('stackend-product-title', props.className) }))``;
-export const VariantTitlePart = styled.span.attrs(props => ({ className: classNames('stackend-variant-title', props.className) }))``;
+export const ProductTitlePart = styled.span.attrs(props => ({
+  className: classNames('stackend-product-title', props.className)
+}))``;
+export const VariantTitlePart = styled.span.attrs(props => ({
+  className: classNames('stackend-variant-title', props.className)
+}))``;
 
 export const Title = styled.h2.attrs(props => ({ className: classNames('stackend-product-name', props.className) }))`
   margin: ${productItemMargin};
@@ -41,9 +47,13 @@ export const Title = styled.h2.attrs(props => ({ className: classNames('stackend
   }
 `;
 
-export const Quantity = styled.span.attrs(props => ({ className: classNames('stackend-shop-quantity', props.className) }))``;
+export const Quantity = styled.span.attrs(props => ({
+  className: classNames('stackend-shop-quantity', props.className)
+}))``;
 
-export const Description = styled.div.attrs(props => ({ className: classNames('stackend-product-description', props.className) }))`
+export const Description = styled.div.attrs(props => ({
+  className: classNames('stackend-product-description', props.className)
+}))`
   *:first-child {
     margin-top: 0;
   }
@@ -74,10 +84,14 @@ export const ButtonBox = styled.div.attrs(props => ({ className: classNames('sta
   }
 `;
 
-export const ButtonNext = styled.button.attrs(props => ({ className: classNames('stackend-button-next', props.className) }))`
+export const ButtonNext = styled.button.attrs(props => ({
+  className: classNames('stackend-button-next', props.className)
+}))`
   ${ShopButtonCommon}
 `;
 
-export const ButtonPrevious = styled.button.attrs(props => ({ className: classNames('stackend-button-previous', props.className) }))`
+export const ButtonPrevious = styled.button.attrs(props => ({
+  className: classNames('stackend-button-previous', props.className)
+}))`
   ${ShopButtonCommon}
 `;

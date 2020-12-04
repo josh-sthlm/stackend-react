@@ -2,7 +2,9 @@
 import styled from 'styled-components';
 import classNames from '../style-common/classNames';
 
-export const NumberEntry = styled.span.attrs(props => ({ className: classNames('stackend-number-entry', props.className) }))`
+export const NumberEntry = styled.span.attrs(props => ({
+  className: classNames('stackend-number-entry', props.className)
+}))`
   display: flex;
   align-items: center;
 

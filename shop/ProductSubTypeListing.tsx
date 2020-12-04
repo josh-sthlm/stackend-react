@@ -24,7 +24,6 @@ function mapStateToProps(state: any, ownProps: any): any {
 const connector = connect(mapStateToProps, mapDispatchToProps);
 
 export interface Props extends ConnectedProps<typeof connector> {
-
   /**
    * Product type to list children of
    */
@@ -35,14 +34,12 @@ export interface Props extends ConnectedProps<typeof connector> {
    */
   createProductTypeListingLink: (productType: string) => string;
 
-
   /**
    * Method invoked when a product type is clicked
    * @param e
    */
   onProductTypeClicked?: (e: MouseEvent, p: ProductTypeTreeNode) => void;
 }
-
 
 /**
  * Render a flat list of product types

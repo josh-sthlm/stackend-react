@@ -3,9 +3,13 @@ import styled from 'styled-components';
 import media from '../style-common/media';
 import classNames from '../style-common/classNames';
 
-export const ProductSearchForm = styled.form.attrs(props => ({ className: classNames('stackend-product-search-form', props.className) }))``;
+export const ProductSearchForm = styled.form.attrs(props => ({
+  className: classNames('stackend-product-search-form', props.className)
+}))``;
 
-export const ProductSearch = styled.div.attrs(props => ({ className: classNames('stackend-product-search', props.className) }))`
+export const ProductSearch = styled.div.attrs(props => ({
+  className: classNames('stackend-product-search', props.className)
+}))`
   ${ProductSearchForm} {
     margin-bottom: 2em;
 
@@ -25,7 +29,9 @@ export const ProductSearch = styled.div.attrs(props => ({ className: classNames(
   }
 `;
 
-export const SearchOptions = styled.div.attrs(props => ({ className: classNames('stackend-product-search-options', props.className) }))`
+export const SearchOptions = styled.div.attrs(props => ({
+  className: classNames('stackend-product-search-options', props.className)
+}))`
   display: grid;
   grid-template-columns: min-content min-content auto min-content;
   align-items: center;
@@ -57,7 +63,9 @@ export const SearchOptions = styled.div.attrs(props => ({ className: classNames(
   }
 `;
 
-export const ProductTypeMatches = styled.div.attrs(props => ({ className: classNames('stackend-product-type-matches', props.className) }))`
+export const ProductTypeMatches = styled.div.attrs(props => ({
+  className: classNames('stackend-product-type-matches', props.className)
+}))`
   margin: 1em 0;
   .stackend-product-type-match-label {
     font-weight: 400;
@@ -72,4 +80,6 @@ export const ProductTypeMatches = styled.div.attrs(props => ({ className: classN
   }
 `;
 
-export const NoMatches = styled.p.attrs(props => ({ className: classNames('stackend-search-no-matches', props.className) }))``;
+export const NoMatches = styled.p.attrs(props => ({
+  className: classNames('stackend-search-no-matches', props.className)
+}))``;

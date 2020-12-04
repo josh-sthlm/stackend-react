@@ -6,7 +6,6 @@ import * as Sc from './AddToBasketButton.style';
 import { connect, ConnectedProps } from 'react-redux';
 import { FormattedMessage, injectIntl } from 'react-intl';
 
-
 interface State {
   saving: boolean;
 }
@@ -26,7 +25,6 @@ export interface Props extends ConnectedProps<typeof connector> {
   variant: ProductVariant | null;
   onClick: (e: MouseEvent, product: ProductType, variant: ProductVariant) => void;
 }
-
 
 class AddToBasketButton extends Component<Props, State> {
   state = {

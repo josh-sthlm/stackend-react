@@ -11,7 +11,6 @@ import { generateClassName } from '@stackend/api//util';
 import type { ListProductsRequest } from '@stackend/api/shop';
 import { getParentProductType } from '@stackend/api/shop';
 
-
 function mapStateToProps(state: any, _ownProps: any): any {
   const shop: ShopState = state.shop;
   return {
@@ -22,7 +21,6 @@ function mapStateToProps(state: any, _ownProps: any): any {
 const connector = connect(mapStateToProps);
 
 export interface Props extends ConnectedProps<typeof connector> {
-
   /**
    * Product types
    */
@@ -48,7 +46,6 @@ export interface Props extends ConnectedProps<typeof connector> {
    * @param e
    */
   onProductTypeClicked?: (e: MouseEvent, p: ProductTypeTreeNode) => void;
-
 }
 
 type State = {
@@ -56,8 +53,6 @@ type State = {
     [productType: string]: boolean;
   };
 };
-
-
 
 /**
  * Render a list of product types
@@ -151,6 +146,5 @@ function openTree(openProductTypes: { [productType: string]: boolean }, p: Produ
     parent = getParentProductType(parent);
   }
 }
-
 
 export default connector(ProductTypeTreeListing);

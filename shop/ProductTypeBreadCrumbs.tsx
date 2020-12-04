@@ -19,9 +19,7 @@ export default function ProductTypeBreadCrumbs({
    * Function used to create links to product type pages.
    */
   createProductTypeListingLink: (productType: string) => string;
-
 }): JSX.Element | null {
-
   if (!productType) {
     return null;
   }

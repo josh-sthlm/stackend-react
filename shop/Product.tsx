@@ -19,8 +19,6 @@ import { Description, Tags, Title } from './Shop.style';
 import Price from './Price';
 import { FormattedMessage, injectIntl, WrappedComponentProps } from 'react-intl';
 
-
-
 export interface Props extends WrappedComponentProps {
   /**
    * Product
@@ -207,7 +205,7 @@ class Product extends Component<Props, State> {
                   return (
                     <option disabled={disabled} value={v} key={v}>
                       {v}
-                      {disabled && <FormattedMessage id="shop.product.sold_out" defaultMessage="(Sold out)"/> }
+                      {disabled && <FormattedMessage id="shop.product.sold_out" defaultMessage="(Sold out)" />}
                     </option>
                   );
                 })}

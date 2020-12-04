@@ -29,7 +29,8 @@ function ShopPagination({
   return (
     <Sc.ShopPagination>
       {listing.hasPreviousPage && (
-        <Link className="stackend-shop-previous"
+        <Link
+          className="stackend-shop-previous"
           to={prevLink}
           onClick={(e): void => {
             if (onClick) {
@@ -38,7 +39,7 @@ function ShopPagination({
           }}>
           <i className="material-icons">arrow_backward</i>
           <span className="stackend-shop-pagination-label">
-            <FormattedMessage id="shop.pagination.previous" defaultMessage="Previous"/>
+            <FormattedMessage id="shop.pagination.previous" defaultMessage="Previous" />
           </span>
         </Link>
       )}
@@ -52,7 +53,7 @@ function ShopPagination({
             }
           }}>
           <span className="stackend-shop-pagination-label">
-            <FormattedMessage id="shop.pagination.next" defaultMessage="Next"/>
+            <FormattedMessage id="shop.pagination.next" defaultMessage="Next" />
           </span>
           <i className="material-icons">arrow_forward</i>
         </Link>

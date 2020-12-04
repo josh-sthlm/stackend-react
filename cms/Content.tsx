@@ -6,7 +6,6 @@ import { Content as CmsContent, addContentToDom } from '@stackend/api/cms';
 import * as Sc from './Content.style';
 import { isRunningServerSide } from '@stackend/api/api';
 
-
 type OwnProps = Props & {
   editInPlace: boolean;
   openEditor: (content: CmsContent, contentElement: any) => any;
@@ -31,7 +30,6 @@ export interface Props extends ConnectedProps<typeof connector> {
   content: CmsContent | null;
   className?: string;
 }
-
 
 /**
  * Render cms content
