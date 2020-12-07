@@ -5,13 +5,7 @@ import classNames from '../style-common/classNames';
 export const ShopButtonCommon = `
   display: inline-block;
   margin: 1em 0;
-  border-top: 1px solid black;
-  border-bottom: 1px solid black;
-  border-left: none;
-  border-right: none;
-  border-radius: 0;
   padding: .5em;
-  font-weight: 300;
   width: fit-content;
 `;
 
