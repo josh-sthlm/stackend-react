@@ -43,14 +43,14 @@ export default class Menu extends Component<Props, State> {
   }
 
   componentDidMount(): void {
-    document.body.addEventListener('click', this.onWindowClicked);
+    document.body.addEventListener('click', this.onWindowClicked as EventListener);
   }
 
   componentWillUnmount(): void {
-    document.body.removeEventListener('click', this.onWindowClicked);
+    document.body.removeEventListener('click', this.onWindowClicked as EventListener);
   }
 
-  onWindowClicked = (e: any): void => {
+  onWindowClicked = (e: Event): void => {
     // The event bubbles down from window to the burger
     if (this.burgerRef.current === null) {
       return;

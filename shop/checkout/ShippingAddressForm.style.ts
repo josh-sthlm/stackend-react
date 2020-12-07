@@ -7,6 +7,7 @@ import classNames from '../../style-common/classNames';
 export const Fields = styled.div.attrs(props => ({
   className: classNames('stackend-shop-checkout-shipping-fields', props.className)
 }))``;
+
 export const Field = styled.div.attrs(props => ({
   className: classNames('stackend-shop-checkout-shipping-field', props.className)
 }))`
@@ -76,7 +77,7 @@ export const ShippingAddressForm = styled.form.attrs(props => ({
 
         input,
         select {
-          width: calc(100% - var(--universal-margin));
+          width: calc(100% - 1em);
         }
       }
     }

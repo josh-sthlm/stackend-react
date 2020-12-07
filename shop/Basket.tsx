@@ -27,7 +27,7 @@ import NumberEntry from '../ui/NumberEntry';
 import Price from './Price';
 import { ButtonNext, ProductTitlePart, Title, VariantTitlePart } from './Shop.style';
 import SquareProductImage from './SquareProductImage';
-import { FormattedMessage, injectIntl } from 'react-intl';
+import { FormattedMessage, injectIntl, WrappedComponentProps } from 'react-intl';
 
 function mapStateToProps(state: any, _op: any): any {
   const shop: ShopState = state.shop;
@@ -49,7 +49,7 @@ const mapDispatchToProps = {
 
 const connector = connect(mapStateToProps, mapDispatchToProps);
 
-export interface Props extends ConnectedProps<typeof connector> {
+export interface Props extends ConnectedProps<typeof connector>, WrappedComponentProps {
   /**
    * Function invoked to create links to products
    * @param product

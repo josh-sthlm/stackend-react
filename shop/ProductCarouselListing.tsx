@@ -91,6 +91,6 @@ export default class ProductCarouselListing extends Component<Props> {
       return this.props.renderProduct({ product, link });
     }
 
-    return <ProductListingItem product={product} link={link} />;
+    return <ProductListingItem product={product} link={link} key={product.id} />;
   };
 }

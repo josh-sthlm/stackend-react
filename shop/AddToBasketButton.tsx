@@ -4,7 +4,7 @@ import { Product as ProductType, ProductVariant } from '@stackend/api/shop';
 import { checkoutAdd } from '@stackend/api/shop/shopActions';
 import * as Sc from './AddToBasketButton.style';
 import { connect, ConnectedProps } from 'react-redux';
-import { FormattedMessage, injectIntl } from 'react-intl';
+import { FormattedMessage, injectIntl, WrappedComponentProps } from 'react-intl';
 
 interface State {
   saving: boolean;
@@ -20,7 +20,7 @@ function mapStateToProps(x: any, y: any): any {
 
 const connector = connect(mapStateToProps, mapDispatchToProps);
 
-export interface Props extends ConnectedProps<typeof connector> {
+export interface Props extends ConnectedProps<typeof connector>, WrappedComponentProps {
   product: ProductType | null;
   variant: ProductVariant | null;
   onClick: (e: MouseEvent, product: ProductType, variant: ProductVariant) => void;

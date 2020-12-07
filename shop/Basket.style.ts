@@ -137,7 +137,7 @@ export const Basket = styled.div`
 
         ${Price} {
           justify-self: end;
-          margin-bottom: calc(var(--universal-margin) / 2);
+          margin-bottom: 1em;
         }
       }
 

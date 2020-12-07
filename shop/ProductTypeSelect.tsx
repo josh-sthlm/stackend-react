@@ -6,7 +6,7 @@ import * as Sc from './ProductTypeSelect.style';
 
 import { ShopState } from '@stackend/api/shop/shopReducer';
 import { ProductTypeTreeNode, ProductTypeTree } from '@stackend/api/shop/ProductTypeTree';
-import { injectIntl, FormattedMessage } from 'react-intl';
+import { injectIntl, WrappedComponentProps } from 'react-intl';
 
 function mapStateToProps(state: any, p: any): any {
   const shop: ShopState = state.shop;
@@ -16,7 +16,7 @@ function mapStateToProps(state: any, p: any): any {
 }
 const connector = connect(mapStateToProps);
 
-export interface Props extends ConnectedProps<typeof connector> {
+export interface Props extends ConnectedProps<typeof connector>, WrappedComponentProps {
   /**
    * Product types
    */
@@ -43,7 +43,7 @@ class ProductTypeSelect extends Component<Props> {
   };
 
   render(): JSX.Element | null {
-    const { productTypeTree, onChange, value } = this.props;
+    const { productTypeTree, onChange, value, intl } = this.props;
 
     if (!productTypeTree) {
       return null;
@@ -57,7 +57,7 @@ class ProductTypeSelect extends Component<Props> {
         }}
         value={value || ''}>
         <option value="" key="*">
-          <FormattedMessage id="shop.productType.all" defaultMessage="All product types" />
+          {intl.formatMessage({ id: 'shop.productType.all', defaultMessage: 'All product types' })}
         </option>
         {productTypeTree.map(t => this.renderProductType(t, 0))}
       </Sc.ProductTypeSelect>
