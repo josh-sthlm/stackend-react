@@ -1,0 +1,8 @@
+{
+  "AbuseLink.prompt": {
+    "defaultMessage": "Report abuse. Please describe why this content should be removed?"
+  },
+  "AbuseLink.report-abuse": {
+    "defaultMessage": "Report abuse"
+  }
+}

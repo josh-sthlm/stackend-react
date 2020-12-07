@@ -1,0 +1,50 @@
+{
+  "shop.add_to_basket": {
+    "defaultMessage": "Lisää ostoskoriin"
+  },
+  "shop.basket.basket_is_empty": {
+    "defaultMessage": "Kori on tyhjä"
+  },
+  "shop.buy_now": {
+    "defaultMessage": "OSTA NYT!"
+  },
+  "shop.checkout": {
+    "defaultMessage": "Tarkista"
+  },
+  "shop.pagination.next": {
+    "defaultMessage": "Seuraava"
+  },
+  "shop.pagination.previous": {
+    "defaultMessage": "Edellinen"
+  },
+  "shop.product.sold_out": {
+    "defaultMessage": "(Lopullinen)"
+  },
+  "shop.productType.all": {
+    "defaultMessage": "kaikki kategoriat"
+  },
+  "shop.product_type": {
+    "defaultMessage": "Luokka"
+  },
+  "shop.search.no_hits": {
+    "defaultMessage": "Ei hakutuloksia"
+  },
+  "shop.sort.best_selling": {
+    "defaultMessage": "Suosituin"
+  },
+  "shop.sort.name": {
+    "defaultMessage": "nimi"
+  },
+  "shop.sort.price": {
+    "defaultMessage": "Myöntää"
+  },
+  "shop.sort.relevance": {
+    "defaultMessage": "Merkityksellisyys"
+  },
+  "shop.sort_by": {
+    "defaultMessage": "Lajitella jonkun mukaan"
+  },
+  "shop.total": {
+    "defaultMessage": "yleinen"
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "shop.add_to_basket": {
+    "defaultMessage": "In den Warenkorb legen"
+  },
+  "shop.basket.basket_is_empty": {
+    "defaultMessage": "Der Korb ist leer"
+  },
+  "shop.buy_now": {
+    "defaultMessage": "JETZT EINKAUFEN!"
+  },
+  "shop.checkout": {
+    "defaultMessage": "Auschecken"
+  },
+  "shop.pagination.next": {
+    "defaultMessage": "Nächster"
+  },
+  "shop.pagination.previous": {
+    "defaultMessage": "Bisherige"
+  },
+  "shop.product.sold_out": {
+    "defaultMessage": "(Finale)"
+  },
+  "shop.productType.all": {
+    "defaultMessage": "Alle Kategorien"
+  },
+  "shop.product_type": {
+    "defaultMessage": "Kategorie"
+  },
+  "shop.search.no_hits": {
+    "defaultMessage": "Keine Suchergebnisse"
+  },
+  "shop.sort.best_selling": {
+    "defaultMessage": "Am beliebtesten"
+  },
+  "shop.sort.name": {
+    "defaultMessage": "Name"
+  },
+  "shop.sort.price": {
+    "defaultMessage": "Vergeben"
+  },
+  "shop.sort.relevance": {
+    "defaultMessage": "Relevanz"
+  },
+  "shop.sort_by": {
+    "defaultMessage": "Sortieren nach"
+  },
+  "shop.total": {
+    "defaultMessage": "insgesamt"
+  }
+}
