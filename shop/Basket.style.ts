@@ -30,7 +30,9 @@ export const BasketActions = styled.div.attrs(props => ({
   className: classNames('stacked-basket-actions', props.className)
 }))``;
 
-export const Basket = styled.div`
+export const Basket = styled.div.attrs(props => ({
+  className: classNames('stacked-basket', props.className)
+}))`
   overflow: hidden;
 
   ${BasketActions} {
