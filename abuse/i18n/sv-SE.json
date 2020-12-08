@@ -1,8 +1,4 @@
 {
-  "AbuseLink.prompt": {
-    "defaultMessage": "Rapportera innehåll. Berätta varför du upplever innehållet som problematiskt."
-  },
-  "AbuseLink.report-abuse": {
-    "defaultMessage": "Rapportera"
-  }
+  "AbuseLink.prompt":  "Rapportera innehåll. Varför du upplever innehållet som problematiskt?",
+  "AbuseLink.report-abuse": "Rapportera"
 }

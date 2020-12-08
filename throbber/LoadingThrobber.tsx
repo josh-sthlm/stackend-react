@@ -15,7 +15,7 @@ type Props = {
 };
 
 /**
- * A global loading throbber with unintrusive design.
+ * A global loading throbber with unobtrusive design.
  * Typically used for api calls.
  * A single instance should be used for the entire application.
  */

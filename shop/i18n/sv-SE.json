@@ -1,50 +1,18 @@
 {
-	"shop.add_to_basket": {
-		"defaultMessage": "Lägg i korgen"
-	},
-	"shop.basket.basket_is_empty": {
-		"defaultMessage": "Varukorgen är tom"
-	},
-	"shop.buy_now": {
-		"defaultMessage": "SHOPPA NU!"
-	},
-	"shop.checkout": {
-		"defaultMessage": "Checkout"
-	},
-	"shop.pagination.next": {
-		"defaultMessage": "Nästa"
-	},
-	"shop.pagination.previous": {
-		"defaultMessage": "Föregående"
-	},
-	"shop.product.sold_out": {
-		"defaultMessage": "(Slut)"
-	},
-	"shop.productType.all": {
-		"defaultMessage": "Alla kategorier"
-	},
-	"shop.product_type": {
-		"defaultMessage": "Kategori"
-	},
-	"shop.search.no_hits": {
-		"defaultMessage": "Inga sökträffar"
-	},
-	"shop.sort.best_selling": {
-		"defaultMessage": "Populärast"
-	},
-	"shop.sort.name": {
-		"defaultMessage": "Namn"
-	},
-	"shop.sort.price": {
-		"defaultMessage": "Pris"
-	},
-	"shop.sort.relevance": {
-		"defaultMessage": "Relevans"
-	},
-	"shop.sort_by": {
-		"defaultMessage": "Sortera efter"
-	},
-	"shop.total": {
-		"defaultMessage": "Totalt"
-	}
+  "shop.add_to_basket": "Lägg i korgen",
+  "shop.basket.basket_is_empty": "Varukorgen är tom",
+  "shop.buy_now": "SHOPPA NU!",
+  "shop.checkout": "Checkout",
+  "shop.pagination.next": "Nästa",
+  "shop.pagination.previous": "Föregående",
+  "shop.product.sold_out": "(Slut)",
+  "shop.productType.all": "Alla kategorier",
+  "shop.product_type": "Kategori",
+  "shop.search.no_hits": "Inga sökträffar",
+  "shop.sort.best_selling": "Populärast",
+  "shop.sort.name": "Namn",
+  "shop.sort.price": "Pris",
+  "shop.sort.relevance": "Relevans",
+  "shop.sort_by": "Sortera efter",
+  "shop.total": "Totalt"
 }

@@ -1,5 +1,3 @@
 {
-  "Pagination.load-more": {
-    "defaultMessage": "Visa mer"
-  }
+  "Pagination.load-more": "Visa fler"
 }
