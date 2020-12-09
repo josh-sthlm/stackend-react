@@ -17,7 +17,7 @@ import { ProductImage } from '@stackend/api/shop';
 import { Link } from 'react-router';
 import { Description, Tags, Title } from './Shop.style';
 import Price from './Price';
-import { FormattedMessage, injectIntl, WrappedComponentProps } from 'react-intl';
+import { injectIntl, WrappedComponentProps } from 'react-intl';
 
 export interface Props extends WrappedComponentProps {
   /**
@@ -205,7 +205,9 @@ class Product extends Component<Props, State> {
                   return (
                     <option disabled={disabled} value={v} key={v}>
                       {v}
-                      {disabled && <FormattedMessage id="shop.product.sold_out" defaultMessage="(Sold out)" />}
+                      {disabled
+                        ? this.props.intl.formatMessage({ id: 'shop.product.sold_out', defaultMessage: '(Sold out)' })
+                        : ''}
                     </option>
                   );
                 })}
