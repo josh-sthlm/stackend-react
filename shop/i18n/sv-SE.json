@@ -14,5 +14,13 @@
   "shop.sort.price": "Pris",
   "shop.sort.relevance": "Relevans",
   "shop.sort_by": "Sortera efter",
-  "shop.total": "Totalt"
+  "shop.total": "Totalt",
+  "shop.cancel": "Avbryt",
+  "shop.shipping": "Frakt",
+  "shop.shipping.please_wait": "Vänta...",
+  "shop.payment.directing_to_shopify": "Du skickas nu till Shopify för betalning...",
+  "shop.shipping.can_not_ship": "Dina produkter kan inte skickas. Återvänd till varukorgen",
+  "shop.total_price": "Totalt",
+  "shop.back": "Tillbaka",
+  "shop.payment": "Betala"
 }

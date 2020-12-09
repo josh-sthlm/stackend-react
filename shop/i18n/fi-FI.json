@@ -10,9 +10,17 @@
   "shop.product_type": "Luokka",
   "shop.search.no_hits": "Ei hakutuloksia",
   "shop.sort.best_selling": "Suosituin",
-  "shop.sort.name": "nimi",
+  "shop.sort.name": "Nimi",
   "shop.sort.price": "Myöntää",
   "shop.sort.relevance": "Merkityksellisyys",
   "shop.sort_by": "Lajitella jonkun mukaan",
-  "shop.total": "yleinen"
+  "shop.total": "Vleinen",
+  "shop.cancel": "Peruuttaa",
+  "shop.shipping": "Laivaus",
+  "shop.shipping.please_wait": "Odota...",
+  "shop.payment.directing_to_shopify": "Sinut ohjataan pian Shopifylle maksua varten ...",
+  "shop.shipping.can_not_ship": "Tuotteitasi ei voi lähettää. Palaa koriin",
+  "shop.total_price": "Vleinen",
+  "shop.back": "Takaisin",
+  "shop.payment": "Maksaa"
 }

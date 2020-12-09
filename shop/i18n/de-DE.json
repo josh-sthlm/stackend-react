@@ -14,5 +14,13 @@
   "shop.sort.price": "Vergeben",
   "shop.sort.relevance": "Relevanz",
   "shop.sort_by": "Sortieren nach",
-  "shop.total": "insgesamt"
+  "shop.total": "Insgesamt",
+  "shop.cancel": "Stornieren",
+  "shop.shipping": "Versand",
+  "shop.shipping.please_wait": "Warten Sie mal...",
+  "shop.payment.directing_to_shopify": "Sie werden in Kürze zur Zahlung an Shopify weitergeleitet ...",
+  "shop.shipping.can_not_ship": "Ihre Artikel können nicht versendet werden. Kehre zum Korb zurück",
+  "shop.total_price": "Insgesamt",
+  "shop.back": "Zurück",
+  "shop.payment": "Zahlen"
 }
