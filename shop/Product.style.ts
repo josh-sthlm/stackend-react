@@ -10,18 +10,6 @@ export const ProductDetails = styled.div.attrs(props => ({
   className: classNames('stackend-product-details', props.className)
 }))``;
 
-export const ProductOptions = styled.div.attrs(props => ({
-  className: classNames('stackend-product-options', props.className)
-}))`
-  display: grid;
-  grid-template-columns: min-content min-content;
-  align-items: center;
-  justify-content: center;
-  label {
-    text-align: right;
-  }
-`;
-
 export const Actions = styled.div.attrs(props => ({
   className: classNames('stackend-product-actions', props.className)
 }))``;

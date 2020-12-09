@@ -5,10 +5,8 @@ import {
   getFirstImage,
   getProductVariant,
   Product as IProduct,
-  ProductOption,
   ProductVariant,
   getAllUniqueImages,
-  findExactProductVariant,
   getProductSelection,
   ProductSelection
 } from '@stackend/api/shop';
@@ -18,6 +16,7 @@ import { Link } from 'react-router';
 import { Description, Tags, Title } from './Shop.style';
 import Price from './Price';
 import { injectIntl, WrappedComponentProps } from 'react-intl';
+import ProductVariantSelect from './ProductVariantSelect';
 
 export interface Props extends WrappedComponentProps {
   /**
@@ -105,7 +104,7 @@ class Product extends Component<Props, State> {
 
   render(): JSX.Element | null {
     const { product } = this.props;
-    const { selectedVariant, selectedImage } = this.state;
+    const { selectedVariant, selectedImage, selection } = this.state;
 
     if (!product) {
       return null;
@@ -130,7 +129,7 @@ class Product extends Component<Props, State> {
         </Sc.ProductDetails>
 
         <Sc.Actions>
-          {this.renderOptions(product)}
+          <ProductVariantSelect product={product} selection={selection} onSelectionChanged={this.onVariantSelected} />
           <Price price={selectedVariant?.priceV2} />
           <AddToBasketButton product={product} variant={selectedVariant} />
           {product.tags && <Tags>{product.tags.map(this.renderTag)}</Tags>}
@@ -167,58 +166,6 @@ class Product extends Component<Props, State> {
     }
   };
 
-  renderOptions = (product: IProduct): JSX.Element | null => {
-    if (
-      !product.options ||
-      product.options.length === 0 ||
-      (product.options.length === 1 && product.options[0].values.length === 1)
-    ) {
-      return null;
-    }
-
-    const { selection } = this.state;
-
-    const s: ProductSelection = {};
-    return (
-      <Sc.ProductOptions>
-        {product.options.map((o, index) => {
-          const value = selection[o.name] || o.values[0] || '';
-          const isLast = index === product.options.length - 1;
-          s[o.name] = value;
-          return (
-            <Fragment key={o.id}>
-              <label htmlFor={o.id}>{o.name}:</label>
-              <select
-                size={1}
-                key={o.id}
-                id={o.id}
-                value={value}
-                onChange={(e): void => this.onVariantSelected(o, e.target.value)}>
-                {o.values.map(v => {
-                  let disabled = false;
-                  let variant: ProductVariant | null = null;
-                  if (isLast) {
-                    const x = Object.assign({}, s, { [o.name]: v });
-                    variant = findExactProductVariant(product, x);
-                    disabled = !variant || !variant.availableForSale;
-                  }
-                  return (
-                    <option disabled={disabled} value={v} key={v}>
-                      {v}
-                      {disabled
-                        ? this.props.intl.formatMessage({ id: 'shop.product.sold_out', defaultMessage: '(Sold out)' })
-                        : ''}
-                    </option>
-                  );
-                })}
-              </select>
-            </Fragment>
-          );
-        })}
-      </Sc.ProductOptions>
-    );
-  };
-
   renderTag = (t: string): JSX.Element => {
     const link = this.props.createProductTagSearchLink(t, this.props.product);
     return (
@@ -230,14 +177,8 @@ class Product extends Component<Props, State> {
     );
   };
 
-  onVariantSelected = (option: ProductOption, value: string): void => {
+  onVariantSelected = (selection: ProductSelection, selectedVariant: ProductVariant | null): void => {
     const { onVariantSelected, product } = this.props;
-
-    const selection = Object.assign({}, this.state.selection, {
-      [option.name]: value
-    });
-
-    const selectedVariant = findExactProductVariant(this.props.product, selection);
     const { selectedImage } = this.state;
     const img = selectedVariant && selectedVariant.image ? selectedVariant.image : selectedImage;
 

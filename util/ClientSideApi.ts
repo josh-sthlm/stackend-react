@@ -83,12 +83,12 @@ export async function loadScripts(
  * @param cancelable
  * @param details
  */
-export function dispatchCustomEvent(
+export function dispatchCustomEvent<T = any>(
   document: Document,
   name: string,
   bubbles: boolean,
   cancelable: boolean,
-  details: any
+  details: T
 ): void {
   const e = document.createEvent('CustomEvent');
   const d = Object.assign({}, details, {
