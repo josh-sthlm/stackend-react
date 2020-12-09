@@ -1,22 +1,22 @@
 //@flow
-import React, { Component, Fragment, MouseEvent } from 'react';
+import React, { Component } from 'react';
 import * as Sc from './Product.style';
 import {
   getFirstImage,
   getProductVariant,
   Product as IProduct,
   ProductVariant,
-  getAllUniqueImages,
   getProductSelection,
   ProductSelection
 } from '@stackend/api/shop';
 import AddToBasketButton from './AddToBasketButton';
 import { ProductImage } from '@stackend/api/shop';
-import { Link } from 'react-router';
-import { Description, Tags, Title } from './Shop.style';
+import { Description, Title } from './Shop.style';
 import Price from './Price';
 import { injectIntl, WrappedComponentProps } from 'react-intl';
 import ProductVariantSelect from './ProductVariantSelect';
+import ProductImageBrowser from './ProductImageBrowser';
+import ProductTags from './ProductTags';
 
 export interface Props extends WrappedComponentProps {
   /**
@@ -110,21 +110,11 @@ class Product extends Component<Props, State> {
       return null;
     }
 
-    const image = selectedImage;
-
     return (
       <Sc.Product>
         <Title>{product.title}</Title>
         <Sc.ProductDetails>
-          <Sc.ProductImageBrowser>
-            {image && (
-              <Link to={image.originalSrc} target="_blank">
-                {this.renderImage(image, false)}
-              </Link>
-            )}
-            {this.renderProductImageThumbnails()}
-          </Sc.ProductImageBrowser>
-
+          <ProductImageBrowser product={product} selectedImage={selectedImage} onImageSelected={this.onImageSelected} />
           <Title>{product.title}</Title>
         </Sc.ProductDetails>
 
@@ -132,50 +122,13 @@ class Product extends Component<Props, State> {
           <ProductVariantSelect product={product} selection={selection} onSelectionChanged={this.onVariantSelected} />
           <Price price={selectedVariant?.priceV2} />
           <AddToBasketButton product={product} variant={selectedVariant} />
-          {product.tags && <Tags>{product.tags.map(this.renderTag)}</Tags>}
+          <ProductTags product={product} createProductTagSearchLink={this.props.createProductTagSearchLink} />
         </Sc.Actions>
 
         <Description dangerouslySetInnerHTML={{ __html: product.descriptionHtml }} />
       </Sc.Product>
     );
   }
-
-  renderProductImageThumbnails = (): JSX.Element | null => {
-    const { product } = this.props;
-    const images: Array<ProductImage> = getAllUniqueImages(product);
-
-    return images.length > 1 ? (
-      <Sc.ProductImageBrowserThumbnails>{images.map(this.renderThumbnail)}</Sc.ProductImageBrowserThumbnails>
-    ) : null;
-  };
-
-  renderThumbnail = (image: ProductImage): JSX.Element => {
-    const { selectedImage } = this.state;
-    return (
-      <li key={image.transformedSrc} className={selectedImage === image ? 'selected' : ''}>
-        <button onClick={(e): void => this.onThumbnailClicked(e, image)}>{this.renderImage(image, false)}</button>
-      </li>
-    );
-  };
-
-  renderImage = (image: ProductImage, draggable: boolean): JSX.Element => {
-    if (typeof draggable === 'undefined' || draggable) {
-      return <img src={image.transformedSrc} alt={image.altText || ''} />;
-    } else {
-      return <img src={image.transformedSrc} alt={image.altText || ''} draggable={false} />;
-    }
-  };
-
-  renderTag = (t: string): JSX.Element => {
-    const link = this.props.createProductTagSearchLink(t, this.props.product);
-    return (
-      <Fragment key={t}>
-        <Link to={link} className="stackend-tag">
-          {t}
-        </Link>{' '}
-      </Fragment>
-    );
-  };
 
   onVariantSelected = (selection: ProductSelection, selectedVariant: ProductVariant | null): void => {
     const { onVariantSelected, product } = this.props;
@@ -194,38 +147,18 @@ class Product extends Component<Props, State> {
     );
   };
 
-  onThumbnailClicked = (e: MouseEvent, image: ProductImage): void => {
-    const { product } = this.props;
-    let { selection, selectedVariant } = this.state;
-    const s = findProductVariantByImage(product, image);
-    if (s) {
-      selectedVariant = s;
-      selection = getProductSelection(product, selectedVariant);
-    }
-
+  onImageSelected = (
+    product: IProduct,
+    image: ProductImage,
+    productVariant: ProductVariant | null,
+    selection: ProductSelection | null
+  ): void => {
     this.setState({
       selectedImage: image,
-      selectedVariant,
-      selection
+      selectedVariant: productVariant,
+      selection: selection || {}
     });
   };
 }
 
 export default injectIntl(Product);
-
-/**
- * Find a product variant given an image
- * @param product
- * @param image
- */
-export function findProductVariantByImage(product: IProduct, image: ProductImage): ProductVariant | null {
-  if (!product || !image) {
-    return null;
-  }
-
-  const x = product.variants.edges.find(v => {
-    return v.node?.image?.transformedSrc === image.transformedSrc;
-  });
-
-  return x ? x.node : null;
-}
