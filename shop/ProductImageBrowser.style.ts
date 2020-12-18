@@ -12,6 +12,12 @@ export const ProductImageBrowser = styled.div.attrs(props => ({
 export const ProductImageBrowserThumbnails = styled.ul.attrs(props => ({
   className: classNames('stackend-product-image-browser-thumbs', props.className)
 }))`
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
   margin-top: 1em;
   li {
     display: inline-block;
