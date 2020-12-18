@@ -8,6 +8,7 @@ export const ProductVariantSelect = styled.div.attrs(props => ({
   grid-template-columns: min-content min-content;
   align-items: center;
   justify-content: center;
+  grid-gap: 1em;
   label {
     text-align: right;
   }
