@@ -1,21 +1,12 @@
-import React, { Component, createRef, MouseEvent } from 'react';
-import ReactDOM from 'react-dom';
+import React, { Component, MouseEvent } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
 import { openEditor } from './edit-in-place/cmsEditorActions';
 import { Content as CmsContent, addContentToDom } from '@stackend/api/cms';
 import * as Sc from './Content.style';
 import { isRunningServerSide } from '@stackend/api/api';
 
-type OwnProps = Props & {
-  editInPlace: boolean;
-  openEditor: (content: CmsContent, contentElement: any) => any;
-};
-
-function mapStateToProps({ cmsEditInPlace }: any, ownProps: any): any {
-  const c = ownProps.content;
+function mapStateToProps({ cmsEditInPlace }: any, _ownProps: any): any {
   return {
-    //id: ownProps.id,
-    content: c,
     editInPlace: cmsEditInPlace.enabled
   };
 }
@@ -29,23 +20,20 @@ const connector = connect(mapStateToProps, mapDispatchToProps);
 export interface Props extends ConnectedProps<typeof connector> {
   content: CmsContent | null;
   className?: string;
+  setRef?: (ref: HTMLElement) => void;
 }
 
 /**
  * Render cms content
  */
-class Content extends Component<OwnProps> {
-  contentRef = createRef();
+class Content extends Component<Props> {
+  contentRef: HTMLElement | undefined = undefined;
 
-  constructor(props: OwnProps) {
-    super(props);
-  }
-
-  async componentDidMount(): Promise<void> {
+  componentDidMount(): void {
     this.updateContent();
   }
 
-  componentDidUpdate(prevProps: OwnProps, prevState: OwnProps): void {
+  componentDidUpdate(prevProps: Props): void {
     const { content } = this.props;
 
     if (content && content.id !== (prevProps.content ? prevProps.content.id : 0)) {
@@ -65,11 +53,8 @@ class Content extends Component<OwnProps> {
       return;
     }
 
-    if (content && this.contentRef.current) {
-      const parent = ReactDOM.findDOMNode(this.contentRef.current as any);
-      if (parent) {
-        addContentToDom(parent as Element, content);
-      }
+    if (content && this.contentRef) {
+      addContentToDom(this.contentRef, content);
     }
   }
 
@@ -77,6 +62,13 @@ class Content extends Component<OwnProps> {
     const { content, openEditor } = this.props;
     if (content) {
       openEditor(content, e.target);
+    }
+  };
+
+  setRef = (ref: HTMLDivElement): void => {
+    this.contentRef = ref;
+    if (this.props.setRef) {
+      this.props.setRef(ref);
     }
   };
 
@@ -93,17 +85,12 @@ class Content extends Component<OwnProps> {
           className={('stackend-cms-editable ' + className) as any}
           onClick={this.onContentClicked}
           editable={true}
-          ref={this.contentRef as any}
+          ref={this.setRef}
         />
       );
     } else {
       return (
-        <Sc.Content
-          editable={false}
-          id={'stackend-cms-' + content.id}
-          ref={this.contentRef as any}
-          className={className as any}
-        />
+        <Sc.Content editable={false} id={'stackend-cms-' + content.id} ref={this.setRef} className={className as any} />
       );
     }
   }

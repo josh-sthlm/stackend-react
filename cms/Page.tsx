@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { PageContent } from '@stackend/api/cms';
 import * as Cms from '@stackend/api/cms';
 import { ModuleType } from '@stackend/api/stackend/modules';
 import Content from './Content';
@@ -17,16 +16,23 @@ function mapStateToProps({ request }: any): any {
 const connector = connect(mapStateToProps);
 
 export interface Props extends ConnectedProps<typeof connector> {
-  page: Cms.Page | null;
+  page?: Cms.Page | null;
   titleSuffix?: string;
   helmet?: boolean;
   parentHashLink?: string;
+  setRef?: (ref: HTMLElement) => void;
 }
 
 /**
  * Render a page
  */
 class Page extends Component<Props> {
+  setRef = (ref: HTMLDivElement): void => {
+    if (this.props.setRef) {
+      this.props.setRef(ref);
+    }
+  };
+
   render(): JSX.Element | null {
     const { page, titleSuffix, helmet } = this.props;
     if (!page) {
@@ -43,7 +49,7 @@ class Page extends Component<Props> {
     const useHelmet = typeof helmet === 'undefined' || helmet;
 
     return (
-      <div className="stackend-page" id={'stackend-page-' + page.id}>
+      <div className="stackend-page" id={'stackend-page-' + page.id} ref={this.setRef}>
         {useHelmet && (
           <Helmet>
             <title>{title}</title>
@@ -58,7 +64,7 @@ class Page extends Component<Props> {
     );
   }
 
-  getPageContentClass(pc: PageContent): string {
+  getPageContentClass(pc: Cms.PageContent): string {
     const type = 'stackend-page-content-' + pc.type.replace('stackend-', '');
 
     let c = 'stackend-page-content ' + type;
@@ -76,7 +82,7 @@ class Page extends Component<Props> {
     return c;
   }
 
-  renderPageContent = (pc: PageContent, i: number): JSX.Element | null => {
+  renderPageContent = (pc: Cms.PageContent, i: number): JSX.Element | null => {
     const { page /*referenceUrlId, parentHashLink*/ } = this.props;
     const obj = pc.referenceRef;
     const key = 'pc-' + (page as Cms.Page).id + '-' + i;
@@ -88,7 +94,8 @@ class Page extends Component<Props> {
     const className = this.getPageContentClass(pc);
 
     if (!obj) {
-      console.error('stackend: Content ' + pc.reference + ' missing for Page ' + (page as Cms.Page).id);
+      // It's fine. May be due to hidden status
+      // console.error('stackend: Content ' + pc.reference + ' missing for Page ' + (page as CmsPage).id);
       return null;
     }
 

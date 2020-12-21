@@ -1,8 +1,6 @@
-import React, { Component, createRef } from 'react';
-import ReactDOM from 'react-dom';
+import React, { Component, MouseEvent } from 'react';
 import {
   Page as CmsPage,
-  Content as CmsContent,
   SubSite,
   MenuVisibility,
   getDefaultPageId,
@@ -20,17 +18,16 @@ import {
   shouldFetchPage,
   SITE_HASH_PREFIX
 } from '@stackend/api/cms/pageActions';
-import { PagesState } from '@stackend/api/cms/pageReducer';
 import { browserHistory } from 'react-router';
 import { findNode, getNodePath, getTreePath, getTreePathMatch, getTreePermalink, Node } from '@stackend/api/api/tree';
 import Content from './Content';
-import { Request, AnchorType, getAnchorPart, parseAnchor } from '@stackend/api/request';
+import { AnchorType, getAnchorPart, parseAnchor } from '@stackend/api/request';
 import { dispatchCustomEvent, EVENT_NAVIGATE_TO_PAGE } from '../util/ClientSideApi';
 
 function mapStateToProps({ pages, cmsContent, request }: any, { subSite }: any): any {
   const defaultPageId = subSite ? getDefaultPageId(subSite) : null;
 
-  let page = null;
+  let page: CmsPage | null = null;
   if (defaultPageId) {
     page = pages.byId[defaultPageId];
   }
@@ -60,11 +57,6 @@ export interface Props extends ConnectedProps<typeof connector> {
   menuVisibility?: MenuVisibility;
   helmet?: boolean;
   currentPageId: number;
-  pages: PagesState;
-  page: CmsPage | null;
-  content: CmsContent | null /* Additional cms content added to the page */;
-  defaultPageId: number;
-  request: Request;
 }
 
 type State = {
@@ -77,8 +69,8 @@ type State = {
  * Render a sub site
  */
 class Subsite extends Component<Props, State> {
-  pageRef = createRef();
-  contentRef = createRef();
+  pageRef: HTMLElement | undefined;
+  contentRef: HTMLElement | undefined;
 
   constructor(props: Props) {
     super(props);
@@ -98,7 +90,7 @@ class Subsite extends Component<Props, State> {
       );
       return {
         page: props.page,
-        selectedPath
+        selectedPath: selectedPath || []
       };
     }
 
@@ -173,7 +165,7 @@ class Subsite extends Component<Props, State> {
 			 - Do not apply stackend styling to Page, but to the menu
 			*/
     }
-    // @ts-ignore
+    // @ts-ignore See below
     return (
       <div
         className={'stackend-site ' + c + (loading ? ' stackend-site-loading' : '')}
@@ -188,7 +180,14 @@ class Subsite extends Component<Props, State> {
           </Helmet>
         )}
 
-        {content && <Content content={content} ref={this.contentRef as any} />}
+        {content && (
+          <Content
+            content={content}
+            setRef={(r: HTMLElement): void => {
+              this.contentRef = r;
+            }}
+          />
+        )}
 
         <div className="stackend-site-wrapper">
           <div className="stackend stackend-menu-container">
@@ -202,9 +201,11 @@ class Subsite extends Component<Props, State> {
 
           {page && (
             <Page
-              //@ts-ignore
-              page={page as any}
-              ref={this.pageRef as any}
+              // @ts-ignore FIXME: What's up with the validation?
+              page={page as CmsPage}
+              setRef={(r: HTMLElement): void => {
+                this.pageRef = r;
+              }}
               helmet={true}
               parentHashLink={'/site/' + subSite.permalink + '/' + page.permalink}
             />
@@ -247,17 +248,16 @@ class Subsite extends Component<Props, State> {
     if (shouldFetchPage(page, Date.now())) {
       const r: GetPagesResult = await requestPage(node.referenceId);
       if (!r.error) {
-        // @ts-ignore
         page = r.pages[node.referenceId];
       }
     }
 
     browserHistory.push(href);
-    if (scrollIntoView && this.pageRef.current) {
-      const parent = ReactDOM.findDOMNode(this.pageRef.current as any);
+    if (scrollIntoView && this.pageRef) {
+      const parent = this.pageRef;
       if (parent) {
         console.log('Stackend: scrolling to', parent);
-        (parent as Element).scrollIntoView();
+        parent.scrollIntoView();
       }
     }
 
@@ -279,28 +279,24 @@ class Subsite extends Component<Props, State> {
     );
   }
 
-  setupLinkHandlers = (ref: any, scrollOnClick: boolean): void => {
-    if (!ref || !ref.current) {
+  setupLinkHandlers = (ref: HTMLElement | null | undefined, scrollOnClick: boolean): void => {
+    if (!ref) {
       return;
     }
-
-    const parent = ReactDOM.findDOMNode(ref.current);
-    if (!parent) {
-      return;
-    }
-    const links = (parent as Element).querySelectorAll('a[href]');
+    const parent = ref;
+    const links = parent.querySelectorAll('a[href]');
     for (let i = 0; i < links.length; i++) {
       const l = links[i];
       const href = l.getAttribute('href');
       if (href && href.startsWith(SITE_HASH_PREFIX)) {
-        l.addEventListener('click', (e: Event) => this.onContentLinkClicked(e, scrollOnClick));
+        l.addEventListener('click', (e: any) => this.onContentLinkClicked(e as MouseEvent, scrollOnClick));
       }
     }
 
     // FIXME: The old handlers needs to be removed
   };
 
-  onContentLinkClicked = (e: Event, scrollOnClick: boolean): void => {
+  onContentLinkClicked = (e: MouseEvent, scrollOnClick: boolean): void => {
     const { subSite } = this.props;
 
     if (!e.currentTarget || !subSite) {
