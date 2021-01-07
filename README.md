@@ -29,7 +29,7 @@ npm install --save @stackend/api @stackend/react
 You will need to set up a Redux store and initialize the API with the community you will use:
 
 ```javascript
-import { createStore, combineReducers, applyMiddleware } from 'redux';
+import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import { STANDARD_REDUCERS } from '@stackend/api/api/reducers';
 import { REDUCERS } from '@stackend/react/reducers';

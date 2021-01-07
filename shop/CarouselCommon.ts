@@ -1,4 +1,5 @@
 //@flow
+//import { JSX } from 'react';
 
 export interface CarouselResponsiveSettings {
   breakpoint: number;
@@ -21,6 +22,8 @@ export interface CarouselSettings {
   centerMode?: boolean;
   className?: string;
   responsive?: Array<CarouselResponsiveSettings>;
+  prevArrow?: JSX.Element;
+  nextArrow?: JSX.Element;
 }
 
 export const StackendCarouselStyle = `

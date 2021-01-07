@@ -7,3 +7,4 @@
 .prettierrc.json
 tsconfig.json
 .prettierignore
+/examples

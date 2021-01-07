@@ -2,7 +2,6 @@
 import React, { Component } from 'react';
 
 import * as Sc from './ProductCarouselListing.style';
-
 import { Props as ProductListingProps } from './ProductListing';
 import { SlimProduct } from '@stackend/api/shop';
 import ProductListingItem from './ProductListingItem';
@@ -72,6 +71,15 @@ export default class ProductCarouselListing extends Component<Props> {
     const s = Object.assign({}, DEFAULT_SETTINGS, settings || {}, {
       className: 'stackend-carousel'
     });
+
+    // The original arrows uses a custom font. We want material-icons
+    if (!s.prevArrow) {
+      s.prevArrow = <i className="material-icons">navigate_before</i>;
+    }
+
+    if (!s.nextArrow) {
+      s.nextArrow = <i className="material-icons">navigate_next</i>;
+    }
 
     return (
       <Sc.ProductCarouselListing>
