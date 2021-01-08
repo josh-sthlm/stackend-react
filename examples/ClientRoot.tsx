@@ -29,9 +29,9 @@ if (mountNode) {
   renderApp(routes);
 
   if (module.hot) {
-    module.hot.accept(['./functions/ClientRoot.jsx', './Routes'], () => {
+    module.hot.accept(['./Examples.tsx', './routes.tsx'], () => {
       setImmediate(() => {
-        const newRoutes = require('./Routes.jsx').getRoutes(store);
+        const newRoutes = require('./routes.tsx').getRoutes();
         renderApp(newRoutes);
       });
     });
