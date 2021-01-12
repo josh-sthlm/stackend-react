@@ -10,12 +10,18 @@ import {
   requestOrResetActiveCheckout,
   checkoutSetEmail
 } from '@stackend/api/shop/shopActions';
-import { CheckoutResult, ShippingAddress, getCountry, Checkout, GetCheckoutResult } from '@stackend/api/shop';
+import {
+  CheckoutResult,
+  ShippingAddress,
+  getCountry,
+  Checkout,
+  GetCheckoutResult,
+  Country,
+  AddressFieldName
+} from '@stackend/api/shop';
 import * as Sc from './ShippingAddressForm.style';
 import { connect, ConnectedProps } from 'react-redux';
 import { ButtonBox, ButtonNext, ButtonPrevious } from '../Shop.style';
-import { Country } from '@shopify/address';
-import { FieldName } from '@shopify/address-consts';
 import { Community } from '@stackend/api/stackend';
 import { getStackendLocale, EMAIL_VALIDATION_REGEXP_RELAXED } from '@stackend/api/util';
 import { getJsonErrorText } from '@stackend/api/api';
@@ -257,7 +263,7 @@ class ShippingAddressForm extends Component<Props, State> {
   }
 
   renderField = (address: ShippingAddress, fieldName: string, groupOf: number, idx: number): JSX.Element | null => {
-    if (fieldName === FieldName.Country) {
+    if (fieldName === AddressFieldName.Country) {
       return this.renderCountries(groupOf, idx);
     }
 
@@ -273,7 +279,7 @@ class ShippingAddressForm extends Component<Props, State> {
 
     const className = this.getFieldClassName(groupOf, idx);
     let placeHolder = '';
-    if (fieldName === FieldName.Phone) {
+    if (fieldName === AddressFieldName.Phone) {
       placeHolder = '+' + country.phoneNumberPrefix;
     }
     let label = (country.labels as any)[fieldName];

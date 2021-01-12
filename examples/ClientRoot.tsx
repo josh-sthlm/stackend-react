@@ -13,7 +13,7 @@ const routes = getRoutes();
 const mountNode = document.getElementById('stackend-examples-app');
 
 if (mountNode) {
-  const renderApp = (appRoutes: any) => {
+  const renderApp = (appRoutes: any): void => {
     hydrate(
       <AppContainer>
         <IntlProvider locale="en">

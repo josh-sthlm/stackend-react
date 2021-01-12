@@ -9,7 +9,7 @@ type Props = {
   store: any;
 };
 
-function mapStateToProps({ request }: any) {
+function mapStateToProps({ request }: any): any {
   return {
     request
   };
@@ -18,11 +18,11 @@ function mapStateToProps({ request }: any) {
 const mapDispatchToProps = {};
 
 class Examples extends Component<Props> {
-  render() {
+  render(): JSX.Element {
     const routes = this.props.routes;
     return (
       <Router
-        onUpdate={() => {
+        onUpdate={(): void => {
           window.scrollTo(0, 0);
         }}
         history={browserHistory}

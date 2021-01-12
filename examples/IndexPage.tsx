@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 
-type Props = {};
+type Props = Record<string, never>;
 
 export default class IndexPage extends Component<Props> {
-  render() {
+  render(): JSX.Element {
     return (
       <div>
         <h1>Stackend React Examples</h1>

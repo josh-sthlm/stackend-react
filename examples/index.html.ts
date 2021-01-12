@@ -1,4 +1,4 @@
-export default function getServerSideHtml(version: string) {
+export default function getServerSideHtml(version: string): string {
   return `<!DOCTYPE html>
 <html lang="en-us">
   <head>
