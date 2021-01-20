@@ -5,20 +5,18 @@ import * as Sc from './ProductTypeBreadCrumbs.style';
 import { getProductTypeLabel } from '@stackend/api/shop/shopActions';
 import { getParentProductType } from '@stackend/api/shop/ProductTypeTree';
 import { Link } from 'react-router';
+import { getLinkFactory } from '../link/LinkFactory';
+import ShopLinkFactory, { ListingContext } from './ShopLinkFactory';
 
 export default function ProductTypeBreadCrumbs({
   productType,
-  createProductTypeListingLink
+  listingContext
 }: {
   /**
    * Product type
    */
   productType: string | null;
-
-  /**
-   * Function used to create links to product type pages.
-   */
-  createProductTypeListingLink: (productType: string) => string;
+  listingContext: ListingContext;
 }): JSX.Element | null {
   if (!productType) {
     return null;
@@ -33,10 +31,12 @@ export default function ProductTypeBreadCrumbs({
     l = getParentProductType(l);
   }
 
+  const linkFactory = getLinkFactory<ShopLinkFactory>('shop');
+
   return (
     <Sc.ProductTypeBreadCrumbs>
       {v.map((t, index) => {
-        const link = createProductTypeListingLink(t);
+        const link = linkFactory.createProductListingLink(t, listingContext);
 
         return (
           <Fragment key={t}>

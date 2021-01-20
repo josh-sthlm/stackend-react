@@ -10,15 +10,7 @@ import {
   checkoutReplaceItems,
   getProductAndVariant
 } from '@stackend/api/shop/shopActions';
-import {
-  MoneyV2,
-  getFirstImage,
-  Checkout,
-  CheckoutLineItem,
-  toMoneyV2,
-  Product as IProduct,
-  ProductVariant
-} from '@stackend/api/shop';
+import { MoneyV2, getFirstImage, Checkout, CheckoutLineItem, toMoneyV2 } from '@stackend/api/shop';
 import { mapGraphQLList } from '@stackend/api/util/graphql';
 import * as Sc from './Basket.style';
 import { connect, ConnectedProps } from 'react-redux';
@@ -28,6 +20,8 @@ import Price from './Price';
 import { ButtonNext, ProductTitlePart, Title, VariantTitlePart } from './Shop.style';
 import SquareProductImage from './SquareProductImage';
 import { FormattedMessage, injectIntl, WrappedComponentProps } from 'react-intl';
+import { getLinkFactory } from '../link/LinkFactory';
+import ShopLinkFactory from './ShopLinkFactory';
 
 function mapStateToProps(state: any, _op: any): any {
   const shop: ShopState = state.shop;
@@ -50,13 +44,6 @@ const mapDispatchToProps = {
 const connector = connect(mapStateToProps, mapDispatchToProps);
 
 export interface Props extends ConnectedProps<typeof connector>, WrappedComponentProps {
-  /**
-   * Function invoked to create links to products
-   * @param product
-   * @param productVariant
-   */
-  createProductLink: (product: IProduct, productVariant?: ProductVariant) => string;
-
   /**
    * Image width
    */
@@ -101,6 +88,7 @@ class Basket extends Component<Props, State> {
   render(): JSX.Element {
     const { checkout } = this.props;
     const { loading } = this.state;
+    const linkFactory = getLinkFactory<ShopLinkFactory>('shop');
 
     return (
       <Sc.Basket>
@@ -108,7 +96,9 @@ class Basket extends Component<Props, State> {
           this.renderPlaceholder()
         ) : checkout && checkout.lineItems.edges.length !== 0 ? (
           <Fragment>
-            <Sc.BasketList>{mapGraphQLList(checkout.lineItems, this.renderBasketItem)}</Sc.BasketList>
+            <Sc.BasketList>
+              {mapGraphQLList(checkout.lineItems, (i: CheckoutLineItem) => this.renderBasketItem(i, linkFactory))}
+            </Sc.BasketList>
             <Sc.BasketActions>
               <Sc.BasketTotalPrice className="stackend-basket-total">
                 <span className="stackend-basket-total-label">
@@ -130,7 +120,7 @@ class Basket extends Component<Props, State> {
     );
   }
 
-  renderBasketItem = (i: CheckoutLineItem): JSX.Element | null => {
+  renderBasketItem = (i: CheckoutLineItem, linkFactory: ShopLinkFactory): JSX.Element | null => {
     const handle = i.variant.product.handle;
     const variantId = i.variant.id;
 
@@ -144,7 +134,7 @@ class Basket extends Component<Props, State> {
     const price: MoneyV2 = toMoneyV2(parseFloat(v.priceV2.amount) * i.quantity, v.priceV2.currencyCode);
     const image = v.image || getFirstImage(p);
     const hasSingleVariant = p.options.length === 1 && p.options[0].values.length === 1;
-    const link = this.props.createProductLink(p, v);
+    const link = linkFactory.createProductLink(p, v);
 
     return (
       <Sc.BasketItem key={handle + '-' + (variantId || 'default')}>

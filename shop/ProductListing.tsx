@@ -6,18 +6,14 @@ import { SlimProduct } from '@stackend/api/shop';
 
 import ProductListingItem from './ProductListingItem';
 import { ProductListingItem as ScProductListingItem } from './ProductListingItem.style';
+import { getLinkFactory } from '../link/LinkFactory';
+import ShopLinkFactory from './ShopLinkFactory';
 
 export interface Props {
   /**
    * List of products
    */
   products: Array<SlimProduct> | null;
-
-  /**
-   * Function invoked to create links to products
-   * @param product
-   */
-  createProductLink: (product: SlimProduct) => string;
 
   /**
    * Show this number of placeholders while loading
@@ -49,15 +45,17 @@ export default class ProductListing extends Component<Props> {
       return null;
     }
 
+    const linkFactory = getLinkFactory<ShopLinkFactory>('shop');
+
     return (
       <Sc.ProductListing>
-        <Sc.Products>{products.map(this.renderProduct)}</Sc.Products>
+        <Sc.Products>{products.map(p => this.renderProduct(p, linkFactory))}</Sc.Products>
       </Sc.ProductListing>
     );
   }
 
-  renderProduct = (product: SlimProduct): JSX.Element | null => {
-    const link = this.props.createProductLink(product);
+  renderProduct = (product: SlimProduct, linkFactory: ShopLinkFactory): JSX.Element | null => {
+    const link = linkFactory.createProductLink(product);
     const r = this.props.renderProduct ? this.props.renderProduct : this.defaultRenderProduct;
     return <li key={product.id}>{r({ product, link })}</li>;
   };

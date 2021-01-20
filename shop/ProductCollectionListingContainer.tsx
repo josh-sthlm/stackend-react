@@ -4,7 +4,7 @@ import { connect, ConnectedProps } from 'react-redux';
 import ProductListing, { Props as ProductListingProps } from './ProductListing';
 import { requestCollection } from '@stackend/api/shop/shopActions';
 import { ShopState } from '@stackend/api/shop/shopReducer';
-import { Collection, SlimProduct } from '@stackend/api/shop';
+import { Collection } from '@stackend/api/shop';
 import { mapGraphQLList } from '@stackend/api/util/graphql';
 import * as Sc from './ProductCollectionListingContainer.style';
 
@@ -35,12 +35,6 @@ export interface Props extends ConnectedProps<typeof connector> {
    * Get the collection with this handle
    */
   handle: string;
-
-  /**
-   * Function invoked to create links to products
-   * @param product
-   */
-  createProductLink: (product: SlimProduct) => string;
 
   /**
    * Show placeholders while loading
@@ -79,7 +73,7 @@ class ProductCollectionListingContainer extends Component<Props, State> {
   }
 
   render(): JSX.Element | null {
-    const { showPlaceholder, createProductLink, shop, products, render, showDescription } = this.props;
+    const { showPlaceholder, shop, products, render, showDescription } = this.props;
     const placeholders = showPlaceholder ? shop.defaults.pageSize : 0;
     const collection: Collection | null = this.props.collection;
 
@@ -91,8 +85,7 @@ class ProductCollectionListingContainer extends Component<Props, State> {
     const args = {
       collection,
       products,
-      placeholders,
-      createProductLink
+      placeholders
     };
 
     return (

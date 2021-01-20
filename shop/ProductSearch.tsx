@@ -3,7 +3,7 @@ import React, { Component, createRef, RefObject, ChangeEvent, FormEvent } from '
 import * as Sc from './ProductSearch.style';
 import { getProductListingByKey, getProductListKey } from '@stackend/api/shop/shopActions';
 import { connect, ConnectedProps } from 'react-redux';
-import { ListProductsRequest, parseProductSortKey, SlimProduct } from '@stackend/api/shop';
+import { ListProductsRequest, parseProductSortKey } from '@stackend/api/shop';
 import ProductTypeSelect from './ProductTypeSelect';
 import SortOptionsSelect from './SortOptionsSelect';
 import ProductListingContainer from './ProductListingContainer';
@@ -33,16 +33,6 @@ export interface Props extends ConnectedProps<typeof connector> {
    * Initial search
    */
   listProductsRequest: ListProductsRequest | null;
-
-  /**
-   * Function used to create links to products
-   */
-  createProductLink: (product: SlimProduct) => string;
-
-  /**
-   * Function used to create previous/next links
-   */
-  createPaginationLink: (req: ListProductsRequest) => string;
 
   /**
    * Invoked when the search is changed
@@ -94,8 +84,6 @@ class ProductSearch extends Component<Props, State> {
 
         <ProductListingContainer
           listProductsRequest={search}
-          createPaginationLink={this.props.createPaginationLink}
-          createProductLink={this.props.createProductLink}
           showPagination={true}
           showPlaceholder={true}
           onListingRequestChanged={this.onListingRequestChanged}

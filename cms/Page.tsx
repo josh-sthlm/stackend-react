@@ -6,6 +6,7 @@ import { Helmet } from 'react-helmet';
 //import GroupPage from '../group/GroupPage.jsx';
 //import CommentsPage from '../comments/CommentsPage.jsx';
 import { connect, ConnectedProps } from 'react-redux';
+import { PageContent } from '@stackend/api/cms';
 
 function mapStateToProps({ request }: any): any {
   return {
@@ -152,12 +153,63 @@ class Page extends Component<Props> {
 			   */
       }
 
+      case ModuleType.SHOP_PRODUCT:
+      case ModuleType.SHOP_PRODUCT_LISTING:
+      case ModuleType.SHOP_COLLECTION:
+        return (
+          <div className={'stackend ' + className} key={key}>
+            {this.renderShopContent(pc)}
+          </div>
+        );
+
       default:
         // FIXME: Handle different types
         return (
           <div className="stackend" key={key}>
             {pc.name} - {pc.type} - {pc.reference} Not supported
           </div>
+        );
+    }
+  };
+
+  renderShopContent = (pc: PageContent) => {
+    if (!pc.data) {
+      return null;
+    }
+
+    const data = JSON.parse(pc.data);
+
+    switch (pc.type) {
+      case ModuleType.SHOP_PRODUCT:
+        return (
+          <ProductModule
+            moduleData={{
+              moduleType: ModuleType.SHOP_PRODUCT,
+              parameters: data
+            }}
+          />
+        );
+
+      case ModuleType.SHOP_PRODUCT_LISTING:
+        return (
+          <ProductListingModule
+            moduleData={{
+              moduleType: ModuleType.SHOP_PRODUCT_LISTING,
+              parameters: {
+                // FIXME: get from page content
+              }
+            }}
+          />
+        );
+
+      case ModuleType.SHOP_COLLECTION:
+        return (
+          <ProductCollectionModule
+            moduleData={{
+              moduleType: ModuleType.SHOP_COLLECTION,
+              parameters: data
+            }}
+          />
         );
     }
   };

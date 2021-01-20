@@ -25,11 +25,6 @@ export interface Props extends WrappedComponentProps {
   product: IProduct;
 
   /**
-   * Function used to create links to tag searches
-   */
-  createProductTagSearchLink: (tag: string, product: IProduct) => string;
-
-  /**
    * Callback when user selects a variant
    * @param e
    * @param variant
@@ -122,7 +117,7 @@ class Product extends Component<Props, State> {
           <ProductVariantSelect product={product} selection={selection} onSelectionChanged={this.onVariantSelected} />
           <Price price={selectedVariant?.priceV2} />
           <AddToBasketButton product={product} variant={selectedVariant} />
-          <ProductTags product={product} createProductTagSearchLink={this.props.createProductTagSearchLink} />
+          <ProductTags product={product} />
         </Sc.Actions>
 
         <Description dangerouslySetInnerHTML={{ __html: product.descriptionHtml }} />

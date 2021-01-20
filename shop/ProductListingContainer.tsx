@@ -6,6 +6,7 @@ import { getProductListingByKey, getProductListKey, requestProducts } from '@sta
 import { ShopState, SlimProductListing } from '@stackend/api/shop/shopReducer';
 import { ListProductsRequest, SlimProduct } from '@stackend/api/shop';
 import ShopPagination from './ShopPagination';
+import { ListingContext } from './ShopLinkFactory';
 
 const mapDispatchToProps = {
   requestProducts,
@@ -29,19 +30,13 @@ export interface Props extends ConnectedProps<typeof connector> {
   listProductsRequest: ListProductsRequest;
 
   /**
-   * Function invoked to create links to products
-   * @param product
+   * Should pagination be visible
    */
-  createProductLink: (product: SlimProduct) => string;
-
-  /**
-   * Function called to create the pagination previous/next links
-   * @param req
-   */
-  createPaginationLink: (req: ListProductsRequest) => string;
-
   showPagination?: boolean;
 
+  /**
+   * Show a placeholder?
+   */
   showPlaceholder?: boolean;
 
   /**
@@ -69,6 +64,12 @@ export interface Props extends ConnectedProps<typeof connector> {
    * Optional method to render a product
    */
   renderProduct?: ({ product, link }: { product: SlimProduct; link: string }) => JSX.Element;
+
+  /**
+   * Context of the listing
+   * @param req
+   */
+  listingContext?: ListingContext;
 }
 
 type State = {
@@ -96,14 +97,7 @@ class ProductListingContainer extends Component<Props, State> {
   }
 
   render(): JSX.Element | null {
-    const {
-      showPlaceholder,
-      createProductLink,
-      createPaginationLink,
-      showPagination,
-      renderListing,
-      renderProduct
-    } = this.props;
+    const { showPlaceholder, showPagination, renderListing, renderProduct, listingContext } = this.props;
     const { key } = this.state;
     const listing = this.props.getProductListingByKey(key);
     const shop: ShopState = this.props.shop;
@@ -112,7 +106,6 @@ class ProductListingContainer extends Component<Props, State> {
     const args: ProductListingProps = {
       products: listing?.products || [],
       placeholders,
-      createProductLink,
       renderProduct
     };
 
@@ -122,8 +115,8 @@ class ProductListingContainer extends Component<Props, State> {
         {showPagination && (
           <ShopPagination
             listing={listing}
-            createPaginationLink={createPaginationLink}
             onClick={this.onPaginationClicked}
+            listingContext={listingContext || ListingContext.LISTING}
           />
         )}
       </Fragment>

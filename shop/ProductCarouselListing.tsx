@@ -7,14 +7,10 @@ import { SlimProduct } from '@stackend/api/shop';
 import ProductListingItem from './ProductListingItem';
 import type { CarouselSettings } from './CarouselCommon';
 import Slider from 'react-slick';
+import { getLinkFactory } from '../link/LinkFactory';
+import ShopLinkFactory from './ShopLinkFactory';
 
 export type Props = ProductListingProps & {
-  /**
-   * Function invoked to create links to products
-   * @param product
-   */
-  createProductLink: (product: SlimProduct) => string;
-
   /**
    * Optional method to render a product
    */
@@ -81,19 +77,21 @@ export default class ProductCarouselListing extends Component<Props> {
       s.nextArrow = <i className="material-icons">navigate_next</i>;
     }
 
+    const linkFactory = getLinkFactory<ShopLinkFactory>('shop');
+
     return (
       <Sc.ProductCarouselListing>
-        <Slider {...s}>{products.map(this.renderProduct)}</Slider>
+        <Slider {...s}>{products.map(p => this.renderProduct(p, linkFactory))}</Slider>
       </Sc.ProductCarouselListing>
     );
   }
 
-  renderProduct = (product: SlimProduct): JSX.Element | null => {
+  renderProduct = (product: SlimProduct, linkFactory: ShopLinkFactory): JSX.Element | null => {
     if (!product) {
       return null;
     }
 
-    const link = this.props.createProductLink(product);
+    const link = linkFactory.createProductLink(product);
 
     if (this.props.renderProduct) {
       return this.props.renderProduct({ product, link });

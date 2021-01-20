@@ -11,10 +11,12 @@ import { getProductTypeLabel } from '@stackend/api/shop/shopActions';
 import type { CarouselSettings } from './CarouselCommon';
 import Slider from 'react-slick';
 import { getProductTypeRoots } from '@stackend/api/shop';
+import { getLinkFactory } from '../link/LinkFactory';
+import ShopLinkFactory, { ListingContext } from './ShopLinkFactory';
 
 const mapDispatchToProps = {};
 
-function mapStateToProps(state: any, ownProps: any): any {
+function mapStateToProps(state: any, _ownProps: any): any {
   const shop: ShopState = state.shop;
   return {
     productTypes: shop.productTypes
@@ -33,11 +35,6 @@ export interface Props extends ConnectedProps<typeof connector> {
    * Include only the top level items
    */
   topLevelProductTypesOnly?: boolean;
-
-  /**
-   * Function used to create links to product type pages.
-   */
-  createProductTypeListingLink: (productType: string) => string;
 
   /**
    * Method invoked when a product type is clicked
@@ -109,21 +106,23 @@ class ProductTypeCarousel extends Component<Props> {
       className: 'stackend-carousel'
     });
 
+    const linkFactory = getLinkFactory<ShopLinkFactory>('shop');
+
     return (
       <Sc.ProductTypeCarousel>
-        <Slider {...s}>{pt.map(this.renderProductType)}</Slider>
+        <Slider {...s}>{pt.map(x => this.renderProductType(x, linkFactory))}</Slider>
       </Sc.ProductTypeCarousel>
     );
   }
 
-  renderProductType = (productType: string): JSX.Element | null => {
+  renderProductType = (productType: string, linkFactory: ShopLinkFactory): JSX.Element | null => {
     if (productType === '') {
       return null;
     }
 
     const className = 'stackend-product-type-carousel-item product-type-' + generateClassName(productType);
     const label = getProductTypeLabel(productType);
-    const link = this.props.createProductTypeListingLink(productType);
+    const link = linkFactory.createProductListingLink(productType, ListingContext.PRODUCT_TYPE_LISTING);
 
     return (
       <div key={productType} className={className}>

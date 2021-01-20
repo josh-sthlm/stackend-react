@@ -7,6 +7,8 @@ import * as Sc from './ProductSubTypeListing.style';
 
 import { ShopState } from '@stackend/api/shop/shopReducer';
 import { ProductTypeTree, findProductTypeTreeNode, ProductTypeTreeNode } from '@stackend/api/shop/ProductTypeTree';
+import ShopLinkFactory, { ListingContext } from './ShopLinkFactory';
+import { getLinkFactory } from '../link/LinkFactory';
 
 const mapDispatchToProps = {};
 
@@ -30,11 +32,6 @@ export interface Props extends ConnectedProps<typeof connector> {
   productType: string;
 
   /**
-   * Function used to create links to product type pages.
-   */
-  createProductTypeListingLink: (productType: string) => string;
-
-  /**
    * Method invoked when a product type is clicked
    * @param e
    */
@@ -52,15 +49,19 @@ class ProductSubTypeTreeListing extends Component<Props> {
       return null;
     }
 
-    return <Sc.ProductSubTypeListing>{subNodes.map(p => this.renderProductType(p))}</Sc.ProductSubTypeListing>;
+    const linkFactory = getLinkFactory<ShopLinkFactory>('shop');
+
+    return (
+      <Sc.ProductSubTypeListing>{subNodes.map(p => this.renderProductType(p, linkFactory))}</Sc.ProductSubTypeListing>
+    );
   }
 
-  renderProductType(p: ProductTypeTreeNode): JSX.Element | null {
+  renderProductType(p: ProductTypeTreeNode, linkFactory: ShopLinkFactory): JSX.Element | null {
     if (p.productType === '') {
       return null;
     }
 
-    const link = this.props.createProductTypeListingLink(p.productType);
+    const link = linkFactory.createProductListingLink(p.productType, ListingContext.PRODUCT_TYPE_LISTING);
 
     return (
       <li key={p.productType}>

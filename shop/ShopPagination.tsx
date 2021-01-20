@@ -4,15 +4,17 @@ import { Link } from 'react-router';
 import type { ListProductsRequest } from '@stackend/api/shop';
 import * as Sc from './ShopPagination.style';
 import { SlimProductListing } from '@stackend/api/shop/shopReducer';
-import { nextPage, previousPage, PaginatedGraphQLRequest } from '@stackend/api/util/graphql';
+import { nextPage, previousPage } from '@stackend/api/util/graphql';
 import { FormattedMessage, injectIntl, WrappedComponentProps } from 'react-intl';
+import ShopLinkFactory, { ListingContext } from './ShopLinkFactory';
+import { getLinkFactory } from '../link/LinkFactory';
 
 function ShopPagination({
-  createPaginationLink,
+  listingContext,
   listing,
   onClick
 }: {
-  createPaginationLink: (req: PaginatedGraphQLRequest) => string;
+  listingContext: ListingContext;
   listing: SlimProductListing | null;
   onClick?: (e: MouseEvent, newListProductsRequest: ListProductsRequest) => void;
 } & WrappedComponentProps): JSX.Element | null {
@@ -20,11 +22,13 @@ function ShopPagination({
     return null;
   }
 
+  const linkFactory = getLinkFactory<ShopLinkFactory>('shop');
+
   const prevReq = previousPage(listing.selection, listing.previousCursor || '');
-  const prevLink = createPaginationLink(prevReq);
+  const prevLink = linkFactory.createProductListingLink(prevReq, listingContext);
 
   const nextReq = nextPage(listing.selection, listing.nextCursor || '');
-  const nextLink = createPaginationLink(nextReq);
+  const nextLink = linkFactory.createProductListingLink(nextReq, listingContext);
 
   return (
     <Sc.ShopPagination>

@@ -8,8 +8,9 @@ import * as Sc from './ProductTypeTreeListing.style';
 import { ShopState } from '@stackend/api/shop/shopReducer';
 import { ProductTypeTree, ProductTypeTreeNode } from '@stackend/api/shop/ProductTypeTree';
 import { generateClassName } from '@stackend/api//util';
-import type { ListProductsRequest } from '@stackend/api/shop';
 import { getParentProductType } from '@stackend/api/shop';
+import { getLinkFactory } from '../link/LinkFactory';
+import ShopLinkFactory, { ListingContext } from './ShopLinkFactory';
 
 function mapStateToProps(state: any, _ownProps: any): any {
   const shop: ShopState = state.shop;
@@ -27,12 +28,7 @@ export interface Props extends ConnectedProps<typeof connector> {
   productTypesTree?: ProductTypeTree;
 
   /**
-   * Function used to create links to product type pages.
-   */
-  createProductTypeListingLink: (req: ListProductsRequest | string) => string;
-
-  /**
-   * Should the tree
+   * Should the tree be expandable
    */
   expandable?: boolean;
 
@@ -74,14 +70,16 @@ class ProductTypeTreeListing extends Component<Props, State> {
       return null;
     }
 
+    const linkFactory = getLinkFactory<ShopLinkFactory>('shop');
+
     return (
       <Sc.ProductTypeTreeListing className="stackend-product-tree-root">
-        {productTypesTree.map(p => this.renderProductType(p))}
+        {productTypesTree.map(p => this.renderProductType(p, linkFactory))}
       </Sc.ProductTypeTreeListing>
     );
   }
 
-  renderProductType(p: ProductTypeTreeNode): JSX.Element | null {
+  renderProductType(p: ProductTypeTreeNode, linkFactory: ShopLinkFactory): JSX.Element | null {
     if (p.productType === '') {
       return null;
     }
@@ -89,7 +87,7 @@ class ProductTypeTreeListing extends Component<Props, State> {
     const { expanded } = this.props;
     const hasChildren = p.children.length !== 0;
     const isOpen = expanded || this.state.openProductTypes[p.productType];
-    const link = this.props.createProductTypeListingLink(p.productType);
+    const link = linkFactory.createProductListingLink(p.productType, ListingContext.PRODUCT_TYPE_LISTING);
 
     const className = 'product-type-' + generateClassName(p.productType);
 
@@ -99,7 +97,9 @@ class ProductTypeTreeListing extends Component<Props, State> {
           {p.name}
         </Link>
         {p.children.length !== 0 && (
-          <Sc.ProductTypeTreeListing>{p.children.map(c => this.renderProductType(c))}</Sc.ProductTypeTreeListing>
+          <Sc.ProductTypeTreeListing>
+            {p.children.map(c => this.renderProductType(c, linkFactory))}
+          </Sc.ProductTypeTreeListing>
         )}
       </li>
     );
