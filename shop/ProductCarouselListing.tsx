@@ -70,11 +70,19 @@ export default class ProductCarouselListing extends Component<Props> {
 
     // The original arrows uses a custom font. We want material-icons
     if (!s.prevArrow) {
-      s.prevArrow = <i className="material-icons">navigate_before</i>;
+      s.prevArrow = (
+        <div>
+          <i className="material-icons">navigate_before</i>
+        </div>
+      );
     }
 
     if (!s.nextArrow) {
-      s.nextArrow = <i className="material-icons">navigate_next</i>;
+      s.nextArrow = (
+        <div>
+          <i className="material-icons">navigate_next</i>
+        </div>
+      );
     }
 
     const linkFactory = getLinkFactory<ShopLinkFactory>('shop');
