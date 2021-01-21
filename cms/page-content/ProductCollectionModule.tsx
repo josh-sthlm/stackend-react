@@ -9,7 +9,7 @@ type Props = {
 };
 
 class ProductCollectionModule extends Component<Props> {
-  render() {
+  render(): JSX.Element | null {
     const { handle } = this.props;
 
     return (

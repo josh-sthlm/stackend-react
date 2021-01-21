@@ -46,13 +46,14 @@ export function registerLinkFactory(linkFactory: LinkFactory): void {
  * Remove empty params
  * @param params
  */
-export function noEmptyParams(params: Object): { [key: string]: string } | undefined {
+export function noEmptyParams(params: Record<string, unknown>): { [key: string]: string } | undefined {
   if (!params) return undefined;
 
-  let o: { [key: string]: string } = {};
-  for (let key of Object.keys(params)) {
-    let v = (params as any)[key];
+  const o: { [key: string]: string } = {};
+  for (const key of Object.keys(params)) {
+    const v = (params as any)[key];
     if (typeof v === 'undefined' || v === '' || (Array.isArray(v) && v.length === 0)) {
+      // Ignored
     } else {
       o[key] = v;
     }

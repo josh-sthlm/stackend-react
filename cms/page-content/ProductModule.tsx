@@ -30,7 +30,7 @@ type Props = ConnectedProps<typeof connector> & {
 };
 
 class ProductModule extends Component<Props> {
-  componentDidMount() {
+  componentDidMount(): void {
     // Backend may refuse to load all requested products. In that case, load it here
     const { product, requestProduct, handle } = this.props;
     if (!product && handle) {
@@ -38,7 +38,7 @@ class ProductModule extends Component<Props> {
     }
   }
 
-  render() {
+  render(): JSX.Element | null {
     const { product, layout } = this.props;
     if (!product) {
       return null;

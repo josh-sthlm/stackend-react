@@ -10,7 +10,7 @@ type Props = {
 };
 
 class ProductListingModule extends Component<Props> {
-  render() {
+  render(): JSX.Element | null {
     const { listProductsRequest } = this.props;
     if (!listProductsRequest) {
       return null;

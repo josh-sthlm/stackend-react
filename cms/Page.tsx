@@ -176,7 +176,7 @@ class Page extends Component<Props> {
     }
   };
 
-  renderShopContent = (pc: PageContent) => {
+  renderShopContent = (pc: PageContent): JSX.Element | null => {
     if (!pc.data) {
       return null;
     }
@@ -193,6 +193,7 @@ class Page extends Component<Props> {
       case ModuleType.SHOP_COLLECTION:
         return <ProductCollectionModule layout={data.layout} handle={data.handle} />;
     }
+    return null;
   };
 }
 
