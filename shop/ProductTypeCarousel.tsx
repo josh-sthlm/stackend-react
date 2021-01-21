@@ -102,9 +102,25 @@ class ProductTypeCarousel extends Component<Props> {
       pt = getProductTypeRoots(pt);
     }
 
-    const s = Object.assign({}, DEFAULT_SETTINGS, settings || {}, {
+    let s = Object.assign({}, DEFAULT_SETTINGS, settings || {}, {
       className: 'stackend-carousel'
     });
+
+    if (!s.prevArrow) {
+      s.prevArrow = (
+        <div>
+          <i className="material-icons">navigate_before</i>
+        </div>
+      );
+    }
+
+    if (!s.nextArrow) {
+      s.nextArrow = (
+        <div>
+          <i className="material-icons">navigate_next</i>
+        </div>
+      );
+    }
 
     const linkFactory = getLinkFactory<ShopLinkFactory>('shop');
 

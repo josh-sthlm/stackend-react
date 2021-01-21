@@ -38,6 +38,7 @@ export const StackendCarouselStyle = `
       height: auto;
       z-index: 10;
       text-shadow: 0 0 5px #222;
+      color: black;
 
       &.slick-next {
         right: 1em;
