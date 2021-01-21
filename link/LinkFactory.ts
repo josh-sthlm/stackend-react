@@ -41,3 +41,21 @@ export function getComponents(): Array<string> {
 export function registerLinkFactory(linkFactory: LinkFactory): void {
   LINK_FACTORIES[linkFactory.getComponent()] = linkFactory;
 }
+
+/**
+ * Remove empty params
+ * @param params
+ */
+export function noEmptyParams(params: Object): { [key: string]: string } | undefined {
+  if (!params) return undefined;
+
+  let o: { [key: string]: string } = {};
+  for (let key of Object.keys(params)) {
+    let v = (params as any)[key];
+    if (typeof v === 'undefined' || v === '' || (Array.isArray(v) && v.length === 0)) {
+    } else {
+      o[key] = v;
+    }
+  }
+  return o;
+}

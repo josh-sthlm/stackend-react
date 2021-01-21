@@ -7,6 +7,10 @@ import { Helmet } from 'react-helmet';
 //import CommentsPage from '../comments/CommentsPage.jsx';
 import { connect, ConnectedProps } from 'react-redux';
 import { PageContent } from '@stackend/api/cms';
+import ProductModule from './page-content/ProductModule';
+import ProductListingModule from './page-content/ProductListingModule';
+import ProductCollectionModule from './page-content/ProductCollectionModule';
+import { getListProductsRequestFromJson } from './page-content/ShopPageContentUtil';
 
 function mapStateToProps({ request }: any): any {
   return {
@@ -181,36 +185,13 @@ class Page extends Component<Props> {
 
     switch (pc.type) {
       case ModuleType.SHOP_PRODUCT:
-        return (
-          <ProductModule
-            moduleData={{
-              moduleType: ModuleType.SHOP_PRODUCT,
-              parameters: data
-            }}
-          />
-        );
+        return <ProductModule handle={data.handle} layout={data.layout} />;
 
       case ModuleType.SHOP_PRODUCT_LISTING:
-        return (
-          <ProductListingModule
-            moduleData={{
-              moduleType: ModuleType.SHOP_PRODUCT_LISTING,
-              parameters: {
-                // FIXME: get from page content
-              }
-            }}
-          />
-        );
+        return <ProductListingModule layout={data.layout} listProductsRequest={getListProductsRequestFromJson(data)} />;
 
       case ModuleType.SHOP_COLLECTION:
-        return (
-          <ProductCollectionModule
-            moduleData={{
-              moduleType: ModuleType.SHOP_COLLECTION,
-              parameters: data
-            }}
-          />
-        );
+        return <ProductCollectionModule layout={data.layout} handle={data.handle} />;
     }
   };
 }

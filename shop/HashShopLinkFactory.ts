@@ -1,5 +1,7 @@
 import ShopLinkFactory, { ListingContext } from './ShopLinkFactory';
 import { ListProductsRequest, ProductVariant, SlimProduct } from '@stackend/api/shop';
+import { noEmptyParams } from '../link/LinkFactory';
+import { createUrl } from '@stackend/api/api';
 
 /**
  * A shop link factory that uses hash links
@@ -26,7 +28,8 @@ export class HashShopLinkFactory implements ShopLinkFactory {
       return '#?productType=' + encodeURIComponent(req);
     }
 
-    return '#?fixme';
+    let params = noEmptyParams(req);
+    return createUrl({ path: '#', params });
   }
 }
 
