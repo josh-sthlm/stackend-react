@@ -98,18 +98,15 @@ class Page extends Component<Props> {
 
     const className = this.getPageContentClass(pc);
 
-    if (!obj) {
-      // It's fine. May be due to hidden status
-      // console.error('stackend: Content ' + pc.reference + ' missing for Page ' + (page as CmsPage).id);
-      return null;
-    }
-
     switch (pc.type) {
       case ModuleType.CMS:
         // Not wrapped in stackend class. Styling totally up to owner
         return <Content content={pc.referenceRef} key={key} className={className} />;
 
       case ModuleType.FEED:
+        if (!obj) {
+          return null;
+        }
         return null;
       /* FIXME: re add feed
 				return (
@@ -124,6 +121,9 @@ class Page extends Component<Props> {
 				);*/
 
       case ModuleType.BLOG:
+        if (!obj) {
+          return null;
+        }
         return null;
       /* FIXME: Re add blog
 				return (
@@ -139,6 +139,9 @@ class Page extends Component<Props> {
 			   */
 
       case ModuleType.COMMENTS: {
+        if (!obj) {
+          return null;
+        }
         return null;
         /* FIXME: re add comments
 				// Needs to include hash / page
