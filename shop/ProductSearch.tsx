@@ -1,5 +1,5 @@
 //@flow
-import React, { Component, createRef, RefObject, ChangeEvent, FormEvent } from 'react';
+import React, { ChangeEvent, Component, createRef, FormEvent, RefObject } from 'react';
 import * as Sc from './ProductSearch.style';
 import { getProductListingByKey, getProductListKey } from '@stackend/api/shop/shopActions';
 import { connect, ConnectedProps } from 'react-redux';
@@ -8,6 +8,7 @@ import ProductTypeSelect from './ProductTypeSelect';
 import SortOptionsSelect from './SortOptionsSelect';
 import ProductListingContainer from './ProductListingContainer';
 import { FormattedMessage, injectIntl } from 'react-intl';
+import { ListingContext } from './ShopLinkFactory';
 
 function mapStateToProps(state: any, _ownProps: any): any {
   return {
@@ -87,6 +88,7 @@ class ProductSearch extends Component<Props, State> {
           showPagination={true}
           showPlaceholder={true}
           onListingRequestChanged={this.onListingRequestChanged}
+          listingContext={ListingContext.SEARCH}
         />
         {listing && listing.products.length === 0 && (
           <Sc.NoMatches>
