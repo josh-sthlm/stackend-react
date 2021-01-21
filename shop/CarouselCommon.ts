@@ -40,17 +40,21 @@ export const StackendCarouselStyle = `
       text-shadow: 0 0 5px #222;
 
       &.slick-next {
-          right: 2em;
+        right: 1em;
+        font-size: 4rem;
       }
       &.slick-prev {
-          left: 2em;
+        left: 1em;
+        font-size: 4rem;
       }
 
       &.slick-prev:before {
-          font-size: 4rem;
+        font-family: initial;
+        content: '';
       }
       &.slick-next:before {
-        font-size: 4rem;
+        font-family: initial;
+        content: '';
       }
     }
   }
