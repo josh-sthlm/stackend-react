@@ -28,7 +28,7 @@ export class HashShopLinkFactory implements ShopLinkFactory {
       return '#?productType=' + encodeURIComponent(req);
     }
 
-    const params = noEmptyParams(req);
+    const params = noEmptyParams(req as any);
     return createUrl({ path: '#', params });
   }
 }
