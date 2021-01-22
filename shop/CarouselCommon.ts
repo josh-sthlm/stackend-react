@@ -39,20 +39,24 @@ export const StackendCarouselStyle = `
       z-index: 10;
       text-shadow: 0 0 5px #222;
       color: black;
+      background: white;
+      border-radius: 50%;
+      opacity: 50%;
+      font-size: 4rem;
 
       &.slick-next {
         right: 1em;
-        font-size: 4rem;
+
       }
       &.slick-prev {
         left: 1em;
-        font-size: 4rem;
       }
 
       &.slick-prev:before {
         font-family: initial;
         content: '';
       }
+
       &.slick-next:before {
         font-family: initial;
         content: '';
