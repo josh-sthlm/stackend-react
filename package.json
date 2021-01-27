@@ -1,6 +1,6 @@
 {
   "name": "@stackend/react",
-  "version": "0.3.13",
+  "version": "0.3.14",
   "description": "React components for Stackend",
   "keywords": [
     "comments",
@@ -82,7 +82,7 @@
     "@babel/plugin-external-helpers": "^7.12.1",
     "@babel/plugin-proposal-class-properties": "^7.12.1",
     "@babel/plugin-proposal-object-rest-spread": "^7.12.1",
-    "@babel/plugin-transform-runtime": "^7.12.10",
+    "@babel/plugin-transform-modules-commonjs": "^7.12.1",
     "@babel/preset-env": "^7.12.11",
     "@babel/preset-react": "^7.12.10",
     "@babel/preset-typescript": "^7.12.7",
