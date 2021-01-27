@@ -12,7 +12,7 @@ export const ShopButtonCommon = `
 export const ShopNowButton = styled.span.attrs(props => ({
   className: classNames('stackend-shop-now', props.className)
 }))`
-  ${ShopButtonCommon}
+  ${ShopButtonCommon};
 `;
 
 const productItemMargin = '1em 0;';
@@ -81,11 +81,11 @@ export const ButtonBox = styled.div.attrs(props => ({ className: classNames('sta
 export const ButtonNext = styled.button.attrs(props => ({
   className: classNames('stackend-button-next', props.className)
 }))`
-  ${ShopButtonCommon}
+  ${ShopButtonCommon};
 `;
 
 export const ButtonPrevious = styled.button.attrs(props => ({
   className: classNames('stackend-button-previous', props.className)
 }))`
-  ${ShopButtonCommon}
+  ${ShopButtonCommon};
 `;
