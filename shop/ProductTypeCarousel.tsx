@@ -102,7 +102,7 @@ class ProductTypeCarousel extends Component<Props> {
       pt = getProductTypeRoots(pt);
     }
 
-    let s = Object.assign({}, DEFAULT_SETTINGS, settings || {}, {
+    const s = Object.assign({}, DEFAULT_SETTINGS, settings || {}, {
       className: 'stackend-carousel'
     });
 
