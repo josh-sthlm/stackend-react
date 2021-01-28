@@ -20,7 +20,8 @@ module.exports = {
   plugins: [
     '@babel/proposal-class-properties',
     '@babel/proposal-object-rest-spread',
-    ['@quickbaseoss/babel-plugin-styled-components-css-namespace', { cssNamespace: '.stackend' }],
+    /* Version 1 produces code that does not work */
+    ['@quickbaseoss/babel-plugin-styled-components-css-namespace', { cssNamespace: 'stackend' }],
     [
       'babel-plugin-styled-components',
       {
