@@ -1,6 +1,6 @@
 {
   "name": "@stackend/react",
-  "version": "0.3.14",
+  "version": "0.3.15",
   "description": "React components for Stackend",
   "keywords": [
     "comments",
@@ -37,15 +37,15 @@
   "author": "Stackend",
   "homepage": "https://stackend.com",
   "scripts": {
-    "build": "babel --config-file ./.babelrc.js --source-root . --out-dir .  --relative  --source-maps --no-comments --ignore node_modules --extensions '.tsx,.ts'  '**/*.ts' '**/*.tsx'",
-    "check-types": "tsc",
+    "build": "babel --config-file ./.babelrc.js --source-root . --out-dir .  --relative  --source-maps --no-comments --ignore 'node_modules,**/*.d.ts,**/*.d.tsx' --extensions '.tsx,.ts'  '**/*.ts' '**/*.tsx'",
+    "build-types": "tsc",
     "test": "jest",
     "lint": "eslint --ext ts --ext tsx --ignore-pattern \"*.style.ts\" --ignore-pattern \"*.d.ts\" .",
     "lint:fix": "eslint --fix --ext ts --ext tsx --ignore-pattern \"*.style.ts\" --ignore-pattern \"*.d.ts\" .",
     "clean": "del-cli {abuse,cms,i18n,like,pagination,reducers,shop,style-common,throbber,ui,util}/**/*.{js,js.map,d.ts,d.ts.map} modal/?odal*.{js,js.map,d.ts,d.ts.map}",
     "format:check": "prettier --list-different \"**/*.{ts,tsx}\" \"**/*.md\" \"**/i18n/*.json\"",
     "format": "prettier --config .prettierrc.json \"**/*.{ts,tsx}\" \"**/*.md\" \"**/i18n/*.json\" --write",
-    "prepack": "npm run clean && npm run check-types && npm run build",
+    "prepack": "npm run clean && npm run build-types && npm run build",
     "prepublishOnly": "npm run lint && npm run format:check",
     "preversion": "npm run lint",
     "extract-messages": "formatjs extract **/*.tsx",
