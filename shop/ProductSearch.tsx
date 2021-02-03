@@ -9,6 +9,7 @@ import SortOptionsSelect from './SortOptionsSelect';
 import ProductListingContainer from './ProductListingContainer';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import { ListingContext } from './ShopLinkFactory';
+import isEqual from 'lodash/isEqual';
 
 function mapStateToProps(state: any, _ownProps: any): any {
   return {
@@ -51,7 +52,7 @@ class ProductSearch extends Component<Props, State> {
   searchInput: RefObject<HTMLInputElement> = createRef();
 
   static getDerivedStateFromProps(props: Props, state: State): State {
-    if (state.search === null && props.listProductsRequest) {
+    if (props.listProductsRequest && (state.search === null || !isEqual(state.search, props.listProductsRequest))) {
       return Object.assign({}, state, {
         search: props.listProductsRequest,
         q: props.listProductsRequest.q
@@ -64,6 +65,13 @@ class ProductSearch extends Component<Props, State> {
   componentDidMount(): void {
     if (this.searchInput && this.searchInput.current) {
       this.searchInput.current.focus();
+    }
+  }
+
+  componentDidUpdate(prevProps: Readonly<Props>): void {
+    const { listProductsRequest } = this.props;
+    if (!isEqual(listProductsRequest, prevProps.listProductsRequest)) {
+      this.updateSearch();
     }
   }
 
