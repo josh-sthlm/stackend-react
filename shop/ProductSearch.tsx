@@ -52,7 +52,7 @@ class ProductSearch extends Component<Props, State> {
   searchInput: RefObject<HTMLInputElement> = createRef();
 
   static getDerivedStateFromProps(props: Props, state: State): State {
-    if (props.listProductsRequest && (state.search === null || !isEqual(state.search, props.listProductsRequest))) {
+    if (props.listProductsRequest && state.search === null) {
       return Object.assign({}, state, {
         search: props.listProductsRequest,
         q: props.listProductsRequest.q
