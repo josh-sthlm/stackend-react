@@ -195,7 +195,7 @@ class ProductSearch extends Component<Props, State> {
     return false;
   };
 
-  onListingRequestChanged = (newListProductsRequest: ListProductsRequest, key: string): void => {
+  onListingRequestChanged = (newListProductsRequest: ListProductsRequest, _key: string): void => {
     // Changed due to pagination
     this.setState({ search: newListProductsRequest }, this.updateSearch);
   };
