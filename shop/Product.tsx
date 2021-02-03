@@ -73,21 +73,25 @@ class Product extends Component<Props, State> {
   componentDidMount(): void {
     const { product } = this.props;
     if (product) {
-      this.updatedSelectedVariant();
+      let { selectedVariant, selectedImage, selection } = this.state;
+      this.updatedSelectedVariant(selectedVariant, selection, selectedImage);
     }
   }
 
   componentDidUpdate(prevProps: Readonly<Props>, prevState: Readonly<State>, snapshot?: any): void {
     const { product } = this.props;
     if (prevProps.product && product && prevProps.product.handle !== product.handle) {
-      this.updatedSelectedVariant();
+      this.updatedSelectedVariant(null, {}, null);
     }
   }
 
-  updatedSelectedVariant = (): void => {
+  updatedSelectedVariant = (
+    selectedVariant: ProductVariant | null,
+    selection: ProductSelection,
+    selectedImage: ProductImage | null
+  ): void => {
     // Select first variant
     const { product } = this.props;
-    let { selectedVariant, selectedImage, selection } = this.state;
     if (!selectedVariant) {
       if (product.variants && product.variants.edges.length !== 0) {
         selectedVariant = product.variants.edges[0].node;
