@@ -72,30 +72,41 @@ class Product extends Component<Props, State> {
 
   componentDidMount(): void {
     const { product } = this.props;
-    let { selectedVariant, selectedImage, selection } = this.state;
-
     if (product) {
-      // Select first variant
-      if (!selectedVariant) {
-        if (product.variants && product.variants.edges.length !== 0) {
-          selectedVariant = product.variants.edges[0].node;
-          selection = getProductSelection(product, selectedVariant);
-        }
-        if (!selectedImage) {
-          selectedImage = getFirstImage(product) as ProductImage;
-        }
-      } else {
-        // Select first image, unless a variant is selected
-        selectedImage = selectedVariant.image || (getFirstImage(product) as ProductImage);
-      }
-
-      this.setState({
-        selectedVariant,
-        selection,
-        selectedImage
-      });
+      this.updatedSelectedVariant();
     }
   }
+
+  componentDidUpdate(prevProps: Readonly<Props>, prevState: Readonly<State>, snapshot?: any): void {
+    const { product } = this.props;
+    if (prevProps.product && product && prevProps.product.handle !== product.handle) {
+      this.updatedSelectedVariant();
+    }
+  }
+
+  updatedSelectedVariant = (): void => {
+    // Select first variant
+    const { product } = this.props;
+    let { selectedVariant, selectedImage, selection } = this.state;
+    if (!selectedVariant) {
+      if (product.variants && product.variants.edges.length !== 0) {
+        selectedVariant = product.variants.edges[0].node;
+        selection = getProductSelection(product, selectedVariant);
+      }
+      if (!selectedImage) {
+        selectedImage = getFirstImage(product) as ProductImage;
+      }
+    } else {
+      // Select first image, unless a variant is selected
+      selectedImage = selectedVariant.image || (getFirstImage(product) as ProductImage);
+    }
+
+    this.setState({
+      selectedVariant,
+      selection,
+      selectedImage
+    });
+  };
 
   render(): JSX.Element | null {
     const { product } = this.props;
