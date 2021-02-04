@@ -11,15 +11,17 @@ type Props = {
 
 class ProductListingModule extends Component<Props> {
   render(): JSX.Element | null {
-    const { listProductsRequest } = this.props;
+    const { listProductsRequest, layout } = this.props;
     if (!listProductsRequest) {
       return null;
     }
 
+    const showPagination = layout === 'list';
+
     return (
       <ProductListingContainer
         listProductsRequest={listProductsRequest}
-        showPagination={true}
+        showPagination={showPagination}
         showPlaceholder={true}
         renderListing={this.renderListing}
       />
