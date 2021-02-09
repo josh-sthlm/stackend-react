@@ -73,7 +73,7 @@ class Product extends Component<Props, State> {
   componentDidMount(): void {
     const { product } = this.props;
     if (product) {
-      let { selectedVariant, selectedImage, selection } = this.state;
+      const { selectedVariant, selectedImage, selection } = this.state;
       this.updatedSelectedVariant(selectedVariant, selection, selectedImage);
     }
   }

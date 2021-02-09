@@ -10,7 +10,10 @@ import getRoutes from './routes';
 const store = createReduxStore();
 const routes = getRoutes();
 
-const mountNode = document.getElementById('stackend-examples-app');
+console.log('Store', store);
+//const mountNode = document.getElementById('stackend-examples-app');
+const mountNode = document.createElement('div');
+document.body.appendChild(mountNode);
 
 if (mountNode) {
   const renderApp = (appRoutes: any): void => {

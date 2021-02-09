@@ -33,7 +33,7 @@ class ProductTypeCarouseModule extends Component<Props> {
     const { productTypes } = this.props;
     return (
       <ProductTypeCarousel
-        onProductTypeClicked={() => {}}
+        onProductTypeClicked={(): void => {}}
         productTypes={productTypes}
         topLevelProductTypesOnly={true}
       />
