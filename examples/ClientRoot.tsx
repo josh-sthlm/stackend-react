@@ -7,7 +7,7 @@ import createReduxStore from './createReduxStore';
 import Examples from './Examples';
 import getRoutes from './routes';
 
-async function main() {
+async function main(): Promise<void> {
   const store = await createReduxStore();
   const routes = getRoutes();
 
