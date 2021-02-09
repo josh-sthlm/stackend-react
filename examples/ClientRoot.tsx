@@ -7,36 +7,40 @@ import createReduxStore from './createReduxStore';
 import Examples from './Examples';
 import getRoutes from './routes';
 
-const store = createReduxStore();
-const routes = getRoutes();
+async function main() {
+  const store = await createReduxStore();
+  const routes = getRoutes();
 
-console.log('Store', store);
-//const mountNode = document.getElementById('stackend-examples-app');
-const mountNode = document.createElement('div');
-document.body.appendChild(mountNode);
+  //const mountNode = document.getElementById('stackend-examples-app');
+  const mountNode = document.createElement('div');
+  mountNode.setAttribute('id', 'stackend-examples-app');
+  document.body.appendChild(mountNode);
 
-if (mountNode) {
-  const renderApp = (appRoutes: any): void => {
-    hydrate(
-      <AppContainer>
-        <IntlProvider locale="en">
-          <Provider store={store as any}>
-            <Examples routes={appRoutes} store={store} />
-          </Provider>
-        </IntlProvider>
-      </AppContainer>,
-      mountNode
-    );
-  };
+  if (mountNode) {
+    const renderApp = (appRoutes: any): void => {
+      hydrate(
+        <AppContainer>
+          <IntlProvider locale="en">
+            <Provider store={store as any}>
+              <Examples routes={appRoutes} store={store} />
+            </Provider>
+          </IntlProvider>
+        </AppContainer>,
+        mountNode
+      );
+    };
 
-  renderApp(routes);
+    renderApp(routes);
 
-  if (module.hot) {
-    module.hot.accept(['./Examples.tsx', './routes.tsx'], () => {
-      setImmediate(() => {
-        const newRoutes = require('./routes.tsx').getRoutes();
-        renderApp(newRoutes);
+    if (module.hot) {
+      module.hot.accept(['./Examples.tsx', './routes.tsx'], () => {
+        setImmediate(() => {
+          const newRoutes = require('./routes.tsx').getRoutes();
+          renderApp(newRoutes);
+        });
       });
-    });
+    }
   }
 }
+
+main();
