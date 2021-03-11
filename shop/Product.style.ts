@@ -3,7 +3,7 @@
 import styled from 'styled-components';
 
 import media from '../style-common/media';
-import { Description, Price, Title } from './Shop.style';
+import { Description, Price, Title, Sku } from './Shop.style';
 import classNames from '../style-common/classNames';
 
 export const ProductDetails = styled.div.attrs(props => ({
@@ -26,6 +26,14 @@ export const Product = styled.div.attrs(props => ({ className: classNames('stack
     grid-area: title;
   }
 
+  ${Sku} {
+    display: none;
+  }
+
+  > ${Sku} {
+    grid-area: sku;
+  }
+
   ${ProductDetails} {
     grid-area: details;
   }
@@ -45,8 +53,11 @@ export const Product = styled.div.attrs(props => ({ className: classNames('stack
 
   ${media.overMobile} {
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: min-content minmax(0, min-content) minmax(0, min-content);
-    grid-template-areas: 'title title' 'details description' 'details actions';
+    grid-template-rows: minmax(1em, min-content) minmax(1em, min-content) auto;
+    grid-template-areas:
+      'title title'
+      'details description'
+      'details actions';
     grid-gap: 1em;
     > ${Title} {
       display: block;

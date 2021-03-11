@@ -22,5 +22,6 @@
   "shop.shipping.can_not_ship": "Ihre Artikel können nicht versendet werden. Kehre zum Korb zurück",
   "shop.total_price": "Insgesamt",
   "shop.back": "Zurück",
-  "shop.payment": "Zahlen"
+  "shop.payment": "Zahlen",
+  "shop.sku": "Produktnummer"
 }

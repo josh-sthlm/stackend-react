@@ -17,6 +17,7 @@ import { injectIntl, WrappedComponentProps } from 'react-intl';
 import ProductVariantSelect from './ProductVariantSelect';
 import ProductImageBrowser from './ProductImageBrowser';
 import ProductTags from './ProductTags';
+import Sku from './Sku';
 
 export interface Props extends WrappedComponentProps {
   /**
@@ -123,6 +124,7 @@ class Product extends Component<Props, State> {
     return (
       <Sc.Product>
         <Title>{product.title}</Title>
+        <Sku variant={selectedVariant} />
         <Sc.ProductDetails>
           <ProductImageBrowser product={product} selectedImage={selectedImage} onImageSelected={this.onImageSelected} />
           <Title>{product.title}</Title>
@@ -131,6 +133,7 @@ class Product extends Component<Props, State> {
         <Sc.Actions>
           <ProductVariantSelect product={product} selection={selection} onSelectionChanged={this.onVariantSelected} />
           <Price price={selectedVariant?.priceV2} />
+          <Sku variant={selectedVariant} />
           <AddToBasketButton product={product} variant={selectedVariant} />
           <ProductTags product={product} />
         </Sc.Actions>

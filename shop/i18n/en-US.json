@@ -22,5 +22,6 @@
   "shop.shipping.can_not_ship": "Your items can not be shipped. Return to the basket",
   "shop.total_price": "Total",
   "shop.back": "Back",
-  "shop.payment": "Payment"
+  "shop.payment": "Payment",
+  "shop.sku": "SKU"
 }
