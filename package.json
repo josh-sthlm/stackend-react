@@ -150,8 +150,5 @@
     "testRegex": "(/tests/.*\\.spec\\.[tj]s)$",
     "coverageProvider": "v8"
   },
-  "types": "./",
-  "publishConfig": {
-    "access": "public"
-  }
+  "types": "./"
 }
