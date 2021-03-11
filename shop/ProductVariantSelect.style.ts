@@ -12,4 +12,10 @@ export const ProductVariantSelect = styled.div.attrs(props => ({
   label {
     text-align: right;
   }
+
+  select {
+    option.stackend-product-variant-label {
+      display: none;
+    }
+  }
 `;

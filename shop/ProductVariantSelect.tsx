@@ -53,6 +53,9 @@ class ProductVariantSelect extends Component<Props> {
                 id={o.id}
                 value={value}
                 onChange={(e): void => this.onVariantSelected(o, e.target.value)}>
+                <option disabled={true} value="" key={o.id + '-label'} className="stackend-product-variant-label">
+                  {o.name}
+                </option>
                 {o.values.map(v => {
                   let disabled = false;
                   let variant: ProductVariant | null = null;
