@@ -40,7 +40,7 @@ export default function ProductTypeBreadCrumbs({
 
         return (
           <Fragment key={t}>
-            {index !== 0 && <i className="material-icons">trending_flat</i>}
+            {index !== 0 && <i className="material-icons">navigate_next</i>}
             <Link to={link}>{getProductTypeLabel(t)}</Link>
           </Fragment>
         );
