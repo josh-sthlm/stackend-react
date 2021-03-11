@@ -42,6 +42,14 @@ export const Title = styled.h2.attrs(props => ({ className: classNames('stackend
   }
 `;
 
+export const Sku = styled.div.attrs(props => ({ className: classNames('stackend-product-sku', props.className) }))``;
+export const SkuLabel = styled.span.attrs(props => ({
+  className: classNames('stackend-product-sku-label', props.className)
+}))``;
+export const SkuValue = styled.span.attrs(props => ({
+  className: classNames('stackend-product-sku-value', props.className)
+}))``;
+
 export const Quantity = styled.span.attrs(props => ({
   className: classNames('stackend-shop-quantity', props.className)
 }))``;
