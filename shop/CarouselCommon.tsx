@@ -63,11 +63,11 @@ export function ArrowNext(props: ArrowProps): JSX.Element {
   );
 }
 
-const ArrowPrevFactory = (p: ArrowProps): JSX.Element => <ArrowPrev {...p} />;
-ArrowPrevFactory.displayName = 'ArrowPrev';
+//const ArrowPrevFactory = (p: ArrowProps): JSX.Element => <ArrowPrev {...p} />;
+//ArrowPrevFactory.displayName = 'ArrowPrev';
 
-const ArrowNextFactory = (p: ArrowProps): JSX.Element => <ArrowNext {...p} />;
-ArrowNextFactory.displayName = 'ArrowNext';
+//const ArrowNextFactory = (p: ArrowProps): JSX.Element => <ArrowNext {...p} />;
+//ArrowNextFactory.displayName = 'ArrowNext';
 
 /**
  * Get carousel default settings
@@ -84,11 +84,11 @@ export function getCarouselDefaults(
 
   // The original arrows uses a custom font. We want material-icons
   if (!s.prevArrow) {
-    s.prevArrow = ArrowPrevFactory;
+    s.prevArrow = ArrowPrev;
   }
 
   if (!s.nextArrow) {
-    s.nextArrow = ArrowNextFactory;
+    s.nextArrow = ArrowNext;
   }
 
   return s;
