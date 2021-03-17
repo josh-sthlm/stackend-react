@@ -8,7 +8,7 @@ import * as Sc from './ProductTypeCarousel.style';
 import { ShopState } from '@stackend/api/shop/shopReducer';
 import { generateClassName } from '@stackend/api/util';
 import { getProductTypeLabel } from '@stackend/api/shop/shopActions';
-import type { CarouselSettings } from './CarouselCommon';
+import { CarouselSettings, getCarouselDefaults } from './CarouselCommon';
 import Slider from 'react-slick';
 import { getProductTypeRoots } from '@stackend/api/shop';
 import { getLinkFactory } from '../link/LinkFactory';
@@ -102,31 +102,13 @@ class ProductTypeCarousel extends Component<Props> {
       pt = getProductTypeRoots(pt);
     }
 
-    const s = Object.assign({}, DEFAULT_SETTINGS, settings || {}, {
-      className: 'stackend-carousel'
-    });
-
-    if (!s.prevArrow) {
-      s.prevArrow = (
-        <div>
-          <i className="material-icons">navigate_before</i>
-        </div>
-      );
-    }
-
-    if (!s.nextArrow) {
-      s.nextArrow = (
-        <div>
-          <i className="material-icons">navigate_next</i>
-        </div>
-      );
-    }
+    const s = getCarouselDefaults(settings, DEFAULT_SETTINGS);
 
     const linkFactory = getLinkFactory<ShopLinkFactory>('shop');
-
+    const x: any = s;
     return (
       <Sc.ProductTypeCarousel>
-        <Slider {...s}>{pt.map(x => this.renderProductType(x, linkFactory))}</Slider>
+        <Slider {...x}>{pt.map(x => this.renderProductType(x, linkFactory))}</Slider>
       </Sc.ProductTypeCarousel>
     );
   }

@@ -9,6 +9,7 @@ import type { CarouselSettings } from './CarouselCommon';
 import Slider from 'react-slick';
 import { getLinkFactory } from '../link/LinkFactory';
 import ShopLinkFactory from './ShopLinkFactory';
+import { getCarouselDefaults } from './CarouselCommon';
 
 export type Props = ProductListingProps & {
   /**
@@ -64,32 +65,13 @@ export default class ProductCarouselListing extends Component<Props> {
       return null;
     }
 
-    const s = Object.assign({}, DEFAULT_SETTINGS, settings || {}, {
-      className: 'stackend-carousel'
-    });
-
-    // The original arrows uses a custom font. We want material-icons
-    if (!s.prevArrow) {
-      s.prevArrow = (
-        <div>
-          <i className="material-icons">navigate_before</i>
-        </div>
-      );
-    }
-
-    if (!s.nextArrow) {
-      s.nextArrow = (
-        <div>
-          <i className="material-icons">navigate_next</i>
-        </div>
-      );
-    }
-
+    const s = getCarouselDefaults(settings, DEFAULT_SETTINGS);
     const linkFactory = getLinkFactory<ShopLinkFactory>('shop');
 
+    const x: any = s;
     return (
       <Sc.ProductCarouselListing>
-        <Slider {...s}>{products.map(p => this.renderProduct(p, linkFactory))}</Slider>
+        <Slider {...x}>{products.map(p => this.renderProduct(p, linkFactory))}</Slider>
       </Sc.ProductCarouselListing>
     );
   }
