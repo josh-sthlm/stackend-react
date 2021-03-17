@@ -84,11 +84,11 @@ export function getCarouselDefaults(
 
   // The original arrows uses a custom font. We want material-icons
   if (!s.prevArrow) {
-    s.prevArrow = ArrowPrev;
+    s.prevArrow = (<ArrowPrev />) as any; // FIXME: slick api seems broken here?
   }
 
   if (!s.nextArrow) {
-    s.nextArrow = ArrowNext;
+    s.nextArrow = (<ArrowNext />) as any;
   }
 
   return s;
