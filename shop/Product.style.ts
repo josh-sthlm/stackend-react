@@ -41,6 +41,7 @@ export const Product = styled.div.attrs(props => ({ className: classNames('stack
   ${Description} {
     grid-area: description;
     text-align: left;
+    margin-right: 1em;
   }
 
   ${Actions} {
