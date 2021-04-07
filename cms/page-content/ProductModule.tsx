@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
 import { ShopState } from '@stackend/api/shop/shopReducer';
 import { requestProduct } from '@stackend/api/shop/shopActions';
+import { Product as ProductType } from '@stackend/api/shop';
 import Product from '../../shop/Product';
 import ProductListingItem from '../../shop/ProductListingItem';
 import * as Sc from './ProductModule.style';
@@ -27,6 +28,7 @@ const connector = connect(mapStateToProps, mapDispatchToProps);
 type Props = ConnectedProps<typeof connector> & {
   handle: string;
   layout: 'full' | 'compact';
+  render?: (product: ProductType, layout: string) => JSX.Element;
 };
 
 class ProductModule extends Component<Props> {
@@ -39,9 +41,14 @@ class ProductModule extends Component<Props> {
   }
 
   render(): JSX.Element | null {
-    const { product, layout } = this.props;
+    const { product, layout, render } = this.props;
+
     if (!product) {
       return null;
+    }
+
+    if (render) {
+      return <Sc.ProductModule>{render(product, layout)}</Sc.ProductModule>;
     }
 
     if (layout === 'full') {
