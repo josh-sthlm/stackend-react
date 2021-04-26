@@ -1,10 +1,11 @@
 import styled from 'styled-components';
 import * as sc from '../style-common/styled-variables.style';
 import QuantityStyle from '../style-common/Quantity.style';
+import classNames from '../style-common/classNames';
 
-export const LikeButton = styled.button.attrs({
-  className: 'stackend-like'
-})<{ liked: boolean }>`
+export const LikeButton = styled.button.attrs(props => ({
+  className: classNames('stackend-like', props.className)
+}))<{ liked: boolean }>`
   display: flex;
   align-items: center;
   background: none;

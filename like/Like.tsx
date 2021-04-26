@@ -8,7 +8,8 @@ import * as commentApi from '@stackend/api/comments';
 import * as Sc from './Like.style';
 import ScQuantity from '../style-common/Quantity.style';
 //import { sendEventToGA, getGaObjectName } from '../analytics/analyticsFunctions.js';
-import { getCommentsStateKey } from '@stackend/api/comments/commentAction';
+//import { getCommentsStateKey } from '@stackend/api/comments/commentAction';
+import { isLikedByCurrentUser } from '@stackend/api/like/likeActions';
 
 //import { getReferenceUrl } from '@stackend/api/stackend';
 //import { getGAGroupData } from '../group/groupAnalytics';
@@ -36,9 +37,11 @@ type Props = OwnProps & {
 type OwnState = {
   numberOfLikes: number;
   likedByCurrentUser: boolean;
+  recentlyChanged: boolean;
 };
 
-function mapStateToProps({ currentUser, groupBlogEntries, GroupComments }: any, { entry, module }: any): any {
+function mapStateToProps({ currentUser, groupBlogEntries, GroupComments, likes }: any, { entry, module }: any): any {
+  /* Pre 1.1.1
   const key =
     typeof module !== 'undefined' && typeof entry.referenceGroupId === 'number'
       ? getCommentsStateKey(module, entry.referenceGroupId) //If this is a comment get the groupKey
@@ -46,13 +49,18 @@ function mapStateToProps({ currentUser, groupBlogEntries, GroupComments }: any, 
   const blogComments = get(groupBlogEntries, `[${key}].json.likesByCurrentUser`);
   const groupComments = get(GroupComments, `[${key}].json.likesByCurrentUser`, {});
   const likesByCurrentUser = blogComments ? blogComments : groupComments;
+   */
+  const likedByCurrentUser = isLikedByCurrentUser(likes, entry.obfuscatedReference);
   return {
     isLoggedIn: get(currentUser, 'isLoggedIn', false),
+    /*
     likedByCurrentUser: get(
       likesByCurrentUser,
       `[${entry.id}]`,
       get(entry, 'likedByCurrentUser.likedByCurrentUser', false)
     ),
+     */
+    likedByCurrentUser,
     numberOfLikes: entry.numberOfLikes
   };
 }
@@ -64,16 +72,12 @@ const mapDispatchToProps = {
 };
 
 export class Like extends Component<Props, OwnState> {
-  state = {
-    numberOfLikes: 0,
-    likedByCurrentUser: false
-  };
-
   constructor(props: Props) {
     super(props);
     this.state = {
       numberOfLikes: props.numberOfLikes,
-      likedByCurrentUser: props?.likedByCurrentUser
+      likedByCurrentUser: props?.likedByCurrentUser,
+      recentlyChanged: false
     };
   }
 
@@ -85,7 +89,12 @@ export class Like extends Component<Props, OwnState> {
       this.setState({ likedByCurrentUser });
     }
     if (numberOfLikes !== prevProps.numberOfLikes && numberOfLikes !== this.state.numberOfLikes) {
-      this.setState({ numberOfLikes });
+      this.setState({ numberOfLikes }, () => {
+        // Allows for flashing the like etc
+        setTimeout(() => {
+          this.setState({ recentlyChanged: false });
+        }, 2000);
+      });
     }
   }
 
@@ -184,10 +193,13 @@ export class Like extends Component<Props, OwnState> {
   };
 
   render(): JSX.Element | null {
-    const { numberOfLikes, likedByCurrentUser } = this.state;
+    const { numberOfLikes, likedByCurrentUser, recentlyChanged } = this.state;
 
     return (
-      <Sc.LikeButton liked={likedByCurrentUser} onClick={this.handleClick}>
+      <Sc.LikeButton
+        liked={likedByCurrentUser}
+        onClick={this.handleClick}
+        className={recentlyChanged ? 'stackend-like-changed' : ''}>
         <ScQuantity>{numberOfLikes}</ScQuantity>
         <i className="material-icons">{likedByCurrentUser ? 'favorite' : 'favorite_border'}</i>
       </Sc.LikeButton>
