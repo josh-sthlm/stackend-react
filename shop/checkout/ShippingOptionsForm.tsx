@@ -21,7 +21,7 @@ import { getJsonErrorText } from '@stackend/api/api';
 import { requestOrResetActiveCheckout } from '@stackend/api/shop/shopActions';
 import { FormattedMessage, injectIntl } from 'react-intl';
 
-function mapStateToProps(state: any, ownProps: any): any {
+function mapStateToProps(state: any, _ownProps: any): any {
   const shop: ShopState = state.shop;
   return {
     checkout: shop.checkout,
@@ -37,7 +37,7 @@ const mapDispatchToProps = {
 
 const connector = connect(mapStateToProps, mapDispatchToProps);
 
-interface Props extends ConnectedProps<typeof connector> {
+export interface Props extends ConnectedProps<typeof connector> {
   imageMaxWidth?: number;
   onCancelClicked: () => void;
   onBackClicked?: () => void;

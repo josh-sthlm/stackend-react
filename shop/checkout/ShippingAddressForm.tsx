@@ -55,7 +55,7 @@ const mapDispatchToProps = {
 
 const connector = connect(mapStateToProps, mapDispatchToProps);
 
-interface Props extends ConnectedProps<typeof connector> {
+export interface Props extends ConnectedProps<typeof connector> {
   imageMaxWidth?: number;
   onBackClicked: () => void;
   onContinueClicked: (checkout: Checkout) => void;
