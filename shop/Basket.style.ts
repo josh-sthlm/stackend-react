@@ -24,14 +24,14 @@ export const BasketTotalPrice = styled.div.attrs(props => ({
   className: classNames('stackend-basket-total', props.className)
 }))``;
 export const BasketEmpty = styled.p.attrs(props => ({
-  className: classNames('stacked-basket-empty', props.className)
+  className: classNames('stackend-basket-empty', props.className)
 }))``;
 export const BasketActions = styled.div.attrs(props => ({
-  className: classNames('stacked-basket-actions', props.className)
+  className: classNames('stackend-basket-actions', props.className)
 }))``;
 
 export const Basket = styled.div.attrs(props => ({
-  className: classNames('stacked-basket', props.className)
+  className: classNames('stackend-basket', props.className)
 }))`
   overflow: hidden;
 
