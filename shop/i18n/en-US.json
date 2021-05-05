@@ -23,5 +23,6 @@
   "shop.total_price": "Total",
   "shop.back": "Back",
   "shop.payment": "Payment",
-  "shop.sku": "Article number"
+  "shop.sku": "Article number",
+  "shop.email": "Email"
 }
