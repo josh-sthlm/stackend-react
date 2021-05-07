@@ -29,12 +29,12 @@ let _editor: any | null = null;
  * Dom element holding the entire content
  */
 //@ts-ignore
-let _contentDomElement: any = null;
+let _contentDomElement: HTMLElement | null = null;
 
 /**
  * Dom element holding the editable part of the content
  */
-let _editableDomElement: any = null;
+let _editableDomElement: HTMLElement | null = null;
 
 /**
  * Enable cms edit in place on entire page
@@ -65,18 +65,18 @@ export function setEditInPlaceEnabled(enabled: boolean): Thunk<boolean> {
  * @returns {*}
  */
 function findEnclosingElementByClassName(
-  element: Element | null,
+  element: HTMLElement | null,
   className: string,
   upToClassName?: string | null
-): Element | null {
-  let e: Element | null = element;
+): HTMLElement | null {
+  let e: HTMLElement | null = element;
 
   while (e !== null) {
     if (e.classList && e.classList.contains(className)) {
       return e;
     }
 
-    e = e.parentNode as Element;
+    e = e.parentNode as HTMLElement;
     if (e === null || (upToClassName != null && e.classList && e.classList.contains(upToClassName))) {
       return null;
     }
@@ -88,16 +88,20 @@ function findEnclosingElementByClassName(
 /**
  * Open a content editor
  * @param content CMS content that should be edited
- * @param contentElement HTML elemen that should be edited
+ * @param contentElement HTML element that should be edited
  */
-export function openEditor(content: Content, contentElement: any): Thunk<void> {
+export function openEditor(content: Content, contentElement: HTMLElement | null): Thunk<void> {
   return (dispatch: any, getState: any): void => {
     if (contentElement == null || content == null) {
       return;
     }
 
     // Find the closest stackend-editable element
-    const e: Element | null = findEnclosingElementByClassName(contentElement, EDITABLE_CSS_CLASS, EDITABLE_CSS_CLASS);
+    const e: HTMLElement | null = findEnclosingElementByClassName(
+      contentElement,
+      EDITABLE_CSS_CLASS,
+      EDITABLE_CSS_CLASS
+    );
     if (e === null) {
       console.warn('Could not find parent ' + EDITABLE_CSS_CLASS + ' of ', contentElement);
       return;
@@ -134,7 +138,7 @@ export function openEditor(content: Content, contentElement: any): Thunk<void> {
     const originalId = _editableDomElement.getAttribute('id');
     _editableDomElement.setAttribute('id', id);
 
-    /* FIXME: Readd this
+    /* FIXME: Re-add this
 		_editor = new TinyMCEEditorAdapter({
 			id,
 			dispatch,
@@ -243,11 +247,13 @@ export function closeEditor(): Thunk<boolean> {
       }
       _editor.remove();
       _editor = null;
-      _editableDomElement.setAttribute('id', originalId);
-      _editableDomElement.outerHTML = originalContent;
-      _editableDomElement.style.display = originalDisplay;
-      _editableDomElement.classList.remove('stackend');
-      _editableDomElement = null;
+      if (_editableDomElement) {
+        _editableDomElement.setAttribute('id', originalId);
+        _editableDomElement.outerHTML = originalContent;
+        _editableDomElement.style.display = originalDisplay;
+        _editableDomElement.classList.remove('stackend');
+        _editableDomElement = null;
+      }
       _contentDomElement = null;
 
       dispatch({

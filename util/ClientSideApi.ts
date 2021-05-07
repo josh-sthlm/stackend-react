@@ -34,8 +34,7 @@ declare let window: {
  * Get the client side api
  */
 export function getClientSideApi(): ClientSideApi | null {
-  // @ts-ignore
-  return window.__stackend;
+  return (window.__stackend || null) as ClientSideApi;
 }
 
 export function initializeClientSideApi(api: ClientSideApi): ClientSideApi {

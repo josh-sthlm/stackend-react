@@ -30,7 +30,7 @@ export function getListProductsRequestFromJsonString(json: string): ListProducts
  * Construct a ListProductsRequest from a json object
  * @param d
  */
-export function getListProductsRequestFromJson(d: any): ListProductsRequest {
+export function getListProductsRequestFromJson(d: { [key: string]: any }): ListProductsRequest {
   if (!d) {
     return {};
   }

@@ -165,7 +165,7 @@ class Subsite extends Component<Props, State> {
 			 - Do not apply stackend styling to Page, but to the menu
 			*/
     }
-    // @ts-ignore See below
+
     return (
       <div
         className={'stackend-site ' + c + (loading ? ' stackend-site-loading' : '')}
