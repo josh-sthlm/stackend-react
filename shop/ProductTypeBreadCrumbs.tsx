@@ -4,7 +4,7 @@ import React, { Fragment } from 'react';
 import * as Sc from './ProductTypeBreadCrumbs.style';
 import { getProductTypeLabel } from '@stackend/api/shop/shopActions';
 import { getParentProductType } from '@stackend/api/shop/ProductTypeTree';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import { getLinkFactory } from '../link/LinkFactory';
 import ShopLinkFactory, { ListingContext } from './ShopLinkFactory';
 

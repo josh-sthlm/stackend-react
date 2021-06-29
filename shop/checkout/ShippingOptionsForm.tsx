@@ -21,7 +21,7 @@ import { getJsonErrorText } from '@stackend/api/api';
 import { requestOrResetActiveCheckout } from '@stackend/api/shop/shopActions';
 import { FormattedMessage, injectIntl } from 'react-intl';
 
-function mapStateToProps(state: any, _ownProps: any): any {
+function mapStateToProps(state: any, _ownProps: any) {
   const shop: ShopState = state.shop;
   return {
     checkout: shop.checkout,

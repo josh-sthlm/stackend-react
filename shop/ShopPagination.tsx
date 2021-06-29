@@ -1,6 +1,6 @@
 //@flow
 import React, { MouseEvent } from 'react';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import type { ListProductsRequest } from '@stackend/api/shop';
 import * as Sc from './ShopPagination.style';
 import { SlimProductListing } from '@stackend/api/shop/shopReducer';

@@ -5,10 +5,10 @@ import { connect, ConnectedProps } from 'react-redux';
 import * as Sc from './ProductTypeSelect.style';
 
 import { ShopState } from '@stackend/api/shop/shopReducer';
-import { ProductTypeTreeNode, ProductTypeTree } from '@stackend/api/shop/ProductTypeTree';
+import { ProductTypeTreeNode } from '@stackend/api/shop/ProductTypeTree';
 import { injectIntl, WrappedComponentProps } from 'react-intl';
 
-function mapStateToProps(state: any, p: any): any {
+function mapStateToProps(state: any, p: any) {
   const shop: ShopState = state.shop;
   return {
     productTypeTree: shop.productTypeTree
@@ -17,11 +17,6 @@ function mapStateToProps(state: any, p: any): any {
 const connector = connect(mapStateToProps);
 
 export interface Props extends ConnectedProps<typeof connector>, WrappedComponentProps {
-  /**
-   * Product types
-   */
-  productTypeTree?: ProductTypeTree;
-
   /**
    * Selected product type
    */

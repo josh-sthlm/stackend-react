@@ -4,7 +4,11 @@ import { ShopState } from '@stackend/api/shop/shopReducer';
 import { requestProductTypes } from '@stackend/api/shop/shopActions';
 import ProductTypeCarousel from '../../shop/ProductTypeCarousel';
 
-function mapStateToProps(state: any, _ownProps: any): any {
+function mapStateToProps(
+  state: any
+): {
+  productTypes?: Array<string>;
+} {
   const shop: ShopState = state.shop;
   const productTypes = shop.productTypes;
 
@@ -30,11 +34,11 @@ class ProductTypeCarouseModule extends Component<Props> {
   }
 
   render(): JSX.Element | null {
-    const { productTypes } = this.props;
+    //const { productTypes } = this.props;
     return (
       <ProductTypeCarousel
         onProductTypeClicked={(): void => {}}
-        productTypes={productTypes}
+        // FIXME: productTypes={productTypes}
         topLevelProductTypesOnly={true}
       />
     );

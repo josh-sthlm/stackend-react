@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import { hot } from 'react-hot-loader';
 import { connect } from 'react-redux';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import * as Sc from './ExamplesPage.style';
 import LoadingThrobber from '../throbber/LoadingThrobber';
 import ModalThrobber from '../throbber/ModalThrobber';

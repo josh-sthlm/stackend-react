@@ -11,8 +11,9 @@ const reducers = {
   ...REDUCERS
 };
 
-export default async function createReduxStore(): Promise<Store<any>> {
-  const store: Store<any> = createStore(combineReducers(reducers), {}, compose(applyMiddleware(thunk)));
+export default async function createReduxStore(): Promise<Store> {
+  const combinedReducers = combineReducers(reducers);
+  const store: Store = createStore(combinedReducers, {}, compose(applyMiddleware(thunk)));
 
   await store.dispatch(
     initialize({

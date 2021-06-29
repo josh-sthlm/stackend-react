@@ -1,6 +1,6 @@
 import React, { Component, MouseEvent } from 'react';
 import * as Sc from './ProductImageBrowser.style';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import {
   getAllUniqueImages,
   ProductImage,

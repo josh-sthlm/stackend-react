@@ -5,7 +5,7 @@ import { Content as CmsContent, addContentToDom } from '@stackend/api/cms';
 import * as Sc from './Content.style';
 import { isRunningServerSide } from '@stackend/api/api';
 
-function mapStateToProps({ cmsEditInPlace }: any, _ownProps: any): any {
+function mapStateToProps({ cmsEditInPlace }: any, _ownProps: any) {
   return {
     editInPlace: cmsEditInPlace.enabled
   };
@@ -61,7 +61,7 @@ class Content extends Component<Props> {
   onContentClicked = (e: MouseEvent): void => {
     const { content, openEditor } = this.props;
     if (content) {
-      openEditor(content, e.target);
+      openEditor(content, e.target as HTMLElement);
     }
   };
 

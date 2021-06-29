@@ -14,7 +14,7 @@ const mapDispatchToProps = {
   checkoutAdd
 };
 
-function mapStateToProps(x: any, y: any): any {
+function mapStateToProps(x: any, y: any) {
   return {};
 }
 

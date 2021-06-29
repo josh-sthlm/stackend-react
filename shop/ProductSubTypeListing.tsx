@@ -1,6 +1,6 @@
 //@flow
 import React, { Component, MouseEvent } from 'react';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import { connect, ConnectedProps } from 'react-redux';
 
 import * as Sc from './ProductSubTypeListing.style';
@@ -12,7 +12,7 @@ import { getLinkFactory } from '../link/LinkFactory';
 
 const mapDispatchToProps = {};
 
-function mapStateToProps(state: any, ownProps: any): any {
+function mapStateToProps(state: any, ownProps: any) {
   const shop: ShopState = state.shop;
   const productType = ownProps.productType;
   const n = findProductTypeTreeNode(shop.productTypeTree, productType);

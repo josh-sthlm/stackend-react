@@ -16,7 +16,7 @@ const mapDispatchToProps = {
   requestCollection
 };
 
-function mapStateToProps(state: any, ownProps: any): any {
+function mapStateToProps(state: any, ownProps: any) {
   const shop: ShopState = state.shop;
   const collection = shop.collections[ownProps.handle];
   const products = mapGraphQLList(collection?.products, p => p);

@@ -11,7 +11,7 @@ import { FormattedMessage, injectIntl } from 'react-intl';
 import { ListingContext } from './ShopLinkFactory';
 import isEqual from 'lodash/isEqual';
 
-function mapStateToProps(state: any, _ownProps: any): any {
+function mapStateToProps(state: any, _ownProps: any) {
   return {
     shop: state.shop
   };

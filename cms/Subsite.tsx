@@ -18,13 +18,14 @@ import {
   shouldFetchPage,
   SITE_HASH_PREFIX
 } from '@stackend/api/cms/pageActions';
-import { browserHistory } from 'react-router';
+// React router 3
+//import { browserHistory } from 'react-router-dom';
 import { findNode, getNodePath, getTreePath, getTreePathMatch, getTreePermalink, Node } from '@stackend/api/api/tree';
 import Content from './Content';
 import { AnchorType, getAnchorPart, parseAnchor } from '@stackend/api/request';
 import { dispatchCustomEvent, EVENT_NAVIGATE_TO_PAGE } from '../util/ClientSideApi';
 
-function mapStateToProps({ pages, cmsContent, request }: any, { subSite }: any): any {
+function mapStateToProps({ pages, cmsContent, request }: any, { subSite }: any) {
   const defaultPageId = subSite ? getDefaultPageId(subSite) : null;
 
   let page: CmsPage | null = null;
@@ -252,7 +253,11 @@ class Subsite extends Component<Props, State> {
       }
     }
 
-    browserHistory.push(href);
+    // React router 4
+    this.context.router.history.push(href);
+    // React router 3
+    // browserHistory.push(href);
+
     if (scrollIntoView && this.pageRef) {
       const parent = this.pageRef;
       if (parent) {
