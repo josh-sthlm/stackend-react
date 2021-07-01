@@ -22,17 +22,20 @@ import {
 // React router 3
 //import { browserHistory } from 'react-router-dom';
 import { findNode, getNodePath, getTreePath, getTreePathMatch, getTreePermalink, Node } from '@stackend/api/api/tree';
-import { PagesState } from "@stackend/api/cms/pageReducer";
+import { PagesState } from '@stackend/api/cms/pageReducer';
 import Content from './Content';
 import { AnchorType, getAnchorPart, parseAnchor, Request } from '@stackend/api/request';
 import { dispatchCustomEvent, EVENT_NAVIGATE_TO_PAGE } from '../util/ClientSideApi';
 
-function mapStateToProps({ pages, cmsContent, request }: any, { subSite }: any): {
-  page: CmsPage | null,
-  defaultPageId: number | null,
-  content: CmsContent | undefined,
-  request: Request,
-  pages: PagesState
+function mapStateToProps(
+  { pages, cmsContent, request }: any,
+  { subSite }: any
+): {
+  page: CmsPage | null;
+  defaultPageId: number | null;
+  content: CmsContent | undefined;
+  request: Request;
+  pages: PagesState;
 } {
   const defaultPageId = subSite ? getDefaultPageId(subSite) : null;
 
@@ -262,7 +265,7 @@ class Subsite extends Component<Props, State> {
           page = {
             ...p,
             loaded: Date.now()
-          }
+          };
         }
       }
     }

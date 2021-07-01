@@ -7,14 +7,16 @@ import { ListProductsRequest, parseProductSortKey } from '@stackend/api/shop';
 import ProductTypeSelect from './ProductTypeSelect';
 import SortOptionsSelect from './SortOptionsSelect';
 import ProductListingContainer from './ProductListingContainer';
-import { FormattedMessage, injectIntl, WrappedComponentProps } from "react-intl";
+import { FormattedMessage, injectIntl, WrappedComponentProps } from 'react-intl';
 import { ListingContext } from './ShopLinkFactory';
 import isEqual from 'lodash/isEqual';
-import { ShopState } from "@stackend/api/shop/shopReducer";
-import { newListProductsRequest } from "@stackend/api/src/shop/index";
+import { ShopState } from '@stackend/api/shop/shopReducer';
+import { newListProductsRequest } from '@stackend/api/src/shop/index';
 
-function mapStateToProps(state: any): {
-  shop: ShopState
+function mapStateToProps(
+  state: any
+): {
+  shop: ShopState;
 } {
   return {
     shop: state.shop

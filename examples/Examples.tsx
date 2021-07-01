@@ -10,8 +10,10 @@ type Props = {
   store: any;
 };
 
-function mapStateToProps({ request }: any): {
-  request: Request
+function mapStateToProps({
+  request
+}: any): {
+  request: Request;
 } {
   return {
     request

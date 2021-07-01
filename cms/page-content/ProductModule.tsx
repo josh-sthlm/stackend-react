@@ -9,8 +9,11 @@ import * as Sc from './ProductModule.style';
 import { getLinkFactory } from '../../link/LinkFactory';
 import ShopLinkFactory from '../../shop/ShopLinkFactory';
 
-function mapStateToProps(state: any, ownProps: any): {
-  product: ProductType | undefined
+function mapStateToProps(
+  state: any,
+  ownProps: any
+): {
+  product: ProductType | undefined;
 } {
   const { handle } = ownProps;
   const shop: ShopState = state.shop;

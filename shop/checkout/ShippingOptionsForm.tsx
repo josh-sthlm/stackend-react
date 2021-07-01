@@ -20,12 +20,15 @@ import Price from '../Price';
 import { getJsonErrorText } from '@stackend/api/api';
 import { requestOrResetActiveCheckout } from '@stackend/api/shop/shopActions';
 import { FormattedMessage, injectIntl } from 'react-intl';
-import { Community } from "@stackend/api/stackend";
+import { Community } from '@stackend/api/stackend';
 
-function mapStateToProps(state: any, _ownProps: any): {
-  checkout: Checkout | null,
-  community: Community,
-  shop: ShopState
+function mapStateToProps(
+  state: any,
+  _ownProps: any
+): {
+  checkout: Checkout | null;
+  community: Community;
+  shop: ShopState;
 } {
   const shop: ShopState = state.shop;
   return {

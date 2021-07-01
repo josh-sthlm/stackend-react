@@ -10,8 +10,11 @@ import { ProductTypeTree, findProductTypeTreeNode, ProductTypeTreeNode } from '@
 import ShopLinkFactory, { ListingContext } from './ShopLinkFactory';
 import { getLinkFactory } from '../link/LinkFactory';
 
-function mapStateToProps(state: any, ownProps: any): {
-  subNodes: ProductTypeTree
+function mapStateToProps(
+  state: any,
+  ownProps: any
+): {
+  subNodes: ProductTypeTree;
 } {
   const shop: ShopState = state.shop;
   const productType = ownProps.productType;
