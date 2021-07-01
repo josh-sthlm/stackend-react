@@ -7,7 +7,9 @@ import get from 'lodash/get';
 import { CurrentUserType } from '@stackend/api/login/loginReducer';
 import { XcapObject } from '@stackend/api/api';
 
-function mapStateToProps(state: any, _x: any) {
+function mapStateToProps(state: any): {
+  currentUser: CurrentUserType
+} {
   const currentUser: CurrentUserType = state;
   return {
     currentUser

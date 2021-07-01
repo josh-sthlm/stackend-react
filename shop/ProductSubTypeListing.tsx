@@ -10,9 +10,9 @@ import { ProductTypeTree, findProductTypeTreeNode, ProductTypeTreeNode } from '@
 import ShopLinkFactory, { ListingContext } from './ShopLinkFactory';
 import { getLinkFactory } from '../link/LinkFactory';
 
-const mapDispatchToProps = {};
-
-function mapStateToProps(state: any, ownProps: any) {
+function mapStateToProps(state: any, ownProps: any): {
+  subNodes: ProductTypeTree
+} {
   const shop: ShopState = state.shop;
   const productType = ownProps.productType;
   const n = findProductTypeTreeNode(shop.productTypeTree, productType);
@@ -23,7 +23,7 @@ function mapStateToProps(state: any, ownProps: any) {
   };
 }
 
-const connector = connect(mapStateToProps, mapDispatchToProps);
+const connector = connect(mapStateToProps);
 
 export interface Props extends ConnectedProps<typeof connector> {
   /**

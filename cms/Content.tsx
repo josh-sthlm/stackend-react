@@ -5,7 +5,9 @@ import { Content as CmsContent, addContentToDom } from '@stackend/api/cms';
 import * as Sc from './Content.style';
 import { isRunningServerSide } from '@stackend/api/api';
 
-function mapStateToProps({ cmsEditInPlace }: any, _ownProps: any) {
+function mapStateToProps({ cmsEditInPlace }: any, _ownProps: any): {
+  editInPlace: boolean
+} {
   return {
     editInPlace: cmsEditInPlace.enabled
   };

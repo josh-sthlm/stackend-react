@@ -7,11 +7,15 @@ import { ListProductsRequest, parseProductSortKey } from '@stackend/api/shop';
 import ProductTypeSelect from './ProductTypeSelect';
 import SortOptionsSelect from './SortOptionsSelect';
 import ProductListingContainer from './ProductListingContainer';
-import { FormattedMessage, injectIntl } from 'react-intl';
+import { FormattedMessage, injectIntl, WrappedComponentProps } from "react-intl";
 import { ListingContext } from './ShopLinkFactory';
 import isEqual from 'lodash/isEqual';
+import { ShopState } from "@stackend/api/shop/shopReducer";
+import { newListProductsRequest } from "@stackend/api/src/shop/index";
 
-function mapStateToProps(state: any, _ownProps: any) {
+function mapStateToProps(state: any): {
+  shop: ShopState
+} {
   return {
     shop: state.shop
   };
@@ -30,7 +34,7 @@ type State = {
   search: ListProductsRequest | null;
 };
 
-export interface Props extends ConnectedProps<typeof connector> {
+export interface Props extends ConnectedProps<typeof connector>, WrappedComponentProps {
   /**
    * Initial search
    */
@@ -39,7 +43,7 @@ export interface Props extends ConnectedProps<typeof connector> {
   /**
    * Invoked when the search is changed
    */
-  onListingRequestChanged: (search: ListProductsRequest, productListingKey: string) => void;
+  onListingRequestChanged?: (search: ListProductsRequest, productListingKey: string) => void;
 }
 
 class ProductSearch extends Component<Props, State> {
@@ -54,7 +58,7 @@ class ProductSearch extends Component<Props, State> {
   static getDerivedStateFromProps(props: Props, state: State): State {
     if (props.listProductsRequest && state.search === null) {
       return Object.assign({}, state, {
-        search: props.listProductsRequest,
+        search: props.listProductsRequest || newListProductsRequest(),
         q: props.listProductsRequest.q
       });
     }
@@ -92,7 +96,7 @@ class ProductSearch extends Component<Props, State> {
         </Sc.ProductSearchForm>
 
         <ProductListingContainer
-          listProductsRequest={search}
+          listProductsRequest={search as ListProductsRequest}
           showPagination={true}
           showPlaceholder={true}
           onListingRequestChanged={this.onListingRequestChanged}
@@ -118,7 +122,7 @@ class ProductSearch extends Component<Props, State> {
         <label className="stackend-product-filters-label" htmlFor="stackend-product-filter">
           <FormattedMessage id="shop.product_type" defaultMessage="Product type" />:{' '}
         </label>
-        <ProductTypeSelect id="stackend-product-filter" onChange={this.onProductTypeChanged} value={productType} />
+        <ProductTypeSelect onChange={this.onProductTypeChanged} value={productType} />
         <label htmlFor="stackend-product-sort" className="stackend-product-sort-label">
           <FormattedMessage id="shop.sort_by" defaultMessage="Sort by" />:{' '}
         </label>

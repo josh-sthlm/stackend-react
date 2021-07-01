@@ -14,7 +14,9 @@ const mapDispatchToProps = {
   getProductListingByKey
 };
 
-function mapStateToProps(state: any, _ownProps: any) {
+function mapStateToProps(state: any): {
+  shop: ShopState
+} {
   const shop: ShopState = state.shop;
   return {
     shop
@@ -44,12 +46,12 @@ export interface Props extends ConnectedProps<typeof connector> {
    * @param newListProductsRequest
    * @param key
    */
-  onListingRequestChanged: (newListProductsRequest: ListProductsRequest, key: string) => void;
+  onListingRequestChanged?: (newListProductsRequest: ListProductsRequest, key: string) => void;
 
   /**
    * Invoked when the listing has been updated and new products are available
    */
-  onProductListingUpdated: (
+  onProductListingUpdated?: (
     listProductsRequest: ListProductsRequest,
     key: string,
     listing: SlimProductListing | null

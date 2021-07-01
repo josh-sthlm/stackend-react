@@ -11,8 +11,11 @@ import { generateClassName } from '@stackend/api//util';
 import { getParentProductType } from '@stackend/api/shop';
 import { getLinkFactory } from '../link/LinkFactory';
 import ShopLinkFactory, { ListingContext } from './ShopLinkFactory';
+import { ProductTypeTree } from "@stackend/api/src/shop/ProductTypeTree";
 
-function mapStateToProps(state: any, _ownProps: any) {
+function mapStateToProps(state: any): {
+  productTypesTree: ProductTypeTree
+} {
   const shop: ShopState = state.shop;
   return {
     productTypesTree: shop.productTypeTree

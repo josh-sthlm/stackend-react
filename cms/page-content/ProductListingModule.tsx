@@ -24,6 +24,7 @@ class ProductListingModule extends Component<Props> {
         showPagination={showPagination}
         showPlaceholder={true}
         renderListing={this.renderListing}
+
       />
     );
   }

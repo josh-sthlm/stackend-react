@@ -5,7 +5,8 @@ import {
   MenuVisibility,
   getDefaultPageId,
   SubSiteNode,
-  GetPagesResult
+  GetPagesResult,
+  Content as CmsContent
 } from '@stackend/api/cms';
 import { Helmet } from 'react-helmet';
 import Menu from './Menu';
@@ -21,11 +22,18 @@ import {
 // React router 3
 //import { browserHistory } from 'react-router-dom';
 import { findNode, getNodePath, getTreePath, getTreePathMatch, getTreePermalink, Node } from '@stackend/api/api/tree';
+import { PagesState } from "@stackend/api/cms/pageReducer";
 import Content from './Content';
-import { AnchorType, getAnchorPart, parseAnchor } from '@stackend/api/request';
+import { AnchorType, getAnchorPart, parseAnchor, Request } from '@stackend/api/request';
 import { dispatchCustomEvent, EVENT_NAVIGATE_TO_PAGE } from '../util/ClientSideApi';
 
-function mapStateToProps({ pages, cmsContent, request }: any, { subSite }: any) {
+function mapStateToProps({ pages, cmsContent, request }: any, { subSite }: any): {
+  page: CmsPage | null,
+  defaultPageId: number | null,
+  content: CmsContent | undefined,
+  request: Request,
+  pages: PagesState
+} {
   const defaultPageId = subSite ? getDefaultPageId(subSite) : null;
 
   let page: CmsPage | null = null;
@@ -249,7 +257,13 @@ class Subsite extends Component<Props, State> {
     if (shouldFetchPage(page, Date.now())) {
       const r: GetPagesResult = await requestPage(node.referenceId);
       if (!r.error) {
-        page = r.pages[node.referenceId];
+        const p = r.pages[node.referenceId];
+        if (p) {
+          page = {
+            ...p,
+            loaded: Date.now()
+          }
+        }
       }
     }
 

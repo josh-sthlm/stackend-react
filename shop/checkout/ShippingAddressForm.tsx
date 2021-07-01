@@ -26,8 +26,18 @@ import { Community } from '@stackend/api/stackend';
 import { getStackendLocale, EMAIL_VALIDATION_REGEXP_RELAXED } from '@stackend/api/util';
 import { getJsonErrorText } from '@stackend/api/api';
 import { FormattedMessage, injectIntl, WrappedComponentProps } from 'react-intl';
+import { Product } from "@stackend/api/src/shop/index";
 
-function mapStateToProps(state: any) {
+function mapStateToProps(state: any): {
+  shop: ShopState,
+  community: Community,
+  products: {[handle: string]: Product},
+  countryCodes: Array<string> | null;
+  countriesByCode: { [code: string]: Country };
+  basketUpdated: number;
+  addressFieldsByCountryCode: { [code: string]: AddressFieldName[][] },
+  checkout: Checkout | null
+} {
   const shop: ShopState = state.shop;
   const community: Community = state?.communities?.community;
 
@@ -134,7 +144,7 @@ class ShippingAddressForm extends Component<Props, State> {
   async componentDidMount(): Promise<void> {
     const { countryCodes, countriesByCode, imageMaxWidth } = this.props;
     let { checkout } = this.props;
-    const community: Community = this.props.community;
+    const community = this.props.community;
 
     // Ensure a valid checkout exists
     if (!checkout) {

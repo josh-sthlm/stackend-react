@@ -3,13 +3,16 @@ import React, { Component } from 'react';
 import { hot } from 'react-hot-loader';
 import { connect } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
+import { Request } from '@stackend/api/request';
 
 type Props = {
   routes: any;
   store: any;
 };
 
-function mapStateToProps({ request }: any) {
+function mapStateToProps({ request }: any): {
+  request: Request
+} {
   return {
     request
   };

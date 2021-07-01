@@ -5,7 +5,9 @@ import { MoneyV2 } from '@stackend/api/shop';
 import { connect, ConnectedProps } from 'react-redux';
 import { getCurrencyFormatter } from '@stackend/api/util';
 
-function mapStateToProps(state: any, _o: any) {
+function mapStateToProps(state: any): {
+  locale: string
+} {
   const locale: string = (state?.communities?.community?.locale || 'en-US').replace('_', '-');
   return {
     locale
