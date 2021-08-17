@@ -13,9 +13,7 @@ import isEqual from 'lodash/isEqual';
 import { ShopState } from '@stackend/api/shop/shopReducer';
 import { newListProductsRequest } from '@stackend/api/src/shop/index';
 
-function mapStateToProps(
-  state: any
-): {
+function mapStateToProps(state: any): {
   shop: ShopState;
 } {
   return {
@@ -165,7 +163,7 @@ class ProductSearch extends Component<Props, State> {
     );
   };
 
-  searchTimer = 0;
+  searchTimer: any = 0;
 
   onSearchChanged = (e: ChangeEvent<HTMLInputElement>): void => {
     const q = e.target.value;

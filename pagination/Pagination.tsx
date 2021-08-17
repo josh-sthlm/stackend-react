@@ -65,7 +65,7 @@ class Pagination extends React.Component<Props, State> {
   scrollSource: any = null;
   scrollTarget: any = null;
   thresholdPixels = 500;
-  scrollTimer: number | null = null;
+  scrollTimer: any = null;
 
   static getDerivedStateFromProps(props: Props, state: State): any {
     if (!state.pageSet && props.collection) {
