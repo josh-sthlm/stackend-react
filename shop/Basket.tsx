@@ -24,9 +24,7 @@ import { getLinkFactory } from '../link/LinkFactory';
 import ShopLinkFactory from './ShopLinkFactory';
 import { Product } from '@stackend/api/src/shop/index';
 
-function mapStateToProps(
-  state: any
-): {
+function mapStateToProps(state: any): {
   shop: ShopState;
   products: { [handle: string]: Product };
   basketUpdated: number;

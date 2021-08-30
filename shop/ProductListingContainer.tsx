@@ -14,9 +14,7 @@ const mapDispatchToProps = {
   getProductListingByKey
 };
 
-function mapStateToProps(
-  state: any
-): {
+function mapStateToProps(state: any): {
   shop: ShopState;
 } {
   const shop: ShopState = state.shop;

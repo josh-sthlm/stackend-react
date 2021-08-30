@@ -28,9 +28,7 @@ import { getJsonErrorText } from '@stackend/api/api';
 import { FormattedMessage, injectIntl, WrappedComponentProps } from 'react-intl';
 import { Product } from '@stackend/api/src/shop/index';
 
-function mapStateToProps(
-  state: any
-): {
+function mapStateToProps(state: any): {
   shop: ShopState;
   community: Community;
   products: { [handle: string]: Product };

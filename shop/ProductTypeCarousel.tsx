@@ -16,9 +16,7 @@ import ShopLinkFactory, { ListingContext } from './ShopLinkFactory';
 
 //const mapDispatchToProps = {};
 
-function mapStateToProps(
-  state: any
-): {
+function mapStateToProps(state: any): {
   productTypes?: Array<string>;
 } {
   const shop: ShopState = state.shop;

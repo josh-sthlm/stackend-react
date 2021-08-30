@@ -8,9 +8,7 @@ import { ShopState } from '@stackend/api/shop/shopReducer';
 import { ProductTypeTree, ProductTypeTreeNode } from '@stackend/api/shop/ProductTypeTree';
 import { injectIntl, WrappedComponentProps } from 'react-intl';
 
-function mapStateToProps(
-  state: any
-): {
+function mapStateToProps(state: any): {
   productTypeTree: ProductTypeTree;
 } {
   const shop: ShopState = state.shop;

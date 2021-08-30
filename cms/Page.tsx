@@ -12,9 +12,7 @@ import ProductListingModule from './page-content/ProductListingModule';
 import ProductCollectionModule from './page-content/ProductCollectionModule';
 import { getListProductsRequestFromJson } from './page-content/ShopPageContentUtil';
 
-function mapStateToProps({
-  request
-}: any): {
+function mapStateToProps({ request }: any): {
   referenceUrlId: number;
 } {
   return {

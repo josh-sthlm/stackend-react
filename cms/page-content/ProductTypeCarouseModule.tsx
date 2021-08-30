@@ -4,9 +4,7 @@ import { ShopState } from '@stackend/api/shop/shopReducer';
 import { requestProductTypes } from '@stackend/api/shop/shopActions';
 import ProductTypeCarousel from '../../shop/ProductTypeCarousel';
 
-function mapStateToProps(
-  state: any
-): {
+function mapStateToProps(state: any): {
   productTypes?: Array<string>;
 } {
   const shop: ShopState = state.shop;
