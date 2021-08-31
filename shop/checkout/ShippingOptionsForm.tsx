@@ -253,6 +253,7 @@ class ShippingOptionsForm extends Component<Props, State> {
     if (r.error) {
       // FIXME: Improve error
       alert(getJsonErrorText(r));
+      console.error(getJsonErrorText(r));
       return;
     }
 
