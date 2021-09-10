@@ -11,7 +11,7 @@ import { FormattedMessage, injectIntl, WrappedComponentProps } from 'react-intl'
 import { ListingContext } from './ShopLinkFactory';
 import isEqual from 'lodash/isEqual';
 import { ShopState } from '@stackend/api/shop/shopReducer';
-import { newListProductsRequest } from '@stackend/api/src/shop/index';
+import { newListProductsRequest } from '@stackend/api/shop';
 
 function mapStateToProps(state: any): {
   shop: ShopState;
