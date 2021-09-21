@@ -44,7 +44,8 @@ export const PaginationWrapper = styled.div.attrs({
   className: 'stackend-pagination stackend-pagination-numbered'
 })`
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
+  flex-direction: row;
   width: 100%;
 
   ${props => !!props.theme.PaginationWrapper && props.theme.PaginationWrapper(props)};
