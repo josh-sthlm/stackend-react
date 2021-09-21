@@ -255,7 +255,7 @@ class Pagination extends React.Component<Props, State> {
       <Sc.PaginationWrapper>
         {collection.page !== collection.firstPage && (
           <Sc.PaginationButtons prev onClick={this.onPreviousClicked}>
-            <i className="material-icons">arrow_forward</i>
+            <i className="material-icons">arrow_back</i>
           </Sc.PaginationButtons>
         )}
         {collection.page !== collection.firstPage && (

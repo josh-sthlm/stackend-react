@@ -52,17 +52,13 @@ export const PaginationWrapper = styled.div.attrs({
 
 export const PaginationButtons = styled.button<{ prev?: boolean; current?: boolean }>`
   display: flex;
+  align-items: center;
   cursor: pointer;
   padding: 0 10px;
   height: 32px;
   margin: 5px;
   border-radius: 3px;
   font-family: ${sc.fontNormal};
-
-  #pagination-arrow {
-    width: 13px;
-    transform: ${props => props.prev && 'rotate(180deg)'};
-  }
 
   ${props => !!props.theme.PaginationButtons && props.theme.PaginationButtons(props)};
 `;
