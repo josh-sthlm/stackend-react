@@ -1,7 +1,7 @@
 import { Tags } from './Shop.style';
 import React, { Fragment } from 'react';
 import { Product } from '@stackend/api/shop';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import ShopLinkFactory from './ShopLinkFactory';
 import { getLinkFactory } from '../link/LinkFactory';
 

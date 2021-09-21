@@ -2,7 +2,7 @@
 import React, { MouseEventHandler } from 'react';
 import { getFirstImage, SlimProduct } from '@stackend/api/shop';
 import * as Sc from './ProductListingItem.style';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import SquareProductImage from './SquareProductImage';
 import { ShopNowButton, Title } from './Shop.style';
 import Price from './Price';
@@ -15,7 +15,7 @@ const ProductListingItem = ({
 }: {
   product: SlimProduct;
   link: string;
-  onClick?: MouseEventHandler<Link>;
+  onClick?: MouseEventHandler<HTMLAnchorElement>;
 } & WrappedComponentProps): JSX.Element => {
   const image = getFirstImage(product);
   return (

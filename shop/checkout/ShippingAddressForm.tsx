@@ -25,9 +25,19 @@ import { ButtonBox, ButtonNext, ButtonPrevious } from '../Shop.style';
 import { Community } from '@stackend/api/stackend';
 import { getStackendLocale, EMAIL_VALIDATION_REGEXP_RELAXED } from '@stackend/api/util';
 import { getJsonErrorText } from '@stackend/api/api';
-import { FormattedMessage, injectIntl } from 'react-intl';
+import { FormattedMessage, injectIntl, WrappedComponentProps } from 'react-intl';
+import { Product } from '@stackend/api/src/shop/index';
 
-function mapStateToProps(state: any, ownProps: any): any {
+function mapStateToProps(state: any): {
+  shop: ShopState;
+  community: Community;
+  products: { [handle: string]: Product };
+  countryCodes: Array<string> | null;
+  countriesByCode: { [code: string]: Country };
+  basketUpdated: number;
+  addressFieldsByCountryCode: { [code: string]: AddressFieldName[][] };
+  checkout: Checkout | null;
+} {
   const shop: ShopState = state.shop;
   const community: Community = state?.communities?.community;
 
@@ -55,7 +65,7 @@ const mapDispatchToProps = {
 
 const connector = connect(mapStateToProps, mapDispatchToProps);
 
-export interface Props extends ConnectedProps<typeof connector> {
+export interface Props extends ConnectedProps<typeof connector>, WrappedComponentProps {
   imageMaxWidth?: number;
   onBackClicked: () => void;
   onContinueClicked: (checkout: Checkout) => void;
@@ -134,7 +144,7 @@ class ShippingAddressForm extends Component<Props, State> {
   async componentDidMount(): Promise<void> {
     const { countryCodes, countriesByCode, imageMaxWidth } = this.props;
     let { checkout } = this.props;
-    const community: Community = this.props.community;
+    const community = this.props.community;
 
     // Ensure a valid checkout exists
     if (!checkout) {
@@ -430,7 +440,7 @@ class ShippingAddressForm extends Component<Props, State> {
       // The country name needs to be in english to be accepted
       let addr = address;
       if (locale !== 'en_US') {
-        const country: Country = await this.props.getCountry({ locale: 'en_US', countryCode });
+        const country: Country | null = await this.props.getCountry({ locale: 'en_US', countryCode });
         if (country) {
           addr = Object.assign({}, address, {
             country: country.name

@@ -21,6 +21,7 @@ module.exports = {
     '@babel/proposal-class-properties',
     '@babel/proposal-object-rest-spread',
     ['@babel/plugin-proposal-private-methods', { loose: false }],
+    ['@babel/plugin-proposal-private-property-in-object', { loose: false }],
     /* Version 1 produces code that does not work */
     ['@quickbaseoss/babel-plugin-styled-components-css-namespace', { cssNamespace: 'stackend' }],
     [

@@ -1,6 +1,6 @@
 import React, { Component, MouseEvent } from 'react';
 import * as Sc from './ProductImageBrowser.style';
-import { Link } from 'react-router';
+
 import {
   getAllUniqueImages,
   ProductImage,
@@ -50,9 +50,9 @@ export default class ProductImageBrowser extends Component<Props> {
     return (
       <Sc.ProductImageBrowser>
         {selectedImage && (
-          <Link to={selectedImage.originalSrc} target="_blank">
+          <a href={selectedImage.originalSrc} target="_blank" rel="noreferrer">
             {this.defaultRenderImage(selectedImage, false)}
-          </Link>
+          </a>
         )}
         {this.renderProductImageThumbnails()}
       </Sc.ProductImageBrowser>

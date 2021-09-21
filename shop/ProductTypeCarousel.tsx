@@ -1,6 +1,6 @@
 //@flow
 import React, { Component } from 'react';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import { connect, ConnectedProps } from 'react-redux';
 
 import * as Sc from './ProductTypeCarousel.style';
@@ -14,16 +14,18 @@ import { getProductTypeRoots } from '@stackend/api/shop';
 import { getLinkFactory } from '../link/LinkFactory';
 import ShopLinkFactory, { ListingContext } from './ShopLinkFactory';
 
-const mapDispatchToProps = {};
+//const mapDispatchToProps = {};
 
-function mapStateToProps(state: any, _ownProps: any): any {
+function mapStateToProps(state: any): {
+  productTypes?: Array<string>;
+} {
   const shop: ShopState = state.shop;
   return {
     productTypes: shop.productTypes
   };
 }
 
-const connector = connect(mapStateToProps, mapDispatchToProps);
+const connector = connect(mapStateToProps); //, mapDispatchToProps);
 
 export interface Props extends ConnectedProps<typeof connector> {
   /**

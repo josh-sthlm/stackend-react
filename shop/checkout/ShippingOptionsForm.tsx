@@ -20,8 +20,16 @@ import Price from '../Price';
 import { getJsonErrorText } from '@stackend/api/api';
 import { requestOrResetActiveCheckout } from '@stackend/api/shop/shopActions';
 import { FormattedMessage, injectIntl } from 'react-intl';
+import { Community } from '@stackend/api/stackend';
 
-function mapStateToProps(state: any, _ownProps: any): any {
+function mapStateToProps(
+  state: any,
+  _ownProps: any
+): {
+  checkout: Checkout | null;
+  community: Community;
+  shop: ShopState;
+} {
   const shop: ShopState = state.shop;
   return {
     checkout: shop.checkout,
@@ -245,6 +253,7 @@ class ShippingOptionsForm extends Component<Props, State> {
     if (r.error) {
       // FIXME: Improve error
       alert(getJsonErrorText(r));
+      console.error(getJsonErrorText(r));
       return;
     }
 

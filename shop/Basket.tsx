@@ -14,7 +14,7 @@ import { MoneyV2, getFirstImage, Checkout, CheckoutLineItem, toMoneyV2 } from '@
 import { mapGraphQLList } from '@stackend/api/util/graphql';
 import * as Sc from './Basket.style';
 import { connect, ConnectedProps } from 'react-redux';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import NumberEntry from '../ui/NumberEntry';
 import Price from './Price';
 import { ButtonNext, ProductTitlePart, Title, VariantTitlePart } from './Shop.style';
@@ -22,8 +22,14 @@ import SquareProductImage from './SquareProductImage';
 import { FormattedMessage, injectIntl, WrappedComponentProps } from 'react-intl';
 import { getLinkFactory } from '../link/LinkFactory';
 import ShopLinkFactory from './ShopLinkFactory';
+import { Product } from '@stackend/api/src/shop/index';
 
-function mapStateToProps(state: any, _op: any): any {
+function mapStateToProps(state: any): {
+  shop: ShopState;
+  products: { [handle: string]: Product };
+  basketUpdated: number;
+  checkout: Checkout | null;
+} {
   const shop: ShopState = state.shop;
   return {
     shop: shop,

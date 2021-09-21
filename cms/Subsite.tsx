@@ -18,13 +18,15 @@ import {
   shouldFetchPage,
   SITE_HASH_PREFIX
 } from '@stackend/api/cms/pageActions';
-import { browserHistory } from 'react-router';
+// React router 3
+//import { browserHistory } from 'react-router-dom';
+import { withRouter, RouteComponentProps } from 'react-router';
 import { findNode, getNodePath, getTreePath, getTreePathMatch, getTreePermalink, Node } from '@stackend/api/api/tree';
 import Content from './Content';
 import { AnchorType, getAnchorPart, parseAnchor } from '@stackend/api/request';
 import { dispatchCustomEvent, EVENT_NAVIGATE_TO_PAGE } from '../util/ClientSideApi';
 
-function mapStateToProps({ pages, cmsContent, request }: any, { subSite }: any): any {
+function mapStateToProps({ pages, cmsContent, request }: any, { subSite, history }: any) {
   const defaultPageId = subSite ? getDefaultPageId(subSite) : null;
 
   let page: CmsPage | null = null;
@@ -42,7 +44,8 @@ function mapStateToProps({ pages, cmsContent, request }: any, { subSite }: any):
     page,
     defaultPageId,
     content,
-    request
+    request,
+    history
   };
 }
 
@@ -52,12 +55,13 @@ const mapDispatchToProps = {
 
 const connector = connect(mapStateToProps, mapDispatchToProps);
 
-export interface Props extends ConnectedProps<typeof connector> {
-  subSite?: SubSite | null;
-  menuVisibility?: MenuVisibility;
-  helmet?: boolean;
-  currentPageId: number;
-}
+type Props = ConnectedProps<typeof connector> &
+  RouteComponentProps & {
+    subSite?: SubSite | null;
+    menuVisibility?: MenuVisibility;
+    helmet?: boolean;
+    currentPageId: number;
+  };
 
 type State = {
   page: CmsPage | null;
@@ -235,7 +239,7 @@ class Subsite extends Component<Props, State> {
       loading: true
     });
 
-    const { pages, requestPage, request, subSite } = this.props;
+    const { pages, requestPage, request, subSite, history } = this.props;
     const previousPage = this.state.page;
     let page = pages.byId[node.referenceId];
 
@@ -248,11 +252,22 @@ class Subsite extends Component<Props, State> {
     if (shouldFetchPage(page, Date.now())) {
       const r: GetPagesResult = await requestPage(node.referenceId);
       if (!r.error) {
-        page = r.pages[node.referenceId];
+        const p = r.pages[node.referenceId];
+        if (p) {
+          page = {
+            ...p,
+            loaded: Date.now()
+          };
+        }
       }
     }
 
-    browserHistory.push(href);
+    history.push(href);
+    // React router 4
+    //this.context.router.history.push(href);
+    // React router 3
+    // browserHistory.push(href);
+
     if (scrollIntoView && this.pageRef) {
       const parent = this.pageRef;
       if (parent) {
@@ -322,4 +337,4 @@ class Subsite extends Component<Props, State> {
     this.doNavigate(href, n[n.length - 1], n, scrollOnClick).then();
   };
 }
-export default connector(Subsite);
+export default connector(withRouter(Subsite));

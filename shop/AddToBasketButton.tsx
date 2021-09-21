@@ -14,7 +14,7 @@ const mapDispatchToProps = {
   checkoutAdd
 };
 
-function mapStateToProps(x: any, y: any): any {
+function mapStateToProps(_x: any) {
   return {};
 }
 
@@ -23,7 +23,7 @@ const connector = connect(mapStateToProps, mapDispatchToProps);
 export interface Props extends ConnectedProps<typeof connector>, WrappedComponentProps {
   product: ProductType | null;
   variant: ProductVariant | null;
-  onClick: (e: MouseEvent, product: ProductType, variant: ProductVariant) => void;
+  onClick?: (e: MouseEvent, product: ProductType, variant: ProductVariant) => void;
 }
 
 class AddToBasketButton extends Component<Props, State> {

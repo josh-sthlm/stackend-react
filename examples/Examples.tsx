@@ -2,14 +2,17 @@
 import React, { Component } from 'react';
 import { hot } from 'react-hot-loader';
 import { connect } from 'react-redux';
-import { browserHistory, Router } from 'react-router';
+import { BrowserRouter as Router } from 'react-router-dom';
+import { Request } from '@stackend/api/request';
 
 type Props = {
   routes: any;
   store: any;
 };
 
-function mapStateToProps({ request }: any): any {
+function mapStateToProps({ request }: any): {
+  request: Request;
+} {
   return {
     request
   };
@@ -22,12 +25,15 @@ class Examples extends Component<Props> {
     const routes = this.props.routes;
     return (
       <Router
+      /*
         onUpdate={(): void => {
           window.scrollTo(0, 0);
         }}
         history={browserHistory}
-        routes={routes}
-      />
+         */
+      >
+        {routes}
+      </Router>
     );
   }
 }

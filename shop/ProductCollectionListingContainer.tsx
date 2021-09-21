@@ -4,7 +4,7 @@ import { connect, ConnectedProps } from 'react-redux';
 import ProductListing, { Props as ProductListingProps } from './ProductListing';
 import { requestCollection } from '@stackend/api/shop/shopActions';
 import { ShopState } from '@stackend/api/shop/shopReducer';
-import { Collection } from '@stackend/api/shop';
+import { Collection, SlimProduct } from '@stackend/api/shop';
 import { mapGraphQLList } from '@stackend/api/util/graphql';
 import * as Sc from './ProductCollectionListingContainer.style';
 
@@ -16,7 +16,14 @@ const mapDispatchToProps = {
   requestCollection
 };
 
-function mapStateToProps(state: any, ownProps: any): any {
+function mapStateToProps(
+  state: any,
+  ownProps: any
+): {
+  shop: ShopState;
+  collection: Collection;
+  products: Array<SlimProduct>;
+} {
   const shop: ShopState = state.shop;
   const collection = shop.collections[ownProps.handle];
   const products = mapGraphQLList(collection?.products, p => p);

@@ -1,18 +1,21 @@
 //@flow
 import React, { Component, MouseEvent } from 'react';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import { connect, ConnectedProps } from 'react-redux';
 
 import * as Sc from './ProductTypeTreeListing.style';
 
 import { ShopState } from '@stackend/api/shop/shopReducer';
-import { ProductTypeTree, ProductTypeTreeNode } from '@stackend/api/shop/ProductTypeTree';
+import { ProductTypeTreeNode } from '@stackend/api/shop/ProductTypeTree';
 import { generateClassName } from '@stackend/api//util';
 import { getParentProductType } from '@stackend/api/shop';
 import { getLinkFactory } from '../link/LinkFactory';
 import ShopLinkFactory, { ListingContext } from './ShopLinkFactory';
+import { ProductTypeTree } from '@stackend/api/src/shop/ProductTypeTree';
 
-function mapStateToProps(state: any, _ownProps: any): any {
+function mapStateToProps(state: any): {
+  productTypesTree: ProductTypeTree;
+} {
   const shop: ShopState = state.shop;
   return {
     productTypesTree: shop.productTypeTree
@@ -22,11 +25,6 @@ function mapStateToProps(state: any, _ownProps: any): any {
 const connector = connect(mapStateToProps);
 
 export interface Props extends ConnectedProps<typeof connector> {
-  /**
-   * Product types
-   */
-  productTypesTree?: ProductTypeTree;
-
   /**
    * Should the tree be expandable
    */
