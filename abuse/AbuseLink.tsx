@@ -5,7 +5,7 @@ import { injectIntl, WrappedComponentProps } from 'react-intl';
 import * as Sc from './AbuseLink.style';
 import get from 'lodash/get';
 import { CurrentUserType } from '@stackend/api/login/loginReducer';
-import { XcapObject } from '@stackend/api/api';
+import XcapObject from '@stackend/api/api/XcapObject';
 
 function mapStateToProps(state: any): {
   currentUser: CurrentUserType;
