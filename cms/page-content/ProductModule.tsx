@@ -30,10 +30,17 @@ const mapDispatchToProps = {
 
 const connector = connect(mapStateToProps, mapDispatchToProps);
 
+export enum ProductLayoutOptions {
+  FULL = 'full',
+  COMPACT = 'compact',
+  HORIZONTAL = 'horizontal'
+}
+
 type Props = ConnectedProps<typeof connector> & {
   handle: string;
-  layout: 'full' | 'compact';
+  layout: ProductLayoutOptions;
   render?: (product: ProductType, layout: string) => JSX.Element;
+  className?: string;
 };
 
 class ProductModule extends Component<Props> {
@@ -46,19 +53,21 @@ class ProductModule extends Component<Props> {
   }
 
   render(): JSX.Element | null {
-    const { product, layout, render } = this.props;
+    const { product, layout, render, className } = this.props;
 
     if (!product) {
       return null;
     }
 
+    const klass = 'stackend-shop-product-module-' + layout + (className ? ' ' + className : '');
+
     if (render) {
-      return <Sc.ProductModule>{render(product, layout)}</Sc.ProductModule>;
+      return <Sc.ProductModule className={klass}>{render(product, layout)}</Sc.ProductModule>;
     }
 
-    if (layout === 'full') {
+    if (layout === ProductLayoutOptions.FULL) {
       return (
-        <Sc.ProductModule>
+        <Sc.ProductModule className={klass}>
           <Product product={product} />
         </Sc.ProductModule>
       );
@@ -67,7 +76,7 @@ class ProductModule extends Component<Props> {
     const linkFactory = getLinkFactory<ShopLinkFactory>('shop');
 
     return (
-      <Sc.ProductModule>
+      <Sc.ProductModule className={klass}>
         <ProductListingItem product={product} link={linkFactory.createProductLink(product)} />
       </Sc.ProductModule>
     );

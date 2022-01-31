@@ -20,7 +20,7 @@ const ProductListingItem = ({
   const image = getFirstImage(product);
   return (
     <Sc.ProductListingItem key={product.id}>
-      <Link to={link} onClick={onClick}>
+      <Link to={link} onClick={onClick} className="stackend-product-link">
         <SquareProductImage image={image} responsive={true} />
         <Title>{product.title}</Title>
         <Price price={product.priceRange.minVariantPrice} />
