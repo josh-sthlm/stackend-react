@@ -27,19 +27,17 @@ export const ProductModule = styled.div.attrs(props => ({
         align-items: center;
         grid-gap: 0.5em;
         margin: 0.5em;
+        width: auto;
 
         ${SquareProductImage} {
           grid-area: image;
           justify-self: start;
           width: 8em;
-          img {
-            object-fit: cover;
-          }
         }
 
         ${Title} {
           grid-area: title;
-          margin-top: 0;
+          margin: 0;
         }
 
         ${Price} {
