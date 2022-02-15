@@ -59,7 +59,7 @@ export default class ProductImageBrowser extends Component<Props> {
     if (!selectedImage) {
       return null;
     }
-    const url = selectedImage.url__originalSrc || selectedImage.originalSrc;
+    const url = selectedImage.url__originalSrc || (selectedImage as any).originalSrc; // For backwards compatibility
     return (
       <a href={url} target="_blank" rel="noreferrer">
         {this.defaultRenderImage(selectedImage, false)}
@@ -72,7 +72,7 @@ export default class ProductImageBrowser extends Component<Props> {
     if (renderImage) {
       return renderImage(product, image, isThumbnail);
     }
-    const url = image.url || image.transformedSrc; // For backwards compatibility
+    const url = image.url || (image as any).transformedSrc; // For backwards compatibility
     return <img src={url} alt={image.altText || ''} draggable={false} />;
   };
 
@@ -86,8 +86,8 @@ export default class ProductImageBrowser extends Component<Props> {
 
   renderThumbnail = (image: ProductImage): JSX.Element | null => {
     const { selectedImage } = this.props;
-    const url = image.url || image.transformedSrc; // For backwards compatibility
-    const isSelected = selectedImage && (selectedImage.url || selectedImage.transformedSrc) === url;
+    const url = image.url || (image as any).transformedSrc; // For backwards compatibility
+    const isSelected = selectedImage && (selectedImage.url || (selectedImage as any).transformedSrc) === url;
 
     return (
       <li key={url} className={isSelected ? 'selected' : ''}>
@@ -118,7 +118,7 @@ export function findProductVariantByImage(product: Product, image: ProductImage)
     return null;
   }
 
-  const url = image.url || image.transformedSrc; // For backwards compatibility
+  const url = image.url || (image as any).transformedSrc; // For backwards compatibility
 
   const x = product.variants.edges.find(v => {
     const i = v.node?.image;
@@ -126,7 +126,7 @@ export function findProductVariantByImage(product: Product, image: ProductImage)
     if (!i) {
       return false;
     }
-    const u = i.url || i.transformedSrc; // For backwards compatibility
+    const u = i.url || (i as any).transformedSrc; // For backwards compatibility
     return u === url;
   });
 

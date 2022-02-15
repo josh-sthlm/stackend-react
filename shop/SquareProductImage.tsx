@@ -14,7 +14,7 @@ export default function SquareProductImage({
     return null;
   }
 
-  const url = image.url || image.transformedSrc; // For backwards compatibility
+  const url = image.url || (image as any).transformedSrc; // For backwards compatibility
   return (
     <Sc.SquareProductImage className={responsive ? 'stackend-responsive' : ''}>
       <img src={url} className="stackend-product-image" draggable={false} alt={image.altText || ''} />
