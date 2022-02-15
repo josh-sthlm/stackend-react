@@ -10,9 +10,14 @@ export default function SquareProductImage({
   image: SlimProductImage | ProductImage | null;
   responsive: boolean;
 }): JSX.Element | null {
-  return image ? (
+  if (!image) {
+    return null;
+  }
+
+  const url = image.url || (image as any).transformedSrc; // For backwards compatibility
+  return (
     <Sc.SquareProductImage className={responsive ? 'stackend-responsive' : ''}>
-      <img src={image.transformedSrc} className="stackend-product-image" draggable={false} />
+      <img src={url} className="stackend-product-image" draggable={false} alt={image.altText || ''} />
     </Sc.SquareProductImage>
-  ) : null;
+  );
 }

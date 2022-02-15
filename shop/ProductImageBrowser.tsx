@@ -46,16 +46,24 @@ type Props = {
 
 export default class ProductImageBrowser extends Component<Props> {
   render(): JSX.Element {
-    const { selectedImage } = this.props;
     return (
       <Sc.ProductImageBrowser>
-        {selectedImage && (
-          <a href={selectedImage.originalSrc} target="_blank" rel="noreferrer">
-            {this.defaultRenderImage(selectedImage, false)}
-          </a>
-        )}
+        {this.renderSelectedImage()}
         {this.renderProductImageThumbnails()}
       </Sc.ProductImageBrowser>
+    );
+  }
+
+  renderSelectedImage(): JSX.Element | null {
+    const { selectedImage } = this.props;
+    if (!selectedImage) {
+      return null;
+    }
+    const url = selectedImage.url__originalSrc || (selectedImage as any).originalSrc; // For backwards compatibility
+    return (
+      <a href={url} target="_blank" rel="noreferrer">
+        {this.defaultRenderImage(selectedImage, false)}
+      </a>
     );
   }
 
@@ -64,7 +72,8 @@ export default class ProductImageBrowser extends Component<Props> {
     if (renderImage) {
       return renderImage(product, image, isThumbnail);
     }
-    return <img src={image.transformedSrc} alt={image.altText || ''} draggable={false} />;
+    const url = image.url || (image as any).transformedSrc; // For backwards compatibility
+    return <img src={url} alt={image.altText || ''} draggable={false} />;
   };
 
   renderProductImageThumbnails = (): JSX.Element | null => {
@@ -77,10 +86,11 @@ export default class ProductImageBrowser extends Component<Props> {
 
   renderThumbnail = (image: ProductImage): JSX.Element | null => {
     const { selectedImage } = this.props;
-    const isSelected = selectedImage && selectedImage.originalSrc === image.originalSrc;
+    const url = image.url || (image as any).transformedSrc; // For backwards compatibility
+    const isSelected = selectedImage && (selectedImage.url || (selectedImage as any).transformedSrc) === url;
 
     return (
-      <li key={image.transformedSrc} className={isSelected ? 'selected' : ''}>
+      <li key={url} className={isSelected ? 'selected' : ''}>
         <button onClick={(e): void => this.onThumbnailClicked(e, image)}>{this.defaultRenderImage(image, true)}</button>
       </li>
     );
@@ -108,8 +118,16 @@ export function findProductVariantByImage(product: Product, image: ProductImage)
     return null;
   }
 
+  const url = image.url || (image as any).transformedSrc; // For backwards compatibility
+
   const x = product.variants.edges.find(v => {
-    return v.node?.image?.transformedSrc === image.transformedSrc;
+    const i = v.node?.image;
+
+    if (!i) {
+      return false;
+    }
+    const u = i.url || (i as any).transformedSrc; // For backwards compatibility
+    return u === url;
   });
 
   return x ? x.node : null;
