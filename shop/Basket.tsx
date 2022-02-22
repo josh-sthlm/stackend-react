@@ -10,7 +10,7 @@ import {
   checkoutReplaceItems,
   getProductAndVariant
 } from '@stackend/api/shop/shopActions';
-import { MoneyV2, getFirstImage, Checkout, CheckoutLineItem, toMoneyV2 } from '@stackend/api/shop';
+import { getFirstImage, Checkout, CheckoutLineItem } from '@stackend/api/shop';
 import { mapGraphQLList } from '@stackend/api/util/graphql';
 import * as Sc from './Basket.style';
 import { connect, ConnectedProps } from 'react-redux';
@@ -22,7 +22,8 @@ import SquareProductImage from './SquareProductImage';
 import { FormattedMessage, injectIntl, WrappedComponentProps } from 'react-intl';
 import { getLinkFactory } from '../link/LinkFactory';
 import ShopLinkFactory from './ShopLinkFactory';
-import { Product } from '@stackend/api/src/shop/index';
+import { Product } from '@stackend/api/src/shop';
+import { getPriceIncludingVAT } from '@stackend/api/shop/vat';
 
 function mapStateToProps(state: any): {
   shop: ShopState;
@@ -129,15 +130,21 @@ class Basket extends Component<Props, State> {
   renderBasketItem = (i: CheckoutLineItem, linkFactory: ShopLinkFactory): JSX.Element | null => {
     const handle = i.variant.product.handle;
     const variantId = i.variant.id;
+    const { shop } = this.props;
 
-    const pv = getProductAndVariant(this.props.shop, i);
+    const pv = getProductAndVariant(shop, i);
     if (!pv) {
       return null;
     }
     const v = pv.variant;
     const p = pv.product;
 
-    const price: MoneyV2 = toMoneyV2(parseFloat(v.priceV2.amount) * i.quantity, v.priceV2.currencyCode);
+    const price = getPriceIncludingVAT({
+      shopState: shop,
+      product: pv.product,
+      productVariant: pv.variant,
+      quantity: i.quantity
+    });
     const image = v.image || getFirstImage(p);
     const hasSingleVariant = p.options.length === 1 && p.options[0].values.length === 1;
     const link = linkFactory.createProductLink(p, v);
