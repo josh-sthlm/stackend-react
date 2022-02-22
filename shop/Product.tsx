@@ -11,6 +11,7 @@ import {
 } from '@stackend/api/shop';
 import AddToBasketButton from './AddToBasketButton';
 import { ProductImage } from '@stackend/api/shop';
+import { getPriceIncludingVAT } from '@stackend/api/shop/vat';
 import { Description, Title } from './Shop.style';
 import Price from './Price';
 import { injectIntl, WrappedComponentProps } from 'react-intl';
@@ -18,8 +19,20 @@ import ProductVariantSelect from './ProductVariantSelect';
 import ProductImageBrowser from './ProductImageBrowser';
 import ProductTags from './ProductTags';
 import Sku from './Sku';
+import { ShopState } from '@stackend/api/shop/shopReducer';
+import { connect, ConnectedProps } from 'react-redux';
 
-export interface Props extends WrappedComponentProps {
+function mapStateToProps(state: any): {
+  shop: ShopState;
+} {
+  return {
+    shop: state.shop
+  };
+}
+
+const connector = connect(mapStateToProps);
+
+export interface Props extends WrappedComponentProps, ConnectedProps<typeof connector> {
   /**
    * Product
    */
@@ -114,12 +127,14 @@ class Product extends Component<Props, State> {
   };
 
   render(): JSX.Element | null {
-    const { product } = this.props;
+    const { product, shop } = this.props;
     const { selectedVariant, selectedImage, selection } = this.state;
 
     if (!product) {
       return null;
     }
+
+    const price = getPriceIncludingVAT({ shopState: shop, product, productVariant: selectedVariant });
 
     return (
       <Sc.Product>
@@ -132,7 +147,7 @@ class Product extends Component<Props, State> {
 
         <Sc.Actions>
           <ProductVariantSelect product={product} selection={selection} onSelectionChanged={this.onVariantSelected} />
-          <Price price={selectedVariant?.priceV2} />
+          <Price price={price} />
           <Sku variant={selectedVariant} />
           <AddToBasketButton product={product} variant={selectedVariant} />
           <ProductTags product={product} />
@@ -174,4 +189,4 @@ class Product extends Component<Props, State> {
   };
 }
 
-export default injectIntl(Product);
+export default connector(injectIntl(Product));

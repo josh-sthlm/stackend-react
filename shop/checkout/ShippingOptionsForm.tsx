@@ -21,6 +21,7 @@ import { getJsonErrorText } from '@stackend/api/api';
 import { requestOrResetActiveCheckout } from '@stackend/api/shop/shopActions';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import { Community } from '@stackend/api/stackend';
+import { getPriceIncludingVAT } from '@stackend/api/shop/vat';
 
 function mapStateToProps(
   state: any,
@@ -208,14 +209,19 @@ class ShippingOptionsForm extends Component<Props, State> {
   }
 
   renderLineItem = (i: CheckoutLineItem): JSX.Element | null => {
-    const pv = getProductAndVariant(this.props.shop, i);
+    const { shop } = this.props;
+    const pv = getProductAndVariant(shop, i);
     if (pv == null) {
       return null;
     }
-    const price: MoneyV2 = toMoneyV2(
-      parseFloat(pv.variant.priceV2.amount) * i.quantity,
-      pv.variant.priceV2.currencyCode
-    );
+
+    const price = getPriceIncludingVAT({
+      shopState: shop,
+      product: pv.product,
+      productVariant: pv.variant,
+      quantity: i.quantity
+    });
+
     return (
       <Sc.Product key={i.variant.id}>
         <Quantity>{i.quantity}</Quantity>
