@@ -8,7 +8,6 @@ import {
   CheckoutLineItem,
   CheckoutResult,
   GetCheckoutResult,
-  MoneyV2,
   ShippingRate,
   toMoneyV2
 } from '@stackend/api/shop';
@@ -21,7 +20,7 @@ import { getJsonErrorText } from '@stackend/api/api';
 import { requestOrResetActiveCheckout } from '@stackend/api/shop/shopActions';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import { Community } from '@stackend/api/stackend';
-import { getPriceIncludingVAT } from '@stackend/api/shop/vat';
+import { getPriceIncludingVAT, getTotalPriceIncludingVAT } from '@stackend/api/shop/vat';
 
 function mapStateToProps(
   state: any,
@@ -110,7 +109,7 @@ class ShippingOptionsForm extends Component<Props, State> {
 
   render(): JSX.Element | null {
     const { valid, submitted, shippingHandle, loadingCheckout } = this.state;
-    const { checkout } = this.props;
+    const { checkout, shop } = this.props;
 
     if (loadingCheckout) {
       return (
@@ -148,10 +147,11 @@ class ShippingOptionsForm extends Component<Props, State> {
       );
     }
 
-    let totalPrice: MoneyV2 = {
+    let totalPrice = getTotalPriceIncludingVAT({ shopState: shop, checkout });
+    /*let totalPrice: MoneyV2 = {
       amount: checkout.subtotalPriceV2.amount,
       currencyCode: checkout.subtotalPriceV2.currencyCode
-    };
+    };*/
 
     const selectedRate: ShippingRate | undefined = checkout.availableShippingRates.shippingRates.find(
       (r: ShippingRate) => r.handle === shippingHandle

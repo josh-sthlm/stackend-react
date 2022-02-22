@@ -23,7 +23,7 @@ import { FormattedMessage, injectIntl, WrappedComponentProps } from 'react-intl'
 import { getLinkFactory } from '../link/LinkFactory';
 import ShopLinkFactory from './ShopLinkFactory';
 import { Product } from '@stackend/api/src/shop';
-import { getPriceIncludingVAT } from '@stackend/api/shop/vat';
+import { getPriceIncludingVAT, getTotalPriceIncludingVAT } from '@stackend/api/shop/vat';
 
 function mapStateToProps(state: any): {
   shop: ShopState;
@@ -93,9 +93,14 @@ class Basket extends Component<Props, State> {
   }
 
   render(): JSX.Element {
-    const { checkout } = this.props;
+    const { checkout, shop } = this.props;
     const { loading } = this.state;
     const linkFactory = getLinkFactory<ShopLinkFactory>('shop');
+
+    let totalPrice = null;
+    if (checkout !== null) {
+      totalPrice = getTotalPriceIncludingVAT({ shopState: shop, checkout });
+    }
 
     return (
       <Sc.Basket>
@@ -111,7 +116,7 @@ class Basket extends Component<Props, State> {
                 <span className="stackend-basket-total-label">
                   <FormattedMessage id="shop.total" defaultMessage="Total" />:
                 </span>{' '}
-                <Price price={checkout.subtotalPriceV2} />
+                <Price price={totalPrice /*checkout.subtotalPriceV2*/} />
               </Sc.BasketTotalPrice>
               <ButtonNext onClick={this.onCheckoutClicked}>
                 <FormattedMessage id="shop.checkout" defaultMessage="Checkout" />
