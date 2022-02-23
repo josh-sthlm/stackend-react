@@ -24,5 +24,6 @@
   "shop.back": "Zurück",
   "shop.payment": "Zahlen",
   "shop.sku": "Artikelnummer",
-  "shop.email": "Email"
+  "shop.email": "Email",
+  "shop.select_your_country": "Wähle dein Land"
 }

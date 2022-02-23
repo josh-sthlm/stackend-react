@@ -1,6 +1,6 @@
 //@flow
 import React, { Component } from 'react';
-import { injectIntl, WrappedComponentProps } from 'react-intl';
+import { FormattedMessage, injectIntl, WrappedComponentProps } from 'react-intl';
 
 import { ShopState } from '@stackend/api/shop/shopReducer';
 import { connect, ConnectedProps } from 'react-redux';
@@ -42,11 +42,16 @@ class CustomerCountrySelect extends Component<Props, State> {
     countries: null
   };
   render(): JSX.Element | null {
-    const { customerCountryCode, shop } = this.props;
+    const { customerCountryCode, shop, intl } = this.props;
 
     const ccc = customerCountryCode || shop.vats?.customerCountryCode || '';
     return (
-      <select className="stackend-customer-country-select" size={1} value={ccc} onChange={this.onChange}>
+      <select
+        className="stackend-customer-country-select"
+        size={1}
+        value={ccc}
+        onChange={this.onChange}
+        title={intl.formatMessage({ id: 'shop.select_your_country', defaultMessage: 'Select your country' })}>
         {this.renderCountries}
       </select>
     );
@@ -65,7 +70,11 @@ class CustomerCountrySelect extends Component<Props, State> {
   renderCountries = (): JSX.Element | null => {
     const { countries } = this.state;
     if (!countries) {
-      return <option disabled={true}>Loading...</option>;
+      return (
+        <option disabled={true}>
+          <FormattedMessage id="shop.shipping.please_wait" defaultMessage="Please wait..." />
+        </option>
+      );
     }
 
     // fu-tslint

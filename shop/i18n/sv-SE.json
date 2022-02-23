@@ -24,5 +24,6 @@
   "shop.back": "Tillbaka",
   "shop.payment": "Betala",
   "shop.sku": "Art no",
-  "shop.email": "E-post"
+  "shop.email": "E-post",
+  "shop.select_your_country": "Välj ditt land"
 }

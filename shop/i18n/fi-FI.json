@@ -24,5 +24,6 @@
   "shop.back": "Takaisin",
   "shop.payment": "Maksaa",
   "shop.sku": "Artikkelinumero",
-  "shop.email": "Sähköposti"
+  "shop.email": "Sähköposti",
+  "shop.select_your_country": "Valitse maasi"
 }

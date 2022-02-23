@@ -30,6 +30,20 @@ export const BasketActions = styled.div.attrs(props => ({
   className: classNames('stackend-basket-actions', props.className)
 }))``;
 
+export const BasketLine = styled.div.attrs(props => ({
+  className: classNames('stackend-basket-line', props.className)
+}))`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1em;
+  ${media.mobileScreen} {
+    flex-direction: column;
+    align-items: end;
+  }
+`;
+
 export const Basket = styled.div.attrs(props => ({
   className: classNames('stackend-basket', props.className)
 }))`

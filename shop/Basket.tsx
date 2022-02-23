@@ -24,6 +24,7 @@ import { getLinkFactory } from '../link/LinkFactory';
 import ShopLinkFactory from './ShopLinkFactory';
 import { Product } from '@stackend/api/src/shop';
 import { getPriceIncludingVAT, getTotalPriceIncludingVAT } from '@stackend/api/shop/vat';
+import CustomerCountrySelect from './CustomerCountrySelect';
 
 function mapStateToProps(state: any): {
   shop: ShopState;
@@ -112,12 +113,15 @@ class Basket extends Component<Props, State> {
               {mapGraphQLList(checkout.lineItems, (i: CheckoutLineItem) => this.renderBasketItem(i, linkFactory))}
             </Sc.BasketList>
             <Sc.BasketActions>
-              <Sc.BasketTotalPrice className="stackend-basket-total">
-                <span className="stackend-basket-total-label">
-                  <FormattedMessage id="shop.total" defaultMessage="Total" />:
-                </span>{' '}
-                <Price price={totalPrice /*checkout.subtotalPriceV2*/} />
-              </Sc.BasketTotalPrice>
+              <Sc.BasketLine>
+                <CustomerCountrySelect />
+                <Sc.BasketTotalPrice className="stackend-basket-total">
+                  <span className="stackend-basket-total-label">
+                    <FormattedMessage id="shop.total" defaultMessage="Total" />:
+                  </span>{' '}
+                  <Price price={totalPrice /*checkout.subtotalPriceV2*/} />
+                </Sc.BasketTotalPrice>
+              </Sc.BasketLine>
               <ButtonNext onClick={this.onCheckoutClicked}>
                 <FormattedMessage id="shop.checkout" defaultMessage="Checkout" />
               </ButtonNext>
