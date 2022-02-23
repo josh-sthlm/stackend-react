@@ -4,56 +4,57 @@ import { injectIntl, WrappedComponentProps } from 'react-intl';
 
 import { ShopState } from '@stackend/api/shop/shopReducer';
 import { connect, ConnectedProps } from 'react-redux';
-import { VatCountry, listCountries } from '@stackend/api/shop/vat';
+import { VatCountry, listCountries, setCustomerCountryCode } from '@stackend/api/shop/vat';
 
-function mapState(state: any): {} {
+function mapState(state: any): { shop: ShopState } {
   const shop: ShopState = state.shop;
   return {
     shop
   };
 }
 
-const connector = connect(mapState, {
-  listCountries
-});
+const mapDispatch = {
+  listCountries,
+  setCustomerCountryCode
+};
+const connector = connect(mapState, mapDispatch);
 
 type State = {
   countries: Array<VatCountry> | null;
 };
 
-type Props = {
-  customerCountryCode: string;
+type Props = WrappedComponentProps &
+  ConnectedProps<typeof connector> &
+  React.SelectHTMLAttributes<HTMLSelectElement> & {
+    customerCountryCode?: string;
 
-  /**
-   * Callback invoked when the selection is changed
-   */
-  onCustomerCountryChanged: (customerCountryCode: string) => void;
-} & WrappedComponentProps &
-  React.SelectHTMLAttributes<HTMLSelectElement> &
-  ConnectedProps<typeof connector>;
+    /**
+     * Callback invoked when the selection is changed
+     */
+    onCustomerCountryChanged?: (customerCountryCode: string) => void;
+  };
 
 /**
- * Given a product, render a UI that allows the user to pick a specific product variant.
+ * Select that sets the customers country of origin for vats etc.
  */
 class CustomerCountrySelect extends Component<Props, State> {
   state = {
     countries: null
   };
   render(): JSX.Element | null {
-    const { customerCountryCode } = this.props;
+    const { customerCountryCode, shop } = this.props;
+
+    const ccc = customerCountryCode || shop.vats?.customerCountryCode || '';
     return (
-      <select
-        className="stackend-customer-country-select"
-        size={1}
-        value={customerCountryCode || ''}
-        onChange={this.onChange}>
+      <select className="stackend-customer-country-select" size={1} value={ccc} onChange={this.onChange}>
         {this.renderCountries}
       </select>
     );
   }
 
-  async componentDidMount() {
-    const r = await this.props.listCountries();
+  async componentDidMount(): Promise<void> {
+    const { listCountries } = this.props;
+    const r = await listCountries();
     if (!r.error) {
       this.setState({
         countries: r.countries
@@ -61,7 +62,7 @@ class CustomerCountrySelect extends Component<Props, State> {
     }
   }
 
-  renderCountries = () => {
+  renderCountries = (): JSX.Element | null => {
     const { countries } = this.state;
     if (!countries) {
       return <option disabled={true}>Loading...</option>;
@@ -76,10 +77,14 @@ class CustomerCountrySelect extends Component<Props, State> {
   };
 
   onChange = (e: any): void => {
-    const { onCustomerCountryChanged } = this.props;
+    const { onCustomerCountryChanged, setCustomerCountryCode } = this.props;
+    const customerCountryCode = e.target.value;
+    if (customerCountryCode) {
+      if (onCustomerCountryChanged) {
+        onCustomerCountryChanged(customerCountryCode);
+      }
 
-    if (onCustomerCountryChanged) {
-      onCustomerCountryChanged(e.target.value);
+      setCustomerCountryCode(customerCountryCode);
     }
   };
 }
