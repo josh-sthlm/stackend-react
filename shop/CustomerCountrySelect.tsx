@@ -52,7 +52,7 @@ class CustomerCountrySelect extends Component<Props, State> {
         value={ccc}
         onChange={this.onChange}
         title={intl.formatMessage({ id: 'shop.select_your_country', defaultMessage: 'Select your country' })}>
-        {this.renderCountries}
+        {this.renderCountries()}
       </select>
     );
   }
