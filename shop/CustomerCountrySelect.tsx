@@ -4,7 +4,7 @@ import { FormattedMessage, injectIntl, WrappedComponentProps } from 'react-intl'
 
 import { ShopState } from '@stackend/api/shop/shopReducer';
 import { connect, ConnectedProps } from 'react-redux';
-import { VatCountry, listCountries, setCustomerCountryCode } from '@stackend/api/shop/vat';
+import { VatCountry, listCountries, setCustomerCountryCode, getCustomerInfo } from '@stackend/api/shop/vat';
 
 function mapState(state: any): { shop: ShopState } {
   const shop: ShopState = state.shop;
@@ -15,7 +15,8 @@ function mapState(state: any): { shop: ShopState } {
 
 const mapDispatch = {
   listCountries,
-  setCustomerCountryCode
+  setCustomerCountryCode,
+  getCustomerInfo
 };
 const connector = connect(mapState, mapDispatch);
 
@@ -42,9 +43,10 @@ class CustomerCountrySelect extends Component<Props, State> {
     countries: null
   };
   render(): JSX.Element | null {
-    const { customerCountryCode, shop, intl } = this.props;
+    const { customerCountryCode, intl, getCustomerInfo } = this.props;
 
-    const ccc = customerCountryCode || shop.vats?.customerCountryCode || '';
+    const ci = getCustomerInfo();
+    const ccc = customerCountryCode || ci?.customerCountryCode || '';
     return (
       <select
         className="stackend-customer-country-select"

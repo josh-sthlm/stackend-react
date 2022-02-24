@@ -1,6 +1,6 @@
 {
   "name": "@stackend/react",
-  "version": "0.7.13",
+  "version": "0.7.14",
   "description": "React components for Stackend",
   "keywords": [
     "comments",
@@ -75,6 +75,7 @@
     "slick-carousel": "^1.8.1"
   },
   "devDependencies": {
+    "@stackend/api": "1.3.50",
     "@babel/cli": "^7.16.8",
     "@babel/core": "^7.16.12",
     "@babel/node": "^7.16.8",
@@ -89,7 +90,6 @@
     "@formatjs/cli": "^2.15.0",
     "@hot-loader/react-dom": "^16.14.0",
     "@quickbaseoss/babel-plugin-styled-components-css-namespace": "^0.1.1",
-    "@stackend/api": "1.3.49",
     "@types/config": "^0.0.39",
     "@types/express": "^4.17.13",
     "@types/jest": "^26.0.24",
