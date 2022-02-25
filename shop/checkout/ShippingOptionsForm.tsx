@@ -2,12 +2,13 @@
 
 import React, { ChangeEvent, Component, MouseEvent } from 'react';
 import { ShopState } from '@stackend/api/shop/shopReducer';
-import { getProductAndVariant, selectShipping } from '@stackend/api/shop/shopActions';
+import { getProductAndVariant, requestOrResetActiveCheckout, selectShipping } from '@stackend/api/shop/shopActions';
 import {
   Checkout,
   CheckoutLineItem,
   CheckoutResult,
   GetCheckoutResult,
+  MoneyV2,
   ShippingRate,
   toMoneyV2
 } from '@stackend/api/shop';
@@ -17,10 +18,9 @@ import { connect, ConnectedProps } from 'react-redux';
 import { ButtonBox, ButtonNext, ButtonPrevious, Quantity, Title } from '../Shop.style';
 import Price from '../Price';
 import { getJsonErrorText } from '@stackend/api/api';
-import { requestOrResetActiveCheckout } from '@stackend/api/shop/shopActions';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import { Community } from '@stackend/api/stackend';
-import { getPriceIncludingVAT, getTotalPriceIncludingVAT } from '@stackend/api/shop/vat';
+import { applyVat, getPriceIncludingVAT, getTotalPriceIncludingVAT, VatType } from '@stackend/api/shop/vat';
 
 function mapStateToProps(
   state: any,
@@ -158,7 +158,11 @@ class ShippingOptionsForm extends Component<Props, State> {
     );
 
     if (selectedRate) {
-      const v = parseFloat(totalPrice.amount) + parseFloat(selectedRate.priceV2.amount);
+      let shippingRate: MoneyV2 = selectedRate.priceV2;
+      if (shop.vats?.showVatForShipping) {
+        shippingRate = applyVat(shop, VatType.STANDARD, shippingRate);
+      }
+      const v = parseFloat(totalPrice.amount) + parseFloat(shippingRate.amount);
       totalPrice = toMoneyV2(v, totalPrice.currencyCode);
     }
 
