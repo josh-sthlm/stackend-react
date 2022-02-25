@@ -173,22 +173,28 @@ class ShippingOptionsForm extends Component<Props, State> {
         </Sc.Fields>
 
         <Sc.Fields>
-          {checkout.availableShippingRates.shippingRates.map((r: ShippingRate) => (
-            <Sc.ShippingOption key={r.handle}>
-              <input
-                id={r.handle}
-                type="radio"
-                name="shippingRate"
-                value={r.handle}
-                onChange={this.onShippingChanged}
-                checked={r.handle === shippingHandle}
-              />
-              <label htmlFor={r.handle}>
-                <span>{r.title}</span>
-                <Price price={r.priceV2} />
-              </label>
-            </Sc.ShippingOption>
-          ))}
+          {checkout.availableShippingRates.shippingRates.map((r: ShippingRate) => {
+            let shippingRate = r.priceV2;
+            if (shop.vats?.showVatForShipping) {
+              shippingRate = applyVat(shop, VatType.STANDARD, shippingRate);
+            }
+            return (
+              <Sc.ShippingOption key={r.handle}>
+                <input
+                  id={r.handle}
+                  type="radio"
+                  name="shippingRate"
+                  value={r.handle}
+                  onChange={this.onShippingChanged}
+                  checked={r.handle === shippingHandle}
+                />
+                <label htmlFor={r.handle}>
+                  <span>{r.title}</span>
+                  <Price price={shippingRate} />
+                </label>
+              </Sc.ShippingOption>
+            );
+          })}
         </Sc.Fields>
 
         <Sc.Fields>
