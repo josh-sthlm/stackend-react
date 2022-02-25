@@ -5,16 +5,11 @@ import { FormattedMessage, injectIntl, WrappedComponentProps } from 'react-intl'
 import { ShopState } from '@stackend/api/shop/shopReducer';
 import { connect, ConnectedProps } from 'react-redux';
 import { VatCountry, listCountries, setCustomerCountryCode, getCustomerInfo } from '@stackend/api/shop/vat';
-import { CommunityState } from '@stackend/api/stackend/communityReducer';
-import { Community } from '@stackend/api/stackend';
-import { getCountryCode } from '@stackend/api/util/getCountryCode';
 
-function mapState(state: any): { shop: ShopState; community: Community | null | undefined } {
+function mapState(state: any): { shop: ShopState } {
   const shop: ShopState = state.shop;
-  const communities: CommunityState = state.communities;
   return {
-    shop,
-    community: communities.community
+    shop
   };
 }
 
@@ -48,12 +43,12 @@ class CustomerCountrySelect extends Component<Props, State> {
     countries: null
   };
   render(): JSX.Element | null {
-    const { customerCountryCode, intl, getCustomerInfo, community } = this.props;
+    const { customerCountryCode, intl, getCustomerInfo, shop } = this.props;
 
     const ci = getCustomerInfo();
     let ccc = customerCountryCode || ci?.customerCountryCode;
-    if (!ccc && community) {
-      ccc = getCountryCode(community.locale) || '';
+    if (!ccc && shop.vats) {
+      ccc = shop.vats.shopCountryCode || '';
     }
     return (
       <select
