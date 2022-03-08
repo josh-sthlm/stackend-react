@@ -63,12 +63,17 @@ class CustomerCountrySelect extends Component<Props, State> {
   }
 
   async componentDidMount(): Promise<void> {
-    const { listCountries } = this.props;
+    const { listCountries, shop } = this.props;
     const r = await listCountries();
     if (!r.error) {
       this.setState({
         countries: r.countries
       });
+    }
+
+    // FIXME: Good idea?
+    if (shop.vats && !shop.vats.customerCountryCode) {
+      setCustomerCountryCode(shop.vats.shopCountryCode);
     }
   }
 
