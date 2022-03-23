@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import * as sc from '../style-common/styled-variables.style';
+
 import { media } from '../style-common/media';
 import classNames from '../style-common/classNames';
 
@@ -14,12 +14,8 @@ export const SubMenuItems = styled.div.attrs(props => ({
 }))``;
 
 export const Burger = styled.button.attrs(props => ({
-  className: classNames('stackend-menu-burger', props.className)
-}))`
-  padding: 0.25em 0;
-  width: 100%;
-  text-align: left;
-`;
+  className: classNames('stackend-menu-burger stackend-icon', props.className)
+}))``;
 
 export const Menu = styled.nav.attrs(props => ({
   className: classNames('stackend-site-menu', props.className)
@@ -44,10 +40,6 @@ export const Menu = styled.nav.attrs(props => ({
 
         @media (pointer: coarse) {
           padding: 0.5em 0;
-        }
-
-        &:hover {
-          color: ${sc.colorTextAccent};
         }
       }
 
@@ -91,15 +83,16 @@ export const Menu = styled.nav.attrs(props => ({
           display: inline-block;
           position: absolute;
           left: 0;
-          top: 2.1em; /* FIXME */
+          top: calc(2em + 4px); /* FIXME: height + margin + padding + some space */
           min-width: 100%;
         }
       }
 
       ${SubMenuItems} {
         display: none;
-        background: ${sc.backgroundColor};
-        box-shadow: 1px 1px 4px 1px #e6e6e6;
+        background: ${props => props.theme?.backgroundColor || '#ffffff'};
+        box-shadow: 1px 1px 4px 1px ${props => props.theme?.borderColor || '#e6e6e6'};
+        border-radius: ${props => props.theme?.borderRadius || '3px'};
 
         ${MenuItem} {
           margin-left: 0;
@@ -119,7 +112,7 @@ export const Menu = styled.nav.attrs(props => ({
       margin-bottom: 1em;
 
       ${Burger} {
-        display: block;
+        display: inline-flex;
       }
 
       ${MenuItem} {

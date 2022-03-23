@@ -1,9 +1,11 @@
-import { StackendBaseStyle } from '../style-common/StackendBaseStyle';
 import styled from 'styled-components';
 
-export const ModalContent = styled(StackendBaseStyle)`
+export const ModalContent = styled.div.attrs(props => ({
+  className: 'stackend-modal-content'
+}))`
   background: white;
   overflow: auto;
   -webkit-overflow-scrolling: touch;
   height: 100%;
+  padding: ${props => props.theme.margins.small};
 `;

@@ -3,12 +3,14 @@ import styled from 'styled-components';
 import { Price, Title } from './Shop.style';
 import { SquareProductImage } from './SquareProductImage.style';
 import classNames from '../style-common/classNames';
+import { getComponentProp } from '../theme/StackendTheme';
+import ComponentType from '../theme/ComponentType';
 
 export const ProductListingItem = styled.div.attrs(props => ({
   className: classNames('stackend-product-list-item', props.className)
 }))`
   text-align: center;
-  background: white;
+  background: ${props => getComponentProp(props.theme, ComponentType.BOX, 'backgroundColor')};
   display: flex;
   justify-content: flex-end;
   flex-direction: column;

@@ -18,7 +18,6 @@ export const ProductTypeCarousel = styled.div.attrs(props => ({
     width: 15em;
     display: block;
     color: white;
-    text-transform: uppercase;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;

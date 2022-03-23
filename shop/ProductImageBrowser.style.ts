@@ -27,7 +27,7 @@ export const ProductImageBrowserThumbnails = styled.ul.attrs(props => ({
       height: 4em;
       margin: 0;
       padding: 0;
-      background: white;
+      background: ${props => props.theme?.backgroundColor || 'white'};
       overflow: hidden;
       border: none;
 

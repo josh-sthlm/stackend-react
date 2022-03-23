@@ -1,7 +1,6 @@
 //@flow
 import styled from 'styled-components';
 import classNames from '../style-common/classNames';
-import * as variables from '../style-common/styled-variables.style';
 
 export const ShopButtonCommon = `
   display: inline-block;
@@ -27,10 +26,6 @@ export const VariantTitlePart = styled.span.attrs(props => ({
 
 export const Title = styled.h2.attrs(props => ({ className: classNames('stackend-product-name', props.className) }))`
   margin: ${productItemMargin};
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  font-weight: 300;
-  font-size: 1.2em;
 
   ${ProductTitlePart} {
     display: block;
@@ -72,12 +67,11 @@ export const Price = styled.span.attrs(props => ({ className: classNames('stacke
 
 export const Tags = styled.div.attrs(props => ({ className: classNames('stackend-tags', props.className) }))`
   margin: ${productItemMargin};
-  text-transform: uppercase;
   a.stackend-tag {
     padding: 0.25em 0.5em;
     display: inline-block;
-    background-color: ${variables.colorText};
-    color: ${variables.backgroundColor};
+    background-color: ${props => props.theme?.color || '#000000'};
+    color: ${props => props.theme?.backgroundColor || '#ffffff'};
     margin-left: 0.25em;
     margin-right: 0.25em;
     margin-bottom: 0.25em;

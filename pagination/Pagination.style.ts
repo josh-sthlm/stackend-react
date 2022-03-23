@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import * as sc from '../style-common/styled-variables.style';
 
 export const PaginationFull = styled.div.attrs({
   className: 'stackend-pagination stackend-pagination-full'
@@ -14,7 +13,7 @@ export const PaginationFull = styled.div.attrs({
   grid-template-columns: min-content auto auto min-content;
 
   button {
-    font-size: 24px;
+    font-size: 1.5em;
   }
 
   .stackend-first {
@@ -52,14 +51,10 @@ export const PaginationWrapper = styled.div.attrs({
 `;
 
 export const PaginationButtons = styled.button<{ prev?: boolean; current?: boolean }>`
-  display: flex;
-  align-items: center;
-  cursor: pointer;
   padding: 0 10px;
   height: 32px;
   margin: 5px;
   border-radius: 3px;
-  font-family: ${sc.fontNormal};
 
   ${props => !!props.theme.PaginationButtons && props.theme.PaginationButtons(props)};
 `;

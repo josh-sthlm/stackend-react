@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import { getComponentProp } from '../theme/StackendTheme';
+import ComponentType from '../theme/ComponentType';
 
 export const ModalThrobberOverlay = styled.div`
   position: fixed;
@@ -18,7 +20,6 @@ export const ModalThrobber = styled.div`
   margin: 20vh auto;
   text-align: center;
   border-radius: 50%;
-  /*background-color: #f5f5f5;*/
   background-image: url(${require('./throbber-unbranded.svg')});
 
   ${props => !!props.theme.ModalThrobber && props.theme.ModalThrobber(props)};
@@ -63,7 +64,7 @@ export const LoadingThrobber = styled.div`
     left: -200px;
     width: 200px;
     height: 4px;
-    background-color: #2980b9;
+    background-color: ${props => getComponentProp(props.theme, ComponentType.ACCENT, 'backgroundColor') || '#2980b9'};
     animation: loading 2s linear infinite;
   }
 `;

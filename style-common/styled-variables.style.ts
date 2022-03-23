@@ -8,8 +8,6 @@ export const boxShadow = '2px 2px 20px rgba(70, 70, 70, 0.5)';
 
 export const borderColor = (props: any) => get(props, 'theme.settings.borderColor', 'rgba(0, 0, 0, .15)');
 
-export const sendBorderColor = (props: any) => get(props, 'theme.settings.sendBorderColor', '#00B2E8');
-
 export const border = (props: any) => `1px solid ${borderColor(props)}`;
 export const borderRadius = '3px';
 

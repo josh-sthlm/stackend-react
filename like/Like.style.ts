@@ -1,30 +1,17 @@
 import styled from 'styled-components';
-import * as sc from '../style-common/styled-variables.style';
+
 import QuantityStyle from '../style-common/Quantity.style';
 import classNames from '../style-common/classNames';
 
 export const LikeButton = styled.button.attrs(props => ({
-  className: classNames('stackend-like', props.className)
+  className: classNames('stackend-like stackend-icon', props.className)
 }))<{ liked: boolean }>`
-  display: flex;
-  align-items: center;
   background: none;
   padding: 0;
-  height: 20px;
-  cursor: pointer;
   border: none;
 
-  ${QuantityStyle}, .material-icons {
-    font-size: ${sc.fontSizeStatusBar};
-    color: ${sc.colorText};
-  }
-
   ${QuantityStyle} {
-    margin-right: 0.5em;
-  }
-
-  .material-icons:hover {
-    color: ${sc.AccentColor};
+    margin-right: ${props => props.theme.margins?.small || '0.5em'};
   }
 
   &:focus {
