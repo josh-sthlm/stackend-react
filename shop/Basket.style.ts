@@ -48,6 +48,7 @@ export const Basket = styled.div.attrs(props => ({
   className: classNames('stackend-basket', props.className)
 }))`
   overflow: hidden;
+  padding: ${props => props.theme.margins.small};
 
   ${BasketActions} {
     text-align: right;
@@ -71,7 +72,6 @@ export const Basket = styled.div.attrs(props => ({
 
   ${BasketList} {
     ${BasketItem} {
-      background: white;
       margin-bottom: 1em;
       padding: 1em;
 

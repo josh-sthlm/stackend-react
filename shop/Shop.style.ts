@@ -3,12 +3,11 @@ import styled from 'styled-components';
 import classNames from '../style-common/classNames';
 
 export const ShopButtonCommon = `
-  margin: 1em 0;
   width: fit-content;
 `;
 
 export const ShopNowButton = styled.span.attrs(props => ({
-  className: classNames('stackend-shop-now', props.className)
+  className: classNames('stackend-shop-now stackend-button', props.className)
 }))`
   ${ShopButtonCommon};
 `;
@@ -68,6 +67,7 @@ export const Tags = styled.div.attrs(props => ({ className: classNames('stackend
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  justify-content: center;
   gap: ${props => props.theme.margins.small};
   a.stackend-tag {
     padding: ${props => props.theme.margins.small} ${props => props.theme.margins.medium};
