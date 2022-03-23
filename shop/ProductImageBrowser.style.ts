@@ -7,6 +7,10 @@ export const ProductImageBrowser = styled.div.attrs(props => ({
   display: flex;
   flex-direction: column;
   align-items: center;
+  img {
+    max-width: 100%;
+    height: auto;
+  }
 `;
 
 export const ProductImageBrowserThumbnails = styled.ul.attrs(props => ({
@@ -32,7 +36,7 @@ export const ProductImageBrowserThumbnails = styled.ul.attrs(props => ({
       border: none;
 
       img {
-        object-fit: contain;
+        object-fit: cover;
         vertical-align: middle;
       }
     }

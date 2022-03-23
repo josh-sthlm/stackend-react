@@ -101,6 +101,10 @@ export const StackendCarouselStyle = `
       padding-right: 4px;
     }
 
+    .slick-track {
+      height: min-content;
+    }
+
     .slick-arrow {
       width: auto;
       height: auto;

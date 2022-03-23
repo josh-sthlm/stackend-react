@@ -3,9 +3,7 @@ import styled from 'styled-components';
 import classNames from '../style-common/classNames';
 
 export const ShopButtonCommon = `
-  display: inline-block;
   margin: 1em 0;
-  padding: .5em;
   width: fit-content;
 `;
 
@@ -67,14 +65,16 @@ export const Price = styled.span.attrs(props => ({ className: classNames('stacke
 
 export const Tags = styled.div.attrs(props => ({ className: classNames('stackend-tags', props.className) }))`
   margin: ${productItemMargin};
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: ${props => props.theme.margins.small};
   a.stackend-tag {
-    padding: 0.25em 0.5em;
+    padding: ${props => props.theme.margins.small} ${props => props.theme.margins.medium};
     display: inline-block;
+    text-decoration: none;
     background-color: ${props => props.theme?.color || '#000000'};
     color: ${props => props.theme?.backgroundColor || '#ffffff'};
-    margin-left: 0.25em;
-    margin-right: 0.25em;
-    margin-bottom: 0.25em;
   }
 `;
 

@@ -117,7 +117,7 @@ export function getComponentProp(
   componentType: ComponentType,
   prop: string,
   state?: ComponentState
-) {
+): string | null {
   const t = theme as any;
   const ct = t[componentType];
   if (!ct) {
@@ -149,7 +149,7 @@ export enum FontComponentType {
  * @param fontComponentType
  * @returns {string|null|string|string|number|*}
  */
-export function fontSize(theme: StackendTheme, fontComponentType?: FontComponentType) {
+export function fontSize(theme: StackendTheme, fontComponentType?: FontComponentType): string | null {
   if (fontComponentType) {
     const fs = (theme as any)[fontComponentType + 'FontSize'];
     return fs || theme.fontSize || null;
@@ -176,7 +176,7 @@ export const HEADING_FONT_SIZE_SCALE_FACTORS: {
  * @returns {string}
  */
 export function headingFontSize(theme: StackendTheme, componentType?: ComponentType): string | null {
-  let s = theme.headingFontSize || '2em';
+  const s = theme.headingFontSize || '2em';
 
   const r = /([0-9.]+)(px|em|rem)/.exec(s);
   if (!r) {
@@ -185,9 +185,9 @@ export function headingFontSize(theme: StackendTheme, componentType?: ComponentT
 
   const value = parseFloat(r[1]);
   const unit = r[2];
-  let factor = componentType ? HEADING_FONT_SIZE_SCALE_FACTORS[componentType] || 1 : 1;
+  const factor = componentType ? HEADING_FONT_SIZE_SCALE_FACTORS[componentType] || 1 : 1;
 
-  let sz = value;
+  let sz;
   if (unit === 'px') {
     sz = value * factor;
   } else {
@@ -202,7 +202,7 @@ export function headingFontSize(theme: StackendTheme, componentType?: ComponentT
  * @param theme
  * @param componentType
  */
-export function getComponentBorder(theme: StackendTheme, componentType?: ComponentType) {
+export function getComponentBorder(theme: StackendTheme, componentType?: ComponentType): string {
   let ct = theme;
   if (componentType) {
     ct = (theme as any)[componentType] || theme;
@@ -305,7 +305,7 @@ export function getValidatedTheme(t: StackendTheme): StackendTheme {
   }
 
   // Validate component themes
-  for (let componentType of Object.values(ComponentType)) {
+  for (const componentType of Object.values(ComponentType)) {
     const ct = (v as any)[componentType];
 
     if (ct) {
