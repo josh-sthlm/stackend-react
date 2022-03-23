@@ -88,7 +88,7 @@ class ProductSearch extends Component<Props, State> {
         <Sc.ProductSearchForm onSubmit={this.onSearch} className="stackend-product-search-form">
           <div className="stackend-search-field">
             <input type="search" onChange={this.onSearchChanged} value={q || ''} ref={this.searchInput} />
-            <button type="submit" className="stackend-is-icon large">
+            <button type="submit" className="stackend-icon large">
               {' '}
             </button>
           </div>

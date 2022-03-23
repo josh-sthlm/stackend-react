@@ -176,7 +176,7 @@ class Basket extends Component<Props, State> {
           min={1}
         />
         <Price price={price} />
-        <button onClick={(): void => this.onRemoveClicked(i)} className="stackend-remove-product stackend-is-icon">
+        <button onClick={(): void => this.onRemoveClicked(i)} className="stackend-remove-product stackend-icon">
           <i className="material-icons">delete</i>
         </button>
       </Sc.BasketItem>

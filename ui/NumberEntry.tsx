@@ -14,11 +14,11 @@ export default class NumberEntry extends Component<Props> {
   render(): JSX.Element {
     return (
       <Sc.NumberEntry>
-        <button className="stackend-is-icon stackend-decrease" onClick={this.onDecrease}>
+        <button className="stackend-icon stackend-decrease" onClick={this.onDecrease}>
           -
         </button>
         <span className="value">{this.props.value}</span>
-        <button className="stackend-is-icon stackend-increase" onClick={this.onIncrease}>
+        <button className="stackend-icon stackend-increase" onClick={this.onIncrease}>
           +
         </button>
       </Sc.NumberEntry>
