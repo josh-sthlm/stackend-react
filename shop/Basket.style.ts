@@ -15,6 +15,10 @@ export const BasketItem = styled.li.attrs(props => ({
       height: 16em;
     }
   }
+
+  .stackend-product-image {
+    padding: ${props => props.theme.borderWidth}; /* space for focus outline */
+  }
 `;
 
 export const BasketList = styled.ul.attrs(props => ({

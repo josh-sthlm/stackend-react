@@ -17,6 +17,7 @@ export const ProductListingItem = styled.div.attrs(props => ({
   display: flex;
   justify-content: flex-end;
   flex-direction: column;
+  padding-bottom: ${props => props.theme.margins.normal};
 
   a {
     text-decoration: none;
@@ -56,6 +57,7 @@ export const ProductListingItem = styled.div.attrs(props => ({
 
     ${Price} {
       display: block;
+      color: ${props => props.theme.color};
     }
   }
 `;

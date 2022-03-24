@@ -3,6 +3,9 @@
 
 import React from 'react';
 import { DEFAULT_SETTINGS } from './ProductCarouselListing';
+import { css } from 'styled-components';
+import { getComponentProp } from '../theme/StackendTheme';
+import ComponentType from '../theme/ComponentType';
 
 export interface CarouselResponsiveSettings {
   breakpoint: number;
@@ -94,7 +97,7 @@ export function getCarouselDefaults(
   return s;
 }
 
-export const StackendCarouselStyle = `
+export const StackendCarouselStyle = css`
   .slick-slider {
     .slick-slide > div {
       overflow: hidden;
@@ -109,16 +112,14 @@ export const StackendCarouselStyle = `
       width: auto;
       height: auto;
       z-index: 10;
-      text-shadow: 0 0 5px #222;
-      color: black;
-      background: white;
+      text-shadow: 0 0 5px ${props => getComponentProp(props.theme, ComponentType.BUTTON, 'backgroundColor') || '#222'};
+      color: ${props => getComponentProp(props.theme, ComponentType.BUTTON, 'backgroundColor') || 'black'};
+      background: rgba(255, 255, 255, 0.5);
       border-radius: 50%;
-      opacity: 50%;
       font-size: 4rem;
 
       &.slick-next {
         right: 1em;
-
       }
       &.slick-prev {
         left: 1em;

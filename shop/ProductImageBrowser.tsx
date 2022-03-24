@@ -1,5 +1,6 @@
 import React, { Component, MouseEvent } from 'react';
 import * as Sc from './ProductImageBrowser.style';
+import { openModal } from '../modal/modalActions';
 
 import {
   getAllUniqueImages,
@@ -9,8 +10,20 @@ import {
   ProductSelection,
   ProductVariant
 } from '@stackend/api/shop';
+import { connect, ConnectedProps } from 'react-redux';
+import ProductImageModal, { PRODUCT_IMAGE_MODAL_NAME } from './ProductImageModal';
 
-type Props = {
+function mapState() {
+  return {};
+}
+
+const mapDispatch = {
+  openModal
+};
+
+const connector = connect(mapState, mapDispatch);
+
+type Props = ConnectedProps<typeof connector> & {
   /**
    * Product
    */
@@ -44,12 +57,14 @@ type Props = {
   ) => void;
 };
 
-export default class ProductImageBrowser extends Component<Props> {
+class ProductImageBrowser extends Component<Props> {
   render(): JSX.Element {
+    const { selectedImage, product } = this.props;
     return (
       <Sc.ProductImageBrowser>
         {this.renderSelectedImage()}
         {this.renderProductImageThumbnails()}
+        <ProductImageModal image={selectedImage} product={product} />
       </Sc.ProductImageBrowser>
     );
   }
@@ -59,13 +74,23 @@ export default class ProductImageBrowser extends Component<Props> {
     if (!selectedImage) {
       return null;
     }
-    const url = selectedImage.url__originalSrc || (selectedImage as any).originalSrc; // For backwards compatibility
+    const url =
+      selectedImage.url__originalSrc ||
+      (selectedImage as any).originalSrc || // For backwards compatibility
+      selectedImage.url;
     return (
-      <a href={url} target="_blank" rel="noreferrer">
+      <a href={url} target="_blank" rel="noreferrer" onClick={this.onImageClicked}>
         {this.defaultRenderImage(selectedImage, false)}
       </a>
     );
   }
+
+  onImageClicked = (e: MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    const { openModal } = this.props;
+    openModal({ modalName: PRODUCT_IMAGE_MODAL_NAME });
+  };
 
   defaultRenderImage = (image: ProductImage, isThumbnail: boolean): JSX.Element | null => {
     const { renderImage, product } = this.props;
@@ -107,6 +132,7 @@ export default class ProductImageBrowser extends Component<Props> {
     this.props.onImageSelected(product, image, productVariant, selection);
   };
 }
+export default connector(ProductImageBrowser);
 
 /**
  * Find a product variant given an image

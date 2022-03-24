@@ -34,6 +34,7 @@ export const ProductImageBrowserThumbnails = styled.ul.attrs(props => ({
       background: ${props => props.theme?.backgroundColor || 'white'};
       overflow: hidden;
       border: none;
+      border-radius: ${props => props.theme?.borderRadius || '3px'};
 
       img {
         object-fit: cover;

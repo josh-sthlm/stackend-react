@@ -5,6 +5,7 @@ import 'slick-carousel/slick/slick-theme.css';
 import classNames from '../../style-common/classNames';
 import { SquareProductImage } from '../../shop/SquareProductImage.style';
 import { Price, ShopNowButton, Title } from '../../shop/Shop.style';
+import { ProductListingItem } from '../../shop/ProductListingItem.style';
 
 export const ProductModule = styled.div.attrs(props => ({
   className: classNames('stackend-shop-product-module', props.className)
@@ -12,6 +13,12 @@ export const ProductModule = styled.div.attrs(props => ({
   .stackend-product-image-browser .stackend-product-image-browser-thumbs img {
     width: 100%;
     height: 100%;
+  }
+
+  &.stackend-shop-product-module-compact {
+    ${ProductListingItem} {
+      width: 20em;
+    }
   }
 
   &.stackend-shop-product-module-horizontal {
