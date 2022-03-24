@@ -1,6 +1,5 @@
 import React, { Component, MouseEvent } from 'react';
 import * as Sc from './ProductImageBrowser.style';
-import { openModal } from '../modal/modalActions';
 
 import {
   getAllUniqueImages,
@@ -11,14 +10,14 @@ import {
   ProductVariant
 } from '@stackend/api/shop';
 import { connect, ConnectedProps } from 'react-redux';
-import ProductImageModal, { PRODUCT_IMAGE_MODAL_NAME } from './ProductImageModal';
+import { openProductImageModal } from './shopUiActions';
 
 function mapState() {
   return {};
 }
 
 const mapDispatch = {
-  openModal
+  openProductImageModal
 };
 
 const connector = connect(mapState, mapDispatch);
@@ -59,12 +58,10 @@ type Props = ConnectedProps<typeof connector> & {
 
 class ProductImageBrowser extends Component<Props> {
   render(): JSX.Element {
-    const { selectedImage, product } = this.props;
     return (
       <Sc.ProductImageBrowser>
         {this.renderSelectedImage()}
         {this.renderProductImageThumbnails()}
-        <ProductImageModal image={selectedImage} product={product} />
       </Sc.ProductImageBrowser>
     );
   }
@@ -88,8 +85,10 @@ class ProductImageBrowser extends Component<Props> {
   onImageClicked = (e: MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    const { openModal } = this.props;
-    openModal({ modalName: PRODUCT_IMAGE_MODAL_NAME });
+    const { openProductImageModal, selectedImage, product } = this.props;
+    if (selectedImage) {
+      openProductImageModal(product.handle, selectedImage);
+    }
   };
 
   defaultRenderImage = (image: ProductImage, isThumbnail: boolean): JSX.Element | null => {

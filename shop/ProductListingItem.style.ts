@@ -17,7 +17,7 @@ export const ProductListingItem = styled.div.attrs(props => ({
   display: flex;
   justify-content: flex-end;
   flex-direction: column;
-  padding-bottom: ${props => props.theme.margins.normal};
+  padding-bottom: ${props => props.theme.margins.medium};
 
   a {
     text-decoration: none;

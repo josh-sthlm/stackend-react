@@ -148,7 +148,12 @@ export const zIndexes = {
   /**
    * User menu
    */
-  userMenu: 100
+  userMenu: 100,
+
+  /**
+   * Modals
+   */
+  modal: 2000
 };
 
 export default {
