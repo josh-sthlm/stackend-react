@@ -29,3 +29,34 @@ export enum ComponentType {
 }
 
 export default ComponentType;
+
+/**
+ * Does this component represent a single standard html element, or is it a composite widget?
+ * @param componentType
+ */
+export function isStandardComponent(componentType: ComponentType): boolean {
+  switch (componentType) {
+    case ComponentType.BOX:
+    case ComponentType.ACCENT:
+      return false;
+    default:
+      return true;
+  }
+}
+
+/**
+ * Is this component a form element?F
+ * @param componentType
+ */
+export function isFormElement(componentType: ComponentType): boolean {
+  switch (componentType) {
+    case ComponentType.BUTTON:
+    case ComponentType.BUTTON_DANGER:
+    case ComponentType.BUTTON_DEFAULT:
+    case ComponentType.TEXT_INPUT:
+    case ComponentType.SELECT:
+      return true;
+    default:
+      return false;
+  }
+}
