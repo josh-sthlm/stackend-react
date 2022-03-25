@@ -114,7 +114,8 @@ export const StackendCarouselStyle = css`
       z-index: 10;
       text-shadow: 0 0 5px ${props => getComponentProp(props.theme, ComponentType.BUTTON, 'backgroundColor') || '#222'};
       color: ${props => getComponentProp(props.theme, ComponentType.BUTTON, 'backgroundColor') || 'black'};
-      background: rgba(255, 255, 255, 0.5);
+      background: ${props =>
+        getComponentProp(props.theme, ComponentType.BUTTON, 'color') + '22' || 'rgba(255, 255, 255, 0.5)'};
       border-radius: 50%;
       font-size: 3rem;
 
