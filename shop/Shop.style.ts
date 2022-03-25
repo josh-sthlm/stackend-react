@@ -1,6 +1,8 @@
 //@flow
 import styled from 'styled-components';
 import classNames from '../style-common/classNames';
+import { getComponentBorder, getComponentProp } from '../theme/StackendTheme';
+import ComponentType from '../theme/ComponentType';
 
 export const ShopButtonCommon = `
   width: fit-content;
@@ -10,6 +12,9 @@ export const ShopNowButton = styled.span.attrs(props => ({
   className: classNames('stackend-shop-now stackend-button', props.className)
 }))`
   ${ShopButtonCommon};
+  border: ${props => getComponentBorder(props.theme, ComponentType.BUTTON)};
+  color: ${props => getComponentProp(props.theme, ComponentType.BUTTON, 'color')};
+  background-color: ${props => getComponentProp(props.theme, ComponentType.BUTTON, 'backgroundColor')};
 `;
 
 const productItemMargin = '1em 0;';
@@ -21,7 +26,7 @@ export const VariantTitlePart = styled.span.attrs(props => ({
   className: classNames('stackend-variant-title', props.className)
 }))``;
 
-export const Title = styled.h2.attrs(props => ({ className: classNames('stackend-product-name', props.className) }))`
+export const Title = styled.h4.attrs(props => ({ className: classNames('stackend-product-name', props.className) }))`
   margin: ${productItemMargin};
 
   ${ProductTitlePart} {
@@ -75,6 +80,7 @@ export const Tags = styled.div.attrs(props => ({ className: classNames('stackend
     text-decoration: none;
     background-color: ${props => props.theme?.color || '#000000'};
     color: ${props => props.theme?.backgroundColor || '#ffffff'};
+    border: ${props => props.theme?.borderRadius || '3px'};
   }
 `;
 

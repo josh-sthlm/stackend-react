@@ -300,10 +300,12 @@ export function getValidatedTheme(t: StackendTheme): StackendTheme {
 
   // Remove unknown keys
   for (let key of Object.keys(v)) {
-    if (!(d as any)[key]) {
+    const type = typeof (d as any)[key];
+    if (!(type === 'string' || type === 'boolean' || type === 'object')) {
       delete (v as any)[key];
     }
-    if ((v as any)[key] === null || (v as any)[key] === undefined) {
+    const value = (v as any)[key];
+    if (value === null || value === undefined) {
       delete (v as any)[key];
     }
   }

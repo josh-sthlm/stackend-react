@@ -13,9 +13,6 @@ export const ProductImageModal = styled.div.attrs(props => ({
   button {
     z-index: ${zIndexes.modal + 10};
     font-size: 3rem;
-    ${media.mobileScreen} {
-      font-size: 2rem;
-    }
   }
 
   button.stackend-close {
@@ -41,14 +38,20 @@ export const ProductImageModal = styled.div.attrs(props => ({
     }
   }
 
-  button.stackend-previous {
-    left: ${props => props.theme.margins.small};
+  button.stackend-previous,
+  button.stackend-next {
     top: 50%;
+    ${media.mobileScreen} {
+      font-size: 2rem;
+    }
+  }
+
+  button.stackend-previous {
+    left: 1rem;
   }
 
   button.stackend-next {
-    right: ${props => props.theme.margins.small};
-    top: 50%;
+    right: 1rem;
   }
 
   img {

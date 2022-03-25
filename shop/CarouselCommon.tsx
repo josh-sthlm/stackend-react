@@ -116,13 +116,13 @@ export const StackendCarouselStyle = css`
       color: ${props => getComponentProp(props.theme, ComponentType.BUTTON, 'backgroundColor') || 'black'};
       background: rgba(255, 255, 255, 0.5);
       border-radius: 50%;
-      font-size: 4rem;
+      font-size: 3rem;
 
       &.slick-next {
-        right: 1em;
+        right: 1rem;
       }
       &.slick-prev {
-        left: 1em;
+        left: 1rem;
       }
 
       &.slick-prev:before {
