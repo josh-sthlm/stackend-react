@@ -17,13 +17,13 @@ export const ProductListingItem = styled.div.attrs(props => ({
   display: flex;
   justify-content: flex-end;
   flex-direction: column;
-  padding-bottom: ${props => props.theme.margins.medium};
   overflow: hidden;
 
   a {
     text-decoration: none;
     display: inline-block;
     width: 100%;
+    padding-bottom: ${props => props.theme.margins.medium};
 
     ${Title} {
       line-height: 1.2em;

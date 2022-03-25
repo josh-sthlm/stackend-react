@@ -81,7 +81,7 @@ export const Tags = styled.div.attrs(props => ({ className: classNames('stackend
     text-decoration: none;
     background-color: ${props => props.theme?.color || '#000000'};
     color: ${props => props.theme?.backgroundColor || '#ffffff'};
-    border: ${props => props.theme?.borderRadius || '3px'};
+    border-radius: ${props => props.theme?.borderRadius || '3px'};
   }
 `;
 
