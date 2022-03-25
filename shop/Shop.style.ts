@@ -15,6 +15,7 @@ export const ShopNowButton = styled.span.attrs(props => ({
   border: ${props => getComponentBorder(props.theme, ComponentType.BUTTON)};
   color: ${props => getComponentProp(props.theme, ComponentType.BUTTON, 'color')};
   background-color: ${props => getComponentProp(props.theme, ComponentType.BUTTON, 'backgroundColor')};
+  border-radius: ${props => props.theme.borderRadius};
 `;
 
 const productItemMargin = '1em 0;';

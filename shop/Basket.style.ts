@@ -20,6 +20,12 @@ export const BasketItem = styled.li.attrs(props => ({
   a.stackend-product-image-link {
     padding: ${props => props.theme.borderWidth}; /* space for focus outline */
   }
+
+  ${SquareProductImage} {
+    img {
+      object-fit: cover;
+    }
+  }
 `;
 
 export const BasketList = styled.ul.attrs(props => ({
@@ -169,10 +175,6 @@ export const Basket = styled.div.attrs(props => ({
         ${media.mobileScreen} {
           width: 100%;
         }
-      }
-
-      ${SquareProductImage} {
-        object-fit: cover;
       }
     }
   }
