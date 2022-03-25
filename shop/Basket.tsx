@@ -160,7 +160,7 @@ class Basket extends Component<Props, State> {
 
     return (
       <Sc.BasketItem key={handle + '-' + (variantId || 'default')}>
-        <Link to={link} className="stackend-product-image">
+        <Link to={link} className="stackend-product-image-link">
           <SquareProductImage image={image} responsive={true} />
         </Link>
         <Link to={link} className="stackend-product-title">

@@ -73,6 +73,9 @@ export interface StackendTheme extends FontTheme, ColorTheme {
 
   /** External css libs for preview */
   libs: Array<string>;
+
+  /** Should external libs be injected, or only used for preview? */
+  injectLibs: boolean;
 }
 
 /**
@@ -280,7 +283,8 @@ export function getDefaultTheme(): StackendTheme {
     borderColor: '#000000',
     outlineColor: '#000000',
 
-    libs: []
+    libs: [],
+    injectLibs: false
   };
   return t;
 }

@@ -5,6 +5,7 @@ import { ButtonNext, Price, Title } from './Shop.style';
 import media from '../style-common/media';
 import { NumberEntry } from '../ui/NumberEntry.style';
 import classNames from '../style-common/classNames';
+import { SquareProductImage } from './SquareProductImage.style';
 
 export const BasketItem = styled.li.attrs(props => ({
   className: classNames('stackend-basket-list-item', props.className)
@@ -16,7 +17,7 @@ export const BasketItem = styled.li.attrs(props => ({
     }
   }
 
-  .stackend-product-image {
+  a.stackend-product-image-link {
     padding: ${props => props.theme.borderWidth}; /* space for focus outline */
   }
 `;
@@ -136,7 +137,7 @@ export const Basket = styled.div.attrs(props => ({
           padding-right: 0;
         }
 
-        a.stackend-product-image {
+        a.stackend-product-image-link {
           align-self: start;
         }
 
@@ -161,13 +162,17 @@ export const Basket = styled.div.attrs(props => ({
         }
       }
 
-      a.stackend-product-image {
+      a.stackend-product-image-link {
         grid-area: image;
         width: 10vw;
 
         ${media.mobileScreen} {
           width: 100%;
         }
+      }
+
+      ${SquareProductImage} {
+        object-fit: cover;
       }
     }
   }
