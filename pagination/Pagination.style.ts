@@ -51,25 +51,16 @@ export const PaginationWrapper = styled.div.attrs({
 `;
 
 export const PaginationButtons = styled.button<{ prev?: boolean; current?: boolean }>`
-  padding: 0 10px;
-  height: 32px;
-  margin: 5px;
-  border-radius: 3px;
-
   ${props => !!props.theme.PaginationButtons && props.theme.PaginationButtons(props)};
 `;
 
 export const PaginationMoreButton = styled.button`
-  display: inline-block;
   background: none;
+  border: none;
   width: 100%;
   text-align: center;
-  cursor: pointer;
-  font-family: inherit;
-  font-size: inherit;
-  padding: 10px 0;
-  margin-top: 8px;
-  border-top: 2px solid #f9f9f9;
+  padding: ${props => props.theme.margins.medium} 0;
+  margin-top: ${props => props.theme.margins.medium};
 
   &:focus {
     outline: none;
