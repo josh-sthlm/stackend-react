@@ -54,7 +54,7 @@ export const Product = styled.div.attrs(props => ({ className: classNames('stack
 
   ${media.overMobile} {
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: minmax(1em, min-content) minmax(1em, min-content) auto;
+    grid-template-rows: minmax(1em, min-content) minmax(1em, min-content) 1fr;
     grid-template-areas:
       'title title'
       'details description'
