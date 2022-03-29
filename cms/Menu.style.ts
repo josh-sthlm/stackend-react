@@ -2,6 +2,8 @@ import styled from 'styled-components';
 
 import { media } from '../style-common/media';
 import classNames from '../style-common/classNames';
+import { getComponentBorder, getComponentProp } from '../theme/StackendTheme';
+import ComponentType from '../theme/ComponentType';
 
 export const MenuLink = styled.a.attrs(props => ({ className: classNames('stackend-menu-link', props.className) }))`
   white-space: nowrap;
@@ -20,6 +22,10 @@ export const Burger = styled.button.attrs(props => ({
 export const Menu = styled.nav.attrs(props => ({
   className: classNames('stackend-site-menu', props.className)
 }))`
+  background-color: ${props => getComponentProp(props.theme, ComponentType.MENU, 'backgroundColor')};
+  border: ${props => getComponentBorder(props.theme, ComponentType.MENU)};
+  border-radius: ${props => props.theme.borderRadius || '0'};
+
   ${media.tabletScreen} {
     line-height: 2em;
   }
@@ -34,9 +40,11 @@ export const Menu = styled.nav.attrs(props => ({
     ${MenuItem} {
       display: block;
       margin: 0.5em 0;
+      color: ${props => getComponentProp(props.theme, ComponentType.MENU, 'color')};
 
       ${MenuLink} {
         display: inline-block;
+        color: ${props => getComponentProp(props.theme, ComponentType.MENU, 'color')};
 
         @media (pointer: coarse) {
           padding: 0.5em 0;
@@ -66,8 +74,8 @@ export const Menu = styled.nav.attrs(props => ({
   &.stackend-menu-horizontal {
     ${MenuItem} {
       display: inline-block;
-      margin-left: 1em;
-      padding: 0.5em 1em;
+      margin-left: ${props => props.theme.margins?.medium || '1em'};
+      padding: ${props => props.theme.margins?.small || '0.5em'} ${props => props.theme.margins?.medium || '1em'};
       position: relative;
 
       &:first-of-type {
@@ -90,8 +98,9 @@ export const Menu = styled.nav.attrs(props => ({
 
       ${SubMenuItems} {
         display: none;
-        background: ${props => props.theme?.backgroundColor || '#ffffff'};
-        box-shadow: 1px 1px 4px 1px ${props => props.theme?.borderColor || '#e6e6e6'};
+        background-color: ${props => getComponentProp(props.theme, ComponentType.MENU, 'backgroundColor') || '#ffffff'};
+        box-shadow: 1px 1px 4px 1px
+          ${props => getComponentProp(props.theme, ComponentType.MENU, 'borderColor') || '#e6e6e6'};
         border-radius: ${props => props.theme?.borderRadius || '3px'};
 
         ${MenuItem} {

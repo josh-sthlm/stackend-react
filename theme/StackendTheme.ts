@@ -67,6 +67,7 @@ export interface StackendTheme extends FontTheme, ColorTheme {
   [ComponentType.LINK]: ComponentTheme;
   [ComponentType.BOX]: ComponentTheme;
   [ComponentType.ACCENT]: ComponentTheme;
+  [ComponentType.MENU]: ComponentTheme;
 
   inheritMargins: boolean;
   margins: MarginTheme;
@@ -269,6 +270,11 @@ export function getDefaultTheme(): StackendTheme {
     [ComponentType.ACCENT]: {
       color: '#ffffff',
       backgroundColor: '#000000'
+    },
+    [ComponentType.MENU]: {
+      color: '#000000',
+      backgroundColor: '#ffffff',
+      borderColor: '#ffffff' /* hides the border by default */
     },
 
     inheritMargins: true,

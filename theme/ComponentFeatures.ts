@@ -31,6 +31,17 @@ export const CONTROL_COMPONENT_FEATURES: ComponentFeatures = {
   }
 };
 
+export const BUTTON_COMPONENT_FEATURES: ComponentFeatures = {
+  border: true,
+  outline: true,
+  background: true,
+  states: {
+    hover: true,
+    focused: true,
+    disabled: true
+  }
+};
+
 export const HEADER_FEATURES: ComponentFeatures = {
   border: false,
   outline: false,
@@ -52,16 +63,9 @@ export const COMPONENT_FEATURES: { [type in ComponentType]?: ComponentFeatures }
   [ComponentType.H2]: HEADER_FEATURES,
   [ComponentType.H3]: HEADER_FEATURES,
   [ComponentType.H4]: HEADER_FEATURES,
-  [ComponentType.BUTTON]: {
-    border: true,
-    outline: true,
-    background: true,
-    states: {
-      hover: true,
-      focused: true,
-      disabled: true
-    }
-  },
+  [ComponentType.BUTTON]: BUTTON_COMPONENT_FEATURES,
+  [ComponentType.BUTTON_DEFAULT]: BUTTON_COMPONENT_FEATURES,
+  [ComponentType.BUTTON_DANGER]: BUTTON_COMPONENT_FEATURES,
   [ComponentType.SELECT]: CONTROL_COMPONENT_FEATURES,
   [ComponentType.TEXT_INPUT]: CONTROL_COMPONENT_FEATURES,
   [ComponentType.LINK]: {
@@ -85,7 +89,8 @@ export const COMPONENT_FEATURES: { [type in ComponentType]?: ComponentFeatures }
     outline: false,
     background: true,
     states: NO_STATES
-  }
+  },
+  [ComponentType.MENU]: BUTTON_COMPONENT_FEATURES
 };
 
 export default ComponentFeatures;

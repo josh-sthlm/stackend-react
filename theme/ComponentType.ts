@@ -25,7 +25,10 @@ export enum ComponentType {
   BOX = 'box',
 
   /** Accent colors */
-  ACCENT = 'accent'
+  ACCENT = 'accent',
+
+  /** Menu bars */
+  MENU = 'menu'
 }
 
 export default ComponentType;
