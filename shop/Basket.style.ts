@@ -111,6 +111,10 @@ export const Basket = styled.div.attrs(props => ({
         grid-area: remove;
       }
 
+      ${SquareProductImage} {
+        border-radius: ${props => props.theme.borderRadius};
+      }
+
       ${media.mobileScreen} {
         grid-template-columns: 33% min-content auto auto min-content;
         grid-template-rows: repeat(2, auto);
@@ -170,7 +174,8 @@ export const Basket = styled.div.attrs(props => ({
 
       a.stackend-product-image-link {
         grid-area: image;
-        width: 10vw;
+        width: 10vh;
+        min-width: 5rem;
 
         ${media.mobileScreen} {
           width: 100%;
