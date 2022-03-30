@@ -274,7 +274,7 @@ export function getDefaultTheme(): StackendTheme {
     [ComponentType.MENU]: {
       color: '#000000',
       backgroundColor: '#ffffff',
-      borderColor: '#ffffff' /* hides the border by default */
+      borderColor: '#000000'
     },
 
     inheritMargins: true,

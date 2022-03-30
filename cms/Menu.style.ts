@@ -4,16 +4,28 @@ import { media } from '../style-common/media';
 import classNames from '../style-common/classNames';
 import { getComponentBorder, getComponentProp } from '../theme/StackendTheme';
 import ComponentType from '../theme/ComponentType';
+import { zIndexes } from '../style-common/styled-variables.style';
 
 export const MenuLink = styled.a.attrs(props => ({ className: classNames('stackend-menu-link', props.className) }))`
   white-space: nowrap;
 `;
 
-export const MenuItem = styled.div.attrs(props => ({ className: classNames('stackend-menu-item', props.className) }))``;
+export const MenuItem = styled.div.attrs(props => ({ className: classNames('stackend-menu-item', props.className) }))`
+  color: ${props => getComponentProp(props.theme, ComponentType.MENU, 'color')};
+  position: relative;
+
+  &.stackend-menu-item-selected {
+    > ${MenuLink} {
+      font-weight: bold;
+    }
+`;
 
 export const SubMenuItems = styled.div.attrs(props => ({
   className: classNames('stackend-submenu-items', props.className)
-}))``;
+}))`
+  border: ${props => getComponentBorder(props.theme, ComponentType.MENU)};
+  border-radius: ${props => props.theme.borderRadius || '0'};
+`;
 
 export const Burger = styled.button.attrs(props => ({
   className: classNames('stackend-menu-burger stackend-icon', props.className)
@@ -23,32 +35,41 @@ export const Menu = styled.nav.attrs(props => ({
   className: classNames('stackend-site-menu', props.className)
 }))`
   background-color: ${props => getComponentProp(props.theme, ComponentType.MENU, 'backgroundColor')};
-  border: ${props => getComponentBorder(props.theme, ComponentType.MENU)};
   border-radius: ${props => props.theme.borderRadius || '0'};
-
-  ${media.tabletScreen} {
-    line-height: 2em;
-  }
+  display: flex;
+  gap: 1em;
+  font-size: 1.25rem;
+  line-height: 2em;
+  margin: ${props => props.theme.margins.medium} 0;
+  /* hack: don't pad if same color as bg */
+  padding: 0
+    ${props =>
+      getComponentProp(props.theme, ComponentType.MENU, 'backgroundColor') !==
+      getComponentProp(props.theme, ComponentType.TEXT, 'backgroundColor')
+        ? props.theme.margins.medium
+        : '0'};
 
   ${Burger} {
     display: none;
   }
 
+  ${MenuItem} {
+    color: ${props => getComponentProp(props.theme, ComponentType.MENU, 'color')};
+    ${MenuLink} {
+      color: ${props => getComponentProp(props.theme, ComponentType.MENU, 'color')};
+    }
+  }
+
   &.stackend-menu-vertical {
-    margin-right: 2em;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
 
     ${MenuItem} {
       display: block;
-      margin: 0.5em 0;
-      color: ${props => getComponentProp(props.theme, ComponentType.MENU, 'color')};
 
       ${MenuLink} {
         display: inline-block;
-        color: ${props => getComponentProp(props.theme, ComponentType.MENU, 'color')};
-
-        @media (pointer: coarse) {
-          padding: 0.5em 0;
-        }
       }
 
       ${SubMenuItems} {
@@ -56,10 +77,6 @@ export const Menu = styled.nav.attrs(props => ({
       }
 
       &.stackend-menu-item-selected {
-        > ${MenuLink} {
-          font-weight: bold;
-        }
-
         ${SubMenuItems} {
           display: block;
         }
@@ -68,33 +85,18 @@ export const Menu = styled.nav.attrs(props => ({
 
     ${SubMenuItems} {
       margin-left: 1em;
+      border: none;
     }
   }
 
   &.stackend-menu-horizontal {
+    flex-direction: row;
+    align-items: center;
+    gap: ${props => props.theme.margins.large};
+
     ${MenuItem} {
       display: inline-block;
-      margin-left: ${props => props.theme.margins?.medium || '1em'};
-      padding: ${props => props.theme.margins?.small || '0.5em'} ${props => props.theme.margins?.medium || '1em'};
       position: relative;
-
-      &:first-of-type {
-        margin-left: 0;
-      }
-
-      ${MenuLink} {
-        font-weight: bold;
-      }
-
-      &.stackend-submenu-open {
-        > ${SubMenuItems} {
-          display: inline-block;
-          position: absolute;
-          left: 0;
-          top: calc(2em + 4px); /* FIXME: height + margin + padding + some space */
-          min-width: 100%;
-        }
-      }
 
       ${SubMenuItems} {
         display: none;
@@ -102,9 +104,10 @@ export const Menu = styled.nav.attrs(props => ({
         box-shadow: 1px 1px 4px 1px
           ${props => getComponentProp(props.theme, ComponentType.MENU, 'borderColor') || '#e6e6e6'};
         border-radius: ${props => props.theme?.borderRadius || '3px'};
+        border: ${props => getComponentBorder(props.theme, ComponentType.MENU) || '1px solid #e6e6e6'};
+        padding: ${props => props.theme.margins.small} ${props => props.theme.margins.medium};
 
         ${MenuItem} {
-          margin-left: 0;
           width: 100%;
           ${MenuLink} {
             width: 100%;
@@ -114,25 +117,55 @@ export const Menu = styled.nav.attrs(props => ({
           }
         }
       }
+
+      &.stackend-submenu-open {
+        > ${SubMenuItems} {
+          display: inline-block;
+          position: absolute;
+          left: 0;
+          top: calc(2em + 2px); /* FIXME: height + margin + padding + some space */
+          min-width: 100%;
+          z-index: ${zIndexes.onTop};
+        }
+      }
     }
 
     /* Turn into vertical menu for small screens */
     ${media.tabletScreen} {
-      margin-bottom: 1em;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0;
+      background: none;
+
+      &.stackend-menu-active {
+        background-color: ${props => getComponentProp(props.theme, ComponentType.MENU, 'backgroundColor')};
+        ${Burger} {
+          margin-left: ${props =>
+            getComponentProp(props.theme, ComponentType.MENU, 'backgroundColor') !==
+            getComponentProp(props.theme, ComponentType.TEXT, 'backgroundColor')
+              ? '-' + props.theme.margins.medium
+              : '0'};
+        }
+      }
 
       ${Burger} {
         display: inline-flex;
       }
 
+      > ${MenuItem} {
+        margin-left: ${props => props.theme.margins.small}; /* to match indentation of burger */
+      }
+
       ${MenuItem} {
         display: block;
-        margin-left: 0;
 
         ${SubMenuItems} {
           display: block;
           background: inherit;
           box-shadow: none;
           margin-left: 1em;
+          border: none;
+          padding: 0;
         }
 
         &.stackend-submenu-open {
