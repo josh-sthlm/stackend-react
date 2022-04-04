@@ -42,7 +42,7 @@ export const Menu = styled.nav.attrs(props => ({
   font-size: 1.25rem;
   line-height: 2em;
   margin: ${props => props.theme.margins.medium} 0;
-  overflow: hidden;
+  overflow: visible; /* allows for popup submenu */
 
   /* hack: don't pad if same color as bg */
   padding: 0;
