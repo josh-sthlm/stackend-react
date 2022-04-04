@@ -37,6 +37,8 @@ export default class Menu extends Component<Props, State> {
         return 'stackend-menu-horizontal';
       case MenuVisibility.VERTICAL:
         return 'stackend-menu-vertical';
+      case MenuVisibility.FIXED:
+        return 'stackend-menu-fixed';
       default:
         return 'stackend-menu-off';
     }

@@ -4,7 +4,8 @@ import { media } from '../style-common/media';
 import classNames from '../style-common/classNames';
 import { getComponentBorder, getComponentProp } from '../theme/StackendTheme';
 import ComponentType from '../theme/ComponentType';
-import { zIndexes } from '../style-common/styled-variables.style';
+import { zIndexes } from '../style-common/z-indexes';
+import ComponentState from '../theme/ComponentState';
 
 export const MenuLink = styled.a.attrs(props => ({ className: classNames('stackend-menu-link', props.className) }))`
   white-space: nowrap;
@@ -41,19 +42,17 @@ export const Menu = styled.nav.attrs(props => ({
   font-size: 1.25rem;
   line-height: 2em;
   margin: ${props => props.theme.margins.medium} 0;
+  overflow: hidden;
+
   /* hack: don't pad if same color as bg */
-  padding: 0
-    ${props =>
-      getComponentProp(props.theme, ComponentType.MENU, 'backgroundColor') !==
-      getComponentProp(props.theme, ComponentType.TEXT, 'backgroundColor')
-        ? props.theme.margins.medium
-        : '0'};
+  padding: 0;
 
   ${Burger} {
     display: none;
   }
 
   ${MenuItem} {
+    padding: 0 ${props => props.theme.margins.medium};
     color: ${props => getComponentProp(props.theme, ComponentType.MENU, 'color')};
     ${MenuLink} {
       color: ${props => getComponentProp(props.theme, ComponentType.MENU, 'color')};
@@ -89,10 +88,11 @@ export const Menu = styled.nav.attrs(props => ({
     }
   }
 
-  &.stackend-menu-horizontal {
+  &.stackend-menu-horizontal,
+  &.stackend-menu-fixed {
     flex-direction: row;
     align-items: center;
-    gap: ${props => props.theme.margins.large};
+    gap: ${props => props.theme.margins.medium};
 
     ${MenuItem} {
       display: inline-block;
@@ -101,9 +101,9 @@ export const Menu = styled.nav.attrs(props => ({
       ${SubMenuItems} {
         display: none;
         background-color: ${props => getComponentProp(props.theme, ComponentType.MENU, 'backgroundColor') || '#ffffff'};
-        box-shadow: 1px 1px 4px 1px
+        box-shadow: 1px 2px 2px 1px
           ${props => getComponentProp(props.theme, ComponentType.MENU, 'borderColor') || '#e6e6e6'};
-        border-radius: ${props => props.theme?.borderRadius || '3px'};
+        border-radius: 0 0 ${props => props.theme?.borderRadius || '3px'} ${props => props.theme?.borderRadius || '3px'};
         border: ${props => getComponentBorder(props.theme, ComponentType.MENU) || '1px solid #e6e6e6'};
         padding: ${props => props.theme.margins.small} ${props => props.theme.margins.medium};
 
@@ -122,11 +122,27 @@ export const Menu = styled.nav.attrs(props => ({
         > ${SubMenuItems} {
           display: inline-block;
           position: absolute;
-          left: 0;
-          top: calc(2em + 2px); /* FIXME: height + margin + padding + some space */
+          left: ${props => '-' + props.theme.margins.small};
+          top: 2em;
           min-width: 100%;
           z-index: ${zIndexes.onTop};
         }
+      }
+    }
+
+    > ${MenuItem} {
+      &:hover {
+        color: ${props => getComponentProp(props.theme, ComponentType.MENU, 'color', ComponentState.ACTIVE_HOVER)};
+        background-color: ${props =>
+          getComponentProp(props.theme, ComponentType.MENU, 'backgroundColor', ComponentState.ACTIVE_HOVER)};
+      }
+      &:first-child {
+        border-top-left-radius: ${props => props.theme.borderRadius};
+        border-bottom-left-radius: ${props => props.theme.borderRadius};
+      }
+      &:last-child {
+        border-top-right-radius: ${props => props.theme.borderRadius};
+        border-bottom-right-radius: ${props => props.theme.borderRadius};
       }
     }
 
@@ -182,5 +198,16 @@ export const Menu = styled.nav.attrs(props => ({
         }
       }
     }
+  }
+
+  &.stackend-menu-fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    margin: 0;
+    border-radius: 0;
+    padding: 0 ${props => props.theme.margins.medium};
+    z-index: ${zIndexes.cmsMenu};
   }
 `;

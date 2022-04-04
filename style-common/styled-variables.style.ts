@@ -129,6 +129,7 @@ export const profileInitialsFontSize = {
   large: '75px'
 };
 
+/** @deprecated use x-indexes.ts instead */
 export const zIndexes = {
   /**
    * Above everything else
@@ -149,6 +150,11 @@ export const zIndexes = {
    * User menu
    */
   userMenu: 100,
+
+  /**
+   * User menu
+   */
+  cmsMenu: 50,
 
   /**
    * Modals

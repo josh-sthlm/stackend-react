@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { getComponentProp } from '../theme/StackendTheme';
 import ComponentType from '../theme/ComponentType';
-import { zIndexes } from '../style-common/styled-variables.style';
+import { zIndexes } from '../style-common/z-indexes';
 import media from '../style-common/media';
 
 export const ProductImageModal = styled.div.attrs(props => ({

@@ -77,6 +77,9 @@ export interface StackendTheme extends FontTheme, ColorTheme {
 
   /** Should external libs be injected, or only used for preview? */
   injectLibs: boolean;
+
+  /** Should cms content have the style applied? */
+  applyToCmsContent: false;
 }
 
 /**
@@ -290,7 +293,9 @@ export function getDefaultTheme(): StackendTheme {
     outlineColor: '#000000',
 
     libs: [],
-    injectLibs: false
+    injectLibs: false,
+
+    applyToCmsContent: false
   };
   return t;
 }
