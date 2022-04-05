@@ -2,10 +2,16 @@ import styled from 'styled-components';
 
 import { media } from '../style-common/media';
 import classNames from '../style-common/classNames';
-import { getComponentBorder, getComponentProp } from '../theme/StackendTheme';
+import { getComponentProp } from '../theme/StackendTheme';
 import ComponentType from '../theme/ComponentType';
 import { zIndexes } from '../style-common/z-indexes';
 import ComponentState from '../theme/ComponentState';
+
+export const Burger = styled.button.attrs(props => ({
+  className: classNames('stackend-menu-burger stackend-icon', props.className)
+}))`
+  font-size: 2rem;
+`;
 
 export const MenuLink = styled.a.attrs(props => ({ className: classNames('stackend-menu-link', props.className) }))`
   white-space: nowrap;
@@ -24,13 +30,8 @@ export const MenuItem = styled.div.attrs(props => ({ className: classNames('stac
 export const SubMenuItems = styled.div.attrs(props => ({
   className: classNames('stackend-submenu-items', props.className)
 }))`
-  border: ${props => getComponentBorder(props.theme, ComponentType.MENU)};
   border-radius: ${props => props.theme.borderRadius || '0'};
 `;
-
-export const Burger = styled.button.attrs(props => ({
-  className: classNames('stackend-menu-burger stackend-icon', props.className)
-}))``;
 
 export const Menu = styled.nav.attrs(props => ({
   className: classNames('stackend-site-menu', props.className)
@@ -52,10 +53,10 @@ export const Menu = styled.nav.attrs(props => ({
   }
 
   ${MenuItem} {
-    padding: 0 ${props => props.theme.margins.medium};
     color: ${props => getComponentProp(props.theme, ComponentType.MENU, 'color')};
     ${MenuLink} {
       color: ${props => getComponentProp(props.theme, ComponentType.MENU, 'color')};
+      padding: 0 ${props => props.theme.margins.medium};
     }
   }
 
@@ -101,11 +102,9 @@ export const Menu = styled.nav.attrs(props => ({
       ${SubMenuItems} {
         display: none;
         background-color: ${props => getComponentProp(props.theme, ComponentType.MENU, 'backgroundColor') || '#ffffff'};
-        box-shadow: 1px 2px 2px 1px
+        box-shadow: 1px 2px 4px 0
           ${props => getComponentProp(props.theme, ComponentType.MENU, 'borderColor') || '#e6e6e6'};
         border-radius: 0 0 ${props => props.theme?.borderRadius || '3px'} ${props => props.theme?.borderRadius || '3px'};
-        border: ${props => getComponentBorder(props.theme, ComponentType.MENU) || '1px solid #e6e6e6'};
-        padding: ${props => props.theme.margins.small} ${props => props.theme.margins.medium};
 
         ${MenuItem} {
           width: 100%;
@@ -122,22 +121,32 @@ export const Menu = styled.nav.attrs(props => ({
         > ${SubMenuItems} {
           display: inline-block;
           position: absolute;
-          left: ${props => '-' + props.theme.margins.small};
+          left: 0;
           top: 2em;
           min-width: 100%;
           z-index: ${zIndexes.onTop};
         }
       }
-    }
 
-    > ${MenuItem} {
       &:hover {
-        color: ${props => getComponentProp(props.theme, ComponentType.MENU, 'color', ComponentState.ACTIVE_HOVER)};
         ${MenuLink} {
           color: ${props => getComponentProp(props.theme, ComponentType.MENU, 'color', ComponentState.ACTIVE_HOVER)};
         }
         background-color: ${props =>
           getComponentProp(props.theme, ComponentType.MENU, 'backgroundColor', ComponentState.ACTIVE_HOVER)};
+
+        ${MenuItem} {
+          background-color: ${props => getComponentProp(props.theme, ComponentType.MENU, 'backgroundColor')};
+          ${MenuLink} {
+            color: ${props => getComponentProp(props.theme, ComponentType.MENU, 'color')};
+          }
+        }
+      }
+    }
+
+    > ${MenuItem} {
+      &:first-child {
+        border-radius: ${props => props.theme.borderRadius} 0 0 ${props => props.theme.borderRadius};
       }
     }
 
@@ -151,11 +160,7 @@ export const Menu = styled.nav.attrs(props => ({
       &.stackend-menu-active {
         background-color: ${props => getComponentProp(props.theme, ComponentType.MENU, 'backgroundColor')};
         ${Burger} {
-          margin-left: ${props =>
-            getComponentProp(props.theme, ComponentType.MENU, 'backgroundColor') !==
-            getComponentProp(props.theme, ComponentType.TEXT, 'backgroundColor')
-              ? '-' + props.theme.margins.medium
-              : '0'};
+          color: ${props => getComponentProp(props.theme, ComponentType.MENU, 'color')};
         }
       }
 

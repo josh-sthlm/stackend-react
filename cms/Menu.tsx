@@ -45,11 +45,11 @@ export default class Menu extends Component<Props, State> {
   }
 
   componentDidMount(): void {
-    document.body.addEventListener('click', this.onWindowClicked as EventListener);
+    document.body.addEventListener('mousedown', this.onWindowClicked as EventListener);
   }
 
   componentWillUnmount(): void {
-    document.body.removeEventListener('click', this.onWindowClicked as EventListener);
+    document.body.removeEventListener('mousedown', this.onWindowClicked as EventListener);
   }
 
   onWindowClicked = (e: Event): void => {

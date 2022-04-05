@@ -92,7 +92,7 @@ export const COMPONENT_FEATURES: { [type in ComponentType]?: ComponentFeatures }
   },
   [ComponentType.MENU]: {
     border: true,
-    outline: true,
+    outline: false,
     background: true,
     states: {
       hover: true,
