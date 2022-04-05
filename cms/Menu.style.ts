@@ -41,7 +41,7 @@ export const Menu = styled.nav.attrs(props => ({
   gap: 1em;
   font-size: 1.25rem;
   line-height: 2em;
-  margin: ${props => props.theme.margins.medium} 0;
+  margin-bottom: ${props => props.theme.margins.medium};
   overflow: visible; /* allows for popup submenu */
 
   /* hack: don't pad if same color as bg */
@@ -133,16 +133,11 @@ export const Menu = styled.nav.attrs(props => ({
     > ${MenuItem} {
       &:hover {
         color: ${props => getComponentProp(props.theme, ComponentType.MENU, 'color', ComponentState.ACTIVE_HOVER)};
+        ${MenuLink} {
+          color: ${props => getComponentProp(props.theme, ComponentType.MENU, 'color', ComponentState.ACTIVE_HOVER)};
+        }
         background-color: ${props =>
           getComponentProp(props.theme, ComponentType.MENU, 'backgroundColor', ComponentState.ACTIVE_HOVER)};
-      }
-      &:first-child {
-        border-top-left-radius: ${props => props.theme.borderRadius};
-        border-bottom-left-radius: ${props => props.theme.borderRadius};
-      }
-      &:last-child {
-        border-top-right-radius: ${props => props.theme.borderRadius};
-        border-bottom-right-radius: ${props => props.theme.borderRadius};
       }
     }
 

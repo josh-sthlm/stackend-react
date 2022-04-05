@@ -90,7 +90,16 @@ export const COMPONENT_FEATURES: { [type in ComponentType]?: ComponentFeatures }
     background: true,
     states: NO_STATES
   },
-  [ComponentType.MENU]: BUTTON_COMPONENT_FEATURES
+  [ComponentType.MENU]: {
+    border: true,
+    outline: true,
+    background: true,
+    states: {
+      hover: true,
+      focused: false,
+      disabled: false
+    }
+  }
 };
 
 export default ComponentFeatures;
