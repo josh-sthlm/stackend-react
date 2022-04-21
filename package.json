@@ -1,6 +1,6 @@
 {
   "name": "@stackend/react",
-  "version": "0.7.58",
+  "version": "0.8.0",
   "description": "React components for Stackend",
   "keywords": [
     "comments",
@@ -52,7 +52,7 @@
     "start": "webpack serve --mode development --open --hot"
   },
   "peerDependencies": {
-    "@stackend/api": ">= 1.3.0 < 1.4.0",
+    "@stackend/api": ">= 1.4.0 < 1.5.0",
     "react": " >= 16.14 < 17",
     "react-dom": " >= 16.14 < 17",
     "react-intl": "5.x",
