@@ -44,8 +44,6 @@ export const Menu = styled.nav.attrs(props => ({
   line-height: 2em;
   margin-bottom: ${props => props.theme.margins.medium};
   overflow: visible; /* allows for popup submenu */
-
-  /* hack: don't pad if same color as bg */
   padding: 0;
 
   ${Burger} {
@@ -56,7 +54,8 @@ export const Menu = styled.nav.attrs(props => ({
     color: ${props => getComponentProp(props.theme, ComponentType.MENU, 'color')};
     ${MenuLink} {
       color: ${props => getComponentProp(props.theme, ComponentType.MENU, 'color')};
-      padding: 0 ${props => props.theme.margins.medium};
+      padding: ${props => props.theme.margins.small} ${props => props.theme.margins.medium};
+      text-decoration: none;
     }
   }
 
@@ -94,6 +93,7 @@ export const Menu = styled.nav.attrs(props => ({
     flex-direction: row;
     align-items: center;
     gap: ${props => props.theme.margins.medium};
+    padding: 0.5em;
 
     ${MenuItem} {
       display: inline-block;
@@ -109,8 +109,8 @@ export const Menu = styled.nav.attrs(props => ({
         ${MenuItem} {
           width: 100%;
           ${MenuLink} {
-            width: 100%;
             display: inline-block;
+            width: 100%;
             text-overflow: ellipsis;
             white-space: nowrap;
           }
@@ -122,8 +122,9 @@ export const Menu = styled.nav.attrs(props => ({
           display: inline-block;
           position: absolute;
           left: 0;
-          top: 2em;
+          top: calc(1.5em + ${props => props.theme.margins.small});
           min-width: 100%;
+          width: fit-content;
           z-index: ${zIndexes.onTop};
         }
       }
@@ -145,7 +146,7 @@ export const Menu = styled.nav.attrs(props => ({
     }
 
     > ${MenuItem} {
-      &:first-child {
+      &:first-of-type {
         border-radius: ${props => props.theme.borderRadius} 0 0 ${props => props.theme.borderRadius};
       }
     }
