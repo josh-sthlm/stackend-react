@@ -7,9 +7,10 @@ import {
   cartSetQuantity,
   requestMissingProducts,
   getCart,
-  getProductAndVariant2
+  getProductAndVariant2,
+  createCheckoutFromCart
 } from '@stackend/api/shop/shopActions';
-import { getFirstImage, Cart, CartLine, Product } from '@stackend/api/shop';
+import { getFirstImage, Cart, CartLine, Product, Checkout } from '@stackend/api/shop';
 import { mapGraphQLList } from '@stackend/api/util/graphql';
 import * as Sc from './Basket.style';
 import { connect, ConnectedProps } from 'react-redux';
@@ -43,7 +44,8 @@ const mapDispatchToProps = {
   cartRemove,
   cartSetQuantity,
   requestMissingProducts,
-  getCart
+  getCart,
+  createCheckoutFromCart
 };
 
 const connector = connect(mapStateToProps, mapDispatchToProps);
@@ -63,7 +65,7 @@ export interface Props extends ConnectedProps<typeof connector>, WrappedComponen
    * Function invoked when checkout is clicked
    * @param basket
    */
-  onCheckoutClicked: (cart: Cart) => void;
+  onCheckoutClicked: (checkout: Checkout) => void;
 }
 
 type State = {
@@ -202,9 +204,14 @@ class Basket extends Component<Props, State> {
   };
 
   onCheckoutClicked = async (): Promise<void> => {
-    const { cart } = this.props;
-    if (cart && this.props.onCheckoutClicked) {
-      this.props.onCheckoutClicked(cart);
+    const { cart, createCheckoutFromCart } = this.props;
+    if (!cart) {
+      return;
+    }
+
+    const r = await createCheckoutFromCart();
+    if (!r.error && r.checkout && this.props.onCheckoutClicked) {
+      this.props.onCheckoutClicked(r.checkout);
     }
   };
 
