@@ -102,7 +102,7 @@ class ProductImageModal extends Component<Props, State> {
     );
   }
 
-  _onPrevClicked = () => {
+  _onPrevClicked = (): void => {
     const { product } = this.props;
     const { image } = this.state;
     if (!image || !product) {
@@ -131,7 +131,7 @@ class ProductImageModal extends Component<Props, State> {
     });
   };
 
-  _onNextClicked = () => {
+  _onNextClicked = (): void => {
     const { product } = this.props;
     const { image } = this.state;
     if (!image || !product) {
@@ -162,7 +162,7 @@ class ProductImageModal extends Component<Props, State> {
     });
   };
 
-  onCloseClicked = () => {
+  onCloseClicked = (): void => {
     const { closeProductImageModal } = this.props;
     closeProductImageModal();
   };

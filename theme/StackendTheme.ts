@@ -310,7 +310,7 @@ export function getValidatedTheme(t: StackendTheme): StackendTheme {
   const v = Object.assign({}, d, t); // Apply defaults for missing keys
 
   // Remove unknown keys
-  for (let key of Object.keys(v)) {
+  for (const key of Object.keys(v)) {
     const type = typeof (d as any)[key];
     if (!(type === 'string' || type === 'boolean' || type === 'object')) {
       delete (v as any)[key];
@@ -347,8 +347,7 @@ function validateComponentThem(ct: ComponentTheme): boolean {
   }
 
   const states: Array<string> = [ComponentState.ACTIVE_HOVER, ComponentState.DISABLED, ComponentState.FOCUS];
-
-  for (let key of Object.keys(ct)) {
+  for (const key of Object.keys(ct)) {
     if (states.includes(key)) {
       const st = (ct as any)[key];
       if (!validateComponentStateTheme(st)) {
@@ -371,7 +370,7 @@ function validateComponentStateTheme(st: ComponentStateTheme): boolean {
     return false;
   }
 
-  for (let key of Object.keys(st)) {
+  for (const key of Object.keys(st)) {
     if (!VALID_PROPS.includes(key) || typeof (st as any)[key] !== 'string') {
       delete (st as any)[key];
     }
@@ -444,7 +443,7 @@ export function resetComponentProp(
   }
 
   const ct = Object.assign({}, theme[componentType]);
-  for (let state of states) {
+  for (const state of states) {
     const st = (ct as any)[state];
     if (st) {
       delete st[prop];
