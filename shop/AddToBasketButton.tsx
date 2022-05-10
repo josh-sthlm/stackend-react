@@ -1,7 +1,7 @@
 //@flow
 import React, { Component, MouseEvent } from 'react';
 import { Product as ProductType, ProductVariant } from '@stackend/api/shop';
-import { checkoutAdd } from '@stackend/api/shop/shopActions';
+import { cartAdd } from '@stackend/api/shop/shopActions';
 import * as Sc from './AddToBasketButton.style';
 import { connect, ConnectedProps } from 'react-redux';
 import { FormattedMessage, injectIntl, WrappedComponentProps } from 'react-intl';
@@ -11,7 +11,7 @@ interface State {
 }
 
 const mapDispatchToProps = {
-  checkoutAdd
+  cartAdd
 };
 
 function mapStateToProps(_x: any) {
@@ -50,11 +50,11 @@ class AddToBasketButton extends Component<Props, State> {
   }
 
   onBuyClicked = (e: MouseEvent): void => {
-    const { product, onClick, variant } = this.props;
+    const { product, onClick, variant, cartAdd } = this.props;
     if (product && variant) {
       (async (): Promise<void> => {
         this.setState({ saving: true });
-        this.props.checkoutAdd(product, variant);
+        cartAdd(product, variant);
         if (onClick) {
           onClick(e, product, variant);
         }

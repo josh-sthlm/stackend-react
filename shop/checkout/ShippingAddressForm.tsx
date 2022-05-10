@@ -17,7 +17,8 @@ import {
   Checkout,
   GetCheckoutResult,
   Country,
-  AddressFieldName
+  AddressFieldName,
+  Product
 } from '@stackend/api/shop';
 import * as Sc from './ShippingAddressForm.style';
 import { connect, ConnectedProps } from 'react-redux';
@@ -26,7 +27,6 @@ import { Community } from '@stackend/api/stackend';
 import { getStackendLocale, EMAIL_VALIDATION_REGEXP_RELAXED } from '@stackend/api/util';
 import { getJsonErrorText } from '@stackend/api/api';
 import { FormattedMessage, injectIntl, WrappedComponentProps } from 'react-intl';
-import { Product } from '@stackend/api/src/shop/index';
 
 function mapStateToProps(state: any): {
   shop: ShopState;
