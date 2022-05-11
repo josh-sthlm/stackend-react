@@ -30,6 +30,7 @@ export const ShippingAddressForm = styled.form.attrs(props => ({
   className: classNames('stackend-shop-checkout-shipping-address', props.className)
 }))`
   overflow: hidden;
+  padding: 0.5em; /* space for focus outline */
 
   h1 {
     text-align: center;
