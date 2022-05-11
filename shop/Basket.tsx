@@ -10,7 +10,7 @@ import {
   getProductAndVariant2,
   createCheckoutFromCart
 } from '@stackend/api/shop/shopActions';
-import { getFirstImage, Cart, CartLine, Product, Checkout } from '@stackend/api/shop';
+import { getFirstImage, Cart, CartLine, Product, Checkout, CheckoutResult } from '@stackend/api/shop';
 import { mapGraphQLList } from '@stackend/api/util/graphql';
 import * as Sc from './Basket.style';
 import { connect, ConnectedProps } from 'react-redux';
@@ -209,9 +209,10 @@ class Basket extends Component<Props, State> {
       return;
     }
 
-    const r = await createCheckoutFromCart();
-    if (!r.error && r.checkout && this.props.onCheckoutClicked) {
-      this.props.onCheckoutClicked(r.checkout);
+    const r: CheckoutResult = await createCheckoutFromCart();
+    // FIXME: Handle errors?
+    if (!r.error && r.response.checkout && this.props.onCheckoutClicked) {
+      this.props.onCheckoutClicked(r.response.checkout);
     }
   };
 
