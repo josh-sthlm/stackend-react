@@ -5,6 +5,7 @@ import { FormattedMessage, injectIntl, WrappedComponentProps } from 'react-intl'
 import { ShopState } from '@stackend/api/shop/shopReducer';
 import { connect, ConnectedProps } from 'react-redux';
 import { VatCountry, listCountries, setCustomerCountryCode, getCustomerInfo } from '@stackend/api/shop/vat';
+import { cartBuyerIdentityUpdate, getCart } from '@stackend/api/shop/shopActions';
 
 function mapState(state: any): { shop: ShopState } {
   const shop: ShopState = state.shop;
@@ -16,7 +17,9 @@ function mapState(state: any): { shop: ShopState } {
 const mapDispatch = {
   listCountries,
   setCustomerCountryCode,
-  getCustomerInfo
+  cartBuyerIdentityUpdate,
+  getCustomerInfo,
+  getCart
 };
 const connector = connect(mapState, mapDispatch);
 
@@ -87,7 +90,6 @@ class CustomerCountrySelect extends Component<Props, State> {
       );
     }
 
-    // fu-tslint
     return (countries as any).map((c: VatCountry) => (
       <option key={c.countryCode} value={c.countryCode}>
         {c.name}
@@ -95,8 +97,8 @@ class CustomerCountrySelect extends Component<Props, State> {
     ));
   };
 
-  onChange = (e: any): void => {
-    const { onCustomerCountryChanged, setCustomerCountryCode } = this.props;
+  onChange = async (e: any): Promise<void> => {
+    const { onCustomerCountryChanged, setCustomerCountryCode, getCart, cartBuyerIdentityUpdate } = this.props;
     const customerCountryCode = e.target.value;
     if (customerCountryCode) {
       if (onCustomerCountryChanged) {
@@ -104,6 +106,14 @@ class CustomerCountrySelect extends Component<Props, State> {
       }
 
       setCustomerCountryCode(customerCountryCode);
+
+      const cart = await getCart({});
+      if (cart) {
+        await cartBuyerIdentityUpdate({
+          ...cart.buyerIdentity,
+          countryCode: customerCountryCode
+        });
+      }
     }
   };
 }
