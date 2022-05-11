@@ -11,7 +11,7 @@ import { generateClassName } from '@stackend/api//util';
 import { getParentProductType } from '@stackend/api/shop';
 import { getLinkFactory } from '../link/LinkFactory';
 import ShopLinkFactory, { ListingContext } from './ShopLinkFactory';
-import { ProductTypeTree } from '@stackend/api/src/shop/ProductTypeTree';
+import { ProductTypeTree } from '@stackend/api/shop/ProductTypeTree';
 
 function mapStateToProps(state: any): {
   productTypesTree: ProductTypeTree;

@@ -82,7 +82,7 @@ class ProductImageBrowser extends Component<Props> {
     );
   }
 
-  onImageClicked = (e: MouseEvent) => {
+  onImageClicked = (e: MouseEvent): void => {
     e.preventDefault();
     e.stopPropagation();
     const { openProductImageModal, selectedImage, product } = this.props;

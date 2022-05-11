@@ -3,14 +3,14 @@
 import React, { Component, Fragment } from 'react';
 import { ShopState } from '@stackend/api/shop/shopReducer';
 import {
-  checkoutRemove,
-  checkoutSetQuantity,
+  cartRemove,
+  cartSetQuantity,
   requestMissingProducts,
-  requestOrResetActiveCheckout,
-  checkoutReplaceItems,
-  getProductAndVariant
+  getCart,
+  getProductAndVariant2,
+  createCheckoutFromCart
 } from '@stackend/api/shop/shopActions';
-import { getFirstImage, Checkout, CheckoutLineItem } from '@stackend/api/shop';
+import { getFirstImage, Cart, CartLine, Product, Checkout, CheckoutResult } from '@stackend/api/shop';
 import { mapGraphQLList } from '@stackend/api/util/graphql';
 import * as Sc from './Basket.style';
 import { connect, ConnectedProps } from 'react-redux';
@@ -22,31 +22,30 @@ import SquareProductImage from './SquareProductImage';
 import { FormattedMessage, injectIntl, WrappedComponentProps } from 'react-intl';
 import { getLinkFactory } from '../link/LinkFactory';
 import ShopLinkFactory from './ShopLinkFactory';
-import { Product } from '@stackend/api/src/shop';
-import { getPriceIncludingVAT, getTotalPriceIncludingVAT } from '@stackend/api/shop/vat';
+import { getPriceIncludingVAT, getCartTotalPriceIncludingVAT } from '@stackend/api/shop/vat';
 import CustomerCountrySelect from './CustomerCountrySelect';
 
 function mapStateToProps(state: any): {
   shop: ShopState;
   products: { [handle: string]: Product };
   basketUpdated: number;
-  checkout: Checkout | null;
+  cart: Cart | null;
 } {
   const shop: ShopState = state.shop;
   return {
     shop: shop,
     products: shop.products,
     basketUpdated: shop.basketUpdated,
-    checkout: shop.checkout
+    cart: shop.cart
   };
 }
 
 const mapDispatchToProps = {
-  checkoutRemove,
-  checkoutSetQuantity,
+  cartRemove,
+  cartSetQuantity,
   requestMissingProducts,
-  requestOrResetActiveCheckout,
-  checkoutReplaceItems
+  getCart,
+  createCheckoutFromCart
 };
 
 const connector = connect(mapStateToProps, mapDispatchToProps);
@@ -85,32 +84,32 @@ class Basket extends Component<Props, State> {
   };
 
   async componentDidMount(): Promise<void> {
-    const { imageMaxWidth, checkout } = this.props;
+    const { imageMaxWidth, cart } = this.props;
 
-    if (!checkout || checkout.completedAt !== null) {
-      await this.props.requestOrResetActiveCheckout({ imageMaxWidth });
+    if (!cart) {
+      await this.props.getCart({ imageMaxWidth });
     }
     this.setState({ loading: false });
   }
 
   render(): JSX.Element {
-    const { checkout, shop } = this.props;
+    const { cart, shop } = this.props;
     const { loading } = this.state;
     const linkFactory = getLinkFactory<ShopLinkFactory>('shop');
 
     let totalPrice = null;
-    if (checkout !== null) {
-      totalPrice = getTotalPriceIncludingVAT({ shopState: shop, checkout });
+    if (cart !== null) {
+      totalPrice = getCartTotalPriceIncludingVAT({ shopState: shop, cart });
     }
 
     return (
       <Sc.Basket>
         {loading ? (
           this.renderPlaceholder()
-        ) : checkout && checkout.lineItems.edges.length !== 0 ? (
+        ) : cart && cart.lines.edges.length !== 0 ? (
           <Fragment>
             <Sc.BasketList>
-              {mapGraphQLList(checkout.lineItems, (i: CheckoutLineItem) => this.renderBasketItem(i, linkFactory))}
+              {mapGraphQLList(cart.lines, (i: CartLine) => this.renderBasketItem(i, linkFactory))}
             </Sc.BasketList>
             <Sc.BasketActions>
               <Sc.BasketLine>
@@ -136,12 +135,12 @@ class Basket extends Component<Props, State> {
     );
   }
 
-  renderBasketItem = (i: CheckoutLineItem, linkFactory: ShopLinkFactory): JSX.Element | null => {
-    const handle = i.variant.product.handle;
-    const variantId = i.variant.id;
+  renderBasketItem = (i: CartLine, linkFactory: ShopLinkFactory): JSX.Element | null => {
+    const handle = i.merchandise.product.handle;
+    const variantId = i.merchandise.id;
     const { shop } = this.props;
 
-    const pv = getProductAndVariant(shop, i);
+    const pv = getProductAndVariant2(shop, handle, variantId);
     if (!pv) {
       return null;
     }
@@ -183,31 +182,37 @@ class Basket extends Component<Props, State> {
     );
   };
 
-  onQuantityChanged = (q: number, i: CheckoutLineItem): void => {
-    const { checkout } = this.props;
-    if (!checkout) {
+  onQuantityChanged = (q: number, i: CartLine): void => {
+    const { cart } = this.props;
+    if (!cart) {
       return;
     }
 
-    this.props.checkoutSetQuantity(i.variant.id, q);
+    this.props.cartSetQuantity(i.merchandise.id, q);
   };
 
-  onRemoveClicked = (i: CheckoutLineItem): void => {
-    const { checkout } = this.props;
-    if (!checkout) {
+  onRemoveClicked = (i: CartLine): void => {
+    const { cart } = this.props;
+    if (!cart) {
       return;
     }
 
-    const pv = getProductAndVariant(this.props.shop, i);
+    const pv = getProductAndVariant2(this.props.shop, i.merchandise.product.handle, i.merchandise.id);
     if (pv) {
-      this.props.checkoutRemove(pv.product, pv.variant, i.quantity);
+      this.props.cartRemove(pv.product, pv.variant, i.quantity);
     }
   };
 
   onCheckoutClicked = async (): Promise<void> => {
-    const { checkout } = this.props;
-    if (checkout && this.props.onCheckoutClicked) {
-      this.props.onCheckoutClicked(checkout);
+    const { cart, createCheckoutFromCart } = this.props;
+    if (!cart) {
+      return;
+    }
+
+    const r: CheckoutResult = await createCheckoutFromCart();
+    // FIXME: Handle errors?
+    if (!r.error && r.response.checkout && this.props.onCheckoutClicked) {
+      this.props.onCheckoutClicked(r.response.checkout);
     }
   };
 
