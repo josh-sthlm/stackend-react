@@ -32,7 +32,7 @@ export interface Props extends ConnectedProps<typeof connector> {
  * Render a price using the current community's locale
  */
 class Price extends Component<Props> {
-  componentDidMount() {
+  componentDidMount(): void {
     const { requestCurrencyInfo, price } = this.props;
     if (price) {
       requestCurrencyInfo(price.currencyCode);

@@ -1,4 +1,7 @@
 import HashShopLinkFactory from '../shop/HashShopLinkFactory';
+import { MENU_COMPONENT } from '../cms/MenuLinkFactory';
+import DefaultMenuLinkFactory from '../shop/DefaultMenuLinkFactory';
+import { SHOP_COMPONENT } from '../shop/ShopLinkFactory';
 
 /**
  * Base interface for all link factories
@@ -12,7 +15,9 @@ export interface LinkFactory {
 }
 
 const LINK_FACTORIES: { [component: string]: LinkFactory } = {
-  shop: HashShopLinkFactory
+  // Defaults
+  [SHOP_COMPONENT]: HashShopLinkFactory,
+  [MENU_COMPONENT]: DefaultMenuLinkFactory
 };
 
 /**

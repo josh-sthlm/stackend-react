@@ -18,6 +18,8 @@ export enum ListingContext {
   PRODUCT_TYPE_LISTING
 }
 
+export const SHOP_COMPONENT = 'shop';
+
 /**
  * A link factory for shop components
  */
