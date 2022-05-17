@@ -1,6 +1,6 @@
 import HashShopLinkFactory from '../shop/HashShopLinkFactory';
 import { MENU_COMPONENT } from '../cms/MenuLinkFactory';
-import DefaultMenuLinkFactory from '../shop/DefaultMenuLinkFactory';
+import DefaultMenuLinkFactory from '../cms/DefaultMenuLinkFactory';
 import { SHOP_COMPONENT } from '../shop/ShopLinkFactory';
 
 /**

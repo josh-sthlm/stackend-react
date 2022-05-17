@@ -1,4 +1,4 @@
-import MenuLinkFactory, { MENU_COMPONENT } from '../cms/MenuLinkFactory';
+import MenuLinkFactory, { MENU_COMPONENT } from './MenuLinkFactory';
 import { getPermalink, Node } from '@stackend/api/api/tree';
 import { SubSite, SubSiteNode } from '@stackend/api/cms';
 
