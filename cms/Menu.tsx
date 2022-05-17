@@ -2,7 +2,6 @@ import React, { Component, Fragment, MouseEvent } from 'react';
 import { SubSite, SubSiteNode, MenuVisibility } from '@stackend/api/cms';
 import * as Sc from './Menu.style';
 import { getTreePath, Node } from '@stackend/api/api/tree';
-import { getSubSitePageHashPermalink } from '@stackend/api/cms/pageActions';
 import { getLinkFactory } from '../link/LinkFactory';
 import MenuLinkFactory, { MENU_COMPONENT } from './MenuLinkFactory';
 
@@ -11,6 +10,8 @@ type Props = {
   selectedPath: Array<Node>;
   menuVisibility?: MenuVisibility | null;
   onNavigate: (e: Event, node: SubSiteNode, path: Array<SubSiteNode> | null) => void;
+  renderExtraItemsStart?: (subSite: SubSite, selectedPath: Array<Node>) => JSX.Element | null;
+  renderExtraItemsEnd?: (subSite: SubSite, selectedPath: Array<Node>) => JSX.Element | null;
 };
 
 type State = {
@@ -82,13 +83,12 @@ export default class Menu extends Component<Props, State> {
   };
 
   render(): JSX.Element | null {
-    const { subSite, menuVisibility, selectedPath } = this.props;
+    const { subSite, menuVisibility, selectedPath, renderExtraItemsStart, renderExtraItemsEnd } = this.props;
     const { open } = this.state;
     if (!subSite || subSite.children.length === 0 || menuVisibility === MenuVisibility.OFF) {
       return null;
     }
 
-    //const selectedPathPermalink = getPermalink(selectedPath);
     const selectedPathPermalink = this.linkFactory.createPermalink(subSite, selectedPath, null);
     const c = Menu.getMenuVisibilityClass(menuVisibility);
 
@@ -101,7 +101,9 @@ export default class Menu extends Component<Props, State> {
             <i className="material-icons">menu</i>
           </Sc.Burger>
         )}
+        {renderExtraItemsStart && renderExtraItemsStart(subSite, selectedPath)}
         {subSite.children.map((item: SubSiteNode, i: number) => this.renderItem(item, i, selectedPathPermalink))}
+        {renderExtraItemsEnd && renderExtraItemsEnd(subSite, selectedPath)}
       </Sc.Menu>
     );
   }
@@ -122,7 +124,6 @@ export default class Menu extends Component<Props, State> {
     if (path && menuVisibility === MenuVisibility.HORIZONTAL) {
       if (item.children.length !== 0 /*&& matchMedia("(hover:none)").matches*/) {
         const { openPermalink } = this.state;
-        //const pl = getPermalink(path);
         const pl = this.linkFactory.createPermalink(subSite, path, item);
         if (openPermalink !== pl) {
           this.setState({ openPermalink: pl });
@@ -143,18 +144,12 @@ export default class Menu extends Component<Props, State> {
   renderItem = (item: SubSiteNode, i: number, selectedPathPermalink: string): JSX.Element | null => {
     const { subSite } = this.props;
     const hasSubmenu = item.children.length !== 0;
-    let link = null;
 
     const treePath = getTreePath(subSite, item);
     //const permalink = treePath ? getPermalink(treePath) : '';
-    const permalink = treePath ? this.linkFactory.createPermalink(subSite, treePath, item) : '';
+    const permalink = this.linkFactory.createPermalink(subSite, treePath, item);
+    let link = this.linkFactory.createPermalink(subSite, treePath, item);
     const klass: string = 'stackend-menu-path' + permalink.replace(/\//g, '-');
-
-    if (item.ref !== null) {
-      link = getSubSitePageHashPermalink({ permalink, treePath: null });
-    } else if (item.data.link != null) {
-      link = item.data.link;
-    }
 
     const isSelected = selectedPathPermalink.startsWith(permalink);
     const isMenuOpen = hasSubmenu && this.state.openPermalink === permalink;
