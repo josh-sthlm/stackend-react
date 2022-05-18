@@ -10,8 +10,8 @@ type Props = {
   selectedPath: Array<Node>;
   menuVisibility?: MenuVisibility | null;
   onNavigate: (e: Event, node: SubSiteNode, path: Array<SubSiteNode> | null) => void;
-  renderExtraItemsStart?: (subSite: SubSite, selectedPath: Array<Node>) => JSX.Element | null;
-  renderExtraItemsEnd?: (subSite: SubSite, selectedPath: Array<Node>) => JSX.Element | null;
+  renderExtraItemsStart?: (subSite: SubSite, selectedPath: Array<Node>, menu: Menu) => JSX.Element | null;
+  renderExtraItemsEnd?: (subSite: SubSite, selectedPath: Array<Node>, menu: Menu) => JSX.Element | null;
 };
 
 type State = {
@@ -98,12 +98,12 @@ export default class Menu extends Component<Props, State> {
       <Sc.Menu className={klass}>
         {menuVisibility === MenuVisibility.HORIZONTAL && (
           <Sc.Burger onClick={this.onMenuToggled}>
-            <i className="material-icons">menu</i>
+            <i className="material-icons">{open ? 'close' : 'menu'}</i>
           </Sc.Burger>
         )}
-        {renderExtraItemsStart && renderExtraItemsStart(subSite, selectedPath)}
+        {renderExtraItemsStart && renderExtraItemsStart(subSite, selectedPath, this)}
         {subSite.children.map((item: SubSiteNode, i: number) => this.renderItem(item, i, selectedPathPermalink))}
-        {renderExtraItemsEnd && renderExtraItemsEnd(subSite, selectedPath)}
+        {renderExtraItemsEnd && renderExtraItemsEnd(subSite, selectedPath, this)}
       </Sc.Menu>
     );
   }
