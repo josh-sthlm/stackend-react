@@ -98,7 +98,7 @@ export default class Menu extends Component<Props, State> {
       <Sc.Menu className={klass}>
         {menuVisibility === MenuVisibility.HORIZONTAL && (
           <Sc.Burger onClick={this.onMenuToggled}>
-            <i className="material-icons">menu</i>
+            <i className="material-icons">{open ? 'close' : 'menu'}</i>
           </Sc.Burger>
         )}
         {renderExtraItemsStart && renderExtraItemsStart(subSite, selectedPath)}
