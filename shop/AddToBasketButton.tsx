@@ -1,10 +1,11 @@
 //@flow
 import React, { Component, MouseEvent } from 'react';
-import { cartNotifyProductAdded, Product as ProductType, ProductVariant } from '@stackend/api/shop';
+import { cartNotifyProductAdded, ModifyCartResult, Product as ProductType, ProductVariant } from '@stackend/api/shop';
 import { cartAdd } from '@stackend/api/shop/shopActions';
 import * as Sc from './AddToBasketButton.style';
 import { connect, ConnectedProps } from 'react-redux';
 import { FormattedMessage, injectIntl, WrappedComponentProps } from 'react-intl';
+import SHOP_API_OVERRIDES from './ShopApiOverrides';
 
 interface State {
   saving: boolean;
@@ -55,7 +56,12 @@ class AddToBasketButton extends Component<Props, State> {
     if (product && variant) {
       (async (): Promise<void> => {
         this.setState({ saving: true });
-        const r = await cartAdd(product, variant);
+
+        const r: ModifyCartResult = (await (SHOP_API_OVERRIDES.cartAdd || cartAdd)(
+          product,
+          variant
+        )) as ModifyCartResult;
+        //const r = await cartAdd(product, variant);
         if (!r.error) {
           await cartNotifyProductAdded({ handle: product.handle, variantId: variant.id });
         }
