@@ -6,6 +6,7 @@ import * as Sc from './AddToBasketButton.style';
 import { connect, ConnectedProps } from 'react-redux';
 import { FormattedMessage, injectIntl, WrappedComponentProps } from 'react-intl';
 import SHOP_API_OVERRIDES from './ShopApiOverrides';
+import { ShopState } from '@stackend/api/shop/shopReducer';
 
 interface State {
   saving: boolean;
@@ -16,8 +17,12 @@ const mapDispatchToProps = {
   cartNotifyProductAdded
 };
 
-function mapStateToProps(_x: any) {
-  return {};
+function mapStateToProps(state: any): {
+  enableCartNotifications: boolean;
+} {
+  const shop: ShopState = state.shop;
+  const enableCartNotifications = shop.enableCartNotifications;
+  return { enableCartNotifications };
 }
 
 const connector = connect(mapStateToProps, mapDispatchToProps);
@@ -26,6 +31,7 @@ export interface Props extends ConnectedProps<typeof connector>, WrappedComponen
   product: ProductType | null;
   variant: ProductVariant | null;
   onClick?: (e: MouseEvent, product: ProductType, variant: ProductVariant) => void;
+  enableCartNotifications: boolean;
 }
 
 class AddToBasketButton extends Component<Props, State> {
@@ -52,7 +58,7 @@ class AddToBasketButton extends Component<Props, State> {
   }
 
   onBuyClicked = (e: MouseEvent): void => {
-    const { product, onClick, variant, cartAdd, cartNotifyProductAdded } = this.props;
+    const { product, onClick, variant, cartAdd, cartNotifyProductAdded, enableCartNotifications } = this.props;
     if (product && variant) {
       (async (): Promise<void> => {
         this.setState({ saving: true });
@@ -62,7 +68,7 @@ class AddToBasketButton extends Component<Props, State> {
           variant
         )) as ModifyCartResult;
         //const r = await cartAdd(product, variant);
-        if (!r.error) {
+        if (!r.error && enableCartNotifications) {
           await cartNotifyProductAdded({ handle: product.handle, variantId: variant.id });
         }
         if (onClick) {
