@@ -12,6 +12,7 @@ type Props = {
   onNavigate: (e: Event, node: SubSiteNode, path: Array<SubSiteNode> | null) => void;
   renderExtraItemsStart?: (subSite: SubSite, selectedPath: Array<Node>, menu: Menu) => JSX.Element | null;
   renderExtraItemsEnd?: (subSite: SubSite, selectedPath: Array<Node>, menu: Menu) => JSX.Element | null;
+  compressAtBreakPoint?: string;
 };
 
 type State = {
@@ -83,7 +84,8 @@ export default class Menu extends Component<Props, State> {
   };
 
   render(): JSX.Element | null {
-    const { subSite, menuVisibility, selectedPath, renderExtraItemsStart, renderExtraItemsEnd } = this.props;
+    const { subSite, menuVisibility, selectedPath, renderExtraItemsStart, renderExtraItemsEnd, compressAtBreakPoint } =
+      this.props;
     const { open } = this.state;
     if (!subSite || subSite.children.length === 0 || menuVisibility === MenuVisibility.OFF) {
       return null;
@@ -95,7 +97,7 @@ export default class Menu extends Component<Props, State> {
     const klass: string = c + (open ? ' stackend-menu-active' : ' stackend-menu-inactive');
 
     return (
-      <Sc.Menu className={klass}>
+      <Sc.Menu className={klass} compressAtBreakPoint={compressAtBreakPoint}>
         {menuVisibility === MenuVisibility.HORIZONTAL && (
           <Sc.Burger onClick={this.onMenuToggled}>
             <i className="material-icons">{open ? 'close' : 'menu'}</i>

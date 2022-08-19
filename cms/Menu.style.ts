@@ -33,9 +33,16 @@ export const SubMenuItems = styled.div.attrs(props => ({
   border-radius: ${props => props.theme.borderRadius || '0'};
 `;
 
+export interface MenuProps {
+  /**
+   * Optional break point where menu is compressed (default: media.tabletScreen)
+   */
+  compressAtBreakPoint?: string;
+}
+
 export const Menu = styled.nav.attrs(props => ({
   className: classNames('stackend-site-menu', props.className)
-}))`
+}))<MenuProps>`
   background-color: ${props => getComponentProp(props.theme, ComponentType.MENU, 'backgroundColor')};
   border-radius: ${props => props.theme.borderRadius || '0'};
   display: flex;
@@ -152,7 +159,7 @@ export const Menu = styled.nav.attrs(props => ({
     }
 
     /* Turn into vertical menu for small screens */
-    ${media.tabletScreen} {
+    ${props => props.compressAtBreakPoint || media.tabletScreen} {
       flex-direction: column;
       align-items: flex-start;
       gap: 0;
