@@ -239,14 +239,25 @@ class Subsite extends Component<Props, State> {
       loading: true
     });
 
-    const { pages, requestPage, request, subSite, history } = this.props;
+    const { pages, requestPage, subSite, history } = this.props;
     const previousPage = this.state.page;
     let page = pages.byId[node.referenceId];
 
+    // Skip domain
+    let j = href.indexOf('://');
+    if (j !== -1) {
+      href = href.substring(j + 3);
+      j = href.indexOf('/');
+      if (j !== -1) {
+        href = href.substring(j);
+      }
+    }
+
+    // Use hash, if present
     const i = href.indexOf('#');
     if (i !== -1) {
       href = href.substring(i);
-      href = request.location.pathname + href;
+      //href = request.location.pathname + href;
     }
 
     if (shouldFetchPage(page, Date.now())) {
