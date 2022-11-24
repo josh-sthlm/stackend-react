@@ -2,7 +2,7 @@
 
 import styled from 'styled-components';
 import { ButtonNext, Price, Title } from './Shop.style';
-import media from '../style-common/media';
+import { container } from '../style-common/media';
 import { NumberEntry } from '../ui/NumberEntry.style';
 import classNames from '../style-common/classNames';
 import { SquareProductImage } from './SquareProductImage.style';
@@ -12,7 +12,7 @@ export const BasketItem = styled.li.attrs(props => ({
 }))`
   &.stackend-basket-item-placeholder {
     height: 10.772em;
-    ${media.mobileScreen} {
+    ${container.mobileScreen} {
       height: 16em;
     }
   }
@@ -49,7 +49,7 @@ export const BasketLine = styled.div.attrs(props => ({
   align-items: center;
   justify-content: space-between;
   gap: 1em;
-  ${media.mobileScreen} {
+  ${container.mobileScreen} {
     flex-direction: column;
     align-items: end;
   }
@@ -58,6 +58,8 @@ export const BasketLine = styled.div.attrs(props => ({
 export const Basket = styled.div.attrs(props => ({
   className: classNames('stackend-basket', props.className)
 }))`
+  container-type: size;
+  container-name: stackend-basket;
   overflow: hidden;
   padding: ${props => props.theme.margins.small};
 
@@ -115,7 +117,7 @@ export const Basket = styled.div.attrs(props => ({
         border-radius: ${props => props.theme.borderRadius};
       }
 
-      ${media.mobileScreen} {
+      ${container.mobileScreen} {
         grid-template-columns: 33% min-content auto auto min-content;
         grid-template-rows: repeat(2, auto);
         grid-template-areas:
@@ -177,7 +179,7 @@ export const Basket = styled.div.attrs(props => ({
         width: 10vh;
         min-width: 5rem;
 
-        ${media.mobileScreen} {
+        ${container.mobileScreen} {
           width: 100%;
         }
       }
