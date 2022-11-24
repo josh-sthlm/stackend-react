@@ -1,6 +1,6 @@
 {
-  "shop.add_to_basket": "Add to basket",
-  "shop.basket.basket_is_empty": "The basket is empty",
+  "shop.add_to_basket": "Add to cart",
+  "shop.basket.basket_is_empty": "The cart is empty",
   "shop.buy_now": "BUY NOW!",
   "shop.checkout": "Checkout",
   "shop.pagination.next": "Next",

@@ -128,7 +128,7 @@ class Basket extends Component<Props, State> {
           </Fragment>
         ) : (
           <Sc.BasketEmpty>
-            <FormattedMessage id="shop.basket.basket_is_empty" defaultMessage="The basket is empty" />
+            <FormattedMessage id="shop.basket.basket_is_empty" defaultMessage="The cart is empty" />
           </Sc.BasketEmpty>
         )}
       </Sc.Basket>

@@ -52,7 +52,7 @@ class AddToBasketButton extends Component<Props, State> {
       <Sc.AddToBasketButton
         onClick={this.onBuyClicked}
         disabled={saving || !variant || !product.availableForSale || !variant.availableForSale}>
-        <FormattedMessage id="shop.add_to_basket" defaultMessage="Add to basket" />
+        <FormattedMessage id="shop.add_to_basket" defaultMessage="Add to cart" />
       </Sc.AddToBasketButton>
     );
   }
