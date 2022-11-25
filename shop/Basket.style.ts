@@ -2,7 +2,7 @@
 
 import styled from 'styled-components';
 import { ButtonNext, Price, Title } from './Shop.style';
-import { container } from '../style-common/media';
+import { media } from '../style-common/media';
 import { NumberEntry } from '../ui/NumberEntry.style';
 import classNames from '../style-common/classNames';
 import { SquareProductImage } from './SquareProductImage.style';
@@ -12,7 +12,7 @@ export const BasketItem = styled.li.attrs(props => ({
 }))`
   &.stackend-basket-item-placeholder {
     height: 10.772em;
-    ${container.mobileScreen} {
+    ${media.mobileScreen} {
       height: 16em;
     }
   }
@@ -49,7 +49,7 @@ export const BasketLine = styled.div.attrs(props => ({
   align-items: center;
   justify-content: space-between;
   gap: 1em;
-  ${container.mobileScreen} {
+  ${media.mobileScreen} {
     flex-direction: column;
     align-items: end;
   }
@@ -117,7 +117,7 @@ export const Basket = styled.div.attrs(props => ({
         border-radius: ${props => props.theme.borderRadius};
       }
 
-      ${container.mobileScreen} {
+      ${media.mobileScreen} {
         grid-template-columns: 33% min-content auto auto min-content;
         grid-template-rows: repeat(2, auto);
         grid-template-areas:
@@ -179,7 +179,7 @@ export const Basket = styled.div.attrs(props => ({
         width: 10vh;
         min-width: 5rem;
 
-        ${container.mobileScreen} {
+        ${media.mobileScreen} {
           width: 100%;
         }
       }
