@@ -79,7 +79,12 @@ export interface StackendTheme extends FontTheme, ColorTheme {
   injectLibs: boolean;
 
   /** Should cms content have the style applied? */
-  applyToCmsContent: false;
+  applyToCmsContent: boolean;
+
+  /** Running as a shopify app?
+   * This property is set at render time if a shop is set up.
+   */
+  shopifyApp: boolean;
 }
 
 /**
@@ -295,7 +300,8 @@ export function getDefaultTheme(): StackendTheme {
     libs: [],
     injectLibs: false,
 
-    applyToCmsContent: false
+    applyToCmsContent: false,
+    shopifyApp: false
   };
   return t;
 }

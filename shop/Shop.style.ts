@@ -9,7 +9,7 @@ export const ShopButtonCommon = `
 `;
 
 export const ShopNowButton = styled.span.attrs(props => ({
-  className: classNames('stackend-shop-now stackend-button', props.className)
+  className: classNames('stackend-shop-now stackend-button', props.className, props.theme?.shopifyApp ? 'button' : '')
 }))`
   ${ShopButtonCommon};
   border: ${props => getComponentBorder(props.theme, ComponentType.BUTTON)};
