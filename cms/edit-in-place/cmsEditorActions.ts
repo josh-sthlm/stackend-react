@@ -1,7 +1,6 @@
 import type { Dispatch } from 'redux';
 import { CMS_TOGGLE_EDIT_IN_PLACE, CMS_OPEN_EDITOR, CMS_CLOSE_EDITOR } from './cmsEditorReducer';
 import { Content, RICH_CONTENT_CSS_CLASS } from '@stackend/api/cms';
-import get from 'lodash/get';
 import { Thunk } from '@stackend/api/api';
 /*
 import {
@@ -128,7 +127,7 @@ export function openEditor(content: Content, contentElement: HTMLElement | null)
     _editableDomElement = e;
     //let communityPermalink = get(communities, 'community.permalink');
 
-    let language = get(communities, 'community.locale', 'en');
+    let language = communities?.community?.locale || 'en';
     language = language.replace(/_.*/, ''); // Remove country
 
     const id = ('#' + Math.random()).replace(/.\./, 'stackend-cms-editor-');

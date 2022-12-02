@@ -41,7 +41,7 @@ const ProductListingItem = ({
         <Title>{product.title}</Title>
         <Price price={price} />
         <ShopNowButton>
-          <FormattedMessage id="shop.buy_now" defaultMessage="BUY NOW!" />
+          <FormattedMessage id="shop.buy_now" defaultMessage="Shop now!" />
         </ShopNowButton>
       </Link>
     </Sc.ProductListingItem>

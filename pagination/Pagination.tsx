@@ -1,4 +1,3 @@
-import get from 'lodash/get';
 import React, { MouseEvent } from 'react';
 import { appendQueryString } from '@stackend/api/api/LoadJson';
 import type { PaginatedCollection } from '@stackend/api/api/PaginatedCollection';
@@ -109,8 +108,10 @@ class Pagination extends React.Component<Props, State> {
 
   componentDidUpdate(prevProps: Props /*, prevState, prevContext*/): void {
     const { collection } = this.props;
-    if (!!get(collection, 'page') && get(collection, 'page') !== get(prevProps, 'collection.page')) {
-      this.setState({ page: collection.page });
+    if (collection && prevProps.collection) {
+      if (collection.page != prevProps.collection.page) {
+        this.setState({ page: collection.page });
+      }
     }
   }
 

@@ -1,5 +1,4 @@
 import React, { Component, MouseEvent } from 'react';
-import get from 'lodash/get';
 import { connect } from 'react-redux';
 import { openModal } from '../modal/modalActions';
 import { setLike } from '@stackend/api/like';
@@ -52,7 +51,7 @@ function mapStateToProps({ currentUser, groupBlogEntries, GroupComments, likes }
    */
   const likedByCurrentUser = isLikedByCurrentUser(likes, entry.obfuscatedReference);
   return {
-    isLoggedIn: get(currentUser, 'isLoggedIn', false),
+    isLoggedIn: currentUser?.isLoggedIn || false,
     /*
     likedByCurrentUser: get(
       likesByCurrentUser,
