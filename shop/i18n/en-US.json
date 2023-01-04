@@ -25,5 +25,9 @@
   "shop.payment": "Payment",
   "shop.sku": "Article number",
   "shop.email": "Email",
-  "shop.select_your_country": "Select your country"
+  "shop.select_your_country": "Select your country",
+  "shop.weight_x_kilograms": "{weight} Kg",
+  "shop.weight_x_grams": "{weight} g",
+  "shop.weight_x_punds": "{weight} Pounds",
+  "shop.weight_x_ounces": "{weight} Ounces"
 }

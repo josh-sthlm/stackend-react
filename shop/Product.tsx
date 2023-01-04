@@ -21,6 +21,7 @@ import ProductTags from './ProductTags';
 import Sku from './Sku';
 import { ShopState } from '@stackend/api/shop/shopReducer';
 import { connect, ConnectedProps } from 'react-redux';
+import Weight from './Weight';
 
 function mapStateToProps(state: any): {
   shop: ShopState;
@@ -148,6 +149,7 @@ class Product extends Component<Props, State> {
         <Sc.Actions>
           <ProductVariantSelect product={product} selection={selection} onSelectionChanged={this.onVariantSelected} />
           <Price price={price} />
+          <Weight variant={selectedVariant} />
           <Sku variant={selectedVariant} />
           <AddToBasketButton product={product} variant={selectedVariant} />
           <ProductTags product={product} />

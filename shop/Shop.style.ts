@@ -68,6 +68,12 @@ export const Price = styled.span.attrs(props => ({ className: classNames('stacke
   margin: ${productItemMargin};
 `;
 
+export const Weight = styled.span.attrs(props => ({
+  className: classNames('stackend-product-weight', props.className)
+}))`
+  display: none; /* not displayed by default */
+`;
+
 export const Tags = styled.div.attrs(props => ({ className: classNames('stackend-tags', props.className) }))`
   margin: ${productItemMargin};
   display: flex;

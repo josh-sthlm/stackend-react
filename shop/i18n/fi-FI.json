@@ -25,5 +25,9 @@
   "shop.payment": "Maksaa",
   "shop.sku": "Artikkelinumero",
   "shop.email": "Sähköposti",
-  "shop.select_your_country": "Valitse maasi"
+  "shop.select_your_country": "Valitse maasi",
+  "shop.weight_x_kilograms": "{weight} Kg",
+  "shop.weight_x_grams": "{weight} g",
+  "shop.weight_x_punds": "{weight} Pounds",
+  "shop.weight_x_ounces": "{weight} Ounces"
 }
