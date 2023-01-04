@@ -17,7 +17,7 @@ export enum ComponentType {
 
   SELECT = 'select',
 
-  /** All kinds of text inputs, and controls that looks like text inputs */
+  /** All kinds of text input, and controls that looks like text inputs */
   TEXT_INPUT = 'textInput',
   LINK = 'link',
 

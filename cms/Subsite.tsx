@@ -104,7 +104,7 @@ class Subsite extends Component<Props, State> {
   componentDidMount(): void {
     this.setupLinkHandlers(this.contentRef, false);
 
-    // On load, navigate to the page present in hash tag, if any
+    // On load, navigate to the page present in hashtag, if any
     const { request, subSite } = this.props;
     if (!subSite) {
       return;

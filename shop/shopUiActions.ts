@@ -65,6 +65,7 @@ export function setVisibleProduct(handle?: string, variantId?: string): Thunk<vo
 
 /**
  * Open the product image modal for a given product
+ * @param handle
  * @param image
  */
 export function openProductImageModal(handle: string, image: ProductImage): Thunk<void> {

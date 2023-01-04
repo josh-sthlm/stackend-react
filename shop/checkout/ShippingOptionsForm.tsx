@@ -158,7 +158,7 @@ class ShippingOptionsForm extends Component<Props, State> {
     );
 
     if (selectedRate) {
-      let shippingRate: MoneyV2 = selectedRate.priceV2;
+      let shippingRate: MoneyV2 = selectedRate.price;
       if (shop.vats?.showVatForShipping) {
         shippingRate = applyVat(shop, VatType.STANDARD, shippingRate);
       }
@@ -174,7 +174,7 @@ class ShippingOptionsForm extends Component<Props, State> {
 
         <Sc.Fields>
           {checkout.availableShippingRates.shippingRates.map((r: ShippingRate) => {
-            let shippingRate = r.priceV2;
+            let shippingRate = r.price;
             if (shop.vats?.showVatForShipping) {
               shippingRate = applyVat(shop, VatType.STANDARD, shippingRate);
             }
