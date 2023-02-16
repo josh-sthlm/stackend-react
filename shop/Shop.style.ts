@@ -66,6 +66,12 @@ export const Description = styled.div.attrs(props => ({
 
 export const Price = styled.span.attrs(props => ({ className: classNames('stackend-product-price', props.className) }))`
   margin: ${productItemMargin};
+  &.stackend-product-price-orig {
+    text-decoration: line-through;
+  }
+  &.stackend-product-price-reduced {
+    font-weight: bold;
+  }
 `;
 
 export const Weight = styled.span.attrs(props => ({

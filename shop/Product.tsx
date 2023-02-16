@@ -3,17 +3,18 @@ import React, { Component } from 'react';
 import * as Sc from './Product.style';
 import {
   getFirstImage,
-  getProductVariant,
-  Product as IProduct,
-  ProductVariant,
   getProductSelection,
-  ProductSelection
+  getProductVariant,
+  MoneyV2,
+  Product as IProduct,
+  ProductImage,
+  ProductSelection,
+  ProductVariant
 } from '@stackend/api/shop';
 import AddToBasketButton from './AddToBasketButton';
-import { ProductImage } from '@stackend/api/shop';
 import { getPriceIncludingVAT } from '@stackend/api/shop/vat';
 import { Description, Title } from './Shop.style';
-import Price from './Price';
+import Price, { Type } from './Price';
 import { injectIntl, WrappedComponentProps } from 'react-intl';
 import ProductVariantSelect from './ProductVariantSelect';
 import ProductImageBrowser from './ProductImageBrowser';
@@ -137,6 +138,17 @@ class Product extends Component<Props, State> {
 
     const price = getPriceIncludingVAT({ shopState: shop, product, productVariant: selectedVariant });
 
+    // Original price, if reduced
+    let compareAtPrice: MoneyV2 | null = null;
+    if (selectedVariant && selectedVariant.compareAtPrice) {
+      compareAtPrice = getPriceIncludingVAT({
+        shopState: shop,
+        product,
+        productVariant: selectedVariant,
+        price: selectedVariant.compareAtPrice
+      });
+    }
+
     return (
       <Sc.Product>
         <Title>{product.title}</Title>
@@ -148,7 +160,16 @@ class Product extends Component<Props, State> {
 
         <Sc.Actions>
           <ProductVariantSelect product={product} selection={selection} onSelectionChanged={this.onVariantSelected} />
-          <Price price={price} />
+          <Sc.Prices>
+            {compareAtPrice ? (
+              <>
+                <Price price={price} type={Type.REDUCED} />
+                <Price price={compareAtPrice} type={Type.ORIGINAL} />
+              </>
+            ) : (
+              <Price price={price} />
+            )}
+          </Sc.Prices>
           <Weight variant={selectedVariant} />
           <Sku variant={selectedVariant} />
           <AddToBasketButton product={product} variant={selectedVariant} />

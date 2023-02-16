@@ -7,6 +7,11 @@ import { getCurrencyFormatter } from '@stackend/api/util';
 import { requestCurrencyInfo, roundToMinimalFractionalUnit } from '@stackend/api/shop/currency';
 import { ShopState } from '@stackend/api/shop/shopReducer';
 
+export enum Type {
+  REDUCED = 'reduced',
+  ORIGINAL = 'original'
+}
+
 function mapState(state: any): {
   locale: string;
   shop: ShopState;
@@ -26,6 +31,7 @@ const connector = connect(mapState, mapDispatch);
 
 export interface Props extends ConnectedProps<typeof connector> {
   price: MoneyV2 | null | undefined;
+  type?: Type;
 }
 
 /**
@@ -40,9 +46,19 @@ class Price extends Component<Props> {
   }
 
   render(): JSX.Element | null {
-    const { price, locale, shop } = this.props;
+    const { price, locale, shop, type } = this.props;
     if (!price) {
       return null;
+    }
+
+    let className = '';
+    switch (type) {
+      case Type.REDUCED:
+        className = 'stackend-product-price-reduced';
+        break;
+      case Type.ORIGINAL:
+        className = 'stackend-product-price-orig';
+        break;
     }
 
     // To match Shopify
@@ -50,7 +66,7 @@ class Price extends Component<Props> {
 
     const formatter = getCurrencyFormatter(price.currencyCode, locale);
 
-    return <Sc.Price>{formatter.format(parseFloat(p.amount))}</Sc.Price>;
+    return <Sc.Price className={className}>{formatter.format(parseFloat(p.amount))}</Sc.Price>;
   }
 }
 

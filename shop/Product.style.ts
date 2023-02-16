@@ -14,6 +14,10 @@ export const Actions = styled.div.attrs(props => ({
   className: classNames('stackend-product-actions', props.className)
 }))``;
 
+export const Prices = styled.div.attrs(props => ({
+  className: classNames('stackend-product-prices', props.className)
+}))``;
+
 export const Product = styled.div.attrs(props => ({ className: classNames('stackend-product', props.className) }))`
   text-align: center;
   display: grid;
