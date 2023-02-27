@@ -55,7 +55,6 @@ export const PaginationButtons = styled.button<{ prev?: boolean; current?: boole
 `;
 
 export const PaginationMoreButton = styled.button`
-  background: none;
   border: none;
   width: 100%;
   text-align: center;
