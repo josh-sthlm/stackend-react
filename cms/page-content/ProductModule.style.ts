@@ -24,7 +24,8 @@ export const ProductModule = styled.div.attrs(props => ({
   &.stackend-shop-product-module-horizontal {
     display: inline-block;
     > .stackend-product-list-item {
-      width: 25em;
+      width: 100%;
+      max-width: 25em;
       > a {
         display: grid;
         grid-template-columns: min-content auto;
