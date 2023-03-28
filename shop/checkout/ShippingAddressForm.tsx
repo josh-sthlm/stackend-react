@@ -521,7 +521,14 @@ function getCountryOfCheckout(
 
   if (countries) {
     const x = countries.find((c: Country) => c.code === cc);
-    return x || null;
+    if (x) {
+      return x;
+    }
+
+    // country not found, let's take the first one
+    if (countries.length > 0) {
+      return countries[0];
+    }
   }
 
   return null;
