@@ -517,6 +517,9 @@ function getCountryOfCheckout(
     if (c) {
       return c;
     }
+
+    // country not found, let's take the first one
+    c = countriesByCode[0];
   }
 
   if (countries) {
@@ -527,9 +530,9 @@ function getCountryOfCheckout(
 
     // country not found, let's take the first one
     if (countries.length > 0) {
-      return countries[0];
+      c = countries[0];
     }
   }
 
-  return null;
+  return c;
 }
