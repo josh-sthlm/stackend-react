@@ -519,7 +519,7 @@ function getCountryOfCheckout(
     }
 
     // country not found, let's take the first one
-    c = countriesByCode[0];
+    c = Object.values(countriesByCode)[0];
   }
 
   if (countries) {
