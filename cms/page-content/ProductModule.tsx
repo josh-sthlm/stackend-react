@@ -52,6 +52,14 @@ class ProductModule extends Component<Props> {
     }
   }
 
+  componentDidUpdate(): void {
+    // Backend may refuse to load all requested products. In that case, load it here
+    const { product, requestProduct, handle } = this.props;
+    if (!product && handle) {
+      requestProduct({ handle: this.props.handle });
+    }
+  }
+
   render(): JSX.Element | null {
     const { product, layout, render, className } = this.props;
 
