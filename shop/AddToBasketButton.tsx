@@ -63,14 +63,22 @@ class AddToBasketButton extends Component<Props, State> {
       (async (): Promise<void> => {
         this.setState({ saving: true });
 
-        const r: ModifyCartResult = (await (SHOP_API_OVERRIDES.cartAdd || cartAdd)(
-          product,
-          variant
-        )) as ModifyCartResult;
-        //const r = await cartAdd(product, variant);
-        if (!r.error && enableCartNotifications) {
-          await cartNotifyProductAdded({ handle: product.handle, variantId: variant.id });
+        // Special check for external links as metafield in shopify
+        if (product.stackendAddToCartLink) {
+          window.open(product.stackendAddToCartLink.value, '_blank', 'noreferrer');
+        } else {
+          // Normal flow
+          const r: ModifyCartResult = (await (SHOP_API_OVERRIDES.cartAdd || cartAdd)(
+            product,
+            variant
+          )) as ModifyCartResult;
+          //const r = await cartAdd(product, variant);
+
+          if (!r.error && enableCartNotifications) {
+            await cartNotifyProductAdded({ handle: product.handle, variantId: variant.id });
+          }
         }
+
         if (onClick) {
           onClick(e, product, variant);
         }
