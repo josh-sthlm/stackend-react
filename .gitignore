@@ -2,6 +2,8 @@
 /node_modules
 /stackend-react-*.tgz
 .idea/workspace.xml
+.idea/sonarlint/
+
 
 **/*.js
 **/*.d.ts

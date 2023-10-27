@@ -64,8 +64,8 @@ class AddToBasketButton extends Component<Props, State> {
         this.setState({ saving: true });
 
         // Special check for external links as metafield in shopify
-        if (product.stackendAddToCartLink) {
-          window.open(product.stackendAddToCartLink.value, '_blank', 'noreferrer');
+        if (product.metafield__stackendAddToCartLink) {
+          window.open(product.metafield__stackendAddToCartLink.value, '_blank', 'noreferrer');
         } else {
           // Normal flow
           const r: ModifyCartResult = (await (SHOP_API_OVERRIDES.cartAdd || cartAdd)(
