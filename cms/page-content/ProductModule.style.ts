@@ -17,7 +17,7 @@ export const ProductModule = styled.div.attrs(props => ({
 
   &.stackend-shop-product-module-compact {
     ${ProductListingItem} {
-      width: 20em;
+      //width: 20em;
     }
   }
 
@@ -25,7 +25,7 @@ export const ProductModule = styled.div.attrs(props => ({
     display: inline-block;
     > .stackend-product-list-item {
       width: 100%;
-      max-width: 25em;
+      //max-width: 25em;
       > a {
         display: grid;
         grid-template-columns: min-content auto;
