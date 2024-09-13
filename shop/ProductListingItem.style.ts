@@ -3,21 +3,21 @@ import styled from 'styled-components';
 import { Price, Title } from './Shop.style';
 import { SquareProductImage } from './SquareProductImage.style';
 import classNames from '../style-common/classNames';
-import { getComponentProp, headingFontSize } from '../theme/StackendTheme';
+import { headingFontSize } from '../theme/StackendTheme';
 import ComponentType from '../theme/ComponentType';
 import media from '../style-common/media';
 
 export const ProductListingItem = styled.div.attrs(props => ({
   className: classNames('stackend-product-list-item', props.className)
 }))`
-  text-align: center;
-  background: ${props => getComponentProp(props.theme, ComponentType.BOX, 'backgroundColor')};
-  border-radius: ${props => props.theme.borderRadius};
+  border-radius: ${props => props.theme.shopifyBorderRadius || '10px'};
   border: solid ${props => props.theme.borderWidth} transparent; /* gives space to outline when link is focused */
   display: flex;
   justify-content: flex-end;
   flex-direction: column;
   overflow: hidden;
+  background-color: #ffffff54;
+  padding: 10px;
 
   a {
     text-decoration: none;
@@ -26,8 +26,6 @@ export const ProductListingItem = styled.div.attrs(props => ({
     padding-bottom: ${props => props.theme.margins.medium};
 
     ${Title} {
-      line-height: 1.2em;
-      height: 2.4em; /* 2 * line-height */
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: break-spaces;

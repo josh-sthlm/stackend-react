@@ -31,16 +31,18 @@ export const ProductModule = styled.div.attrs(props => ({
         grid-template-columns: min-content auto;
         grid-template-rows: auto auto auto;
         grid-template-areas: 'image title' 'image price' 'image shop-now';
-        justify-items: center;
+        justify-items: start;
         align-items: center;
         grid-gap: 0.5em;
-        margin: 0.5em;
         width: auto;
 
         ${SquareProductImage} {
           grid-area: image;
           justify-self: start;
-          width: 8em;
+          width: 104px;
+          height: 104px;
+          border-radius: ${props => props.theme.shopifyBorderRadius};
+          background: white;
         }
 
         ${Title} {
@@ -56,6 +58,13 @@ export const ProductModule = styled.div.attrs(props => ({
         ${ShopNowButton} {
           grid-area: shop-now;
           margin: 0;
+          justify-self: end;
+          background: transparent;
+          font-size: 10px;
+          font-weight: 700;
+          height: 24px;
+          border-radius: 24px;
+          padding: 0 20px;
         }
       }
     }

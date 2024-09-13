@@ -1,7 +1,7 @@
 //@flow
 import styled from 'styled-components';
 import classNames from '../style-common/classNames';
-import { getComponentBorder, getComponentProp } from '../theme/StackendTheme';
+import { getComponentProp } from '../theme/StackendTheme';
 import ComponentType from '../theme/ComponentType';
 
 export const ShopButtonCommon = `
@@ -12,10 +12,15 @@ export const ShopNowButton = styled.span.attrs(props => ({
   className: classNames('stackend-shop-now stackend-button', props.className, props.theme?.shopifyApp ? 'button' : '')
 }))`
   ${ShopButtonCommon};
-  border: ${props => getComponentBorder(props.theme, ComponentType.BUTTON)};
+  border: 0px;
   color: ${props => getComponentProp(props.theme, ComponentType.BUTTON, 'color')};
-  background-color: ${props => getComponentProp(props.theme, ComponentType.BUTTON, 'backgroundColor')};
-  border-radius: ${props => props.theme.borderRadius};
+  background-color: ${props => props.theme.shopifyButtonColor};
+  border-radius: ${props => props.theme.shopifyBorderRadius};
+
+  &:hover {
+    opacity: 0.9;
+  }
+}
 `;
 
 const productItemMargin = '1em 0;';

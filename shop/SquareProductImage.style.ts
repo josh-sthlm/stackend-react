@@ -9,6 +9,8 @@ export const SquareProductImage = styled.div.attrs(props => ({
   height: 200px;
   width: 200px;
   background: white;
+  border-radius: ${props => props.theme.shopifyBorderRadius};
+
   img {
     width: 100%;
     height: 100%;
