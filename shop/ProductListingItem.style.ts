@@ -10,7 +10,7 @@ import media from '../style-common/media';
 export const ProductListingItem = styled.div.attrs(props => ({
   className: classNames('stackend-product-list-item', props.className)
 }))`
-  border-radius: ${props => props.theme.shopifyBorderRadius || '10px'};
+  border-radius: calc(${props => props.theme.shopifyBorderRadius} * 0.5);
   border: solid ${props => props.theme.borderWidth} transparent; /* gives space to outline when link is focused */
   display: flex;
   justify-content: flex-end;
@@ -30,7 +30,6 @@ export const ProductListingItem = styled.div.attrs(props => ({
       text-overflow: ellipsis;
       white-space: break-spaces;
       word-break: break-word;
-      margin: 0.5em 0.5em 0 0.5em;
       display: -webkit-box;
       line-clamp: 2;
       -webkit-line-clamp: 2;

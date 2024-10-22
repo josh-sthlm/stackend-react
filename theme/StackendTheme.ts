@@ -85,6 +85,15 @@ export interface StackendTheme extends FontTheme, ColorTheme {
    * This property is set at render time if a shop is set up.
    */
   shopifyApp: boolean;
+
+  /**
+   * New shopify theme settings
+   */
+  shopifyMainColor: string;
+  shopifyAIColor: string;
+  shopifyButtonColor: string;
+  shopifyBorderRadius: string;
+  shopifyButtonBorderRadius: string;
 }
 
 /**
@@ -301,7 +310,13 @@ export function getDefaultTheme(): StackendTheme {
     injectLibs: false,
 
     applyToCmsContent: false,
-    shopifyApp: false
+    shopifyApp: false,
+
+    shopifyMainColor: '#f3ecff',
+    shopifyButtonColor: '#000000',
+    shopifyAIColor: '#cecece',
+    shopifyBorderRadius: '20px',
+    shopifyButtonBorderRadius: '30px'
   };
   return t;
 }

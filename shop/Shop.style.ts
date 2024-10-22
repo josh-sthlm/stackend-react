@@ -9,13 +9,13 @@ export const ShopButtonCommon = `
 `;
 
 export const ShopNowButton = styled.span.attrs(props => ({
-  className: classNames('stackend-shop-now stackend-button', props.className, props.theme?.shopifyApp ? 'button' : '')
+  className: classNames('stackend-shop-now stackend-button', props.className)
 }))`
   ${ShopButtonCommon};
   border: 0px;
   color: ${props => getComponentProp(props.theme, ComponentType.BUTTON, 'color')};
   background-color: ${props => props.theme.shopifyButtonColor};
-  border-radius: ${props => props.theme.shopifyBorderRadius};
+  border-radius: ${props => props.theme.shopifyButtonBorderRadius};
 
   &:hover {
     opacity: 0.9;
@@ -33,8 +33,6 @@ export const VariantTitlePart = styled.span.attrs(props => ({
 }))``;
 
 export const Title = styled.h4.attrs(props => ({ className: classNames('stackend-product-name', props.className) }))`
-  margin: ${productItemMargin};
-
   ${ProductTitlePart} {
     display: block;
   }

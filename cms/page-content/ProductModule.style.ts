@@ -41,7 +41,7 @@ export const ProductModule = styled.div.attrs(props => ({
           justify-self: start;
           width: 104px;
           height: 104px;
-          border-radius: ${props => props.theme.shopifyBorderRadius};
+          border-radius: calc(${props => props.theme.shopifyBorderRadius} * 0.5);
           background: white;
         }
 
@@ -59,11 +59,11 @@ export const ProductModule = styled.div.attrs(props => ({
           grid-area: shop-now;
           margin: 0;
           justify-self: end;
-          background: transparent;
+          background: ${props => props.theme.shopifyButtonColor};
           font-size: 10px;
           font-weight: 700;
           height: 24px;
-          border-radius: 24px;
+          border-radius: ${props => props.theme.shopifyButtonBorderRadius};
           padding: 0 20px;
         }
       }
