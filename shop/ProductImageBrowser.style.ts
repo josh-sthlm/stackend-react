@@ -10,6 +10,7 @@ export const ProductImageBrowser = styled.div.attrs(props => ({
   img {
     max-width: 100%;
     height: auto;
+    border-radius: calc(${props => props.theme.shopifyBorderRadius} * 0.5);
   }
 `;
 
