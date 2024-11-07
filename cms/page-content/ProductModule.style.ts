@@ -42,7 +42,6 @@ export const ProductModule = styled.div.attrs(props => ({
           width: 104px;
           height: 104px;
           border-radius: calc(${props => props.theme.shopifyBorderRadius} * 0.5);
-          background: white;
         }
 
         ${Title} {

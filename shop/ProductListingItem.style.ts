@@ -43,7 +43,7 @@ export const ProductListingItem = styled.div.attrs(props => ({
       width: 100%;
       height: auto;
       position: relative;
-      padding-bottom: 100%;
+
       img {
         position: absolute;
         left: 0;

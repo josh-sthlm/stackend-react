@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 import classNames from '../style-common/classNames';
 
-export const Content = styled.div.attrs(props => ({ className: classNames('stackend-cms', props.className) }))<{
+export const Content = styled.div.attrs(props => ({
+  className: classNames('stackend-cms', props.className)
+}))<{
   editable: boolean;
   className: string;
 }>`

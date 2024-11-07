@@ -15,9 +15,14 @@ export default function SquareProductImage({
   }
 
   const url = image.url || (image as any).transformedSrc; // For backwards compatibility
+  const randomId = 'stackend-random-id-' + Math.floor(Math.random() * 100000);
+
   return (
-    <Sc.SquareProductImage className={responsive ? 'stackend-responsive' : ''}>
-      <img src={url} className="stackend-product-image" draggable={false} alt={image.altText || ''} />
+    <Sc.SquareProductImage
+      className={(responsive ? 'stackend-responsive ' : '') + randomId}
+      src={url}
+      randomId={randomId}>
+      {/*<img src={url} className="stackend-product-image" draggable={false} alt={image.altText || ''} />*/}
     </Sc.SquareProductImage>
   );
 }

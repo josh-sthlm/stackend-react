@@ -4,30 +4,20 @@ import classNames from '../style-common/classNames';
 
 export const SquareProductImage = styled.div.attrs(props => ({
   className: classNames('stackend-square-product-image', props.className)
-}))`
+}))<{
+  src: string;
+  randomId: string;
+}>`
   overflow: hidden;
-  height: 200px;
-  width: 200px;
-  background: white;
-  border-radius: ${props => props.theme.shopifyBorderRadius};
+  width: 100%;
+  border-radius: calc(${props => props.theme.shopifyBorderRadius} * 0.5);
+  background-size: cover;
+  display: block;
+  aspect-ratio: 1;
+  background-repeat: no-repeat;
 
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-  }
-
-  &.stackend-responsive {
-    width: 100%;
-    height: auto;
-    position: relative;
-    padding-bottom: 100%;
-    img {
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-    }
+  &.${props => props.randomId} {
+    background-image: url(${props => props.src});
+    background-position: center center;
   }
 `;
